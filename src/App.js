@@ -52,8 +52,8 @@ function App() {
         </Link>
         <ToggleDarkMode />
       </VStack>
-    </Box>
-  );
+    </Box> 
+  ); 
 }
 
 function ToggleDarkMode() {
