@@ -3,8 +3,10 @@ import { Box, Heading, VStack, FormControl, Input, Button, Center } from "native
 import { useState } from "react";
 import fetchPost from "../helper/fetchPost";
 import { FaRegEye, FaRegEyeSlash  } from "react-icons/fa";
+import { useUser } from "../helper/UserContext";
 
 const Registro = () => {
+  const { userId } = useUser();
 
 
   const [correo, setCorreo] = useState("");
@@ -101,6 +103,7 @@ const Registro = () => {
       }} fontWeight="medium" size="xs">
          ¡Registrate para continuar!
         </Heading>
+        <p>User ID: {userId}</p>
 
         <VStack space={3} mt="5">
           <FormControl>

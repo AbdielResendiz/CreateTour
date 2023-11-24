@@ -1,18 +1,27 @@
 import * as React from "react";
 import { Box, Text, Heading, VStack, FormControl, Input, Button, HStack, Center, Icon } from "native-base";
 import { useState, useEffect } from "react";
-import {  Link } from "react-router-dom";
+import {  Link, useNavigate} from "react-router-dom";
 import fetchPost from "../helper/fetchPost";
 import { FaRegEye, FaRegEyeSlash  } from "react-icons/fa";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useUser } from "../helper/UserContext";
 
 
 
 
 const Login = () => {
 
+  const { userId, login } = useUser();
+
+  const handleLogin = (id_user) => {
+    // Lógica para el inicio de sesión
+    login(id_user);
+  };
+
+
+  //Estilos de los Links
   const linkStyle = {
-    
     textDecoration: "underline",
     color: "#4338ca",
     fontWeight: 'bold', 
@@ -28,7 +37,8 @@ const Login = () => {
 	const [show, setShow] = useState(false);
 	const handleClick = () => setShow(!show);
 
-
+  //para navegar a otras vistas
+  const navigate = useNavigate();
 
  
 
@@ -45,6 +55,9 @@ const Login = () => {
       const res = await fetchPost(url, options);
       console.log("res", res);
       window.alert(res.mensaje);
+      handleLogin(res.id_usuario)
+      //Navega a otra pagina/ruta
+      navigate("/Cuenta")
       
    
 

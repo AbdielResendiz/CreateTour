@@ -14,7 +14,9 @@ const CardComponent = ({ imageUri, title, subtitle, description, timestamp }) =>
     }}>
       <Box>
         <AspectRatio w="100%" ratio={16 / 9}>
-          <Image source={{ uri: imageUri }} alt="image" />
+          <Image source={{
+            uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${imageUri}`
+          }} alt={title} />
         </AspectRatio>
         <Center bg="violet.500" _dark={{
           bg: "violet.400"
