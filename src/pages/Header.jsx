@@ -66,6 +66,10 @@ const   Header = () => {
         <Link to="/" style={linkStyle}><Text  fontSize="xl">Nosotros</Text></Link>
         <Link to="/contact" style={linkStyle}><Text  fontSize="xl">Contacto</Text></Link>
         <Link to="/contact" style={linkStyle}><Text  fontSize="xl">Carrito</Text></Link>
+        <Link to="/contact" style={linkStyle}><Text  fontSize="xl">Cuenta</Text></Link>
+        <Link to="/Registro" style={linkStyle}><Text  fontSize="xl">Registro</Text></Link>
+        <Link to="/Login" style={linkStyle}><Text  fontSize="xl">Login</Text></Link>
+
       </HStack>
       
 

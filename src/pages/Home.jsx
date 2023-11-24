@@ -1,12 +1,8 @@
-import { Stack, Heading ,HStack, NativeBaseProvider, Text,Box, Center, Image, Pressable, FlatList, AspectRatio, } from "native-base";
-import { Outlet, Link } from "react-router-dom";
-import { FaFacebook, FaInstagram  } from "react-icons/fa";
-import { FiPhone, FiMail  } from "react-icons/fi";
-import { IconContext } from "react-icons";
+import { NativeBaseProvider,  Center, Image,  FlatList,  } from "native-base";
 import URL from "../helper/baseURL";
 import fetchPost from "../helper/fetchPost";
 import { useEffect, useState } from "react";
-import CardComponent from "../Components/CardComponent";
+import ViajeComponent from "../Components/ViajeComponent";
 
 
 
@@ -53,30 +49,24 @@ const Home = () => {
                 }} alt="Alternate Text" width={"100%"} height={"580px"} />
             </Center>
             <>
-            <FlatList data={viajes} numColumns={4} m={5} renderItem={({
+            <FlatList alignSelf={"center"} data={viajes} numColumns={4} m={5} renderItem={({
                 item
                 }) =>
-                <Pressable m={5}>
-                    <CardComponent
-                    imageUri="https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg"
-                    title={item.Titulo}
-                    subtitle="The Silicon Valley of India."
-                    description="Bengaluru (also called Bangalore) is the center of India's high-tech industry. The city is also known for its parks and nightlife."
-                    timestamp={item.Duracion}
-                    />
-                </Pressable>
+               
+                <ViajeComponent
+                imageUri={item.Foto}
+                titulo={item.Titulo}
+                lugar={item.Ubicacion}
+                duracion={item.Duracion}
+                precio={item.PrecioAdultoNacional}
+                id={item.ID}
+                />
+
+               
                 } keyExtractor={item => item.ID} />
             </>
 
-  
 
-    	{/* <CardComponent
-          imageUri="https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg"
-          title="The Garden City"
-          subtitle="The Silicon Valley of India."
-          description="Bengaluru (also called Bangalore) is the center of India's high-tech industry. The city is also known for its parks and nightlife."
-          timestamp="6 mins ago"
-        /> */}
 
 
         </NativeBaseProvider>
