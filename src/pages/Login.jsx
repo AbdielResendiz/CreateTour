@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import {  Link } from "react-router-dom";
 import fetchPost from "../helper/fetchPost";
 import { FaRegEye, FaRegEyeSlash  } from "react-icons/fa";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -12,8 +12,12 @@ import { FaRegEye, FaRegEyeSlash  } from "react-icons/fa";
 const Login = () => {
 
   const linkStyle = {
-    margin: "1rem",
-    textDecoration: "none",
+    
+    textDecoration: "underline",
+    color: "#4338ca",
+    fontWeight: 'bold', 
+    fontFamily: 'Arial, sans-serif',
+    fontSize: '16px',
     
   };
 
@@ -40,13 +44,9 @@ const Login = () => {
       };
       const res = await fetchPost(url, options);
       console.log("res", res);
-      
-      if (res.resultado===true){
       window.alert(res.mensaje);
-      }
-      else{
-        window.alert(res.mensaje);
-      } 
+      
+   
 
     }
 
@@ -156,7 +156,7 @@ const Login = () => {
             }}>
                 ¿Eres nuevo?{" "}
               </Text>
-              <Link tyle={linkStyle} to="/Registro">
+              <Link style={linkStyle} to="/Registro">
                 Registrarse
               </Link>
             </HStack>
