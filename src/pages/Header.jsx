@@ -24,8 +24,8 @@ const   Header = () => {
   };
 
   return (
-    <>
-      <HStack bg="#449bab" justifyContent="center" py={5} space={4} w="100%">
+    <div>
+      <HStack bg="#449bab" justifyContent="center" py={5} space={4} >
 
         <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
             <FaFacebook />
@@ -50,7 +50,7 @@ const   Header = () => {
         </HStack>
       </HStack>
 
-      <HStack justifyContent="space-between" px={"25%"}>
+      <HStack justifyContent="space-between" px={"3rem"}>
         <Link to="/" style={linkStyle} >
           <Text  fontSize="xl">Inicio</Text>
         </Link>
@@ -67,7 +67,7 @@ const   Header = () => {
       
 
       <Outlet />
-    </>
+    </div>
   )
 };
 

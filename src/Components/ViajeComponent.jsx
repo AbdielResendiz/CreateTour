@@ -3,12 +3,19 @@ import { Text, Pressable, Image, VStack, Center, Button, HStack, Divider} from "
 import { IoLocationOutline } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { FaRegClock } from "react-icons/fa";
+import {   useNavigate} from "react-router-dom";
 
 
 
 
-const ViajeComponent = ({ imageUri, titulo, lugar, duracion, precio }) => {
+const ViajeComponent = ({id,  imageUri, titulo, lugar, duracion, precio }) => {
+
+    //para navegar a otras vistas
+   const navigate = useNavigate();
+
+
     return (
+
    <VStack m={4} borderColor={"#f0f0f0"} borderWidth={1} borderRadius={10} pb={2} bg="white" shadow={6}>
     <Pressable>
     <Image size={300} borderTopRadius={10} source={{
@@ -38,11 +45,11 @@ const ViajeComponent = ({ imageUri, titulo, lugar, duracion, precio }) => {
       <Text bold fontSize={"2xl"} >${precio}USD</Text>
     </Center>
 
-    <Button mx={2}>
+    <Button mx={2} onPress={()=>navigate(`/trip/${id}/${titulo}/${duracion}`,  { state: { foto: {imageUri} } }  )} >
       Ver más
     </Button>
     
-   </VStack>
+   </VStack> 
     );
   };
   

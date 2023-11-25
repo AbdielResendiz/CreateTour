@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "createtours",
   "version": "0.1.0",
   "proxy": "https://createtours.com.mx",
   "private": true,
@@ -14,8 +14,10 @@
     "react-icons": "^4.12.0",
     "react-native-safe-area-context": "^3.4.1",
     "react-native-svg": "^12.5.1",
+    "react-native-tab-view": "^3.5.2",
     "react-native-web": "^0.16.5",
     "react-scripts": "5.0.1",
+    "swiper": "^11.0.5",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

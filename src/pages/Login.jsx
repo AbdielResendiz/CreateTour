@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import {  Link, useNavigate} from "react-router-dom";
 import fetchPost from "../helper/fetchPost";
 import { FaRegEye, FaRegEyeSlash  } from "react-icons/fa";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useUser } from "../helper/UserContext";
 
 
@@ -16,7 +15,7 @@ const Login = () => {
 
   const handleLogin = (id_user) => {
     // Lógica para el inicio de sesión
-    login(id_user);
+    login(id_user); 
   };
 
 

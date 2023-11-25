@@ -1,4 +1,4 @@
-import { NativeBaseProvider,  Center, Image,  FlatList,  } from "native-base";
+import {  Image,  FlatList, AspectRatio, Flex } from "native-base";
 import URL from "../helper/baseURL";
 import fetchPost from "../helper/fetchPost";
 import { useEffect, useState } from "react";
@@ -41,15 +41,15 @@ const Home = () => {
 
 
     return (
-        <NativeBaseProvider>
+        <Flex w="100%">
 
-            <Center>
+            <AspectRatio w={"100%"} ratio={16 / 9} >
                 <Image source={{
                 uri: "https://createtours.com.mx/backend/public/Imagenes/portada-001.jpg"
-                }} alt="Alternate Text" width={"100%"} height={"580px"} />
-            </Center>
-            <>
-            <FlatList alignSelf={"center"} data={viajes} numColumns={4} m={5} renderItem={({
+                }} alt="Alternate Text" width={"100%"} height={"auto"} />
+            </AspectRatio>
+            
+            <FlatList w={"100%"} alignSelf={"center"} data={viajes} numColumns={4} mt={5}  px={"2vw"} renderItem={({
                 item
                 }) =>
                
@@ -64,12 +64,12 @@ const Home = () => {
 
                
                 } keyExtractor={item => item.ID} />
-            </>
+            
 
 
 
 
-        </NativeBaseProvider>
+        </Flex>
     )
   };
   
