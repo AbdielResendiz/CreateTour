@@ -46,6 +46,7 @@ const verViaje = async()=>{
    console.log("base url: ", URL.BASE_URL)
    console.log("id : ", id);
    console.log("tipo id: ", typeof(id))
+   
   }, [])
 
   useEffect(() => {
