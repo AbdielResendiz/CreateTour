@@ -13,6 +13,10 @@ const ViajeComponent = ({id,  imageUri, titulo, lugar, duracion, precio }) => {
     //para navegar a otras vistas
    const navigate = useNavigate();
 
+   const handleClick = () => {
+    navigate(`/trip/${id}`);
+  };
+
 
     return (
 
@@ -45,10 +49,15 @@ const ViajeComponent = ({id,  imageUri, titulo, lugar, duracion, precio }) => {
       <Text bold fontSize={"2xl"} >${precio}USD</Text>
     </Center>
 
-    <Button mx={2} onPress={()=>navigate(`/trip/${id}/${titulo}/${duracion}`,  { state: { foto: {imageUri} } }  )} >
+    {/* <Button mx={2} onPress={()=>navigate(`/trip/${id}/${titulo}/${duracion}` )} >
+      Ver más
+    </Button> */}
+    
+
+    <Button mx={2} onPress={()=>handleClick()} >
       Ver más
     </Button>
-    
+
    </VStack> 
     );
   };

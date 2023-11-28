@@ -26,7 +26,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="blogs" element={<Blogs />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="trip/:id/:titulo/:duracion" element={<DetalleViaje />} />
+          <Route path="trip/:id/" element={<DetalleViaje />} />
           <Route path="Carrito" element={<Carrito />} />
           <Route path="Cuenta" element={<Cuenta />} />
           <Route path="Login" element={<Login />} />
