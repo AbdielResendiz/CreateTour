@@ -50,7 +50,7 @@ const   Header = () => {
         </HStack>
       </HStack>
 
-      <HStack justifyContent="space-between" px={"3rem"}>
+      <HStack justifyContent="center" px={"3rem"}>
         <Link to="/" style={linkStyle} >
           <Text  fontSize="xl">Inicio</Text>
         </Link>
@@ -59,9 +59,9 @@ const   Header = () => {
         <Link to="/" style={linkStyle}><Text  fontSize="xl">Nosotros</Text></Link>
         <Link to="/contact" style={linkStyle}><Text  fontSize="xl">Contacto</Text></Link>
         <Link to="/Carrito" style={linkStyle}><Text  fontSize="xl">Carrito</Text></Link>
-        <Link to="/Cuenta" style={linkStyle}><Text  fontSize="xl">Cuenta</Text></Link>
+        {/* <Link to="/Cuenta" style={linkStyle}><Text  fontSize="xl">Cuenta</Text></Link>
         <Link to="/Registro" style={linkStyle}><Text  fontSize="xl">Registro</Text></Link>
-        <Link to="/Login" style={linkStyle}><Text  fontSize="xl">Login</Text></Link>
+        <Link to="/Login" style={linkStyle}><Text  fontSize="xl">Login</Text></Link> */}
 
       </HStack>
       

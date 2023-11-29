@@ -10,7 +10,7 @@ export const UserProvider = ({ children }) => {
     setUserId(id);
   };
 
-  const logout = () => {
+  const logout = () => { 
     setUserId(null);
   };
 

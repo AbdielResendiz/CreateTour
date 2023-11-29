@@ -1,17 +1,20 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import SwiperComponent from "../Components/SwiperComponent";
-import { HStack, Box, Text, VStack, Center, Divider, Button, Stack, Pressable } from "native-base";
+import { HStack, Box, Text, VStack, Center, Divider, Modal, Stack, Pressable, Button, Input, FormControl } from "native-base";
 import { useState, useEffect } from "react";
 import fetchPost from "../helper/fetchPost";
 import URL from "../helper/baseURL";
-
+import AgregarCarritoComponent from "../Components/AgregarCarritoComponent";
+import PrecioComponent from "../Components/PreciosComponent";
 
 const DetalleViaje = (props) => {
   const { id} = useParams();
 
 
-
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
 //manejar y obtener datos del viaje
 const [viaje, setViaje] = useState([])
@@ -109,14 +112,27 @@ const verViaje = async()=>{
 
   const CustomPressable = ({ count, titulo }) => {
     return (
-      <Pressable maxW="96" onPress={()=>setTab(count)} isFocused={ count===tab ? true : false } isPressed={ count===tab ? true : false } >
+      <Pressable  onPress={()=>setTab(count)} isFocused={ count===tab ? true : false } isPressed={ count===tab ? true : false } >
         {({ isHovered, isPressed, isFocused  }) => (
-          <Box borderBottomWidth={ isHovered || isFocused || isPressed ? 3 : 0} py={3} px={4} borderColor={"#28b5a4"}>
-                     <Text
-            style={{
-              fontWeight: isHovered || isFocused  || isPressed ? 'bold' : 'normal',
-              color: isHovered || isFocused || isPressed ? '#28b5a4' : 'black',
-            }}
+          <Box borderBottomWidth={ isHovered || isFocused || isPressed ? 3 : 0} py={{
+            base: "sm",
+            md: "md",
+            lg: "lg"
+          }} px={4} borderColor={"#28b5a4"}>
+                     <Text fontSize={{
+                      base: "xm",
+                      md: "sm",
+                      lg: "xl"
+                    }} color={ count===tab ?  "#28b5a4" : "black"}
+
+
+
+            // style={{
+            //   fontWeight: 'bold' ,
+            //   color: isHovered || isFocused || isPressed ? '#28b5a4' : 'black',
+            // }}
+
+
           >
             {titulo}
           </Text>
@@ -136,98 +152,78 @@ const verViaje = async()=>{
       <VStack bg="#fafafa"  p={1} m={1}>
 
         {/* Titulo y precios */}
-        <Stack direction={"row"} w="100%" space={5}  p={1} m={1} >
+        <Stack direction={"row"}  w={"100%"} space={3}  p={1} m={1} >
 
-          <HStack w={"40rem"} ml={"2rem"} shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={1} m={1} justifyContent={"center"} >
-            <Text bold fontSize={"6xl"} mx={10} p={10}>{viaje.Titulo}</Text>
+          <HStack flex={1} w={"1rem"}  ml={2} shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={2} m={2} justifyContent={"space-between"} >
+            <Text bold  mx={2} p={2}  mt={4} fontSize={{
+                      base: "lg",
+                      md: "2xl",
+                      lg: "4xl"
+                    }}>{viaje.Titulo}</Text>
             
-                <VStack bg="#28b5a4" w={20} h={20} m={5} mt={10}  borderRadius={10} mx={10} shadow={5} justifyContent={"center"}>
+                <VStack bg="#28b5a4" w={12} h={12} mt={10} mr={2}  borderRadius={5} shadow={5} justifyContent={"center"}>
                   <Center h={10}>
-                    <Text bold color={"#ffffff"} fontSize={"4xl"}> 
+                    <Text bold color={"#ffffff"} fontSize={{
+                      base: "md",
+                      md: "lg",
+                      lg: "xl"
+                    }}> 
                     {viaje.Duracion}
                     </Text>
                   </Center>
 
-                  <Center bg="#ffffff" w={20} borderColor={"#28b5a4"} borderWidth={3} borderBottomRadius={8} mb={-3}   >
-                    <Text fontSize={"md"} >
+                  <Center bg="#ffffff" w={12} borderColor={"#28b5a4"} borderWidth={3} borderBottomRadius={8} mb={-5}   >
+                    <Text fontSize={{
+                      base: "xs",
+                      md: "sm",
+                      lg: "md"
+                    }} >
                     Horas
                     </Text>
                   </Center>
                 </VStack>
           </HStack>
 
-          <Box shadow={6}  borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={4} m={1} justifyContent={"center"}>
-            <HStack>
-            <VStack space={3} justifyContent={"center"}>
-              <VStack p={3}>
-                <Text bold fontSize={"xl"}>${viaje.PrecioAdultoExtranjero} USD</Text>
-                <Text fontSize={"md"} color={"muted.600"}>/ Adulto Extranjero </Text>
-              </VStack>
-            
-              
-
-              <VStack p={3}>
-                <Text bold fontSize={"xl"}>${viaje.PrecioAdultoNacional} USD</Text>
-                <Text fontSize={"md"} color={"muted.600"}>/ Adulto Nacional </Text>
-              </VStack>
-            </VStack>
-            <Divider orientation="vertical" h={"80%"} alignSelf={"center"} />
-
-            <VStack space={3} justifyContent={"center"}>
-              <VStack p={3}>
-                <Text bold fontSize={"xl"}>${viaje.PrecioInfantilExtranjero} USD</Text>
-                <Text fontSize={"md"} color={"muted.600"}>/ Niño Extranjero </Text>
-              </VStack>
-              
-              
-              <VStack p={3}>
-                <Text bold fontSize={"xl"}>${viaje.PrecioInfantilNacional} USD</Text>
-                <Text fontSize={"md"} color={"muted.600"}>/ Adulto Nacional </Text>
-              </VStack>
-            </VStack>
-
-
-
-            </HStack>
-           
-         
-
-    
-
-
-            <Button>
-              <Text bold letterSpacing={"xl"}  color={"white"}>
-                Disponibilidad
-              </Text>
-            </Button>
-
-          </Box>
+          <PrecioComponent viaje={viaje}/>
 
         </Stack>
 
 
         {/* TABS */}
 
-        <VStack w={"40rem"} p={3} my={"1rem"} borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"} mx={"2.5rem"} >
-          <Stack direction={"row"}>
+          
+          <VStack flex={1}  p={2} my={"1rem"} borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"} ml={"1rem"} >
+            <Stack direction={{
+                      base: "column",
+                      md: "row",
+                      lg: "row"
+                    }}>
 
-            <CustomPressable count={0} titulo="Descripción" />
-            <CustomPressable count={1} titulo="Salida y Regreso" />
-            <CustomPressable count={2} titulo="Intinerario" />
-            <CustomPressable count={3} titulo="¿Qué incluye y  qué no?" />
-            <CustomPressable count={4} titulo="Información adicional" />
-            <CustomPressable count={5} titulo="Mapa" />
+              <CustomPressable count={0} titulo="Descripción" />
+              <CustomPressable count={1} titulo="Salida y Regreso" />
+              <CustomPressable count={2} titulo="Intinerario" />
+              <CustomPressable count={3} titulo="¿Qué incluye y  qué no?" />
+              <CustomPressable count={4} titulo="Información adicional" />
+              <CustomPressable count={5} titulo="Mapa" />
 
-          </Stack>
-          <Divider />
+            </Stack>
+            <Divider />
 
-          {/* Contenido, descripcion, mapa, etc */}
-          <Box p={4}>
-            <TabHandle n={tab} />
-          </Box>
+              {/* Contenido, descripcion, mapa, etc */}
+            <Box p={4}>
+              <TabHandle n={tab} />
+            </Box>
+          </VStack>
 
-        </VStack>
+    
 
+     
+        <AgregarCarritoComponent viajeID={viaje.ID} titulo={viaje.Titulo} 
+        PrAdultoNac={viaje.PrecioAdultoNacional} PrAdultoEx={viaje.PrecioAdultoExtranjero} 
+        PrInfanteNac={viaje.PrecioInfantilNacional} PrInfanteEx={viaje.PrecioInfantilExtranjero} />
+
+  
+       
 
       </VStack>
     </div>
