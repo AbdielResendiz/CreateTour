@@ -218,7 +218,7 @@ const verViaje = async()=>{
     
 
      
-        <AgregarCarritoComponent viajeID={viaje.ID} titulo={viaje.Titulo} 
+        <AgregarCarritoComponent viajeID={viaje.ID} titulo={viaje.Titulo} foto={viaje.Foto}
         PrAdultoNac={viaje.PrecioAdultoNacional} PrAdultoEx={viaje.PrecioAdultoExtranjero} 
         PrInfanteNac={viaje.PrecioInfantilNacional} PrInfanteEx={viaje.PrecioInfantilExtranjero} />
 

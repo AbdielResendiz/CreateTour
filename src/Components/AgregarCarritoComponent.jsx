@@ -3,10 +3,17 @@ import { Box, VStack, Stack, Text, Divider, Flex , HStack, Input, Button} from '
 import DatePicker from "react-datepicker";
 import { useState, useEffect } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
+import { useUser } from '../helper/UserContext';
+import { format } from 'date-fns';
 
 const AgregarCarritoComponent = (props) => {
-  const { viajeID, titulo, PrAdultoNac,  PrAdultoEx, PrInfanteNac, PrInfanteEx} = props;
+  const { viajeID, foto ,titulo, PrAdultoNac,  PrAdultoEx, PrInfanteNac, PrInfanteEx} = props;
   const [startDate, setStartDate] = useState(new Date());
+  const [ fecha, setFecha ] =useState("")
+
+  
+  const { carrito,  agregarAlCarrito, editarCarrito, eliminarCarrito , borrarTodoCarrito } = useUser();
+
   
   const [ adultoNac, setAdultoNac ] = useState(0);
   const [ adultoEx, setAdultoEx ] = useState(0);
@@ -63,6 +70,42 @@ const AgregarCarritoComponent = (props) => {
   const incrementInfanteEx = () => {
     setInfanteEx((prevValue) => prevValue + 1);
   };
+
+
+    //agrear al carrito
+    const handleAgregarCarrito=()=>{
+      const nuevoCarrito = {
+        index: carrito.length + 1,
+        Viaje: parseInt(viajeID),
+        Titulo: titulo, 
+        Foto: foto , 
+        Fecha: fecha,
+        CantidadAdultos: adultoNac,
+        CantidadInfantes: infanteNac,
+        CantidadAdultosExtranjeros: adultoEx,
+        CantidadInfantesExtranjeros: infanteEx,
+        TotalCompra: total,
+      }
+      agregarAlCarrito(nuevoCarrito);
+    };
+
+    useEffect(() => {
+      console.log("Carrito: ", carrito)
+    }, [carrito])
+
+    
+    const formatearFecha = () => {
+      let fechaFormato = format(startDate, 'dd/MM/yyyy');
+      setFecha(fechaFormato)
+    };
+
+    
+    useEffect(() => {
+      console.log("FECHA : ", startDate)
+      formatearFecha();
+      console.log("Fecha con formato: ", fecha)
+       }, [startDate, fecha]);
+    
 
 
   return (
@@ -152,7 +195,13 @@ const AgregarCarritoComponent = (props) => {
 
           </Flex>
 
+          <Button colorScheme={"amber"} onPress={()=>{handleAgregarCarrito()}}>
+            Agregar al carrito
+          </Button>
 
+          <Button colorScheme={"danger"} onPress={()=>{borrarTodoCarrito()}}>
+            Borrar TODO el carrito
+          </Button>
 
         </Stack>
     </Box>

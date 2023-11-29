@@ -3,10 +3,16 @@ import { Box, Text, Image, HStack, VStack, Button, AspectRatio, Flex } from "nat
 import { IconContext } from "react-icons";
 import { MdEdit } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
+import { useUser } from "../helper/UserContext";
 
-const CarritoComponent = ({ id, foto, titulo, fecha, adultoN, adultoE, kidN, kidE }) => {
+const CarritoComponent = ({ id, index,  foto, titulo, fecha, adultoN, adultoE, kidN, kidE, subtotal }) => {
+   
+   //variables y funciones de useContext
+    const { carrito,  editarCarrito, eliminarCarrito  } = useUser();
 
-    console.log("id viaje: ",id)
+    console.log("id viaje: ",id);
+
+
   return (
     <HStack width={760} ml={10} my={5} shadow={6} borderRadius={10} borderColor={"#aaaaaa"} borderWidth={1}>
   
@@ -20,8 +26,8 @@ const CarritoComponent = ({ id, foto, titulo, fecha, adultoN, adultoE, kidN, kid
 
         <Box p={5} >
             <VStack>
-                <Text bold fontSize={"xl"}>Título: <Text bold>{adultoN}</Text>{titulo}</Text>
-                <Text bold fontSize={"lg"}>Fecha: <Text bold>{adultoN}</Text>{fecha}</Text>
+                <Text bold fontSize={"xl"}>Título: <Text bold>{titulo}</Text></Text>
+                <Text bold fontSize={"lg"}>Fecha: <Text bold>{fecha}</Text></Text>
             </VStack>
             
             <HStack space={10} justifyContent={"center"}>
@@ -35,7 +41,7 @@ const CarritoComponent = ({ id, foto, titulo, fecha, adultoN, adultoE, kidN, kid
                 <Text>Niños (Extranjero): <Text bold>{kidE}</Text></Text>
             </HStack>
 
-            <Text  bold fontSize={"lg"}>Subtotal: $3000.00 USD</Text>
+            <Text  bold fontSize={"lg"}>Subtotal: ${subtotal} USD</Text>
             
             <HStack space={5} justifyContent={"center"} paddingRight={5} my={4}>
             
@@ -46,12 +52,14 @@ const CarritoComponent = ({ id, foto, titulo, fecha, adultoN, adultoE, kidN, kid
                 }>
                     Editar  
                 </Button>
-                <Button colorScheme={"secondary"} endIcon={
+                <Button colorScheme={"secondary"} 
+                onPress={()=> eliminarCarrito(index) }
+                endIcon={
                     <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
                     <MdDeleteForever />
                     </IconContext.Provider>
                 }>
-                    Editar  
+                    Borrar  
                 </Button>
         </HStack>
           
