@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Text, Image, HStack, VStack, Button, AspectRatio, Flex } from "native-base";
+import React, {useState} from "react";
+import { Box, Text, Image, HStack, VStack, Button, AspectRatio, Flex, Modal } from "native-base";
 import { IconContext } from "react-icons";
 import { MdEdit } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
@@ -11,6 +11,10 @@ const CarritoComponent = ({ id, index,  foto, titulo, fecha, adultoN, adultoE, k
     const { carrito,  editarCarrito, eliminarCarrito  } = useUser();
 
     console.log("id viaje: ",id);
+    const [showModal, setShowModal] = useState(false);
+
+
+
 
 
   return (
@@ -53,7 +57,7 @@ const CarritoComponent = ({ id, index,  foto, titulo, fecha, adultoN, adultoE, k
                     Editar  
                 </Button>
                 <Button colorScheme={"secondary"} 
-                onPress={()=> eliminarCarrito(index) }
+                onPress={() => setShowModal(true)}
                 endIcon={
                     <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
                     <MdDeleteForever />
@@ -61,6 +65,35 @@ const CarritoComponent = ({ id, index,  foto, titulo, fecha, adultoN, adultoE, k
                 }>
                     Borrar  
                 </Button>
+                
+
+                {/* MODAL DE CONFIRMAR */}
+
+                <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+                    <Modal.Content maxWidth="400px">
+                    <Modal.CloseButton />
+                    <Modal.Header>Eliminar del carrito</Modal.Header>
+                    <Modal.Body>
+                        <Text>¿Seguro que quieres borrar del carrito <Text bold>{titulo}</Text> ?</Text>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button.Group space={2}>
+                        <Button variant="ghost" colorScheme="blueGray" onPress={() => {
+                        setShowModal(false);
+                        }}>
+                            Cancelar
+                        </Button>
+                        <Button colorScheme={"danger"} onPress={()=> eliminarCarrito(index)  }>
+                            Eliminar
+                        </Button>
+                        </Button.Group>
+                    </Modal.Footer>
+                    </Modal.Content>
+                </Modal>
+
+
+
+
         </HStack>
           
             
