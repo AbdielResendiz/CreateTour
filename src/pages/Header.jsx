@@ -54,10 +54,10 @@ const   Header = () => {
         <Link to="/" style={linkStyle} >
           <Text  fontSize="xl">Inicio</Text>
         </Link>
-        <Link to="/" style={linkStyle}><Text  fontSize="xl">Tours</Text></Link>
-        <Link to="/blogs" style={linkStyle}><Text  fontSize="xl">Blog</Text></Link>
-        <Link to="/" style={linkStyle}><Text  fontSize="xl">Nosotros</Text></Link>
-        <Link to="/contact" style={linkStyle}><Text  fontSize="xl">Contacto</Text></Link>
+        <Link to="/Tours" style={linkStyle}><Text  fontSize="xl">Tours</Text></Link>
+        <Link to="/Blog" style={linkStyle}><Text  fontSize="xl">Blog</Text></Link>
+        <Link to="/Nosotros" style={linkStyle}><Text  fontSize="xl">Nosotros</Text></Link>
+        <Link to="/Contacto" style={linkStyle}><Text  fontSize="xl">Contacto</Text></Link>
         <Link to="/Carrito" style={linkStyle}><Text  fontSize="xl">Carrito</Text></Link>
         {/* <Link to="/Cuenta" style={linkStyle}><Text  fontSize="xl">Cuenta</Text></Link>
         <Link to="/Registro" style={linkStyle}><Text  fontSize="xl">Registro</Text></Link>
