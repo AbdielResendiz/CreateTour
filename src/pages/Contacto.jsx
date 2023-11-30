@@ -1,21 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { VStack, Input, FormControl, TextArea, Button, View, Center, Text } from 'native-base';
+import URL from '../helper/baseURL';
+import fetchPost from '../helper/fetchPost';
 
 
 const Contacto = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  });
 
+
+  const [ nombre, setNombre ] = useState("");
+  const [ email, setEmail ] = useState("");
+  const [ telefono, setTelefono ] = useState("");
+  const [ mensaje, setMensaje ] = useState("");
   const handleSubmit = async () => {
+    console.log("Inicia funcion enviar correo")
+    const BASE_URL= URL.BASE_URL;
+            
+     const dataContacto = new FormData();
+    //para enviar datos por POST
+     dataContacto.append("nombre", nombre);
+     dataContacto.append("email", email);
+     dataContacto.append("telefono", telefono);
+     dataContacto.append("mensaje", mensaje);
+    const url = `${BASE_URL}enviarcorreo`
+    const options = {
+      method:'POST',
+       body: dataContacto
+    };
+    const response = await fetchPost(url, options);
+   
+    console.log("respuesta formulario contacto :", response);
+    console.log("Boton enviar")
 
   };
+  useEffect(() => {
+console.log("nombre", nombre)
+  }, [nombre])
+  
 
   return (
-    <View>
+    <View w={"100%"}>
 
       <Center>
         <Text  bold fontSize={"2xl"}>
@@ -23,60 +46,70 @@ const Contacto = () => {
         </Text>
       </Center>
 
-      <Center>
+      <Center mb={10} mt={10}>
         <Text   fontSize={"xl"} textAlign={"center"} >
-        ¿Tienes preguntas, comentarios o estás listo para reservar tu próxima aventura? {`\n`}
-        ¡Nos encantaría saber de ti! {`\n`}En Create Tours, estamos comprometidos a brindarte experiencias de viaje inolvidables.{`\n`}
+        ¿Tienes preguntas, comentarios o estás listo para reservar tu próxima aventura? 
+        ¡Nos encantaría {`\n`} saber de ti! En Create Tours, estamos comprometidos a brindarte experiencias de viaje {`\n`} inolvidables.
          Nuestro equipo está aquí para ayudarte en cada paso del camino.
         </Text>
       </Center>
 
       <Center>
-        <Text   fontSize={"lg"} textAlign={"center"} >
+        <Text   fontSize={"lg"} textAlign={"center"} w={"80%"}>
         Completa nuestro sencillo formulario de contacto a continuación y nos pondremos en contacto contigo lo antes posible. Tu satisfacción y comodidad son nuestra máxima prioridad.
         </Text>
       </Center>
 
-      
+      <Center pb={10}>
+        
       {/* FORMULARIO CONTACTO */}
-      <VStack width="90%" mx="3" maxW="300px">
+      <VStack width="80%" mx="3" maxW="80%">
         <FormControl isRequired>
           <FormControl.Label _text={{ bold: true }}>Nombre</FormControl.Label>
           <Input
-            placeholder="John"
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            value={nombre}
+            placeholder="Nombre"
+            onChangeText={(e) => setNombre(e)}
           />
         </FormControl>
 
         <FormControl isRequired>
           <FormControl.Label _text={{ bold: true }}>Correo</FormControl.Label>
           <Input
+            value={email}
             type="email"
-            placeholder="john@example.com"
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            placeholder="Email"
+            onChangeText={(e) => setEmail(e)}
           />
         </FormControl>
 
-        <FormControl>
+        <FormControl isRequired>
           <FormControl.Label _text={{ bold: true }}>Teléfono</FormControl.Label>
           <Input
-            placeholder="123-456-7890"
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            value={telefono}
+            placeholder="Teléfono"
+            onChangeText={(e) => setTelefono(e)}
           />
         </FormControl>
 
         <FormControl isRequired>
           <FormControl.Label _text={{ bold: true }}>Mensaje</FormControl.Label>
           <TextArea
+            value={mensaje}
             placeholder="Escribe tu mensaje aquí"
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            onChangeText={(e) => setMensaje(e)}
           />
         </FormControl>
 
-        <Button colorScheme="teal" onClick={handleSubmit}>
+        <Button colorScheme="amber" onPress={()=>handleSubmit()} my={4} size={"lg"} py={3} >
           Enviar
         </Button>
       </VStack>
+
+
+      </Center>
+
+
     </View>
   );
 };
