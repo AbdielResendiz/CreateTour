@@ -1,13 +1,13 @@
 import React from 'react';
 import { Box, VStack, Stack, Text, Modal, Flex , HStack, Input, Button} from 'native-base';
-import DatePicker from "react-datepicker";
+import DatePicker,{ CalendarContainer } from "react-datepicker";
 import { useState, useEffect } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
 import { useUser } from '../helper/UserContext';
 import { format } from 'date-fns';
 
-const AgregarCarritoComponent = (props) => {
-  const { viajeID, foto ,titulo, PrAdultoNac,  PrAdultoEx, PrInfanteNac, PrInfanteEx} = props;
+const ModalAgregarCarrito = (props) => {
+  const { viajeID, foto ,titulo, PrAdultoNac,  PrAdultoEx, PrInfanteNac, PrInfanteEx, isOpen, onClose} = props;
   const [startDate, setStartDate] = useState(new Date());
   const [ fecha, setFecha ] =useState("")
 
@@ -105,110 +105,138 @@ const AgregarCarritoComponent = (props) => {
       formatearFecha();
       console.log("Fecha con formato: ", fecha)
        }, [startDate, fecha]);
+
+       const [showModal, setShowModal] = useState(false);
     
 
 
   return (
+<>
+    <Modal  isOpen={isOpen} onClose={onClose} style={{ xIndex:9999}}>
+        <Modal.Content maxWidth="900px"  maxHeight ="800px">
+        <Modal.CloseButton />
+        <Modal.Header>Aparta tu lugar para {titulo}</Modal.Header>
+        <Box  shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={2} p={2} my={3} mx={4} justifyContent={"center"} w={"98%"}>
+            <Text bold fontSize={"xl"} alignSelf={"center"}>Aparta tu lugar para {titulo}</Text>
+            <Stack direction={"column"}>
+                <HStack flex={1} mt={3}>
+             
+                  <Stack direction={{ base: "column", md:"row"}} ml={10} bgColor={"#ededed"} p={3} borderRadius={10} shadow={6}>
+                  
+                      {/* Calculos de subtotal */}
+                      <VStack>
+                      <Text bold fontSize={"md"}>Viajeros:</Text>
+                      {adultoNac > 0 ? <HStack>
+                          <Text fontSize={"xs"}> {adultoNac} Adulto Nacional {'\n'} (${PrAdultoNac} USD/persona )</Text>
+                          <Text> ${subtotalAN}USD </Text>
+                      </HStack> : null}
 
+                      {adultoEx > 0 ? <HStack>
+                          <Text fontSize={"xs"}> {adultoEx} Adulto Extranjero {'\n'} (${PrAdultoEx} USD/persona )</Text>
+                          <Text> ${subtotalAE}USD </Text>
+                      </HStack> : null}
 
-    <Box flex={1} shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={2} p={2} my={3} mx={4} justifyContent={"center"} w={"98%"}>
-        <Text bold fontSize={"xl"} alignSelf={"center"}>Aparta tu lugar para {titulo}</Text>
-        <Stack direction={"column"}>
-            <HStack flex={1} mt={3}>
-              <Text bold p={1} m={1} > Escoje la fecha :</Text>
-              <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-              <Stack direction={{ base: "column", md:"row"}} ml={10} bgColor={"#ededed"} p={3} borderRadius={10} shadow={6}>
-              
-                {/* Calculos de subtotal */}
-                <VStack>
-                  <Text bold fontSize={"md"}>Viajeros:</Text>
-                  {adultoNac > 0 ? <HStack>
-                      <Text fontSize={"xs"}> {adultoNac} Adulto Nacional {'\n'} (${PrAdultoNac} USD/persona )</Text>
-                      <Text> ${subtotalAN}USD </Text>
-                  </HStack> : null}
+                      {infanteNac > 0 ? <HStack>
+                          <Text fontSize={"xs"}> {infanteNac} Niño Nacional {'\n'} (${PrInfanteNac} USD/persona )</Text>
+                          <Text> ${subtotalIN}USD </Text>
+                      </HStack> : null}
 
-                  {adultoEx > 0 ? <HStack>
-                      <Text fontSize={"xs"}> {adultoEx} Adulto Extranjero {'\n'} (${PrAdultoEx} USD/persona )</Text>
-                      <Text> ${subtotalAE}USD </Text>
-                  </HStack> : null}
+                      {infanteEx > 0 ? <HStack>
+                          <Text fontSize={"xs"}> {infanteEx} Niño Extranjero {'\n'} (${PrInfanteEx} USD/persona )</Text>
+                          <Text> ${subtotalIE}USD </Text>
+                      </HStack> : null}
 
-                  {infanteNac > 0 ? <HStack>
-                      <Text fontSize={"xs"}> {infanteNac} Niño Nacional {'\n'} (${PrInfanteNac} USD/persona )</Text>
-                      <Text> ${subtotalIN}USD </Text>
-                  </HStack> : null}
+                      <Text bold> Total: $ {total} USD</Text>
+                      </VStack>
+                  </Stack>
+                </HStack>
+                
+        
 
-                  {infanteEx > 0 ? <HStack>
-                      <Text fontSize={"xs"}> {infanteEx} Niño Extranjero {'\n'} (${PrInfanteEx} USD/persona )</Text>
-                      <Text> ${subtotalIE}USD </Text>
-                  </HStack> : null}
-
-                  <Text bold> Total: $ {total} USD</Text>
-                </VStack>
-              </Stack>
-            </HStack>
             
-     
+            <Text bold p={1} m={1} > Escoje la fecha :</Text>
+                <DatePicker selected={startDate} 
+                 onChange={(date) => setStartDate(date)} inline />
 
-          <Flex direction='column' >
-            <Text bold p={1} m={1}> Selecciona el número de Viajeros: </Text>
-            
-                          {/* Formulario de numero de  viajeros nacionales */}
-            <Stack direction={{ base: "column", md:"row"}} p={1} m={1} space={8} justifyContent={"space-between"}>
-              <HStack>
-                <Text bold>Adulto Nacional: </Text>
-                <Text mx={2} fontSize={"xs"}> ${PrAdultoNac}USD / por persona</Text>
-                <Button onPress={decrementAdultoNac}>-</Button>
-                <Input w={10} placeholder="" isReadOnly={true} value={adultoNac.toString()} />
-                <Button onPress={incrementAdultoNac}>+</Button>
-              </HStack>
+            <Button colorScheme={"amber"} onPress={()=>{setShowModal(true)}}>
+                Agregar al carrito
+            </Button>
 
-              <HStack>
-                <Text bold>Niño Nacional: </Text>
-                <Text mx={2} fontSize={"xs"}> ${PrInfanteNac}USD / por persona</Text>
-                <Button onPress={decrementInfanteNac}>-</Button>
-                <Input w={10} placeholder="" isReadOnly={true} value={infanteNac.toString()} />
-                <Button onPress={incrementInfanteNac}>+</Button>
-              </HStack>
+            {/* <Button colorScheme={"danger"} onPress={()=>{borrarTodoCarrito()}}>
+                Borrar TODO el carrito
+            </Button> */}
 
             </Stack>
-              {/* Formulario de numero de  viajeros EX*/}
-            <Stack direction={{ base: "column", md:"row"}} p={1} m={1} space={8} justifyContent={"space-between"}>
-              <HStack>
-                <Text bold>Adulto Extranjero: </Text>
-                <Text mx={2} fontSize={"xs"}> ${PrAdultoEx}USD / por persona</Text>
-                <Button onPress={decrementAdultoEx}>-</Button>
-                <Input w={10} placeholder="" isReadOnly={true} value={adultoEx.toString()} />
-                <Button onPress={incrementAdultoEx}>+</Button>
-              </HStack>
+        </Box>
+        </Modal.Content>
+    </Modal>
 
-              <HStack>
-                <Text bold>Niño Extranjero: </Text>
-                <Text mx={2} fontSize={"xs"}> ${PrInfanteEx}USD / por persona</Text>
-                <Button onPress={decrementInfanteEx}>-</Button>
-                <Input w={10} placeholder="" isReadOnly={true} value={infanteEx.toString()} />
-                <Button onPress={incrementInfanteEx}>+</Button>
-              </HStack>
+    <Modal isOpen={showModal} onClose={()=>setShowModal(false)} style={{ xIndex:9999}}>
+      <Modal.Content maxWidth="900px"  maxHeight ="800px">
+      <Modal.CloseButton />
+      <Modal.Header>Aparta tu lugar para {titulo}</Modal.Header>
 
-            </Stack>
+      <Flex direction='column' >
+                <Text bold p={1} m={1}> Selecciona el número de Viajeros: </Text>
+                
+                            {/* Formulario de numero de  viajeros nacionales */}
+                <Stack direction={{ base: "column", md:"row"}} p={1} m={1} space={8} justifyContent={"space-between"}>
+                <HStack>
+                    <Text bold>Adulto Nacional: </Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrAdultoNac}USD / por persona</Text>
+                    <Button onPress={decrementAdultoNac}>-</Button>
+                    <Input w={10} placeholder="" isReadOnly={true} value={adultoNac.toString()} />
+                    <Button onPress={incrementAdultoNac}>+</Button>
+                </HStack>
+
+                <HStack>
+                    <Text bold>Niño Nacional: </Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrInfanteNac}USD / por persona</Text>
+                    <Button onPress={decrementInfanteNac}>-</Button>
+                    <Input w={10} placeholder="" isReadOnly={true} value={infanteNac.toString()} />
+                    <Button onPress={incrementInfanteNac}>+</Button>
+                </HStack>
+
+                </Stack>
+                {/* Formulario de numero de  viajeros EX*/}
+                <Stack direction={{ base: "column", md:"row"}} p={1} m={1} space={8} justifyContent={"space-between"}>
+                <HStack>
+                    <Text bold>Adulto Extranjero: </Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrAdultoEx}USD / por persona</Text>
+                    <Button onPress={decrementAdultoEx}>-</Button>
+                    <Input w={10} placeholder="" isReadOnly={true} value={adultoEx.toString()} />
+                    <Button onPress={incrementAdultoEx}>+</Button>
+                </HStack>
+
+                <HStack>
+                    <Text bold>Niño Extranjero: </Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrInfanteEx}USD / por persona</Text>
+                    <Button onPress={decrementInfanteEx}>-</Button>
+                    <Input w={10} placeholder="" isReadOnly={true} value={infanteEx.toString()} />
+                    <Button onPress={incrementInfanteEx}>+</Button>
+                </HStack>
+
+                </Stack>
+
+                
 
 
 
-          </Flex>
+            </Flex>
 
-          <Button colorScheme={"amber"} onPress={()=>{handleAgregarCarrito()}}>
-            Agregar al carrito
-          </Button>
+            <Button colorScheme={"amber"} onPress={()=>{handleAgregarCarrito()}}>
+                Agregar al carrito
+            </Button>
 
-          {/* <Button colorScheme={"danger"} onPress={()=>{borrarTodoCarrito()}}>
-            Borrar TODO el carrito
-          </Button> */}
 
-        </Stack>
-    </Box>
+      </Modal.Content>
+
+    </Modal>
+    </>
 
 
   );
 }
 
-export default AgregarCarritoComponent;
+export default ModalAgregarCarrito;
 

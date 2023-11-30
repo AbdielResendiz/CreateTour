@@ -4,6 +4,7 @@ import { IconContext } from "react-icons";
 import { MdEdit } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import { useUser } from "../helper/UserContext";
+import ModalExample from "./ModalEample";
 
 const CarritoComponent = ({ id, index,  foto, titulo, fecha, adultoN, adultoE, kidN, kidE, subtotal }) => {
    
@@ -12,6 +13,7 @@ const CarritoComponent = ({ id, index,  foto, titulo, fecha, adultoN, adultoE, k
 
     console.log("id viaje: ",id);
     const [showModal, setShowModal] = useState(false);
+    const [showModal2, setShowModal2] = useState(false);
 
 
 
@@ -49,7 +51,7 @@ const CarritoComponent = ({ id, index,  foto, titulo, fecha, adultoN, adultoE, k
             
             <HStack space={5} justifyContent={"center"} paddingRight={5} my={4}>
             
-                <Button endIcon={
+                <Button onPress={() => setShowModal2(true)} endIcon={
                     <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
                     <MdEdit />
                     </IconContext.Provider>
@@ -66,7 +68,7 @@ const CarritoComponent = ({ id, index,  foto, titulo, fecha, adultoN, adultoE, k
                     Borrar  
                 </Button>
                 
-
+                <ModalExample isOpen={showModal2} onClose={() => setShowModal2(false)} />
                 {/* MODAL DE CONFIRMAR */}
 
                 <Modal isOpen={showModal} onClose={() => setShowModal(false)}>

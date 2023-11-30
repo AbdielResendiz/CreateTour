@@ -199,9 +199,9 @@ const AgregarCarritoComponent = (props) => {
             Agregar al carrito
           </Button>
 
-          <Button colorScheme={"danger"} onPress={()=>{borrarTodoCarrito()}}>
+          {/* <Button colorScheme={"danger"} onPress={()=>{borrarTodoCarrito()}}>
             Borrar TODO el carrito
-          </Button>
+          </Button> */}
 
         </Stack>
     </Box>

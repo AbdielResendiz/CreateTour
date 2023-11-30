@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import SwiperComponent from "../Components/SwiperComponent";
-import { HStack, Box, Text, VStack, Center, Divider, Modal, Stack, Pressable, Button, Input, FormControl } from "native-base";
+import { HStack, Box, Text, VStack, Center, Divider, Modal, Stack, Pressable} from "native-base";
 import { useState, useEffect } from "react";
 import fetchPost from "../helper/fetchPost";
 import URL from "../helper/baseURL";
