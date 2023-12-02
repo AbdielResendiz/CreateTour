@@ -1,115 +1,94 @@
-import React, {useState} from "react";
-import { Box, Text, Image, HStack, VStack, Button, AspectRatio, Flex, Modal } from "native-base";
+import React, { useState } from "react";
+import { Box, Text, Image, HStack, VStack, Button, AspectRatio, Modal } from "native-base";
 import { IconContext } from "react-icons";
-import { MdEdit } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import { useUser } from "../helper/UserContext";
 import ModalExample from "./ModalEample";
 
-const CarritoComponent = ({ id, index,  foto, titulo, fecha, adultoN, adultoE, kidN, kidE, subtotal }) => {
-   
-   //variables y funciones de useContext
-    const { carrito,  editarCarrito, eliminarCarrito  } = useUser();
+const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, kidN, kidE, subtotal }) => {
+    // variables y funciones de useContext
+    const { eliminarCarrito } = useUser();
+    console.log("id viaje: ", id);
 
-    console.log("id viaje: ",id);
     const [showModal, setShowModal] = useState(false);
-    const [showModal2, setShowModal2] = useState(false);
 
-
-
-
-
-  return (
-    <HStack width={760} ml={10} my={5} shadow={6} borderRadius={10} borderColor={"#aaaaaa"} borderWidth={1}>
-  
-            <AspectRatio w={400} ratio={16 / 9} >
-             <Image  borderLeftRadius={10} source={{
-                uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${foto}`
-                }} alt={titulo} />
+    return (
+        <HStack width={760} ml={10} my={5} shadow={6} borderRadius={10} borderColor={"#aaaaaa"} borderWidth={1}>
+            <AspectRatio w={400} ratio={16 / 9}>
+                <Image borderLeftRadius={10} source={{ uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${foto}` }} alt={titulo} />
             </AspectRatio>
-          
-      
 
-        <Box p={5} >
-            <VStack>
-                <Text bold fontSize={"xl"}>Título: <Text bold>{titulo}</Text></Text>
-                <Text bold fontSize={"lg"}>Fecha: <Text bold>{fecha}</Text></Text>
-            </VStack>
-            
-            <HStack space={10} justifyContent={"center"}>
-                <Text>Adultos (Nacional) <Text bold>{adultoN}</Text> </Text>
-                <Text>Niños (Nacional): <Text bold>{kidN}</Text> </Text>
-            </HStack>
+            <Box p={5}>
+                <VStack>
+                    <Text bold fontSize={"xl"}>
+                        Título: <Text bold>{titulo}</Text>
+                    </Text>
+                    <Text bold fontSize={"lg"}>
+                        Fecha: <Text bold>{fecha}</Text>
+                    </Text>
+                </VStack>
 
+                <HStack space={10} justifyContent={"center"}>
+                    <Text>
+                        Adultos (Nacional) <Text bold>{adultoN}</Text>{" "}
+                    </Text>
+                    <Text>
+                        Niños (Nacional): <Text bold>{kidN}</Text>{" "}
+                    </Text>
+                </HStack>
 
-            <HStack space={10} justifyContent={"center"}>
-                <Text>Adultos (Extranjero): <Text bold>{adultoE}</Text> </Text>
-                <Text>Niños (Extranjero): <Text bold>{kidE}</Text></Text>
-            </HStack>
+                <HStack space={10} justifyContent={"center"}>
+                    <Text>
+                        Adultos (Extranjero): <Text bold>{adultoE}</Text>{" "}
+                    </Text>
+                    <Text>
+                        Niños (Extranjero): <Text bold>{kidE}</Text>
+                    </Text>
+                </HStack>
 
-            <Text  bold fontSize={"lg"}>Subtotal: ${subtotal} USD</Text>
-            
-            <HStack space={5} justifyContent={"center"} paddingRight={5} my={4}>
-            
-                <Button onPress={() => setShowModal2(true)} endIcon={
-                    <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
-                    <MdEdit />
-                    </IconContext.Provider>
-                }>
-                    Editar  
-                </Button>
-                <Button colorScheme={"secondary"} 
-                onPress={() => setShowModal(true)}
-                endIcon={
-                    <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
-                    <MdDeleteForever />
-                    </IconContext.Provider>
-                }>
-                    Borrar  
-                </Button>
-                
-                <ModalExample isOpen={showModal2} onClose={() => setShowModal2(false)} />
-                {/* MODAL DE CONFIRMAR */}
+                <Text bold fontSize={"lg"}>
+                    Subtotal: ${subtotal} USD
+                </Text>
 
-                <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-                    <Modal.Content maxWidth="400px">
-                    <Modal.CloseButton />
-                    <Modal.Header>Eliminar del carrito</Modal.Header>
-                    <Modal.Body>
-                        <Text>¿Seguro que quieres borrar del carrito <Text bold>{titulo}</Text> ?</Text>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button.Group space={2}>
-                        <Button variant="ghost" colorScheme="blueGray" onPress={() => {
-                        setShowModal(false);
-                        }}>
-                            Cancelar
-                        </Button>
-                        <Button colorScheme={"danger"} onPress={()=> eliminarCarrito(index)  }>
-                            Eliminar
-                        </Button>
-                        </Button.Group>
-                    </Modal.Footer>
-                    </Modal.Content>
-                </Modal>
+                <HStack space={5} justifyContent={"center"} paddingRight={5} my={4}>
+                    <Button
+                        colorScheme={"secondary"}
+                        onPress={() => setShowModal(true)}
+                        endIcon={
+                            <IconContext.Provider value={{ color: "#edf5f7", size: "1.3em" }}>
+                                <MdDeleteForever />
+                            </IconContext.Provider>
+                        }>
+                        Borrar
+                    </Button>
 
+                    {/* MODAL DE CONFIRMAR */}
 
-
-
+                    <Modal isOpen={showModal} onClose={() => setShowModal(false)} justifyContent="center" mt={-64} >
+                        <Modal.Content maxWidth="400px">
+                            <Modal.CloseButton />
+                            <Modal.Header>Eliminar del carrito</Modal.Header>
+                            <Modal.Body>
+                                <Text>
+                                    ¿Seguro que quieres borrar del carrito <Text bold>{titulo}</Text> ?
+                                </Text>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <Button.Group space={2}>
+                                    <Button variant="ghost" colorScheme="blueGray" onPress={() => setShowModal(false)}>
+                                        Cancelar
+                                    </Button>
+                                    <Button colorScheme={"danger"} onPress={() => eliminarCarrito(index)}>
+                                        Eliminar
+                                    </Button>
+                                </Button.Group>
+                            </Modal.Footer>
+                        </Modal.Content>
+                    </Modal>
+                </HStack>
+            </Box>
         </HStack>
-          
-            
-        </Box>
-
-    
-
-   
-     
-      
-     
-
-    </HStack>
-  );
+    );
 };
 
 export default CarritoComponent;

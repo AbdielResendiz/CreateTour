@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, VStack, Text, Divider, Button , Modal, FormControl, Input} from 'native-base';
+import { Box, VStack, Text, Divider, Button , HStack, FormControl, Input} from 'native-base';
 import { useState } from 'react';
 import ModalAgregarCarrito from './ModalAgregarCarrito';
 
@@ -24,22 +24,27 @@ const PrecioComponent = ({ viaje }) => {
 
   //modal disponibilidad
   const [showModal, setShowModal] = useState(false);
+  
 
 
 
   return (
-    <Box flexDirection={"row"} shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={4} m={1} justifyContent={"center"}>
-      <VStack space={3} justifyContent={"center"}>
-        <TipoTextoA texto="Adulto Extranjero" precio={viaje.PrecioAdultoExtranjero} />
-        <TipoTextoA texto="Adulto Nacional" precio={viaje.PrecioAdultoNacional} />
-      </VStack>
-      <Divider orientation="vertical" h={"80%"} alignSelf={"center"} />
-      <VStack space={3} justifyContent={"center"}>
-        <TipoTextoA texto="Niño Extranjero" precio={viaje.PrecioInfantilExtranjero} />
-        <TipoTextoA texto="Adulto Nacional" precio={viaje.PrecioInfantilNacional} />
-      </VStack>
-      <Button onPress={()=>setShowModal(true)}>
-          Modal
+    <Box flexDirection={"column"} shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={4} m={1} justifyContent={"center"}>
+      <HStack>
+        <VStack space={3} justifyContent={"center"}>
+          <TipoTextoA texto="Adulto Extranjero" precio={viaje.PrecioAdultoExtranjero} />
+          <TipoTextoA texto="Adulto Nacional" precio={viaje.PrecioAdultoNacional} />
+        </VStack>
+        <Divider orientation="vertical" h={"80%"} alignSelf={"center"} />
+        <VStack space={3} justifyContent={"center"}>
+          <TipoTextoA texto="Niño Extranjero" precio={viaje.PrecioInfantilExtranjero} />
+          <TipoTextoA texto="Adulto Nacional" precio={viaje.PrecioInfantilNacional} />
+        </VStack>
+
+      </HStack>
+ 
+      <Button colorScheme={"amber"} onPress={()=>setShowModal(true)}>
+          Aparta tu lugar
         </Button>
 
         

@@ -26,11 +26,11 @@ const IconTextComponent = ({ icon, text }) => {
 const Home = () => {
   return (
     <Flex w="100%">
-      <AspectRatio w={"100%"} ratio={16 / 9} >
+      
         <Image source={{
           uri: "https://createtours.com.mx/backend/public/Imagenes/portada-001.jpg"
-        }} alt="Alternate Text" width={"100%"} height={"auto"} />
-      </AspectRatio>
+        }} alt="Alternate Text" width={"100%"} height={96} />
+      
 
       {/* ICONOS */}
       <HStack justifyContent={"center"} space={12} p={10}>

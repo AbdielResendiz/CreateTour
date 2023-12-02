@@ -1,5 +1,6 @@
 import {  Image,  Flex, HStack, AspectRatio, VStack, Button, Text } from "native-base";
 import FlatListViajesComponent from "../Components/FlatListViajesComponent";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -7,6 +8,12 @@ import FlatListViajesComponent from "../Components/FlatListViajesComponent";
 
 
 const Tours = () => {
+        //para navegar a otras vistas
+   const navigate = useNavigate();
+
+   const handleClick = () => {
+    navigate(`/trip/3`);
+  };
 
 
 
@@ -32,7 +39,8 @@ const Tours = () => {
                         •Boleto de admisión incluido {"\n"}
 
                     </Text>
-                    <Button  m={5} colorScheme={"amber"} size={"lg"}>VER TOUR</Button>
+                    <Button  m={5} colorScheme={"amber"} size={"lg"}
+                    onPress={()=>{handleClick()} }>VER TOUR</Button>
 
                 </VStack>
 

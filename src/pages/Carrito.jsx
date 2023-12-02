@@ -1,18 +1,47 @@
 import React, { useEffect } from 'react';
 import CarritoComponent from '../Components/CarritoComponent';
 import { useUser } from '../helper/UserContext';
-import { Center, FlatList, Heading, Text } from 'native-base';
+import { Button, Center, Divider, FlatList, Heading, Text, VStack , Modal} from 'native-base';
+import { IconContext } from "react-icons";
+import ViajesAleatoreosComponent from '../Components/ViajesAleatoreosComponent';
+import { TbShoppingCartSearch } from "react-icons/tb";
+import {   useNavigate} from "react-router-dom";
+
 
 
 const Carrito = () => {
+
+     //para navegar a otras vistas
+     const navigate = useNavigate();
+
+     const handleClick = () => {
+      navigate(`/Tours`);
+    };
   
   const { carrito,  agregarAlCarrito, editarCarrito, eliminarCarrito  } = useUser();
 
+
+
+  // Función para calcular el GranTotal
+  const calcularGranTotal = () => {
+    // Usamos el método reduce para sumar la propiedad TotalCompra de cada objeto en el carrito
+    const granTotal = carrito.reduce((total, producto) => total + producto.TotalCompra, 0);
+
+    // Devolvemos el resultado
+    return granTotal;
+  };
+
+  // Llama a la función para obtener el GranTotal
+  const granTotal = calcularGranTotal();
+  
   useEffect(() => {
     console.log("Carrito en vista carrito : ", carrito)
+    console.log("tipo carrito ",typeof(carrito) ) ;
+    console.log("gran total: ", granTotal);
   }, [])
-  
 
+
+  const [modalVisible, setModalVisible] = React.useState(false);
 
     return (<>
     <Center>
@@ -20,10 +49,25 @@ const Carrito = () => {
 
     </Center>
 
-    <Text>{carrito.length}</Text>
+   
     {carrito.length > 0 ? 
-      <Text>Tienes items en el carrito</Text> :
-      <Text>carrito VACIO</Text> 
+      null :
+      <VStack py={10}>
+        <Center>
+          <IconContext.Provider value={{ color: "#449bab", size:"10rem" }}>
+              <TbShoppingCartSearch  /> 
+          </IconContext.Provider>
+
+        </Center>
+
+
+        <Text mb={12} alignSelf={"center"} fontSize={"2xl"}>Tu carrito está vacío, te invitamos a explorar los distintos tours que tenemos.</Text>
+        <Divider/>
+        <Text my={5} alignSelf={"center"} fontSize={"2xl"} bold >Nuestros Tours:</Text>
+        <ViajesAleatoreosComponent/>
+        <Button size={"lg"} w={40} h={10} alignSelf={"center"} colorScheme={"amber"}
+        onPress={()=>{handleClick()}}> Ver todos los Tours</Button>
+      </VStack>
      }
     
 
@@ -47,6 +91,40 @@ const Carrito = () => {
                   kidE={item.CantidadInfantes} />
               )}
             />
+            
+          
+  
+            {carrito.length > 0 ? 
+
+
+                <>
+                  <Center>
+                    <Button onPress={()=>setModalVisible(true) } w={64} mb={10} alignSelf={"center"} justifyContent={"center"}>
+                          Pagar
+                        </Button>
+                  </Center>
+                            
+                              
+
+                </>
+                         :
+              null
+            }
+
+            <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)} >
+              <Modal.Content>
+              <iframe
+              title="CodeIgniter View"
+              src={`https://createtours.com.mx/backend/public/stripe?precio=${granTotal}&description=pagoViaje`}
+              width="100%"
+              height="400px"
+              />
+
+              </Modal.Content>
+    
+              
+            </Modal>
+
 
 
 

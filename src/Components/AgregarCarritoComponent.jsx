@@ -162,7 +162,7 @@ const AgregarCarritoComponent = (props) => {
                 <Button onPress={incrementAdultoNac}>+</Button>
               </HStack>
 
-              <HStack>
+              <HStack> 
                 <Text bold>Niño Nacional: </Text>
                 <Text mx={2} fontSize={"xs"}> ${PrInfanteNac}USD / por persona</Text>
                 <Button onPress={decrementInfanteNac}>-</Button>

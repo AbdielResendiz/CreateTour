@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import SwiperComponent from "../Components/SwiperComponent";
-import { HStack, Box, Text, VStack, Center, Divider, Modal, Stack, Pressable} from "native-base";
+import { HStack, Box, Text, VStack, Center, Divider, Modal, Stack, Pressable, Image} from "native-base";
 import { useState, useEffect } from "react";
 import fetchPost from "../helper/fetchPost";
 import URL from "../helper/baseURL";
@@ -49,6 +49,7 @@ const verViaje = async()=>{
    console.log("base url: ", URL.BASE_URL)
    console.log("id : ", id);
    console.log("tipo id: ", typeof(id))
+   console.log("FOTO viaje: " , viaje.Foto)
    
   }, [])
 
@@ -78,7 +79,7 @@ const verViaje = async()=>{
                     <Text bold>El costo Incluye</Text>
                     <Text>
           	          {viaje.Incluido}
-                    </Text>
+                    </Text> 
                     <Text bold>El costo NO Incluye</Text>
                     <Text>
                       {viaje.NoIncluido}
@@ -92,7 +93,7 @@ const verViaje = async()=>{
         content = <div>
               <iframe
       title="Mapa  de Google"
-      src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d954683.8992399486!2d-89.403867!3d20.822256!3m2!1i1024!2i768!4f13.1!2m1!1sChichen%20Itza!5e0!3m2!1ses!2smx!4v1701117548226!5m2!1ses!2smx"
+      src={viaje.Maps}
       width="600"
       height="450"
       style={{ border: '0' }}
@@ -147,9 +148,13 @@ const verViaje = async()=>{
     <div>
 
       {/* Mostrar otros detalles del viaje aquí */}
-      <SwiperComponent/>
+      {/* <SwiperComponent/> */}
+
 
       <VStack bg="#fafafa"  p={1} m={1}>
+      <Image source={{
+          uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${viaje.Foto}`
+        }} alt="Alternate Text" width={"100%"} height={96} />
 
         {/* Titulo y precios */}
         <Stack direction={"row"}  w={"100%"} space={3}  p={1} m={1} >
@@ -218,9 +223,9 @@ const verViaje = async()=>{
     
 
      
-        <AgregarCarritoComponent viajeID={viaje.ID} titulo={viaje.Titulo} foto={viaje.Foto}
+        {/* <AgregarCarritoComponent viajeID={viaje.ID} titulo={viaje.Titulo} foto={viaje.Foto}
         PrAdultoNac={viaje.PrecioAdultoNacional} PrAdultoEx={viaje.PrecioAdultoExtranjero} 
-        PrInfanteNac={viaje.PrecioInfantilNacional} PrInfanteEx={viaje.PrecioInfantilExtranjero} />
+        PrInfanteNac={viaje.PrecioInfantilNacional} PrInfanteEx={viaje.PrecioInfantilExtranjero} /> */}
 
   
        
