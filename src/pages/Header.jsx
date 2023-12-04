@@ -1,17 +1,21 @@
-import { HStack,  Text, Center, Pressable} from "native-base";
+import { HStack,  Text, Center, Pressable, Stack} from "native-base";
 import { Outlet, Link } from "react-router-dom";
 import { FaFacebook, FaInstagram  } from "react-icons/fa";
 import { FiPhone, FiMail  } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { TiShoppingCart } from "react-icons/ti";
-
-
-
-
-
-
+import { useUser } from "../helper/UserContext";
+import { useState, useEffect } from "react";
 
 const   Header = () => {
+  const { carrito  } = useUser();
+  const [carritoCantidad, setCarritoCantidad] = useState(0);
+  useEffect(() => {
+   let cantidad = carrito.length +1;
+   setCarritoCantidad(cantidad)
+   console.log("Carrito lengh: ", cantidad )
+  }, [carrito])
+  
 
 
   const handlePressFB = () => {
@@ -57,72 +61,87 @@ const   Header = () => {
   };
 
 
-
-
-
   const linkStyle = {
-    margin: "1rem",
+   
     textDecoration: "none",
+
     
+  };
+
+  const CustomLink = ({ to, text }) => {
+    return (
+      <Link to={to} style={linkStyle} >
+        <Text p={[1,2,3,4]} fontSize={["sm", "md", "lg", "xl"]} >{text}</Text>
+      </Link>
+    );
   };
 
   return (
     <div>
-      <HStack bg="#449bab" justifyContent="center" py={3} my={3} space={4} >
+      <Stack direction={["column","column","row","row"]} bg="#449bab" justifyContent="center" py={3} mb={3} space={[0,1,2,4]} >
 
+        <HStack space={[1,3,4,5]} justifyContent="center" >
+          <Pressable onPress={()=>{handlePressFB()}}>
+            <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
+                <FaFacebook /> 
+            </IconContext.Provider>
+          </Pressable>
+          
+          <Pressable onPress={()=>{handlePressIG()}}>
+            <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
+                <FaInstagram  />
+            </IconContext.Provider>
+          </Pressable>
 
-        <Pressable onPress={()=>{handlePressFB()}}>
-          <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
-              <FaFacebook /> 
-          </IconContext.Provider>
-        </Pressable>
-        
-        <Pressable onPress={()=>{handlePressIG()}}>
-          <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
-              <FaInstagram  />
-          </IconContext.Provider>
-        </Pressable>
-
-
-        <Pressable onPress={()=>{handlePressWA()}}>
+          <Pressable onPress={()=>{handlePressWA()}}>
           <HStack px={7}>
             <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
                 <FiPhone />
             </IconContext.Provider>
-            <Text color={"#edf5f7"} fontSize={"lg"}  px={2}>998 230 4219</Text>
+            <Text color={"#edf5f7"} fontSize={["xs", "sm", "md", "lg"]}  px={2}>998 230 4219</Text>
           </HStack>
         </Pressable>
+        </HStack>
 
 
-        <Pressable onPress={()=>{handlePressEmail()}}>
+
+
+
+        <Pressable onPress={()=>{handlePressEmail()}} alignSelf="center">
           <HStack px={7}>
             <IconContext.Provider value={{ color: "#edf5f7", size:"1.5em" }}>
                 <FiMail />
             </IconContext.Provider>
-            <Text color={"#edf5f7"} fontSize={"lg"} px={2}>contacto@createtours.com.mx</Text>
+            <Text color={"#edf5f7"} fontSize={["xs", "sm", "md", "lg"]} px={2}>contacto@createtours.com.mx</Text>
           </HStack>
         </Pressable>
 
 
-      </HStack>
+      </Stack>
 
-      <HStack justifyContent="center" px={"3rem"} mb={2}>
-        <Link to="/" style={linkStyle} >
-          <Text  fontSize="xl">Inicio</Text>
-        </Link>
-        <Link to="/Tours" style={linkStyle}><Text  fontSize="xl">Tours</Text></Link>
-        <Link to="/Blog" style={linkStyle}><Text  fontSize="xl">Blog</Text></Link>
-        <Link to="/Nosotros" style={linkStyle}><Text  fontSize="xl">Nosotros</Text></Link>
-        <Link to="/Contacto" style={linkStyle}><Text  fontSize="xl">Contacto</Text></Link>
-        <HStack px={7} borderWidth={1} borderRadius={10} borderColor={"#449bab"}>
+      <HStack justifyContent="center" px={[1,2,3,4]} mb={2}>
+        <CustomLink to="/" text="Inicio" />
+        <CustomLink to="/Tours" text="Tours" />
+        <CustomLink to="/Blog" text="Blog" />
+        <CustomLink to="/Nosotros" text="Nosotros" />
+        <CustomLink to="/Contacto" text="Contacto" />
+        <HStack px={[1,2,3,4]} shadow={3} borderRadius={10} >
           <Center>
-            <IconContext.Provider value={{ color: "#449bab", size:"1.5em" }}>
+            <IconContext.Provider value={{ color: "#449bab", size:"1.4rem" }}>
               <TiShoppingCart />
             </IconContext.Provider>
 
           </Center>
 
-          <Link to="/Carrito" style={linkStyle}><Text  fontSize="xl">Carrito</Text></Link>
+          <Link to="/Carrito" style={linkStyle}><Text  fontSize={["sm", "md", "lg", "xl"]}>Carrito</Text></Link>
+          {carritoCantidad> 0 ? 
+          <Center>
+            <Center bgColor={"amber.400"} size={[4, 4, 4, 4]} mx={[1,1,2,2]} p={[1,2,3,4]} borderRadius={100}>
+              <Text bold fontSize={["xs", "sm", "md", "lg"]}>{carritoCantidad}</Text>
+            </Center>
+          </Center>
+          :
+          null}
         </HStack>
         
         {/* <Link to="/Checkout" style={linkStyle}><Text  fontSize="xl">Pagar</Text></Link> */}

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Center, Image, Text, View, Stack, HStack, VStack } from 'native-base';
-import { Link } from 'react-router-dom';
+import { Center, Image, Text, View, Stack,  VStack } from 'native-base';
+
 
 const Nosotros = () => {
 

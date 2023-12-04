@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, FormControl, Input, Center } from "native-base";
+import { Button, Modal, FormControl, Input  } from "native-base";
 
 const ModalExample = ({ isOpen, onClose }) => {
   const [name, setName] = useState("");

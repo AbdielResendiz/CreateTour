@@ -18,7 +18,7 @@ const Carrito = () => {
       navigate(`/Tours`);
     };
   
-  const { carrito,  agregarAlCarrito, editarCarrito, eliminarCarrito  } = useUser();
+  const { carrito } = useUser();
 
 
 

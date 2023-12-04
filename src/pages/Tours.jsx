@@ -1,4 +1,4 @@
-import {  Image,  Flex, HStack, AspectRatio, VStack, Button, Text } from "native-base";
+import {  Image,  Flex, HStack,  VStack, Button, Text } from "native-base";
 import FlatListViajesComponent from "../Components/FlatListViajesComponent";
 import { useNavigate } from "react-router-dom";
 

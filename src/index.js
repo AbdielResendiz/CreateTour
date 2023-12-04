@@ -24,7 +24,7 @@ import Carrito from "./pages/Carrito";
 import Contacto from "./pages/Contacto";
 import Tours from "./pages/Tours";
 import Nosotros from "./pages/Nosotros";
-import URL from "./helper/baseURL";
+
 
 
 const stripePromise = loadStripe("pk_test_51OHTHqGhUhhWDkJz6fviWUAbK98E2SJJda15BEau8gfxN7DfACAmOaO3j5BzOYpKq1HG9DKze6Vm72FjzXmB9T6A00VuvnwjR3");
@@ -109,7 +109,7 @@ export default function App() {
 
 
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider >
     <Router>
     <UserProvider>
       <Routes>

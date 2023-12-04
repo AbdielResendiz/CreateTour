@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Box, Text, Heading, VStack, FormControl, Input, Button, HStack, Center, Icon } from "native-base";
-import { useState, useEffect } from "react";
+import { Box, Text, Heading, VStack, FormControl, Input, Button, HStack, Center} from "native-base";
+import { useState } from "react";
 import {  Link, useNavigate} from "react-router-dom";
 import fetchPost from "../helper/fetchPost";
 import { FaRegEye, FaRegEyeSlash  } from "react-icons/fa";

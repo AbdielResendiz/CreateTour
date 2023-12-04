@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, VStack, Text, Divider, Button , HStack, FormControl, Input} from 'native-base';
+import { Box, VStack, Text, Divider, Button , HStack} from 'native-base';
 import { useState } from 'react';
 import ModalAgregarCarrito from './ModalAgregarCarrito';
 
@@ -24,6 +24,7 @@ const PrecioComponent = ({ viaje }) => {
 
   //modal disponibilidad
   const [showModal, setShowModal] = useState(false);
+  
   
 
 

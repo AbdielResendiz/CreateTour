@@ -1,25 +1,26 @@
 import React from "react";
-import { Image, Text, AspectRatio, Flex, HStack, VStack, Center, ZStack , Box, Divider} from "native-base";
+import { Image, Text,  Flex,  VStack, Center, ZStack , Box, Divider, Stack} from "native-base";
 import ViajesAleatoreosComponent from "../Components/ViajesAleatoreosComponent";
 import { AiOutlineLike } from "react-icons/ai";
 import { GiPalmTree } from "react-icons/gi";
 import { BsBoxSeam } from "react-icons/bs";
 import { IconContext } from "react-icons";
+import "../App.css"
 
 
 const IconTextComponent = ({ icon, text }) => {
   return (
-    <VStack>
+    <Stack direction="column" >
       <Center>
       <IconContext.Provider value={{ color: "#555555", size:"4rem" }}>
         {icon}
       </IconContext.Provider>
         
       </Center>
-      <Text alignSelf={"center"} bold py={3} fontSize={"xl"}>
+      <Text alignSelf={"center"} style={{fontFamily: 'Quattrocento', fontWeight: '700'}} py={3} fontSize={"xl"}>
         {text}
       </Text>
-    </VStack>
+    </Stack>
   );
 };
 
@@ -33,29 +34,33 @@ const Home = () => {
       
 
       {/* ICONOS */}
-      <HStack justifyContent={"center"} space={12} p={10}>
+      <Stack direction={["column","column", "row"]} justifyContent={"center"} space={12} p={10}>
         <IconTextComponent icon={<AiOutlineLike />} text="+20 DESTINOS" />
         <IconTextComponent icon={<GiPalmTree />} text="RESERVAS SEGURAS" />
         <IconTextComponent icon={<BsBoxSeam />} text="24/7" />
-      </HStack>
+      </Stack>
 
-      <Box h={96} mb={10}>
+      <Box h={96} mb={32}>
         <ZStack>
           
+        <Flex w="60%" flexDirection="column" justifyContent="flex-start" mt={56} ml={12}>
+            <Text fontSize={["lg", "xl", "2xl", "4xl"]} color={"#494d41"} style={{fontFamily: 'Quattrocento', fontWeight: '700'}} >CREATE TOURS</Text>
+            <Text bold fontSize={["md","lg", "lg", "2xl"]}  >¡QUIENES SOMOS!</Text>
+            <Text fontSize={["md","md", "lg", "xl"]} color={"#494d41"} pr={12} bg={"white"} textAlign={"justify"} style={{fontFamily: 'Quattrocento', fontWeight: '400'}} >
+              En CREATE TOURS creamos recorridos seguros, confiables, pero sobre todo inolvidables,
+               que hacen que nuestros usuarios vivan experiencias a lo grande en cada uno de sus destinos.
+            </Text>
+          </Flex>
+          
          <Flex w="100%" flexDirection="row" justifyContent="flex-end" mb={34}>
-          <AspectRatio w={"60vw"} ratio={14 / 8} >
+          
                 <Image source={{
                   uri: "https://createtours.com.mx/backend/public/Imagenes/logo-background.webp"
-                }} alt="Alternate Text" width={"100%"} height={"auto"}  />
-              </AspectRatio>
+                }} alt="Alternate Text" width={"80%"} height={96} resizeMode="cover" />
+             
 
           </Flex>
 
-          <Flex w="30%" flexDirection="column" justifyContent="flex-start" mt={56} ml={56}>
-            <Text fontSize={"lg"} color={"#494d41"}>CREATE TOURS</Text>
-            <Text bold fontSize={"xl"}>¡QUIENES SOMOS!</Text>
-            <Text fontSize={"md"} color={"#494d41"} pr={12}>En CREATE TOURS creamos recorridos seguros, confiables, pero sobre todo inolvidables, que hacen que nuestros usuarios vivan experiencias a lo grande en cada uno de sus destinos.</Text>
-          </Flex>
         </ZStack>
 
       </Box>
@@ -76,17 +81,20 @@ const Home = () => {
          
         </ZStack>
         <Center mt={24}>
-            <Text bold fontSize={"6xl"}>DISFRUTA LA RIVERA MAYA</Text>
+            <Text   fontSize={["xl", "4xl", "4xl", "6xl"]} 
+             style={{fontFamily: 'Quattrocento', fontWeight: '700'}} 
+              >
+              DISFRUTA LA RIVERA MAYA</Text>
         </Center>
 
       </Box>
-      <VStack size={"md"}>
+      <VStack size={"md"}  fontWeight={400}>
                 
         <Image alignSelf={"center"} source={{
           uri: "https://createtours.com.mx/backend/public/Imagenes/logo-create.svg"
         }} alt="Alternate Text" width={72} height={40}  resizeMode="cover"/>
         <Center >
-        <Text width={96} fontSize={"md"}>
+        <Text width={"80%"}  fontSize={["lg", "lg", "xl", "2xl"]} style={{fontFamily: 'Quattrocento', fontWeight: '400'}} >
         En CREATE TOURS creamos recorridos seguros, confiables, pero sobre todo inolvidables, 
         que hacen que nuestros usuarios vivan experiencias a lo grande en cada uno de sus destinos.
         </Text>
@@ -97,7 +105,9 @@ const Home = () => {
 
       <Center py={10}>
         <VStack>
-          <Text bold fontSize={"2xl"}>
+        <Text   fontSize={["xl", "2xl", "2xl", "4xl"]} 
+             style={{fontFamily: 'Quattrocento', fontWeight: '700'}} 
+              >
             UNA AVENTURA GARANTIZADA
           </Text>
           <Divider thickness={2} bg="#449bab"/>

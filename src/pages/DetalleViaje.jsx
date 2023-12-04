@@ -1,11 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import SwiperComponent from "../Components/SwiperComponent";
-import { HStack, Box, Text, VStack, Center, Divider, Modal, Stack, Pressable, Image} from "native-base";
+import { HStack, Box, Text, VStack, Center, Divider,  Stack, Pressable, Image} from "native-base";
 import { useState, useEffect } from "react";
 import fetchPost from "../helper/fetchPost";
 import URL from "../helper/baseURL";
-import AgregarCarritoComponent from "../Components/AgregarCarritoComponent";
 import PrecioComponent from "../Components/PreciosComponent";
 
 const DetalleViaje = (props) => {
@@ -18,8 +16,6 @@ const DetalleViaje = (props) => {
 
 //manejar y obtener datos del viaje
 const [viaje, setViaje] = useState([])
-//status de respuesta JSON DETALLE VIAJE
-const [status, setStatus] = useState(null)
 
 const verViaje = async()=>{
     const BASE_URL= URL.BASE_URL;
@@ -36,7 +32,7 @@ const verViaje = async()=>{
    
     console.log("Viaje detalle:", res);
     setViaje(res.data);
-    setStatus(res.status);
+ 
 
    // 
     
@@ -45,18 +41,8 @@ const verViaje = async()=>{
 
   useEffect(() => {
    verViaje()
-   console.log("Viaje detalle : ", viaje)
-   console.log("base url: ", URL.BASE_URL)
-   console.log("id : ", id);
-   console.log("tipo id: ", typeof(id))
-   console.log("FOTO viaje: " , viaje.Foto)
-   
   }, [])
 
-  useEffect(() => {
-   
-    console.log("Tab:  ", tab)
-   }, [])
 
 
   const [tab, setTab] = useState(0);
@@ -143,6 +129,11 @@ const verViaje = async()=>{
     );
   };
 
+  
+  useEffect(() => {
+   
+    console.log("Tab:  ", tab)
+   }, [tab])
 
   return (
     <div>
