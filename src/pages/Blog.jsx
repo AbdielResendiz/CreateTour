@@ -5,7 +5,7 @@ const Blog = () => {
   return (
     <Center flex={1}>
       <View alignItems="center">
-        <Heading mb="4" textAlign="center">
+        <Heading mb="4" textAlign="center" >
           Bienvenido a Nuestro Blog
         </Heading>
         <Text mb="4" textAlign="center">

@@ -5,18 +5,19 @@ import {  Link, useNavigate} from "react-router-dom";
 import fetchPost from "../helper/fetchPost";
 import { FaRegEye, FaRegEyeSlash  } from "react-icons/fa";
 import { useUser } from "../helper/UserContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
  
 
 const Login = () => {
 
-  const { userId, login } = useUser();
+  const { login } = useUser();
 
 
-  const handleLogin = (id_user) => {
+  const handleLogin = (id_user, tipoUser) => {
     // Lógica para el inicio de sesión
-    login(id_user); 
+    login(id_user, tipoUser); 
   };
 
 
@@ -53,11 +54,33 @@ const Login = () => {
         body: dataLogin
       };
       const res = await fetchPost(url, options);
-      console.log("res", res);
+      console.log("respuesta login", res);
+      
+    if (res.resultado === false) {
+        window.alert(res.mensaje) 
+        return;
+         
+      } else {
+      handleLogin(res.id_usuario, res.TipoUsuario)
       window.alert(res.mensaje);
-      handleLogin(res.id_usuario)
-      //Navega a otra pagina/ruta
-      navigate("/Cuenta")
+      
+      try {
+        await AsyncStorage.setItem('userId', res.id_usuario);
+        await AsyncStorage.setItem('tipo', res.TipoUsuario);
+      } catch (error) {
+        console.error('Error saving data to AsyncStorage:', error);
+      }
+  
+
+
+
+        res.TipoUsuario === "1" ? navigate("/Administrador") :
+        window.alert("No tienes permisos necesarios para acceder a esta sección");
+       return;
+      }
+      // handleLogin(res.id_usuario)
+       //Navega a otra pagina/ruta
+      // navigate("/Cuenta")
       
    
 
@@ -90,7 +113,7 @@ const Login = () => {
     
         default:
           // Si no hay errores, el registro es válido
-          console.log("Login válido");
+        
           Login()
           break;
       }
@@ -163,7 +186,7 @@ const Login = () => {
             onPress={()=>validarLogin()}>
               Iniciar sesion
             </Button>
-            <HStack mt="6" justifyContent="center">
+            {/* <HStack mt="6" justifyContent="center">
               <Text fontSize="sm" color="coolGray.600" _dark={{
               color: "warmGray.200"
             }}>
@@ -172,7 +195,7 @@ const Login = () => {
               <Link style={linkStyle} to="/Registro">
                 Registrarse
               </Link>
-            </HStack>
+            </HStack> */}
           </VStack>
         </Box>
       </Center>

@@ -8,8 +8,8 @@ const Nosotros = () => {
     return (
       <Stack direction={"row"} w={"100%"}>
         <VStack w={"40%"} p={10} mx={10}>
-          <Text fontSize={"2xl"} color={"#494d41"}>CREATE TOURS</Text>
-          <Text bold fontSize={"5xl"}>{subtitle}</Text>
+          <Text fontSize={"2xl"} color={"#494d41"}  >CREATE TOURS</Text>
+          <Text bold fontSize={"5xl"}  >{subtitle}</Text>
           <Text fontSize={"lg"} color={"#494d41"}  textAlign={"justify"}>{description}</Text>
         </VStack>
         <Image
@@ -53,8 +53,8 @@ const Nosotros = () => {
                 resizeMode="cover"
               />
             <VStack w={"30%"} p={10} mx={10}>
-              <Text fontSize={"2xl"} color={"#494d41"}>CREATE TOURS</Text>
-              <Text bold fontSize={"5xl"}>MISIÓN</Text>
+              <Text fontSize={"2xl"} color={"#494d41"} >CREATE TOURS</Text>
+              <Text bold fontSize={"5xl"}  >MISIÓN</Text>
               <Text fontSize={"lg"} color={"#494d41"}  textAlign={"justify"}>
                 Ofrecerte una experiencia única, con una atención de calidad que
                 haga de tu recorrido toda una aventura inolvidable de inicio a fin.
@@ -67,8 +67,8 @@ const Nosotros = () => {
           <Stack direction={"row"} w={"100%"}>
 
             <VStack w={"40%"} p={10} mx={10}>
-              <Text fontSize={"2xl"} color={"#494d41"}>CREATE TOURS</Text>
-              <Text bold fontSize={"5xl"}>VISIÓN</Text>
+              <Text fontSize={"2xl"} color={"#494d41"}  >CREATE TOURS</Text>
+              <Text bold fontSize={"5xl"} >VISIÓN</Text>
               <Text fontSize={"lg"} color={"#494d41"}  textAlign={"justify"}>
               Posicionarnos como una de las mejores agencias generadoras de experiencia reconocidas en la 
               Rivera Maya que brinda confianza, seguridad y un servicio de calidad a todos aquellos que la
@@ -87,7 +87,7 @@ const Nosotros = () => {
 
 
         <VStack space={5} mb={5}>
-          <Text bold fontSize={"6xl"}>Valores</Text>
+          <Text bold fontSize={"6xl"}  >Valores</Text>
           <Stack direction={"row"} space={5}>
             <Valores  valor={"Amabilidad"}/>
             <Valores  valor={"Calidad y Servicio"}/>

@@ -95,7 +95,7 @@ const verViaje = async()=>{
     }
   
     return content;
-  };
+  }; 
 
   const CustomPressable = ({ count, titulo }) => {
     return (

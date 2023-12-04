@@ -1,4 +1,4 @@
-import {  Image,  Flex, HStack,  VStack, Button, Text } from "native-base";
+import {  Image,  Flex, HStack,  VStack, Button, Text, Stack } from "native-base";
 import FlatListViajesComponent from "../Components/FlatListViajesComponent";
 import { useNavigate } from "react-router-dom";
 
@@ -19,16 +19,15 @@ const Tours = () => {
 
     return (
         <Flex w="100%">
-            <HStack w={"100%"}>
-               
+            <Stack direction={["column" ,"column" , "row", "row"]} w={"100%"}>
                     <Image source={{
                     uri: "https://createtours.com.mx/backend/public/Imagenes/bg-tours.webp"
-                    }} alt="Alternate Text" width={"70%"} height={96}  resizeMode="cover"/>
-                
+                    }} alt="Alternate Text" width={["100%", "100%", "60%", "70%"]} height={96}  resizeMode="cover"/>
 
-                <VStack justifyContent={"center"} alignSelf={"center"} w={"30%"} p={10}>
-                    <Text mt={4}  >NUEVAS EXPERIENCIAS</Text>
-                    <Text bold fontSize={"4xl"} px={4}>XPLOR
+                <VStack justifyContent={"center"} alignSelf={"center"} width={["100%", "100%", "40%", "30%"]} p={10}>
+                    <Text mt={4} fontSize={["md", "lg", "md", "lg"]}  >NUEVAS EXPERIENCIAS</Text>
+                    <Text bold fontSize={["2xl", "4xl", "2xl", "4xl"]} px={4}>
+                        XPLOR
                         ADVENTURE
                         PARK</Text>
                     <Text fontSize={"md"}>
@@ -41,12 +40,8 @@ const Tours = () => {
                     </Text>
                     <Button  m={5} colorScheme={"amber"} size={"lg"}
                     onPress={()=>{handleClick()} }>VER TOUR</Button>
-
                 </VStack>
-
-
-
-            </HStack>
+            </Stack>
 
 
 

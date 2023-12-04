@@ -24,6 +24,8 @@ import Carrito from "./pages/Carrito";
 import Contacto from "./pages/Contacto";
 import Tours from "./pages/Tours";
 import Nosotros from "./pages/Nosotros";
+import AdminPanel from "./pages/AdminPanel";
+import AdminPermiso from "./pages/AdminPermiso";
 
 
 
@@ -126,6 +128,7 @@ export default function App() {
           <Route path="Registro" element={<Registro />} />
           <Route path="Checkout" element={<CheckoutForm />} />
           <Route path="Return" element={<Return />} />
+          <Route path="Administrador" element={<AdminPermiso />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       

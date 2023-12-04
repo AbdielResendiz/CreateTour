@@ -7,6 +7,7 @@
     "@react-native-async-storage/async-storage": "^1.21.0",
     "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.2.0",
+    "@tanstack/react-table": "^8.10.7",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -22,6 +23,7 @@
     "react-native-tab-view": "^3.5.2",
     "react-native-web": "^0.16.5",
     "react-scripts": "5.0.1",
+    "react-table": "^7.8.0",
     "styled-component": "^2.8.0",
     "swiper": "^11.0.5",
     "web-vitals": "^1.1.2"
@@ -51,6 +53,9 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.1.0",
     "react-router-dom": "^6.20.0"
   }
 }

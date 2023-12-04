@@ -11,7 +11,7 @@ const   Header = () => {
   const { carrito  } = useUser();
   const [carritoCantidad, setCarritoCantidad] = useState(0);
   useEffect(() => {
-   let cantidad = carrito.length +1;
+   let cantidad = carrito.length;
    setCarritoCantidad(cantidad)
    console.log("Carrito lengh: ", cantidad )
   }, [carrito])
@@ -20,7 +20,7 @@ const   Header = () => {
 
   const handlePressFB = () => {
     // La URL de Facebook a la que se redirigirá al presionar el ícono
-    const facebookUrl = 'https://www.facebook.com/Createtourslapaz/';
+    const facebookUrl = 'https://www.facebook.com/createtours.mx/';
 
     // Abre la URL en una nueva pestaña
     window.open(facebookUrl, '_blank');
@@ -28,7 +28,7 @@ const   Header = () => {
 
   const handlePressIG = () => {
     // La URL de Facebook a la que se redirigirá al presionar el ícono
-    const facebookUrl = 'https://www.instagram.com/createtours/?hl=es-la';
+    const facebookUrl = 'https://www.instagram.com/createtours.mx';
 
     // Abre la URL en una nueva pestaña
     window.open(facebookUrl, '_blank');

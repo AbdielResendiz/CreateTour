@@ -27,7 +27,7 @@ const ViajeComponent = ({id,  imageUri, titulo, lugar, duracion, precio }) => {
     }} alt="Alternate Text" />
     </Pressable>
     <Center>
-      <Text bold fontSize={"lg"} p={4}>{titulo }</Text>
+      <Text bold fontSize={"lg"} p={4}  >{titulo }</Text>
     </Center>
 
     <HStack justifyContent={"center"} pb={4}>

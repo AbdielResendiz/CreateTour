@@ -5,6 +5,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [userId, setUserId] = useState(null);
+  const [tipo, setTipo] = useState(null);
   const [carrito, setCarrito] = useState([]);
 
   // Obtener el estado del carrito desde AsyncStorage al cargar la página
@@ -19,7 +20,30 @@ export const UserProvider = ({ children }) => {
       }
     };
 
+
+
     obtenerCarritos();
+  }, []);
+
+    // Obtener el estado del usuario
+  useEffect(() => {
+    const obtenerUsuario = async () => {
+      try {
+        const usuarioActual = await AsyncStorage.getItem('userId');
+        const usuarioParseados = JSON.parse(usuarioActual) || null;
+        setUserId(usuarioParseados);
+
+        const usuarioTipoActual = await AsyncStorage.getItem('tipo');
+        const usuarioTipoParseados = JSON.parse(usuarioTipoActual) || null;
+        setTipo(usuarioTipoParseados);
+      } catch (error) {
+        console.error('Error al obtener carritos desde AsyncStorage:', error);
+      }
+    };
+
+
+
+    obtenerUsuario();
   }, []);
 
   const agregarAlCarrito = (nuevoCarrito) => {
@@ -50,8 +74,16 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const login = (id) => {
+  const login = async (id, tipoUser) => {
     setUserId(id);
+    setTipo(tipoUser);
+  try {
+        await AsyncStorage.setItem('userId', id);
+        await AsyncStorage.setItem('tipo', tipoUser);
+      } catch (error) {
+        console.error('Error saving data to AsyncStorage f. login( ): ', error);
+      }
+
   };
 
   const logout = () => {
@@ -73,9 +105,12 @@ export const UserProvider = ({ children }) => {
     AsyncStorage.setItem('carrito', JSON.stringify(carrito));
   }, [carrito]);
 
+
+  
+
   return (
     <UserContext.Provider
-      value={{ userId, carrito, login, logout, agregarAlCarrito, editarCarrito, eliminarCarrito, borrarTodoCarrito }}
+      value={{ userId, tipo,  carrito, login, logout, agregarAlCarrito, editarCarrito, eliminarCarrito, borrarTodoCarrito }}
     >
       {children}
     </UserContext.Provider>

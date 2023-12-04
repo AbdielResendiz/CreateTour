@@ -64,7 +64,7 @@ const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, ki
 
                     {/* MODAL DE CONFIRMAR */}
 
-                    <Modal isOpen={showModal} onClose={() => setShowModal(false)} justifyContent="center" mt={-64} >
+                    <Modal isOpen={showModal} onClose={() => setShowModal(false)} justifyContent="center"  >
                         <Modal.Content maxWidth="400px">
                             <Modal.CloseButton />
                             <Modal.Header>Eliminar del carrito</Modal.Header>
