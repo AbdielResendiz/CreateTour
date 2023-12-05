@@ -13,40 +13,46 @@ const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, ki
     const [showModal, setShowModal] = useState(false);
 
     return (
-        <HStack width={760} ml={10} my={5} shadow={6} borderRadius={10} borderColor={"#aaaaaa"} borderWidth={1}>
-            <AspectRatio w={400} ratio={16 / 9}>
-                <Image borderLeftRadius={10} source={{ uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${foto}` }} alt={titulo} />
-            </AspectRatio>
+        <HStack flex={1} mx={5} my={5} shadow={6} borderRadius={10} borderColor={"#aaaaaa"} borderWidth={1}>
 
-            <Box p={5}>
+            <Image borderLeftRadius={10}
+                source={{ uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${foto}` }}
+                alt={titulo}
+                w={[64, 64, 80, 96]}
+                h={[40, 40, 48, 56]}
+                resizeMode="cover"
+            />
+
+
+            <Box flex={1} p={2} alignSelf={"flex-start"}>
                 <VStack>
-                    <Text bold fontSize={"xl"}>
+                    <Text bold fontSize={["md", "md", "lg", "xl"]}>
                         Título: <Text bold>{titulo}</Text>
                     </Text>
-                    <Text bold fontSize={"lg"}>
+                    <Text bold fontSize={["md", "md", "md", "lg"]}>
                         Fecha: <Text bold>{fecha}</Text>
                     </Text>
                 </VStack>
 
                 <HStack space={10} justifyContent={"center"}>
-                    <Text>
-                        Adultos (Nacional) <Text bold>{adultoN}</Text>{" "}
+                    <Text fontSize={["xs", "xs", "sm", "md"]}>
+                        Adultos (Nacional): <Text bold>{adultoN}</Text>{" "}
                     </Text>
-                    <Text>
+                    <Text fontSize={["xs", "xs", "sm", "md"]}>
                         Niños (Nacional): <Text bold>{kidN}</Text>{" "}
                     </Text>
                 </HStack>
 
                 <HStack space={10} justifyContent={"center"}>
-                    <Text>
+                    <Text fontSize={["xs", "xs", "sm", "md"]}>
                         Adultos (Extranjero): <Text bold>{adultoE}</Text>{" "}
                     </Text>
-                    <Text>
+                    <Text fontSize={["xs", "xs", "sm", "md"]}>
                         Niños (Extranjero): <Text bold>{kidE}</Text>
                     </Text>
                 </HStack>
 
-                <Text bold fontSize={"lg"}>
+                <Text bold fontSize={["md", "md", "lg", "lg"]}>
                     Subtotal: ${subtotal} USD
                 </Text>
 

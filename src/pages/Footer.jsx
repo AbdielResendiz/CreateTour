@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import whatsapp from "../Lotties/whatsapp.json"
 import { Link } from "react-router-dom";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
 
@@ -37,6 +38,23 @@ const Footer = () => {
         window.open(Url, '_blank');
     };
 
+
+    const handlePressFB = () => {
+        // La URL de Facebook a la que se redirigirá al presionar el ícono
+        const facebookUrl = 'https://www.facebook.com/CreateToursOficialMx/';
+
+        // Abre la URL en una nueva pestaña
+        window.open(facebookUrl, '_blank');
+    };
+
+    const handlePressIG = () => {
+        // La URL de Facebook a la que se redirigirá al presionar el ícono
+        const facebookUrl = 'https://www.instagram.com/createtours.mx';
+
+        // Abre la URL en una nueva pestaña
+        window.open(facebookUrl, '_blank');
+    };
+
     return (
         <VStack>
             <Pressable justifyContent={"flex-start"} w={[20, 20, 32, 40]} h={[20, 20, 32, 40]} left={[5, 5, 8, 10]} bottom={10} zIndex={9} position={"fixed"}
@@ -50,15 +68,31 @@ const Footer = () => {
                     }}
                     alt="Create tours"
                     size="lg"
-                    resizeMode="contain" m={5} borderRadius={10} alignSelf={"center"} ml={[0, 0, 32, 48]}
+                    resizeMode="contain" m={5} borderRadius={10} alignSelf={"center"} ml={[0, 0, 40, 56]}
 
                 />
+                <HStack space={[1, 3, 4, 5]} justifyContent="center" alignSelf={"center"}>
+                    <Pressable onPress={() => { handlePressFB() }}>
+                        <IconContext.Provider value={{ color: "#edf5f7", size: "1.3em" }}>
+                            <FaFacebook />
+                        </IconContext.Provider>
+                    </Pressable>
+
+                    <Pressable onPress={() => { handlePressIG() }}>
+                        <IconContext.Provider value={{ color: "#edf5f7", size: "1.3em" }}>
+                            <FaInstagram />
+                        </IconContext.Provider>
+                    </Pressable>
+
+
+                </HStack>
 
                 <HStack py={4} alignSelf={"center"}>
                     <Stack direction={"column"}>
-                        <Text color={"#ffffff"} bold >MENU PRINCIPAL</Text>
+                        <Text color={"#ffffff"}  >MENU PRINCIPAL</Text>
                         <CustomLink to="/" text="Inicio" />
                         <CustomLink to="/Tours" text="Tours" />
+                        <CustomLink to="/Carrito" text="Carrito" />
                     </Stack>
                     <Stack direction={"column"}>
                         <Text bold >.</Text>
@@ -69,7 +103,7 @@ const Footer = () => {
                 </HStack>
 
                 <Pressable onPress={() => handlePressLP()} bg={"#101010"}>
-                    <Text bold color="#ffffff" fontSize={"sm"} mt={3} textAlign={"center"}>Creado y diseñado por:</Text>
+                    <Text color="#ffffff" fontSize={"sm"} mt={3} textAlign={"center"}>Creado y diseñado por:</Text>
                     <Image
                         source={{
                             uri: "https://lpmarketinggroup.com.mx/wp-content/uploads/2023/04/LP_Logo-LP.png"

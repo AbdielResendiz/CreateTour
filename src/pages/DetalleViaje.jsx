@@ -94,10 +94,10 @@ const DetalleViaje = (props) => {
 
   const CustomPressable = ({ count, titulo }) => {
     return (
-      <Pressable onPress={() => setTab(count)} isFocused={count === tab ? true : false} isPressed={count === tab ? true : false} >
+      <Pressable onPress={() => setTab(count)} isFocused={count === tab ? true : false} isPressed={count === tab ? true : false} py={1}>
         {({ isHovered, isPressed, isFocused }) => (
           <Box borderBottomWidth={isHovered || isFocused || isPressed ? 3 : 0} py={{
-            base: "sm",
+            base: "md",
             md: "md",
             lg: "lg"
           }} px={4} borderColor={"#28b5a4"}>

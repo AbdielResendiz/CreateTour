@@ -29,7 +29,7 @@ const Header = () => {
 
   const handlePressFB = () => {
     // La URL de Facebook a la que se redirigirá al presionar el ícono
-    const facebookUrl = 'https://www.facebook.com/createtours.mx/';
+    const facebookUrl = 'https://www.facebook.com/CreateToursOficialMx/';
 
     // Abre la URL en una nueva pestaña
     window.open(facebookUrl, '_blank');
