@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { HStack, Box, Text, VStack, Center, Divider, Stack, Pressable, Image } from "native-base";
+import { HStack, Box, Text, VStack, Center, Divider, Stack, Pressable, Image, Spinner, Heading } from "native-base";
 import { useState, useEffect } from "react";
 import fetchPost from "../helper/fetchPost";
 import URL from "../helper/baseURL";
@@ -9,7 +9,7 @@ import PrecioComponent from "../Components/PreciosComponent";
 const DetalleViaje = (props) => {
   const { id } = useParams();
 
-
+  const [isLoading, setIsLoading] = useState(true);
 
 
   //manejar y obtener datos del viaje
@@ -29,8 +29,10 @@ const DetalleViaje = (props) => {
     const res = await fetchPost(url, options);
 
     console.log("Viaje detalle:", res);
-    setViaje(res.data);
-
+    if (res.status === true) {
+      setViaje(res.data);
+      setIsLoading(false)
+    }
 
   }
 
@@ -128,7 +130,17 @@ const DetalleViaje = (props) => {
   useEffect(() => {
 
     console.log("Tab:  ", tab)
-  }, [tab])
+  }, [tab]);
+
+  const Loader = () => {
+    return <HStack space={2} mt={10} justifyContent="center">
+      <Spinner accessibilityLabel="Loading posts" />
+      <Heading color="primary.500" fontSize="md">
+        Cargando
+      </Heading>
+    </HStack>;
+  };
+
 
   return (
     <div>
@@ -138,9 +150,19 @@ const DetalleViaje = (props) => {
 
 
       <VStack bg="#fafafa" p={1} m={1}>
-        <Image source={{
-          uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${viaje.Foto}`
-        }} alt="Alternate Text" width={"100%"} height={96} />
+
+        {
+          isLoading ? <Loader /> :
+            <Image source={{
+              uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${viaje.Foto}`
+            }} alt="Foto Tour" width={"100%"} height={96}
+              onError={(e) => {
+                console.error("Error al cargar la imagen:", e.nativeEvent.error);
+                // Puedes mostrar una imagen alternativa o realizar otra acción
+              }} />
+
+        }
+
 
         {/* Titulo y precios */}
         <Stack direction={["column", "column", "row", "row"]} w={"100%"} space={3} p={1} m={1}  >
