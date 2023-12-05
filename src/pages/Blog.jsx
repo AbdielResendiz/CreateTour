@@ -3,7 +3,7 @@ import { Center, Heading, Text, View } from 'native-base';
 
 const Blog = () => {
   return (
-    <Center flex={1}>
+    <Center flex={1} mt={10}>
       <View alignItems="center">
         <Heading mb="4" textAlign="center" >
           Bienvenido a Nuestro Blog

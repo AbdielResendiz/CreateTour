@@ -1,14 +1,16 @@
 import ReactDOM from "react-dom/client";
-import {   BrowserRouter as Router,
+import {
+  BrowserRouter as Router,
   Route,
   Routes,
-  Navigate } from "react-router-dom";
-  import {
-    EmbeddedCheckoutProvider,
-    EmbeddedCheckout
-  } from '@stripe/react-stripe-js';
-  import React, { useState, useEffect } from "react";
-import {loadStripe} from '@stripe/stripe-js';
+  Navigate
+} from "react-router-dom";
+import {
+  EmbeddedCheckoutProvider,
+  EmbeddedCheckout
+} from '@stripe/react-stripe-js';
+import React, { useState, useEffect } from "react";
+import { loadStripe } from '@stripe/stripe-js';
 import Header from "./pages/Header";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
@@ -24,7 +26,6 @@ import Carrito from "./pages/Carrito";
 import Contacto from "./pages/Contacto";
 import Tours from "./pages/Tours";
 import Nosotros from "./pages/Nosotros";
-import AdminPanel from "./pages/AdminPanel";
 import AdminPermiso from "./pages/AdminPermiso";
 
 
@@ -50,7 +51,7 @@ const CheckoutForm = () => {
       {clientSecret && (
         <EmbeddedCheckoutProvider
           stripe={stripePromise}
-          options={{clientSecret}}
+          options={{ clientSecret }}
         >
           <EmbeddedCheckout />
         </EmbeddedCheckoutProvider>
@@ -104,6 +105,12 @@ const Return = () => {
   return null;
 }
 
+
+// estilo pal header
+const mainContentStyle = {
+  marginTop: '100px', // Ajusta el valor según la altura de tu encabezado
+};
+
 export default function App() {
 
 
@@ -112,30 +119,32 @@ export default function App() {
 
   return (
     <NativeBaseProvider >
-    <Router>
-    <UserProvider>
-      <Routes>
-        <Route path="/" element={<Header />}>
-          <Route index element={<Home />} />
-          <Route path="Tours" element={<Tours />} />
-          <Route path="Blog" element={<Blog />} />
-          <Route path="Nosotros" element={<Nosotros />} />
-          <Route path="Contacto" element={<Contacto />} />
-          <Route path="trip/:id/" element={<DetalleViaje />} />
-          <Route path="Carrito" element={<Carrito />} />
-          <Route path="Cuenta" element={<Cuenta />} />
-          <Route path="Login" element={<Login />} />
-          <Route path="Registro" element={<Registro />} />
-          <Route path="Checkout" element={<CheckoutForm />} />
-          <Route path="Return" element={<Return />} />
-          <Route path="Administrador" element={<AdminPermiso />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
-      
-      </Routes>
-      <Footer/>
-      </UserProvider>
-    </Router>
+      <Router>
+        <UserProvider>
+          <div style={mainContentStyle}>
+            <Routes>
+              <Route path="/" element={<Header />}>
+                <Route index element={<Home />} />
+                <Route path="Tours" element={<Tours />} />
+                <Route path="Blog" element={<Blog />} />
+                <Route path="Nosotros" element={<Nosotros />} />
+                <Route path="Contacto" element={<Contacto />} />
+                <Route path="trip/:id/" element={<DetalleViaje />} />
+                <Route path="Carrito" element={<Carrito />} />
+                <Route path="Cuenta" element={<Cuenta />} />
+                <Route path="Login" element={<Login />} />
+                <Route path="Registro" element={<Registro />} />
+                <Route path="Checkout" element={<CheckoutForm />} />
+                <Route path="Return" element={<Return />} />
+                <Route path="Administrador" element={<AdminPermiso />} />
+                <Route path="*" element={<NoPage />} />
+              </Route>
+
+            </Routes>
+            <Footer />
+          </div>
+        </UserProvider>
+      </Router>
     </NativeBaseProvider>
   );
 }

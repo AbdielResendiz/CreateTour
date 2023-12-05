@@ -1,21 +1,30 @@
-import { HStack,  Text, Center, Pressable, Stack} from "native-base";
+import { HStack, Text, Center, Pressable, Stack, Flex } from "native-base";
 import { Outlet, Link } from "react-router-dom";
-import { FaFacebook, FaInstagram  } from "react-icons/fa";
-import { FiPhone, FiMail  } from "react-icons/fi";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { FiPhone, FiMail } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import { TiShoppingCart } from "react-icons/ti";
 import { useUser } from "../helper/UserContext";
 import { useState, useEffect } from "react";
 
-const   Header = () => {
-  const { carrito  } = useUser();
+const Header = () => {
+  const { carrito } = useUser();
   const [carritoCantidad, setCarritoCantidad] = useState(0);
   useEffect(() => {
-   let cantidad = carrito.length;
-   setCarritoCantidad(cantidad)
-   console.log("Carrito lengh: ", cantidad )
+    let cantidad = carrito.length;
+    setCarritoCantidad(cantidad)
+    console.log("Carrito lengh: ", cantidad)
   }, [carrito])
-  
+
+  const headerStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+
+    zIndex: 1000, // Ajusta el valor según sea necesario
+  };
+
 
 
   const handlePressFB = () => {
@@ -44,7 +53,7 @@ const   Header = () => {
     // Abre la URL en una nueva pestaña
     window.open(whatsappUrl, '_blank');
   };
- 
+
 
   const handlePressEmail = () => {
     // La dirección de correo electrónico a la que se enviará el correo
@@ -62,95 +71,93 @@ const   Header = () => {
 
 
   const linkStyle = {
-   
+
     textDecoration: "none",
 
-    
+
   };
 
   const CustomLink = ({ to, text }) => {
     return (
       <Link to={to} style={linkStyle} >
-        <Text p={[1,2,3,4]} fontSize={["sm", "md", "lg", "xl"]} >{text}</Text>
+        <Text p={[1, 2, 3, 4]} fontSize={["sm", "md", "lg", "xl"]} >{text}</Text>
       </Link>
     );
   };
 
   return (
-    <div>
-      <Stack direction={["column","column","row","row"]} bg="#449bab" justifyContent="center" py={3} mb={3} space={[0,1,2,4]} >
+    <div >
+      <Flex style={headerStyle}>
+        <Stack direction={["column", "column", "row", "row"]} bg="#449bab" justifyContent="center" py={3} space={[0, 1, 2, 4]} >
 
-        <HStack space={[1,3,4,5]} justifyContent="center" >
-          <Pressable onPress={()=>{handlePressFB()}}>
-            <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
-                <FaFacebook /> 
-            </IconContext.Provider>
-          </Pressable>
-          
-          <Pressable onPress={()=>{handlePressIG()}}>
-            <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
-                <FaInstagram  />
-            </IconContext.Provider>
-          </Pressable>
+          <HStack space={[1, 3, 4, 5]} justifyContent="center" >
+            <Pressable onPress={() => { handlePressFB() }}>
+              <IconContext.Provider value={{ color: "#edf5f7", size: "1.3em" }}>
+                <FaFacebook />
+              </IconContext.Provider>
+            </Pressable>
 
-          <Pressable onPress={()=>{handlePressWA()}}>
-          <HStack px={7}>
-            <IconContext.Provider value={{ color: "#edf5f7", size:"1.3em" }}>
-                <FiPhone />
-            </IconContext.Provider>
-            <Text color={"#edf5f7"} fontSize={["xs", "sm", "md", "lg"]}  px={2}>998 230 4219</Text>
+            <Pressable onPress={() => { handlePressIG() }}>
+              <IconContext.Provider value={{ color: "#edf5f7", size: "1.3em" }}>
+                <FaInstagram />
+              </IconContext.Provider>
+            </Pressable>
+
+            <Pressable onPress={() => { handlePressWA() }}>
+              <HStack px={7}>
+                <IconContext.Provider value={{ color: "#edf5f7", size: "1.3em" }}>
+                  <FiPhone />
+                </IconContext.Provider>
+                <Text color={"#edf5f7"} fontSize={["xs", "sm", "md", "lg"]} px={2}>998 230 4219</Text>
+              </HStack>
+            </Pressable>
           </HStack>
-        </Pressable>
-        </HStack>
 
 
 
 
 
-        <Pressable onPress={()=>{handlePressEmail()}} alignSelf="center">
-          <HStack px={7}>
-            <IconContext.Provider value={{ color: "#edf5f7", size:"1.5em" }}>
+          <Pressable onPress={() => { handlePressEmail() }} alignSelf="center">
+            <HStack px={7}>
+              <IconContext.Provider value={{ color: "#edf5f7", size: "1.5em" }}>
                 <FiMail />
-            </IconContext.Provider>
-            <Text color={"#edf5f7"} fontSize={["xs", "sm", "md", "lg"]} px={2}>contacto@createtours.com.mx</Text>
-          </HStack>
-        </Pressable>
+              </IconContext.Provider>
+              <Text color={"#edf5f7"} fontSize={["xs", "sm", "md", "lg"]} px={2}>contacto@createtours.com.mx</Text>
+            </HStack>
+          </Pressable>
 
 
-      </Stack>
+        </Stack>
 
-      <HStack justifyContent="center" px={[1,2,3,4]} mb={2}>
-        <CustomLink to="/" text="Inicio" />
-        <CustomLink to="/Tours" text="Tours" />
-        <CustomLink to="/Blog" text="Blog" />
-        <CustomLink to="/Nosotros" text="Nosotros" />
-        <CustomLink to="/Contacto" text="Contacto" />
-        <HStack px={[1,2,3,4]} shadow={3} borderRadius={10} >
-          <Center>
-            <IconContext.Provider value={{ color: "#449bab", size:"1.4rem" }}>
-              <TiShoppingCart />
-            </IconContext.Provider>
+        <HStack justifyContent="center" px={[1, 2, 3, 4]} mb={0} py={3} bg={"white"}>
+          <CustomLink to="/" text="Inicio" />
+          <CustomLink to="/Tours" text="Tours" />
+          <CustomLink to="/Blog" text="Blog" />
+          <CustomLink to="/Nosotros" text="Nosotros" />
+          <CustomLink to="/Contacto" text="Contacto" />
+          <HStack px={[1, 2, 3, 4]} shadow={3} borderRadius={10} >
+            <Center>
+              <IconContext.Provider value={{ color: "#449bab", size: "1.4rem" }}>
+                <TiShoppingCart />
+              </IconContext.Provider>
 
-          </Center>
-
-          <Link to="/Carrito" style={linkStyle}><Text  fontSize={["sm", "md", "lg", "xl"]}>Carrito</Text></Link>
-          {carritoCantidad> 0 ? 
-          <Center>
-            <Center bgColor={"amber.400"} size={[4, 4, 4, 4]} mx={[1,1,2,2]} p={[1,2,3,4]} borderRadius={100}>
-              <Text bold fontSize={["xs", "sm", "md", "lg"]}>{carritoCantidad}</Text>
             </Center>
-          </Center>
-          :
-          null}
-        </HStack>
-        
-        {/* <Link to="/Checkout" style={linkStyle}><Text  fontSize="xl">Pagar</Text></Link> */}
-        {/* <Link to="/Cuenta" style={linkStyle}><Text  fontSize="xl">Cuenta</Text></Link>
-        <Link to="/Registro" style={linkStyle}><Text  fontSize="xl">Registro</Text></Link>
-        <Link to="/Login" style={linkStyle}><Text  fontSize="xl">Login</Text></Link> */}
 
-      </HStack>
-      
+            <Link to="/Carrito" style={linkStyle}><Text fontSize={["sm", "md", "lg", "xl"]}>Carrito</Text></Link>
+            {carritoCantidad > 0 ?
+              <Center>
+                <Center bgColor={"amber.400"} size={[4, 4, 4, 4]} mx={[1, 1, 2, 2]} p={[1, 2, 3, 4]} borderRadius={100}>
+                  <Text bold fontSize={["xs", "sm", "md", "lg"]}>{carritoCantidad}</Text>
+                </Center>
+              </Center>
+              :
+              null}
+          </HStack>
+
+
+        </HStack>
+      </Flex>
+
 
       <Outlet />
     </div>
