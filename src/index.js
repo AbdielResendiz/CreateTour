@@ -130,7 +130,7 @@ export default function App() {
                 <Route path="Blog" element={<Blog />} />
                 <Route path="Nosotros" element={<Nosotros />} />
                 <Route path="Contacto" element={<Contacto />} />
-                <Route path="trip/:id/" element={<DetalleViaje />} />
+                <Route path="trip/:id/:titulo/" element={<DetalleViaje />} />
                 <Route path="Carrito" element={<Carrito />} />
                 <Route path="Cuenta" element={<Cuenta />} />
                 <Route path="Login" element={<Login />} />

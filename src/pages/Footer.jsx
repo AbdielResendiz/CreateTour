@@ -109,7 +109,7 @@ const Footer = () => {
                             uri: "https://lpmarketinggroup.com.mx/wp-content/uploads/2023/04/LP_Logo-LP.png"
                         }}
                         alt="Create tours"
-                        size="lg"
+                        size="xl"
                         resizeMode="contain" borderRadius={10} alignSelf={"center"}
 
                     />

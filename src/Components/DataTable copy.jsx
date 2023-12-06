@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     Table,
     TableBody,
@@ -20,29 +20,42 @@ import DetalleVentaComponent from './DetalleVentaComponent';
 import URL from '../helper/baseURL';
 import fetchPost from '../helper/fetchPost';
 
-const DataTable = () => {
+const DataTablee = () => {
     const [selectedItem, setSelectedItem] = useState(null);
     const [openModal, setOpenModal] = useState(false);
-    const [viajes, setViajes] = useState([]);
 
+    const [viajes, setViajes] = useState();
     const verVentas = async () => {
-        try {
-            const BASE_URL = URL.BASE_URL;
-            const url = `${BASE_URL}ventas/ver`;
-            const options = {
-                method: 'POST',
-            };
-            const res = await fetchPost(url, options);
-            setViajes(res);
-        } catch (error) {
-            console.error('Error al obtener datos de viajes:', error);
-        }
-    };
+        const BASE_URL = URL.BASE_URL;
 
-    useEffect(() => {
-        // Llama a la función para obtener los datos de viajes cuando el componente se monta
-        verVentas();
-    }, []);
+        // const dataViajes = new FormData();
+        //para enviar datos por POST
+        // dataViajes.append("idU", idU);
+        // dataViajes.append("idAS", idAS);
+        const url = `${BASE_URL}ventas/ver`
+        const options = {
+            method: 'POST',
+            // body: dataFav
+        };
+        const res = await fetchPost(url, options);
+
+        console.log("Viajes:", res);
+        setViajes(res);
+        // 
+
+
+    }
+
+
+
+    const data = React.useMemo(
+        () => [
+            { id: 1, email: 'cabdielr94@gmail.com', telefono: '123456789', toursInfo: 'Tour A', fechaPago: '2022-01-01', estatus: 'Pagado' },
+            { id: 2, email: 'usuario2@gmail.com', telefono: '987654321', toursInfo: 'Tour B', fechaPago: '2022-02-01', estatus: 'Pendiente' },
+            // Agrega más datos según sea necesario
+        ],
+        []
+    );
 
     const handleRowClick = (item) => {
         setSelectedItem(item);
@@ -68,18 +81,18 @@ const DataTable = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {viajes.map((row) => (
+                        {data.map((row) => (
                             <TableRow key={row.id} onClick={() => handleRowClick(row)}>
-                                <TableCell>{row.ID}</TableCell>
-                                <TableCell>{row.Email}</TableCell>
-                                <TableCell>{row.Telefono}</TableCell>
+                                <TableCell>{row.id}</TableCell>
+                                <TableCell>{row.email}</TableCell>
+                                <TableCell>{row.telefono}</TableCell>
                                 <TableCell>
                                     {row.toursInfo}{' '}
                                     <Button variant="outlined" onClick={() => handleRowClick(row)}>
                                         Detalles
                                     </Button>
                                 </TableCell>
-                                <TableCell>{row.FechaPago}</TableCell>
+                                <TableCell>{row.fechaPago}</TableCell>
                                 <TableCell>
                                     <FormControl>
                                         <InputLabel>Estatus</InputLabel>
@@ -104,37 +117,21 @@ const DataTable = () => {
             }} onClose={handleCloseModal} closeAfterTransition>
                 <Fade in={openModal}>
                     <div style={{
-                        backgroundColor: 'white',
-                        padding: 20,
-                        borderRadius: 8,
+                        backgroundColor: 'white', // Color de fondo del modal
+                        padding: 20, // Ajusta el espaciado según tus necesidades
+                        borderRadius: 8, // Ajusta el radio de borde según tus necesidades
                     }}>
-                        {/* Aquí deberías utilizar los datos de selectedItem o los datos que necesites mostrar */}
-                        {/* <DetalleVentaComponent
-                            index={selectedItem?.id}
-                            id={selectedItem?.id}
-                            titulo={selectedItem?.Viaje.ID}
-                            foto={selectedItem?.foto}
-                            subtotal={selectedItem?.subtotal}
-                            fecha={selectedItem?.fechaPago}
-                            adultoN={selectedItem?.adultoN}
-                            adultoE={selectedItem?.adultoE}
-                            kidN={selectedItem?.kidN}
-                            kidE={selectedItem?.kidE}
-                        /> */}
-
                         <DetalleVentaComponent
                             index={1}
-                            id={4}
-                            titulo={"Xel Há"}
-                            foto={"xel-ha.jpg"}
-                            subtotal={420}
-                            fecha={"12/12/2021"}
-                            adultoN={1}
-                            adultoE={1}
+                            id={1}
+                            titulo={"Chichén Itzá Clásico"}
+                            foto={"chichen-clasico.jpg"}
+                            subtotal={289.00}
+                            fecha={"04/12/2023"}
+                            adultoN={2}
+                            adultoE={0}
                             kidN={1}
-                            kidE={1}
-                        />
-
+                            kidE={0} />
                     </div>
                 </Fade>
             </Modal>
@@ -142,4 +139,4 @@ const DataTable = () => {
     );
 };
 
-export default DataTable;
+export default DataTablee;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CarritoComponent from '../Components/CarritoComponent';
 import { useUser } from '../helper/UserContext';
 import { Button, Center, Divider, FlatList, Heading, Text, VStack, Modal, Flex } from 'native-base';
@@ -19,6 +19,7 @@ const Carrito = () => {
   };
 
   const { carrito } = useUser();
+  const [carritoSting, setCarritoString] = useState(JSON.stringify(carrito));
 
 
 
@@ -34,6 +35,13 @@ const Carrito = () => {
   // Llama a la función para obtener el GranTotal
   const granTotal = calcularGranTotal();
 
+  useEffect(() => {
+    console.log("carrito: ", carrito);
+    console.log("carrito type: ", typeof (carrito));
+    setCarritoString(JSON.stringify(carrito))
+    console.log("carrito string: ", carritoSting)
+
+  }, [carrito, carritoSting])
 
 
 
@@ -108,11 +116,11 @@ const Carrito = () => {
         null
       }
 
-      <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)} >
+      <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)} size={"xl"} >
         <Modal.Content>
           <iframe
             title="CodeIgniter View"
-            src={`https://createtours.com.mx/backend/public/stripe?precio=${granTotal}&description=pagoViaje`}
+            src={`https://createtours.com.mx/backend/public/stripe?precio=${granTotal}&description=${carritoSting}`}
             width="100%"
             height="400px"
           />

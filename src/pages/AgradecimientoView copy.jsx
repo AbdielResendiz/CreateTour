@@ -9,27 +9,18 @@ import { useEffect } from "react";
 const AgradecimientoView = () => {
 
     const { borrarTodoCarrito } = useUser();
+    useEffect(() => {
+        borrarTodoCarrito();
+    }, [])
+
+    borrarTodoCarrito();
+
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const handleMessage = (event) => {
-            // Verifica si el mensaje indica que la operación se ha completado
-            if (event.data && event.data.operacionCompletada) {
-                // Operación de pago completada, ahora puedes borrar el carrito
-                borrarTodoCarrito();
-                // Redirige a la página de agradecimiento
-                navigate("/Gracias");
-            }
-        };
-
-        // Agrega el event listener al montar el componente
-        window.addEventListener("message", handleMessage);
-
-        // Limpia el event listener al desmontar el componente
-        return () => {
-            window.removeEventListener("message", handleMessage);
-        };
-    }, [borrarTodoCarrito, navigate]);
+    const handleInicioClick = () => {
+        // Navegar de nuevo al inicio
+        navigate("/");
+    };
 
 
 
