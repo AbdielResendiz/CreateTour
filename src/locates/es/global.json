@@ -86,5 +86,30 @@
         "listaCarrito": {
             "pagar": "Pagar"
         }
+    },
+    "blog": {
+        "titulo": "¡Bienvenido a nuestro Blog!",
+        "subtitulo": "¡Explora artículos interesantes sobre diversos temas. ¡Esperamos que disfrutes de tu lectura!"
+    },
+    "viaje": {
+        "h": "Horas",
+        "desc": "Descripción",
+        "salida": "Salida y Regreso",
+        "intinerario": "Intinerario",
+        "incluye": "¿Qué incluye y  qué no?",
+        "info": "Información adicional",
+        "map": "Mapa",
+        "load": "Cargando"
+    },
+    "FAQ": {
+        "title": "Preguntas Frecuentes",
+        "p1": "¿Cómo puedo reservar experiencias en Cancún a través de su plataforma en línea?",
+        "r1": "En CREATE TOURS CANCUN, descubrirás una amplia variedad de destinos turísticos, excursiones y actividades para tus vacaciones. Contamos con muchas opciones en nuestro catálogo, organizadas por categorías generales como Zonas Arqueológicas y Parques Temáticos, con subcategorías específicas como Chichén Itzá y Xcaret. Elige el tour que te interesa, haz clic en 'Reservar', selecciona la fecha, número de viajeros y horario deseado. Completa un sencillo formulario, realiza el pago y recibirás la confirmación de tu compra. Posteriormente, obtendrás tu pase de abordar por correo con detalles de la actividad.",
+        "p2": "¿Ya tengo mi pase de abordar para el tour en Cancún, y ahora qué debo hacer?",
+        "r2": "Imprime el pase, o llevalo en tu teléfono, lee los términos y condiciones y llévalo contigo al tour. Es obligatorio presentar el pase el día del evento. Encuentra detalles como el horario de recogida y el punto de encuentro en el pase. Ante cualquier duda, comunícate con nosotros por teléfono o chat.",
+        "p3": "¿Necesito tarjeta de crédito o débito para comprar experiencias en su plataforma?",
+        "r3": "No es necesario. Aceptamos pagos con tarjeta de débito, crédito y PayPal. Además, ofrecemos alternativas a través de nuestro call center para pagos en territorio mexicano, incluyendo ventanilla bancaria, transferencia electrónica, depósito en tiendas OXXO y pagos diferidos.",
+        "p4": "¿Es seguro proporcionar mis datos en su plataforma?",
+        "r4": "Sí, Create Tours te garantiza la seguridad de tus datos. Contamos con un certificado de seguridad que encripta tu información antes de llegar a nuestras bases de datos. Tu privacidad es nuestra prioridad."
     }
 }

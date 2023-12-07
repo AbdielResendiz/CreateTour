@@ -87,5 +87,30 @@
         "listaCarrito": {
             "pagar": "Pay"
         }
+    },
+    "blog": {
+        "titulo": "Welcome to our Blog!",
+        "subtitulo": "Explore interesting articles on various topics. We hope you enjoy your reading!"
+    },
+    "viaje": {
+        "h": "Hours",
+        "desc": "Description",
+        "salida": "Departure and Return",
+        "intinerario": "Itinerary",
+        "incluye": "What's Included and What's Not?",
+        "info": "Additional Information",
+        "map": "Map",
+        "load": "Loading"
+    },
+    "FAQ": {
+        "title": "Frequently Asked Questions",
+        "p1": "How can I book experiences in Cancun through your online platform?",
+        "r1": "At CREATE TOURS CANCUN, you'll discover a wide variety of tourist destinations, excursions, and activities for your vacation. We have many options in our catalog, organized by general categories such as Archaeological Zones and Theme Parks, with specific subcategories such as Chichén Itzá and Xcaret. Choose the tour you're interested in, click 'Book,' select the date, number of travelers, and desired time. Complete a simple form, make the payment, and you'll receive confirmation of your purchase. Subsequently, you'll receive your boarding pass by email with details of the activity.",
+        "p2": "I already have my boarding pass for the tour in Cancun, what do I do next?",
+        "r2": "Print the pass or bring it on your phone, read the terms and conditions, and take it with you on the tour. It is mandatory to present the pass on the day of the event. Find details such as the pickup time and meeting point on the pass. If you have any doubts, contact us by phone or chat.",
+        "p3": "Do I need a credit or debit card to purchase experiences on your platform?",
+        "r3": "It is not necessary. We accept payments with debit cards, credit cards, and PayPal. Additionally, we offer alternatives through our call center for payments in Mexican territory, including bank window, electronic transfer, deposit in OXXO stores, and deferred payments.",
+        "p4": "Is it safe to provide my information on your platform?",
+        "r4": "Yes, Create Tours guarantees the security of your data. We have a security certificate that encrypts your information before reaching our databases. Your privacy is our priority."
     }
 }

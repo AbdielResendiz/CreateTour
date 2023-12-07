@@ -5,8 +5,10 @@ import { useState, useEffect } from "react";
 import fetchPost from "../helper/fetchPost";
 import URL from "../helper/baseURL";
 import PrecioComponent from "../Components/PreciosComponent";
+import { useTranslation } from 'react-i18next'
 
 const DetalleViaje = (props) => {
+  const { t } = useTranslation("global")
   const { id } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -53,7 +55,7 @@ const DetalleViaje = (props) => {
         break;
       case 2:
         content = <VStack>
-          <Text bold fontSize={"lg"}>Intinerario</Text>
+          <Text bold fontSize={"lg"}>{t("viaje.intinerario")}</Text>
           <Text>{viaje.Intinerario}</Text>
         </VStack>;
         break;
@@ -108,15 +110,6 @@ const DetalleViaje = (props) => {
               md: "sm",
               lg: "xl"
             }} color={count === tab ? "#28b5a4" : "black"}
-
-
-
-            // style={{
-            //   fontWeight: 'bold' ,
-            //   color: isHovered || isFocused || isPressed ? '#28b5a4' : 'black',
-            // }}
-
-
             >
               {titulo}
             </Text>

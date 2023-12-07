@@ -29,7 +29,7 @@ const IconTextComponent = ({ icon, text }) => {
 
 const Home = () => {
 
-  const { t } = useTranslation("global")
+  const { t } = useTranslation("global");
 
   const navigate = useNavigate();
 

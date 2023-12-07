@@ -14,7 +14,7 @@ const Tours = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(`/trip/3`);
+        navigate(`/trip/3/Xplor%20Adventure%20Park`);
     };
 
 

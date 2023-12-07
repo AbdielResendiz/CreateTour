@@ -34,6 +34,7 @@ import AgradecimientoView from "./pages/AgradecimientoView";
 
 import global_en from './locates/en/global.json'
 import global_es from './locates/es/global.json'
+import FAQ from "./pages/FAQ";
 
 i18next.init({
   interpolation: { escapeValue: false },
@@ -159,6 +160,7 @@ export default function App() {
                   <Route path="Return" element={<Return />} />
                   <Route path="Administrador" element={<AdminPermiso />} />
                   <Route path="Gracias" element={<AgradecimientoView />} />
+                  <Route path="FAQ" element={<FAQ />} />
                   <Route path="*" element={<NoPage />} />
                 </Route>
 

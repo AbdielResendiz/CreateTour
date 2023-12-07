@@ -6,7 +6,7 @@ import { IconContext } from "react-icons";
 import { TiShoppingCart } from "react-icons/ti";
 import { useUser } from "../helper/UserContext";
 import { useState, useEffect } from "react";
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const { t } = useTranslation("global");
@@ -155,6 +155,7 @@ const Header = () => {
               :
               null}
           </HStack>
+          <CustomLink to="/FAQ" text="FAQ" />
 
 
         </HStack>

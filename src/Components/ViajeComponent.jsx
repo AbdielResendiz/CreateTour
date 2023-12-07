@@ -51,16 +51,17 @@ const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
         <Center py={3}>
           <Text bold fontSize={"xl"} >${precio}USD</Text>
         </Center>
+      </Pressable>
 
-        {/* <Button mx={2} onPress={()=>navigate(`/trip/${id}/${titulo}/${duracion}` )} >
+      {/* <Button mx={2} onPress={()=>navigate(`/trip/${id}/${titulo}/${duracion}` )} >
       Ver más
     </Button> */}
 
 
-        <Button mx={2} onPress={() => handleClick()} >
-          {t('viajeComponent.boton')}
-        </Button>
-      </Pressable>
+      <Button mx={2} onPress={() => handleClick()} >
+        {t('viajeComponent.boton')}
+      </Button>
+
 
     </VStack>
   );
