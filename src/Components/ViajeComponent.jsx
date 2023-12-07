@@ -4,11 +4,14 @@ import { IoLocationOutline } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { FaRegClock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next'
 
 
 
 
 const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
+  const { t } = useTranslation("global")
+
 
   //para navegar a otras vistas
   const navigate = useNavigate();
@@ -41,7 +44,7 @@ const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
           <IconContext.Provider value={{ color: "#44c5d3", size: "1.3em" }}>
             <FaRegClock />
           </IconContext.Provider>
-          <Text fontSize={"md"} pb={4} px={2} marginTop={-1}>{duracion} Horas</Text>
+          <Text fontSize={"md"} pb={4} px={2} marginTop={-1}> {duracion + ' ' + t('viajeComponent.horas')}</Text>
         </HStack>
 
         <Divider w="80%" alignSelf={"center"} />
@@ -55,7 +58,7 @@ const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
 
 
         <Button mx={2} onPress={() => handleClick()} >
-          Ver más
+          {t('viajeComponent.boton')}
         </Button>
       </Pressable>
 

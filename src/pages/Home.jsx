@@ -6,10 +6,12 @@ import { GiPalmTree } from "react-icons/gi";
 import { BsBoxSeam } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next'
 import "../App.css"
 
 
 const IconTextComponent = ({ icon, text }) => {
+
   return (
     <Stack direction="column" >
       <Center>
@@ -27,6 +29,7 @@ const IconTextComponent = ({ icon, text }) => {
 
 const Home = () => {
 
+  const { t } = useTranslation("global")
 
   const navigate = useNavigate();
 
@@ -40,8 +43,8 @@ const Home = () => {
 
       {/* ICONOS */}
       <Stack direction={["column", "column", "row"]} justifyContent={"center"} space={12} p={10}>
-        <IconTextComponent icon={<AiOutlineLike />} text="+20 DESTINOS" />
-        <IconTextComponent icon={<GiPalmTree />} text="RESERVAS SEGURAS" />
+        <IconTextComponent icon={<AiOutlineLike />} text={t("mainSection.icono1")} />
+        <IconTextComponent icon={<GiPalmTree />} text={t("mainSection.icono2")} />
         <IconTextComponent icon={<BsBoxSeam />} text="24/7" />
       </Stack>
 
@@ -50,10 +53,9 @@ const Home = () => {
 
           <Flex w="60%" flexDirection="column" justifyContent="flex-start" mt={56} ml={12}>
             <Text fontSize={["lg", "xl", "2xl", "4xl"]} color={"#494d41"}  >CREATE TOURS</Text>
-            <Text bold fontSize={["md", "lg", "lg", "2xl"]}  >¡QUIENES SOMOS!</Text>
+            <Text bold fontSize={["md", "lg", "lg", "2xl"]}  >{t("mainSection.quienes")}</Text>
             <Text fontSize={["md", "md", "lg", "xl"]} color={"#494d41"} pr={12} bg={"white"} textAlign={"justify"}  >
-              En CREATE TOURS creamos recorridos seguros, confiables, pero sobre todo inolvidables,
-              que hacen que nuestros usuarios vivan experiencias a lo grande en cada uno de sus destinos.
+              {t("mainSection.about")}
             </Text>
           </Flex>
 
@@ -87,7 +89,8 @@ const Home = () => {
         </ZStack>
         <Center mt={24}>
           <Text fontSize={["xl", "4xl", "4xl", "6xl"]} >
-            DISFRUTA LA RIVERA MAYA</Text>
+            {t("mainSection.disfruta")}
+          </Text>
         </Center>
 
       </Box>
@@ -98,8 +101,7 @@ const Home = () => {
         }} alt="Alternate Text" width={72} height={40} resizeMode="cover" />
         <Center >
           <Text width={"80%"} fontSize={["lg", "lg", "xl", "2xl"]}  >
-            En CREATE TOURS creamos recorridos seguros, confiables, pero sobre todo inolvidables,
-            que hacen que nuestros usuarios vivan experiencias a lo grande en cada uno de sus destinos.
+            {t("mainSection.about")}
           </Text>
 
         </Center>
@@ -109,7 +111,7 @@ const Home = () => {
       <Center py={10}>
         <VStack>
           <Text fontSize={["xl", "2xl", "2xl", "4xl"]} >
-            UNA AVENTURA GARANTIZADA
+            {t("mainSection.slogan")}
           </Text>
           <Divider thickness={2} bg="#449bab" />
         </VStack>
@@ -120,7 +122,7 @@ const Home = () => {
       <Center>
         <Button size={"lg"} colorScheme={"amber"} my={5}
           onPress={() => { navigate('/Tours') }}>
-          Ver todos los Tours
+          {t("mainSection.verTodos")}
         </Button>
       </Center>
     </Flex>

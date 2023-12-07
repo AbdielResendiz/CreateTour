@@ -6,8 +6,10 @@ import { IconContext } from "react-icons";
 import { TiShoppingCart } from "react-icons/ti";
 import { useUser } from "../helper/UserContext";
 import { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next'
 
 const Header = () => {
+  const { t } = useTranslation("global");
   const { carrito } = useUser();
   const [carritoCantidad, setCarritoCantidad] = useState(0);
   useEffect(() => {
@@ -130,11 +132,11 @@ const Header = () => {
         </Stack>
 
         <HStack justifyContent="center" px={[1, 2, 3, 4]} mb={0} py={3} bg={"white"}>
-          <CustomLink to="/" text="Inicio" />
+          <CustomLink to="/" text={t("menu.inicio")} />
           <CustomLink to="/Tours" text="Tours" />
           <CustomLink to="/Blog" text="Blog" />
-          <CustomLink to="/Nosotros" text="Nosotros" />
-          <CustomLink to="/Contacto" text="Contacto" />
+          <CustomLink to="/Nosotros" text={t("menu.Nosotros")} />
+          <CustomLink to="/Contacto" text={t("menu.Contacto")} />
           <HStack px={[1, 2, 3, 4]} shadow={3} borderRadius={10} >
             <Center>
               <IconContext.Provider value={{ color: "#449bab", size: "1.4rem" }}>
@@ -143,7 +145,7 @@ const Header = () => {
 
             </Center>
 
-            <Link to="/Carrito" style={linkStyle}><Text fontSize={["sm", "md", "lg", "xl"]}>Carrito</Text></Link>
+            <Link to="/Carrito" style={linkStyle}><Text fontSize={["sm", "md", "lg", "xl"]}>{t("menu.Carrito")}</Text></Link>
             {carritoCantidad > 0 ?
               <Center>
                 <Center bgColor={"amber.400"} size={[4, 4, 4, 4]} mx={[1, 1, 2, 2]} p={[1, 2, 3, 4]} borderRadius={100}>

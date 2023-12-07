@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Center, Text, Pressable, VStack, Flex, Stack, Image, HStack } from "native-base";
+import { Center, Text, Pressable, VStack, Stack, Image, HStack } from "native-base";
 import { BiLogIn } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import whatsapp from "../Lotties/whatsapp.json"
 import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { useTranslation } from 'react-i18next'
 
 const Footer = () => {
 
@@ -25,7 +26,7 @@ const Footer = () => {
     const CustomLink = ({ to, text }) => {
         return (
             <Link to={to} style={{ decoration: "none" }} >
-                <Text p={[1, 2, 3, 4]} fontSize={["sm", "md", "lg", "xl"]} color={"#f3f3f3"} >{text}</Text>
+                <Text p={[1, 2, 3, 4]} fontSize={["sm", "sm", "md", "lg"]} color={"#f3f3f3"} >{text}</Text>
             </Link>
         );
     };
@@ -55,12 +56,58 @@ const Footer = () => {
         window.open(facebookUrl, '_blank');
     };
 
+    const { t, i18n } = useTranslation("global");
+
     return (
         <VStack>
-            <Pressable justifyContent={"flex-start"} w={[20, 20, 32, 40]} h={[20, 20, 32, 40]} left={[5, 5, 8, 10]} bottom={10} zIndex={9} position={"fixed"}
-                onPress={() => handlePressWA()}>
-                <Lottie animationData={whatsapp} loop={true} />
-            </Pressable>
+            <HStack bottom={10} zIndex={9} position={"fixed"} alignContent={"space-between"} w="100%"  >
+                <Pressable justifyContent={"flex-start"} w={[20, 20, 32, 40]} h={[20, 20, 32, 40]} left={[5, 5, 8, 10]}
+                    onPress={() => handlePressWA()}>
+                    <Lottie animationData={whatsapp} loop={true} />
+                </Pressable>
+
+                <VStack justifyContent="flex-end" marginLeft="auto" borderRadius={10} bg={"#dfdfdf"} borderWidth={1} borderColor={"muted.400"}>
+
+                    <Text borderTopRadius={10} p={1}> {t("header.chooseLanguage")}</Text>
+                    <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("en")} px={1} py={3} >
+                        <HStack justifyContent={"center"}>
+                            <Image
+                                source={{
+                                    uri: "https://createtours.com.mx/pictures/usa.png"
+                                }}
+                                alt="English"
+                                size="xs"
+
+                            />
+                            <Center>
+                                <Text textAlign={"center"} justifyContent={"center"} bold p={3}>EN</Text>
+
+                            </Center>
+                        </HStack>
+                    </Pressable>
+
+                    <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("es")} borderBottomRadius={10} px={1} py={3}  >
+                        <HStack justifyContent={"center"}>
+                            <Image
+                                source={{
+                                    uri: "https://createtours.com.mx/pictures/mexico.png"
+                                }}
+                                alt="Spanish"
+                                size="xs"
+
+                            />
+                            <Center>
+                                <Text textAlign={"center"} justifyContent={"center"} bold p={3}>ES</Text>
+
+                            </Center>
+                        </HStack>
+                    </Pressable>
+
+
+                </VStack>
+
+            </HStack>
+
             <Stack direction={["column", "column", "row", "row"]} width={"100%"} bg="#101010" h={[96, 96, 40, 40]} justifyContent={"space-between"}>
                 <Image bg={"#ffffff"}
                     source={{
@@ -89,21 +136,21 @@ const Footer = () => {
 
                 <HStack py={4} alignSelf={"center"}>
                     <Stack direction={"column"}>
-                        <Text color={"#ffffff"}  >MENU PRINCIPAL</Text>
-                        <CustomLink to="/" text="Inicio" />
+                        <Text color={"#ffffff"} bold >MENU</Text>
+                        <CustomLink to="/" text={t("menu.inicio")} />
                         <CustomLink to="/Tours" text="Tours" />
-                        <CustomLink to="/Carrito" text="Carrito" />
+                        <CustomLink to="/Carrito" text={t("menu.Carrito")} />
                     </Stack>
                     <Stack direction={"column"}>
                         <Text bold >.</Text>
                         <CustomLink to="/Blog" text="Blog" />
-                        <CustomLink to="/Nosotros" text="Nosotros" />
-                        <CustomLink to="/Contacto" text="Contacto" />
+                        <CustomLink to="/Nosotros" text={t("menu.Nosotros")} />
+                        <CustomLink to="/Contacto" text={t("menu.Contacto")} />
                     </Stack>
                 </HStack>
 
                 <Pressable onPress={() => handlePressLP()} bg={"#101010"}>
-                    <Text color="#ffffff" fontSize={"sm"} mt={3} textAlign={"center"}>Creado y diseñado por:</Text>
+                    <Text color="#ffffff" fontSize={"sm"} mt={3} textAlign={"center"}>{t("menu.creado")}</Text>
                     <Image
                         source={{
                             uri: "https://lpmarketinggroup.com.mx/wp-content/uploads/2023/04/LP_Logo-LP.png"
@@ -117,7 +164,7 @@ const Footer = () => {
 
 
                 <Center bg={"#101010"}>
-                    <Pressable onPress={() => { navigate(`/Login`) }} mr={10} p={3}>
+                    <Pressable onPress={() => { navigate(`/Login`) }} mr={40} p={3}>
 
                         <IconContext.Provider value={{ color: "#edf5f7", size: "3rem" }}>
                             <BiLogIn />
@@ -125,6 +172,9 @@ const Footer = () => {
 
                     </Pressable>
                 </Center>
+
+
+
 
             </Stack>
 

@@ -1,0 +1,90 @@
+{
+    "header": {
+        "chooseLanguage": "Elige el idioma:"
+    },
+    "mainSection": {
+        "title": "Creación de aplicaciones React multilingües con react-i18next: Guía paso a paso",
+        "icono1": "+20 DESTINOS",
+        "icono2": "RESERVAS SEGURAS",
+        "about": "En CREATE TOURS creamos recorridos seguros, confiables, pero sobre todo inolvidables, que hacen que nuestros usuarios vivan experiencias a lo grande en cada uno de sus destinos.",
+        "quienes": "¡QUIENES SOMOS!",
+        "disfruta": "DISFRUTA LA RIVERA MAYA",
+        "slogan": "UNA AVENTURA GARANTIZADA",
+        "verTodos": "Ver todos los Tours"
+    },
+    "viajeComponent": {
+        "boton": "Ver más",
+        "horas": "Horas"
+    },
+    "menu": {
+        "inicio": "Inicio",
+        "Nosotros": "Nosotros",
+        "Contacto": "Contacto",
+        "Carrito": "Carrito",
+        "creado": "Creado y diseñado por:"
+    },
+    "tours": {
+        "titulo": "NUEVAS EXPERIENCIAS",
+        "descripcion": "Los espectaculares escenarios naturales que rodean la Riviera Maya se exhiben en Xplor. ",
+        "costo": "• Costo $153.00 USD",
+        "hora": "• Hora de salida 7:00 AM",
+        "duracion": "• Duración: 6 horas ",
+        "incluye": "• Boleto de admisión incluido",
+        "verTour": "VER TOUR"
+    },
+    "nosotros": {
+        "nosotrosDes": "Tu puerta de entrada a experiencias de viaje únicas y memorables! Fundada con pasión y compromiso, nuestra empresa se dedica a ofrecerte aventuras excepcionales que capturarán tu corazón y desatarán tu espíritu explorador.",
+        "mision": "MISIÓN",
+        "misionDes": "Ofrecerte una experiencia única, con una atención de calidad que haga de tu recorrido toda una aventura inolvidable de inicio a fin.",
+        "vision": "VISIÓN",
+        "visionDes": "Posicionarnos como una de las mejores agencias generadoras de experiencia reconocidas en la Rivera Maya que brinda confianza, seguridad y un servicio de calidad a todos aquellos que la aventura les llama.",
+        "valores": "Valores",
+        "valor1": "Amabilidad",
+        "valor2": "Calidad y Servicio",
+        "valor3": "Puntualidad y Confiabilidad",
+        "valor4": "Diversión y trabajo en equipo",
+        "valor5": "Honestidad y Transparencia",
+        "valor6": "Innovación e inspiración",
+        "valor7": "Integridad y Respeto",
+        "valor8": "Pasión y Compromiso"
+    },
+    "contacto": {
+        "titulo": "¡CONTÁCTANOS!",
+        "parrafo1": {
+            "text": "¿Tienes preguntas, comentarios o estás listo para reservar tu próxima aventura? ¡Nos encantaría saber de ti! En Create Tours, estamos comprometidos a brindarte experiencias de viaje inolvidables. Nuestro equipo está aquí para ayudarte en cada paso del camino."
+        },
+        "parrafo2": {
+            "text": "Completa nuestro sencillo formulario de contacto a continuación y nos pondremos en contacto contigo lo antes posible. Tu satisfacción y comodidad son nuestra máxima prioridad."
+        },
+        "form": {
+            "nombre": {
+                "label": "Nombre",
+                "placeholder": "Nombre"
+            },
+            "correo": {
+                "label": "Correo",
+                "placeholder": "Email"
+            },
+            "telefono": {
+                "label": "Teléfono",
+                "placeholder": "Teléfono"
+            },
+            "mensaje": {
+                "label": "Mensaje",
+                "placeholder": "Escribe tu mensaje aquí"
+            },
+            "enviar": "Enviar"
+        }
+    },
+    "carritoVista": {
+        "bienvenida": "Bienvenido a tu carrito de compras",
+        "carritoVacio": {
+            "icono": "Tu carrito está vacío, te invitamos a explorar los distintos tours que tenemos.",
+            "texto": "Nuestros Tours:",
+            "verTodos": "Ver todos"
+        },
+        "listaCarrito": {
+            "pagar": "Pagar"
+        }
+    }
+}

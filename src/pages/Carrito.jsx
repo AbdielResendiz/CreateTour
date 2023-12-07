@@ -6,11 +6,11 @@ import { IconContext } from "react-icons";
 import ViajesAleatoreosComponent from '../Components/ViajesAleatoreosComponent';
 import { TbShoppingCartSearch } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
-
+import { useTranslation } from 'react-i18next';
 
 
 const Carrito = () => {
-
+  const { t } = useTranslation("global");
   //para navegar a otras vistas
   const navigate = useNavigate();
 
@@ -50,8 +50,7 @@ const Carrito = () => {
   return (
     <Flex mt={10}>
       <Center>
-        <Heading alignContent={"center"}>Bienvenido a tu carrito de compras</Heading>
-
+        <Heading alignContent="center">{t("carritoVista.bienvenida")}</Heading>
       </Center>
 
 
@@ -66,12 +65,17 @@ const Carrito = () => {
           </Center>
 
 
-          <Text mb={12} alignSelf={"center"} fontSize={"2xl"}>Tu carrito está vacío, te invitamos a explorar los distintos tours que tenemos.</Text>
+          <Text mb={12} alignSelf={"center"} fontSize={"2xl"}> {t("carritoVista.carritoVacio.icono")}</Text>
           <Divider />
-          <Text my={5} alignSelf={"center"} fontSize={"2xl"} bold >Nuestros Tours:</Text>
+          <Text my={5} alignSelf={"center"} fontSize={"2xl"} bold >{t("carritoVista.carritoVacio.texto")}</Text>
           <ViajesAleatoreosComponent />
-          <Button size={"lg"} w={40} h={10} alignSelf={"center"} colorScheme={"amber"}
-            onPress={() => { handleClick() }}> Ver todos los Tours</Button>
+          <Button size={"lg"} alignSelf={"center"} textAlign={"center"} colorScheme={"amber"}
+            onPress={() => { handleClick() }}>
+            <Center>
+              <Text bold color={"#ffffff"}>
+                {t("mainSection.verTodos")}
+              </Text>
+            </Center></Button>
         </VStack>
       }
 
@@ -104,8 +108,8 @@ const Carrito = () => {
 
         <>
           <Center>
-            <Button onPress={() => setModalVisible(true)} w={64} mb={10} alignSelf={"center"} justifyContent={"center"}>
-              Pagar
+            <Button onPress={() => setModalVisible(true)} size={"md"} alignSelf={"center"} justifyContent={"center"}>
+              {t("carritoVista.listaCarrito.pagar")}
             </Button>
           </Center>
 

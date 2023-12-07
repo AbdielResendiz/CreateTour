@@ -1,8 +1,9 @@
 import React from 'react';
 import { Center, Image, Text, View, Stack, VStack } from 'native-base';
-
+import { useTranslation } from 'react-i18next';
 
 const Nosotros = () => {
+  const { t } = useTranslation("global");
 
   const NosotrosComponent = ({ subtitle, description, imageUrl, mr }) => {
     return (
@@ -38,64 +39,62 @@ const Nosotros = () => {
 
   return (
 
-    <View direction={"column"} alignItems="center" py={10} w="100%" flex={1}>
+    <View direction="column" alignItems="center" py={10} w="100%" flex={1}>
       <NosotrosComponent
-        subtitle={"NOSOTROS"}
-        description={"Tu puerta de entrada a experiencias de viaje únicas y memorables! Fundada con pasión y compromiso, nuestra empresa se dedica a ofrecerte aventuras excepcionales que capturarán tu corazón y desatarán tu espíritu explorador."}
+        subtitle={t("menu.Nosotros")}
+        description={t("nosotros.nosotrosDes")}
         imageUrl={"https://createtours.com.mx/backend/public/Imagenes/logo-create.svg"}
-        resize={"cover"} mr={3} />
+        resize={"cover"}
+        mr={3}
+      />
 
-      <Stack direction={"row"} w={"100%"}>
+      <Stack direction="row" w="100%">
         <Image
           source={{ uri: "https://createtours.com.mx/backend/public/Imagenes/Mision.png" }}
           alt="Alternate Text"
-          width={"60%"}
+          width="60%"
           height={96}
           resizeMode="cover"
         />
 
-
-        <VStack w={"35%"} p={10} >
-          <Text fontSize={["md", "lg", "xl", "2xl"]} color={"#494d41"} >CREATE TOURS</Text>
-          <Text bold fontSize={["xl", "2xl", "4xl", "5xl"]}   >MISIÓN</Text>
+        <VStack w="35%" p={10}>
+          <Text fontSize={["md", "lg", "xl", "2xl"]} color={"#494d41"}>
+            CREATE TOURS
+          </Text>
+          <Text bold fontSize={["xl", "2xl", "4xl", "5xl"]}>
+            {t("nosotros.mision")}
+          </Text>
           <Text fontSize={["md", "md", "lg", "lg"]} color={"#494d41"} textAlign={"justify"}>
-            Ofrecerte una experiencia única, con una atención de calidad que
-            haga de tu recorrido toda una aventura inolvidable de inicio a fin.
+            {t("nosotros.misionDes")}
           </Text>
         </VStack>
       </Stack>
 
-
       <NosotrosComponent
-        subtitle={"VISIÓN"}
-        description={"Posicionarnos como una de las mejores agencias generadoras de experiencia reconocidas en la Rivera Maya que brinda confianza, seguridad y un servicio de calidad a todos aquellos que la aventura les llama."}
+        subtitle={t("nosotros.vision")}
+        description={t("nosotros.visionDes")}
         imageUrl={"https://createtours.com.mx/backend/public/Imagenes/Vision.png"}
-        mr={"1rem"} />
+        mr={"1rem"}
+      />
 
-
-
-
-
-
-      <VStack flex={1} space={5} mb={5} >
-        <Text bold fontSize={"6xl"} textAlign={"center"} >Valores</Text>
+      <VStack flex={1} space={5} mb={5}>
+        <Text bold fontSize={"6xl"} textAlign={"center"}>
+          {t("nosotros.valores")}
+        </Text>
         <Stack direction={["column", "column", "row", "row"]} space={[3, 3, 4, 5]}>
-          <Valores valor={"Amabilidad"} />
-          <Valores valor={"Calidad y Servicio"} />
-          <Valores valor={"Puntualidad y Confiabilidad"} />
-          <Valores valor={"Deversión y trabajo en equipo"} />
+          <Valores valor={t("nosotros.valor1")} />
+          <Valores valor={t("nosotros.valor2")} />
+          <Valores valor={t("nosotros.valor3")} />
+          <Valores valor={t("nosotros.valor4")} />
         </Stack>
 
         <Stack direction={["column", "column", "row", "row"]} space={5}>
-          <Valores valor={"Honestidad y Transparencia"} />
-          <Valores valor={"Innovación e inspiración"} />
-          <Valores valor={"Integridad y Respeto"} />
-          <Valores valor={"Pasión y Compromiso"} />
+          <Valores valor={t("nosotros.valor5")} />
+          <Valores valor={t("nosotros.valor6")} />
+          <Valores valor={t("nosotros.valor7")} />
+          <Valores valor={t("nosotros.valor8")} />
         </Stack>
-
       </VStack>
-
-
     </View>
 
   );

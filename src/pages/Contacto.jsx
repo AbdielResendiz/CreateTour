@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { VStack, Input, FormControl, TextArea, Button, View, Center, Text } from 'native-base';
 import URL from '../helper/baseURL';
 import fetchPost from '../helper/fetchPost';
-
+import { useTranslation } from 'react-i18next';
 
 const Contacto = () => {
-
+  const { t } = useTranslation("global");
 
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
@@ -38,78 +38,53 @@ const Contacto = () => {
 
 
   return (
-    <View w={"100%"} mt={10}>
-
+    <View w="100%" mt={10}>
       <Center>
-        <Text bold fontSize={"2xl"}>
-          ¡CONTÁCTANOS!
+        <Text bold fontSize="2xl">
+          {t("contacto.titulo")}
         </Text>
       </Center>
 
       <Center mb={10} mt={10}>
-        <Text fontSize={"xl"} textAlign={"center"} >
-          ¿Tienes preguntas, comentarios o estás listo para reservar tu próxima aventura?
-          ¡Nos encantaría {`\n`} saber de ti! En Create Tours, estamos comprometidos a brindarte experiencias de viaje {`\n`} inolvidables.
-          Nuestro equipo está aquí para ayudarte en cada paso del camino.
+        <Text fontSize="xl" textAlign="center">
+          {t("contacto.parrafo1.text")}
         </Text>
       </Center>
 
       <Center>
-        <Text fontSize={"lg"} textAlign={"center"} w={"80%"}>
-          Completa nuestro sencillo formulario de contacto a continuación y nos pondremos en contacto contigo lo antes posible. Tu satisfacción y comodidad son nuestra máxima prioridad.
+        <Text fontSize="lg" textAlign="center" w="80%">
+          {t("contacto.parrafo2.text")}
         </Text>
       </Center>
 
       <Center pb={10}>
-
         {/* FORMULARIO CONTACTO */}
         <VStack width="80%" mx="3" maxW="80%">
           <FormControl isRequired>
-            <FormControl.Label _text={{ bold: true }}>Nombre</FormControl.Label>
-            <Input
-              value={nombre}
-              placeholder="Nombre"
-              onChangeText={(e) => setNombre(e)}
-            />
+            <FormControl.Label _text={{ bold: true }}>{t("contacto.form.nombre.label")}</FormControl.Label>
+            <Input value={nombre} placeholder={t("contacto.form.nombre.placeholder")} onChangeText={(e) => setNombre(e)} />
           </FormControl>
 
           <FormControl isRequired>
-            <FormControl.Label _text={{ bold: true }}>Correo</FormControl.Label>
-            <Input
-              value={email}
-              type="email"
-              placeholder="Email"
-              onChangeText={(e) => setEmail(e)}
-            />
+            <FormControl.Label _text={{ bold: true }}>{t("contacto.form.correo.label")}</FormControl.Label>
+            <Input value={email} type="email" placeholder={t("contacto.form.correo.placeholder")} onChangeText={(e) => setEmail(e)} />
           </FormControl>
 
           <FormControl isRequired>
-            <FormControl.Label _text={{ bold: true }}>Teléfono</FormControl.Label>
-            <Input
-              value={telefono}
-              placeholder="Teléfono"
-              onChangeText={(e) => setTelefono(e)}
-            />
+            <FormControl.Label _text={{ bold: true }}>{t("contacto.form.telefono.label")}</FormControl.Label>
+            <Input value={telefono} placeholder={t("contacto.form.telefono.placeholder")} onChangeText={(e) => setTelefono(e)} />
           </FormControl>
 
           <FormControl isRequired>
-            <FormControl.Label _text={{ bold: true }}>Mensaje</FormControl.Label>
-            <TextArea
-              value={mensaje}
-              placeholder="Escribe tu mensaje aquí"
-              onChangeText={(e) => setMensaje(e)}
-            />
+            <FormControl.Label _text={{ bold: true }}>{t("contacto.form.mensaje.label")}</FormControl.Label>
+            <TextArea value={mensaje} placeholder={t("contacto.form.mensaje.placeholder")} onChangeText={(e) => setMensaje(e)} />
           </FormControl>
 
-          <Button colorScheme="amber" onPress={() => handleSubmit()} my={4} size={"lg"} py={3} >
-            Enviar
+          <Button colorScheme="amber" onPress={() => handleSubmit()} my={4} size="lg" py={3}>
+            {t("contacto.form.enviar")}
           </Button>
         </VStack>
-
-
       </Center>
-
-
     </View>
   );
 };
