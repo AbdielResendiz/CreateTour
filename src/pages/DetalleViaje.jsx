@@ -8,7 +8,12 @@ import PrecioComponent from "../Components/PreciosComponent";
 import { useTranslation } from 'react-i18next'
 
 const DetalleViaje = (props) => {
-  const { t } = useTranslation("global")
+  const { t } = useTranslation("global");
+
+
+
+
+
   const { id } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +45,13 @@ const DetalleViaje = (props) => {
 
   useEffect(() => {
     verViaje()
-  }, [])
+  }, []);
+
+  // Construir la clave de traducción dinámicamente
+  const claveDeTraduccion = `viajes.viaje${viaje.ID}.map`;
+
+  // Usar la clave construida en la función t()
+  const textoMapa = t(claveDeTraduccion);
 
 
 
@@ -51,31 +62,33 @@ const DetalleViaje = (props) => {
 
     switch (n) {
       case 1:
-        content = <Text>{viaje.Salida} {"\n"} {viaje.Regreso}</Text>;
+        content = <Text>{t(`viajes.viaje${viaje.ID}.salida`)} {"\n"} {t(`viajes.viaje${viaje.ID}.regreso`)}</Text>;
         break;
       case 2:
         content = <VStack>
           <Text bold fontSize={"lg"}>{t("viaje.intinerario")}</Text>
-          <Text>{viaje.Intinerario}</Text>
+          <Text>{t(`viajes.viaje${viaje.ID}.intinerario`)}</Text>
         </VStack>;
         break;
       case 3:
         content = <VStack>
-          <Text bold>El costo Incluye</Text>
+          <Text bold>{t("viaje.incl")}</Text>
           <Text>
-            {viaje.Incluido}
+            {t(`viajes.viaje${viaje.ID}.incluido`)}
           </Text>
-          <Text bold>El costo NO Incluye</Text>
+          <Text bold>{t("viaje.noincl")}</Text>
           <Text>
-            {viaje.NoIncluido}
+            {t(`viajes.viaje${viaje.ID}.noIncluido`)}
           </Text>
         </VStack>;
         break;
       case 4:
-        content = <Text>{viaje.InfoAdicional}</Text>;
+        content = <Text>{t(`viajes.viaje${viaje.ID}.infoAdicional`)}</Text>;
         break;
       case 5:
         content = <Box ml={[-10, -5, 0, 0]} w={[96, 480, 768, 992]} h={[96, 96, 480, 768]}>
+          {/* Prueba variable bilingue */}
+          <Text>    </Text>
           <iframe
             title="Mapa  de Google"
             src={viaje.Maps}
@@ -89,7 +102,7 @@ const DetalleViaje = (props) => {
         </Box>;
         break;
       default:
-        content = <Text fontSize={["sm", "md", "lg", "lg"]}>{viaje.Descripcion}</Text>;
+        content = <Text fontSize={["sm", "md", "lg", "lg"]}>{t(`viajes.viaje${viaje.ID}.descripcion`)}</Text>;
         break;
     }
 
@@ -125,11 +138,21 @@ const DetalleViaje = (props) => {
     console.log("Tab:  ", tab)
   }, [tab]);
 
+
+
+
+  // TRADUCTOR
+  const idDelViaje = 1; // Puedes establecer este valor dinámicamente
+
+  // Función para obtener la clave de traducción de un viaje por ID
+
+
+
   const Loader = () => {
     return <HStack space={2} mt={10} justifyContent="center">
       <Spinner accessibilityLabel="Loading posts" />
       <Heading color="primary.500" fontSize="md">
-        Cargando
+        {t("viaje.load")}
       </Heading>
     </HStack>;
   };
@@ -183,7 +206,7 @@ const DetalleViaje = (props) => {
                   md: "sm",
                   lg: "md"
                 }} >
-                  Horas
+                  {t("viaje.h")}
                 </Text>
               </Center>
             </VStack>
@@ -205,12 +228,12 @@ const DetalleViaje = (props) => {
             lg: "row"
           }}>
 
-            <CustomPressable count={0} titulo="Descripción" />
-            <CustomPressable count={1} titulo="Salida y Regreso" />
-            <CustomPressable count={2} titulo="Intinerario" />
-            <CustomPressable count={3} titulo="¿Qué incluye y  qué no?" />
-            <CustomPressable count={4} titulo="Información adicional" />
-            <CustomPressable count={5} titulo="Mapa" />
+            <CustomPressable count={0} titulo={t("viaje.desc")} />
+            <CustomPressable count={1} titulo={t("viaje.salida")} />
+            <CustomPressable count={2} titulo={t("viaje.intinerario")} />
+            <CustomPressable count={3} titulo={t("viaje.incluye")} />
+            <CustomPressable count={4} titulo={t("viaje.info")} />
+            <CustomPressable count={5} titulo={t("viaje.map")} />
 
           </Stack>
           <Divider />

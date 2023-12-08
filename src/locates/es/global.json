@@ -99,7 +99,9 @@
         "incluye": "¿Qué incluye y  qué no?",
         "info": "Información adicional",
         "map": "Mapa",
-        "load": "Cargando"
+        "load": "Cargando",
+        "incl": "El costo Incluye:",
+        "noincl": "El costo NO incluye:"
     },
     "FAQ": {
         "title": "Preguntas Frecuentes",
@@ -111,5 +113,223 @@
         "r3": "No es necesario. Aceptamos pagos con tarjeta de débito, crédito y PayPal. Además, ofrecemos alternativas a través de nuestro call center para pagos en territorio mexicano, incluyendo ventanilla bancaria, transferencia electrónica, depósito en tiendas OXXO y pagos diferidos.",
         "p4": "¿Es seguro proporcionar mis datos en su plataforma?",
         "r4": "Sí, Create Tours te garantiza la seguridad de tus datos. Contamos con un certificado de seguridad que encripta tu información antes de llegar a nuestras bases de datos. Tu privacidad es nuestra prioridad."
+    },
+    "viajes": {
+        "viaje1": {
+            "descripcion": "Vivirás una experiencia única en su clase. Una visita guiada al mundialmente famoso sitio arqueológico de Chichen Itzá, localizado en la península de Yucatán, México. Chichen Itzá tiene el título de una de las 7 maravillas del mundo moderno y ha sido nombrado patrimonio de la humanidad por la UNESCO.",
+            "incluido": "Recogida en transportación compartida desde tu hotel.\r\nViaje Redondo a bordo de nuestros autobuses panorámicos de lujo con aire acondicionado.\r\nGuías certificados especializados en arqueología y cultura Maya que te acompañarán durante todo el tour.\r\nExquisito buffet con una gran variedad de comidas típicas de la región.\r\nAcceso guiado (bilingüe) a Chichen Itzá y tiempo libre para pasear y tomar fotos en el sitio arqueológico.\r\nVisita al Cenote “Saamal”, Nadar está permitido (Un costo adicional de 2 dólares es cobrado por el lugar por la renta de chalecos salvavidas.)\r\nBreve visita a la histórica ciudad de Valladolid, Yucatán.",
+            "noIncluido": "Renta de chalecos salvavidas y lockers (2 usd cada uno).\r\nBebidas en el restaurante.\r\nTarifa por el uso de Go Pro, video o cámara profesional (cobrada por el parque en Chichen Itzá).",
+            "intinerario": "08:00 am\r\nSalida a Tour desde nuestra base.\r\nParada breve en caseta de la autopista en caso de ser necesario, antes de emprender nuestro viaje por los caminos Mayas para pasar “al tocador” (Nota: Los Autobuses cuentan con baño propio, pero tal vez necesites un poco de espacio después de una hora de viaje)\r\n11:00 am\r\nLlegada a la Villa Maya, aquí realizaremos la ceremonia de sanación impartida por el “Chaman Maya”; Visita a la tienda de artesanías, en donde encontrarás auténticas obras de arte elaboradas por los artesanos de la zona.\r\nDegustación de Tequilas artesanales de diferentes sabores producto 100% original. Visita a nuestro restaurante “Yaax Kiin”. Nuestro chef Maya nos deleitará con un buffet de comida regional (13Baktun cuenta con su propio restaurante, con la mayor variedad de guisados incluidos en nuestro buffet).\r\n13:00 hrs\r\n2.30 Hrs de Visita al sitio arqueológico de Chichén Itzá. Conocerás cómo vivían los Mayas de aquel entonces, la historia de las edificaciones más importantes de esa grandiosa ciudad incluyendo sus mitos, leyendas y mucha cultura. Servicio guiado (en inglés o español) y despues tendrás tiempo para caminar por tu cuenta en los alrededores y tomar las mejores fotos de tu Tour a Chichen Itzá.\r\nObservaciones:\r\n🔹El sitio arqueológico cuenta con pocas facilidades para acceso en silla de ruedas.\r\n🔹Niños menores de 3 años y con una estatura máxima de 1 metro tienen entrada libre, siempre y cuando vayan en la compañía de un adulto.\r\n🔹Está prohibido el ingreso de mochilas y bolsas de mano dentro de las instalaciones de las áreas arqueológicas por orden oficial del Instituto Nacional de Antropología e Historia (INAH).\r\n16:30 hrs\r\n50 minutos de visita a la asombrosa hacienda colonial “Selva Maya” y nadar en “Cenote Saamal”, tomar fotos y pasar un momento formidable. (La renta de casilleros y chalecos salvavidas es de 2 dólares cada uno, tarifa no incluida en el costo del tour).\r\n18:00 hrs\r\nBreve visita a la plaza del centro de la ciudad de Valladolid, Yucatán. Aquí podrás tener una pequeña probadita de lo que esta hermosa ciudad ofrece. En el centro se encuentra el hermoso parque principal en donde podrás encontrar pequeñas tiendas de bocadillos, antojos. Pregunta a tu guía por los “esquites” “helados” y “marquesitas” ¡son deliciosas!\r\n21:00 hrs\r\nRegreso a tu punto de origen, dejada (drop-off) en tu hotel o punto de encuentro.",
+            "infoAdicional": "✅Dinero extra\r\n✅Ropa clara y ligera\r\n✅Sombrilla, Sombrero o Gorra\r\n✅Pareo, abrigo o frazada para el A/C\r\n✅Repelente de Insectos\r\n✅Protector Solar\r\n✅Calzado cerrado y cómodo\r\n✅Traje de Baño,\r\n✅Toalla\r\n✅Cambio de Ropa",
+            "salida": "Pick Up\r\n(Nuestros horarios son aproximados dependiendo de las condiciones climáticas y de tráfico vehicular) 06:40 am – 07:50 am Pick Ups de Cortesia en transportación compartida (Van o Autobús). Vamos a tu hotel por ti o nos encontramos contigo en uno de nuestros puntos de reunión más cercanos a tu ubicación.",
+            "regreso": "Regreso\r\n21:00 hrs\r\nRegreso a tu punto de origen, dejada (drop-off) en tu hotel o punto de encuentro."
+        },
+        "viaje2": {
+            "descripcion": "Vivirás una experiencia única en su clase. Una visita guiada al mundialmente famoso sitio arqueológico de Chichen Itzá, localizado en la península de Yucatán, México. Chichen Itzá tiene el título de una de las 7 maravillas del mundo moderno y ha sido nombrado patrimonio de la humanidad por la UNESCO.",
+            "incluido": "Recogida en transportación compartida desde tu hotel.\r\nViaje Redondo a bordo de nuestros autobuses panorámicos de lujo con aire acondicionado.\r\nGuías certificados especializados en arqueología y cultura Maya que te acompañarán durante todo el tour.\r\nExquisito buffet con una gran variedad de comidas típicas de la región.\r\nAcceso guiado (bilingüe) a Chichen Itzá y tiempo libre para pasear y tomar fotos en el sitio arqueológico.\r\nVisita al Cenote “Saamal”, Nadar está permitido (Un costo adicional de 2 dólares es cobrado por el lugar por la renta de chalecos salvavidas.)\r\nBreve visita a la histórica ciudad de Valladolid, Yucatán.",
+            "noIncluido": "Renta de chalecos salvavidas y lockers (2 usd cada uno).\r\nBebidas en el restaurante.\r\nTarifa por el uso de Go Pro, video o cámara profesional (cobrada por el parque en Chichen Itzá).",
+            "intinerario": "08:00 am\r\nSalida a Tour desde nuestra base.\r\nParada breve en caseta de la autopista en caso de ser necesario, antes de emprender nuestro viaje por los caminos Mayas para pasar “al tocador” (Nota: Los Autobuses cuentan con baño propio, pero tal vez necesites un poco de espacio después de una hora de viaje)\r\n11:00 am\r\nLlegada a la Villa Maya, aquí realizaremos la ceremonia de sanación impartida por el “Chaman Maya”; Visita a la tienda de artesanías, en donde encontrarás auténticas obras de arte elaboradas por los artesanos de la zona.\r\nDegustación de Tequilas artesanales de diferentes sabores producto 100% original. Visita a nuestro restaurante “Yaax Kiin”. Nuestro chef Maya nos deleitará con un buffet de comida regional (13Baktun cuenta con su propio restaurante, con la mayor variedad de guisados incluidos en nuestro buffet).\r\n13:00 hrs\r\n2.30 Hrs de Visita al sitio arqueológico de Chichén Itzá. Conocerás cómo vivían los Mayas de aquel entonces, la historia de las edificaciones más importantes de esa grandiosa ciudad incluyendo sus mitos, leyendas y mucha cultura. Servicio guiado (en inglés o español) y después tendrás tiempo para caminar por tu cuenta en los alrededores y tomar las mejores fotos de tu Tour a Chichen Itzá.\r\nObservaciones:\r\n🔹El sitio arqueológico cuenta con pocas facilidades para acceso en silla de ruedas.\r\n🔹Niños menores de 3 años y con una estatura máxima de 1 metro tienen entrada libre, siempre y cuando vayan en la compañía de un adulto.\r\n🔹Está prohibido el ingreso de mochilas y bolsas de mano dentro de las instalaciones de las áreas arqueológicas por orden oficial del Instituto Nacional de Antropología e Historia (INAH).\r\n16:30 hrs\r\n50 minutos de visita a la asombrosa hacienda colonial “Selva Maya” y nadar en “Cenote Saamal”, tomar fotos y pasar un momento formidable. (La renta de casilleros y chalecos salvavidas es de 2 dólares cada uno, tarifa no incluida en el costo del tour).\r\n18:00 hrs\r\nBreve visita a la plaza del centro de la ciudad de Valladolid, Yucatán. Aquí podrás tener una pequeña probadita de lo que esta hermosa ciudad ofrece. En el centro se encuentra el hermoso parque principal en donde podrás encontrar pequeñas tiendas de bocadillos, antojos. Pregunta a tu guía por los “esquites” “helados” y “marquesitas” ¡son deliciosas!\r\n21:00 hrs\r\nRegreso a tu punto de origen, dejada (drop-off) en tu hotel o punto de encuentro.",
+            "infoAdicional": "✅Dinero extra\r\n✅Ropa clara y ligera\r\n✅Sombrilla, Sombrero o Gorra\r\n✅Pareo, abrigo o frazada para el A/C\r\n✅Repelente de Insectos\r\n✅Protector Solar\r\n✅Calzado cerrado y cómodo\r\n✅Traje de Baño,\r\n✅Toalla\r\n✅Cambio de Ropa",
+            "salida": "Pick Up\r\n(Nuestros horarios son aproximados dependiendo de las condiciones climáticas y de tráfico vehicular) 06:40 am – 07:50 am Pick Ups de Cortesía en transportación compartida (Van o Autobús). Vamos a tu hotel por ti o nos encontramos contigo en uno de nuestros puntos de reunión más cercanos a tu ubicación.",
+            "regreso": "Regreso\r\n21:00 hrs\r\nRegreso a tu punto de origen, dejada (drop-off) en tu hotel o punto de encuentro."
+        },
+        "viaje3": {
+            "descripcion": "Con tu admisión a Xplor tendrás acceso a todas las actividades en Xplor y la total libertad de vivirlas de la manera que tú decidas. Salta de cada tirolina tantas veces como quieras, o toma tu postre antes de tus verduras en Xplor, serás libre de decidir cómo vivir la aventura. Los espectaculares escenarios naturales que rodean la Riviera Maya se exhiben en Xplor. Vive cada pedacito de aventuras en Playa del Carmen y Cancún desde las copas de los árboles, a través de la selva y hasta el corazón de la Tierra.",
+            "incluido": "✅Recogida y regreso al hotel.\r\n✅Vehículo anfibio para conducir a través de senderos selváticos y cuevas inundadas.\r\n✅Snacks ilimitados y bebidas no alcohólicas (galletas, fruta, batidos y aguas frescas saborizadas).\r\n✅Dos circuitos con siete tirolinas cada uno (distancia total de 2.4 mi).\r\n✅Balsas a través de un río subterráneo remando con remos de mano especiales.\r\n✅Río Stalactite Nadar dentro de cuevas antiguas.\r\n✅Hamaca Splash.\r\n✅Almuerzo buffet",
+            "noIncluido": "❌ Lleve dinero en efectivo o una tarjeta para comprar recuerdos o comprar fotos de su visita.",
+            "intinerario": "Parada en: Parque Xplor\r\nPor Xcaret Xplor Explore las dimensiones del parque de aventuras y su belleza natural: vuele por el aire y acelere por tirolesas que van desde 26 a 148 pies (8 a 45 metros) de altura, luego aterrice en las aguas cristalinas de los cenotes donde puede escalar puentes colgantes. Conduzca un vehículo anfibio todo terreno a través de senderos selváticos y fascinantes cuevas donde se maravillará con las extraordinarias formaciones rocosas. Rema en balsa a través de cuevas submarinas y descubre grutas fascinantes. Nada a lo largo del río entre estalactitas y estalagmitas en este espectacular mundo subterráneo. El personal capacitado está disponible para garantizar su seguridad en todo momento, y todo el equipo (incluido el chaleco salvavidas y el casco) está incluido. Su admisión incluye un buffet libre (vaya tantas veces como desee durante el día), bebidas ilimitadas con sabor a frutas y chocolate caliente cuando salga de ambos ríos. También con transporte de ida y vuelta a su hotel\r\n\r\nDuración: 6 horas\r\nBoleto de admisión incluido\r\n\r\nPara en: Xplor\r\nDos circuitos de siete tirolesas Vehículos Anfibios, River Swim, Hammock Splash. Caminata de espeleología. Duración: 4 horas Boleto de admisión incluido Parada en: Xplor Alimentos y bebidas: Buffet con opciones vegetarianas disponibles Bebidas no alcohólicas ilimitadas Duración: 1 minuto Boleto de admisión incluido Parada en: Xplor Áreas de descanso: Hamacas, Wifi gratuito, Lockers\r\n\r\nDuración: 30 minutos\r\nBoleto de admisión incluido",
+            "infoAdicional": "La confirmación se recibirá en el momento de la reserva Para organizar la recogida, debe llamar para confirmar su reserva al menos 24 horas antes del día de su visita. Importante: Los niños deben ir acompañados por un adulto No recomendamos este parque para niños menores de 6 años.\r\n\r\nLos niños menores de 5 años reciben el precio para niños y las actividades están restringidas.\r\n\r\nLa edad mínima para conducir los vehículos anfibios es de 18 años, y todos los conductores deben tener una licencia de conducir válida.\r\n\r\nSe recomienda que traiga ropa cómoda y liviana, zapatos para caminar o zapatillas de deporte, bloqueador solar biodegradable, traje de baño y toalla, y un cambio adicional de ropa.\r\n\r\nNo accesible para sillas de ruedas No recomendado para viajeros con problemas de espalda No recomendado para viajeros embarazadas Sin problemas cardíacos u otras afecciones médicas graves Requisitos de tirolesa: La altura / peso mínimo es de 4.5 pies (137 cm) o 88 libras (40 kg); el peso máximo es de 300 (136 kg); El ancho máximo de la cintura es de 51 pulgadas (130 cm) y el ancho de la pierna es de 27 pulgadas (68 cm) Use o traiga zapatos y ropa que pueda mojarse, y traiga una muda de ropa seca que pueda guardar en los casilleros en el lugar; Por favor, use repelente de insectos libre de químicos. Como medida preventiva, antes de abordar el autobús o acceder a un parque, se escaneará la temperatura a través de un dispositivo remoto digital en cada visitante, invitado y miembro del personal. El calendario de vales es informativo.\r\n\r\nLos viajeros deben tener un nivel moderado de condición física\r\n\r\nLa recogida opera desde diferentes hoteles en Cancún, Playa del Carmen y la Riviera Maya por lo que es necesario contactar para conocer el horario exacto de su recogida. Los tours y días de operación están sujetos a disponibilidad y cambios.\r\n\r\nEn el caso de tener síntomas como tos, dolor de garganta, secreción nasal y / o ojos rojos y una temperatura superior a 100.4 F (38 C), nuestro personal se reserva el derecho de negarse a abordar nuestro transporte o ingresar a nuestras instalaciones.",
+            "salida": "Hora de salida\r\n7:00 AM",
+            "regreso": "Hora de recogida\r\nLlegue 15 minutos antes de la hora de inicio seleccionada para la recogida. Su operador puede coordinar la hora exacta y la ubicación."
+        },
+        "viaje4": {
+            "descripcion": "Explore el Parque Xel-Há, el impresionante acuario natural de la Riviera Maya, en este viaje de todo el día desde Cancún. Relájese en la playa escondida de Xel Ha, nade en cenotes y lagunas, practique snorkel y espeleología en cuevas. Tenga cuidado con la vida silvestre como el pez ángel y las iguanas. Xel-Há es todo incluido, así que disfruta de la cocina maya, mariscos y hamburguesas con tu admisión. Este tour es ideal para familias e incluye transporte de ida y vuelta a Xel-Há desde Cancún.\r\nExcursión de un día con todo incluido a Xel-Há, un acuario natural en la Riviera Maya\r\nDescubre cuevas, cenotes, un puente colgante y una playa escondida\r\nPractique snorkel y nade en una laguna de color turquesa y observe coloridos peces ángel\r\nFlota río abajo en una cámara de aire y salta de un acantilado al agua\r\nEntrada, uso de casilleros, toallas, equipo de snorkel, alimentos y bebidas ilimitados incluidos.\r\nRecogida y regreso desde la mayoría de los hoteles de Cancún incluidos.",
+            "incluido": "✅Recogida y regreso al hotel\r\n✅Buffet libre\r\n✅Bebestibles\r\n✅Acceso a duchas, taquillas y toallas\r\n✅Uso de equipo de snorkel y cámaras de aire\r\n✅Chalecos salvavidas\r\n✅Uso de sillones, hamacas y áreas de descanso\r\n✅Acceso prioritario: Puede tener sus pulseras de admisión en el autobús de camino al parque.",
+            "noIncluido": "❌ Propinas\r\n❌Actividades opcionales: Son actividades educativas de interacción con la vida silvestre, Sea Trek, Snuba (puedes comprarlas directamente en el parque)\r\n❌Souvenirs (Disponibles para comprar)\r\n❌Fotos (Disponibles para comprar)",
+            "intinerario": "Después de la recogida por la mañana en su hotel en Cancún, viaje a Xel Há para un día de exploración y descubrimiento.\r\nDespués de un paseo panorámico de 1.5 horas a través de México, llegue a Xel-Há, ubicado en una ensenada en la Riviera Maya. Recoge tu pulsera todo incluido y ponte a trabajar explorando.\r\nAnda en bicicleta, viaja en tranvía o camina hasta la cima del río en Xel Ha. Revise las instrucciones de seguridad antes de saltar a una cámara de aire y flotar más allá de los manglares hasta llegar a un lugar donde pueda bucear en un acantilado.\r\nPasee por la red de senderos pavimentados, donde podrá observar la variedad de vida silvestre de México, como iguanas y aves tropicales. Llega a cuevas, un puente flotante y una playa escondida.\r\nAplique un poco de protector solar biodegradable, disponible en el sitio y necesario para preservar la ecología del parque, antes de sumergirse en la laguna. Póngase el equipo de snorkel provisto para ver las rayas y el pez ángel nadando a su alrededor.\r\nDeténgase en el buffet, el restaurante sentado o cualquiera de los bares del parque para almorzar o comer algo rápido. Disfrute de bebidas ilimitadas del bar durante su estancia.\r\nAl final de su aventura ecológica, regresará a Cancún para dejarlo en su hotel.\r\n\r\nParada de itinerario en: Parque Xel-Há\r\n\r\npor Xcaret Xel-Há es considerado el acuario natural más grande del mundo, el parque ofrece snorkeling entre cientos de peces tropicales y más de 90 especies marinas que habitan en el arroyo. Disfruta de las mejores actividades marinas y terrestres;\r\n\r\nen el parque de Xel-Há podrás disfrutar de lagunas, cenotes y cuevas, donde el agua de mar se mezcla con el agua dulce del sistema fluvial subterráneo más largo del mundo. Se incluyen chalecos salvavidas, cámaras de aire, bicicletas, acceso a sillones, hamacas y áreas de descanso de cortesía. Deslízate por tirolesas y sumérgete en las aguas cristalinas de un cenote o sumérgete en una espectacular cala. Visite el vivero de vegetación de Xel-Há y maravíllese con los manglares y la selva tropical salpicada de orquídeas. Vea el colmenar de la abeja Melipona (con una cosecha tradicional maya de miel dos veces al año) y aprenda más sobre la cultura maya. Como novedad en Xel-Há este año podrás experimentar como Día Mundial de la Tierra, Día de las Aves, Día Mundial de la Tortuga Marina, Día del Manatí, Ceremonia de Purificación, Tesoros de la Cala, Secretos de la Selva. Su entrada incluye desayuno estilo buffet, almuerzo y refrigerios (cocina internacional y mexicana) con bebidas ilimitadas y barra libre nacional y el transporte de ida y vuelta a su hotel.\r\n\r\nDuración: 12 horas\r\n\r\nBoleto de admisión incluido\r\n\r\nParada en: Parque Xel-Há\r\n\r\nActividades acuáticas: -Exploración de ensenada, -Natación en el río, -Observatorio submarino, Rivel Floating, Faro escénico Descenso divertido, Snorkeling,\r\n\r\nDuración: 5 horas\r\n\r\nBoleto de admisión incluido\r\n\r\nParada en: Parque Xel-Há\r\n\r\nActividades terrestres: Vista escénica, -Parque infantil, -Secretos de la selva, -Trandiciones del Mayab, -Tesoros de la ensenada, -Conoce a un manatí, -Camino de la Conciencia, -La Tierra de Huh, -Tren de la selva\r\n\r\nDuración: 3 horas\r\n\r\nBoleto de admisión incluido\r\n\r\nParada en: Parque Xel-Há\r\n\r\nActividades aéreas: Acantilado del Coraje, -La Quebrada, -Puente flotante, -Mundo de aventura, -Columpio de cuerda\r\n\r\nDuración: 2 minutos\r\n\r\nBoleto de admisión incluido\r\n\r\nParada en: Parque Xel-Há\r\n\r\nActividades especiales a costo adicional: -Adrenalina Jetboat Ride Duración: 10 minutos para instrucciones / 20 minutos para actividad; Edad mínima: 9 años, o altura mínima de 4.5ft / 137cm) -Sea Trek® (Duración: 15 minutos para instrucciones / 25 minutos para actividad; Edad mínima: 8 años -importante probar el casco antes de la actividad) -Snuba®(Duración: 30 minutos para instrucciones y colocación del equipo / 30 minutos para actividad; Edad mínima: 9 años -importante saber nadar)\r\n\r\nDuración: 30 minutos\r\n\r\nBoleto de admisión no incluido\r\n\r\nParada en: Parque Xel-Há\r\n\r\nAll-inclusive Food & Beverages at Restaurants and Bars: -Chulavista Restauran, t-La Cocina del Pueblo Restaurant, -La Terraza Restaurant, -Jardín Corona Restaurant, -Bar del Puente, -Chulavista Bar, -Jardín Corona Bar, -Bar del Pueblo\r\n\r\nDuración: 2 horas\r\n\r\nBoleto de admisión incluido.",
+            "infoAdicional": "La confirmación se recibirá en el momento de la reserva Para el arreglo de recogida, debe llamar para confirmar su reserva al menos 24 horas antes del día de su visita. Importante: Los niños deben estar acompañados por un adulto Los alimentos y bebidas están incluidos en los 5 restaurantes con comida mexicana, internacional y rápida, así como bocadillos y helados. Se recomienda que traiga un traje de baño, ropa cómoda y protector solar biodegradable Los precios para niños dependen de la altura. Los niños de más de 4,6 pies (1,4 metros) pagan el precio de adulto. Los niños entre 3.2 pies (1 metro) y 4.6 pies (1.4 metros) pagan el precio del niño. Todos los niños menores de 3,2 pies (1 metro) viajan gratis siempre que no ocupen un asiento Las actividades opcionales incluyen: Nado con delfines, Sea Trek, Snuba, Stingray Encounter o Zip Bike. Accesible para sillas de ruedas Cochecito accesible Cerca del transporte público Los bebés deben sentarse en el regazo El transporte es accesible para sillas de ruedas Las superficies son accesibles para sillas de ruedas Como medida preventiva, antes de abordar el autobús o acceder a un parque, la temperatura se escaneará a través de un dispositivo remoto digital en cada visitante, invitado y miembro del personal. El calendario de vales es informativo. La recogida opera desde diferentes hoteles en Cancún, Playa del Carmen y la Riviera Maya por lo que es necesario contactar para conocer el horario exacto de su recogida. La mayoría de los viajeros pueden participar Tours y los días de operación están sujetos a\r\ndisponibilidad y cambios. Algunas actividades como los ríos subterráneos tienen un punto de control para problemas de salud En caso de tener síntomas como tos, dolor de garganta, secreción nasal y / o ojos rojos y una temperatura superior a 100.4 F (38 C), nuestro personal se reserva el derecho de negarse a abordar nuestro transporte o ingresar a nuestras instalaciones. Este tour / actividad tendrá un máximo de 15 viajeros",
+            "salida": "Salida 7am",
+            "regreso": ""
+        },
+        "viaje5": {
+            "descripcion": "⚫Contempla el espectáculo “Xcaret Mexico Espectacular”, un viaje musical por la historia de Mexico con más de 300 artistas.\r\n\r\n⚫Siéntete transportado a las profundidades del mar Caribe en las exhibiciones interactiva",
+            "incluido": "✅Acceso a las instalaciones del Área Plus (vestidores, sanitarios y lockers).\r\n✅Un almuerzo buffet. Incluye una cerveza y bebidas no alcohólicas ilimitadas (refrescos, aguas saborizadas y café) mientras se consumen alimentos.\r\n✅Tours en tres ríos subterráneos (se incluye servicio de bolsa segura para sus pertenencias antes y durante el recorrido fluvial).\r\n✅Xcaret México Espectacular presentación.\r\n✅Acceso a la playa, caleta y piscinas naturales.\r\n✅Visitas al Mariposario, Acuario de Arrecifes de Coral y el Aviario.\r\n✅Mundo Infantil, un lugar de diversión exclusivo para los más pequeños.\r\n✅Exhibición de Caballos, Hombres Voladores de Papantla y Danzas Prehispánicas.\r\n✅Sendero por la selva tropical.\r\n✅Uso de equipo de snorkel (requiere un depósito reembolsable de $10 USD).\r\n✅Chalecos salvavidas y cámaras de aire.\r\n✅Camastros, hamacas y áreas de descanso.\r\n✅Baños, vestidores y duchas.",
+            "noIncluido": "❌Propinas\r\n❌Actividades opcionales (puedes comprarlas directamente en el parque)\r\n❌Alimentos y bebidas (si no se selecciona la opción Xcaret Plus)\r\n❌Fotos (Disponibles para comprar)\r\n❌Recuerdos (disponibles para comprar)",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje6": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje7": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje8": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje9": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje10": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje11": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje12": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje13": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje14": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje15": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje16": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje17": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje18": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje19": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje20": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje21": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje22": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje23": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje24": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        }
     }
 }

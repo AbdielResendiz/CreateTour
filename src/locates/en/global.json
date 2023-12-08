@@ -100,7 +100,9 @@
         "incluye": "What's Included and What's Not?",
         "info": "Additional Information",
         "map": "Map",
-        "load": "Loading"
+        "load": "Loading",
+        "incl": "The cost includes:",
+        "noincl": "The cost does not include:"
     },
     "FAQ": {
         "title": "Frequently Asked Questions",
@@ -112,5 +114,227 @@
         "r3": "It is not necessary. We accept payments with debit cards, credit cards, and PayPal. Additionally, we offer alternatives through our call center for payments in Mexican territory, including bank window, electronic transfer, deposit in OXXO stores, and deferred payments.",
         "p4": "Is it safe to provide my information on your platform?",
         "r4": "Yes, Create Tours guarantees the security of your data. We have a security certificate that encrypts your information before reaching our databases. Your privacy is our priority."
+    },
+    "viajes": {
+        "viaje1": {
+            "descripcion": "You will live a unique experience. A guided tour to the world-famous archaeological site of Chichen Itzá, located on the Yucatán Peninsula, Mexico. Chichen Itzá holds the title of one of the 7 wonders of the modern world and has been named a UNESCO World Heritage Site.",
+            "incluido": "Pick-up in shared transportation from your hotel.\r\nRound trip aboard our luxury panoramic air-conditioned buses.\r\nCertified guides specialized in archaeology and Maya culture will accompany you throughout the tour.\r\nExquisite buffet with a variety of typical regional dishes.\r\nGuided (bilingual) access to Chichen Itzá and free time to walk around and take photos at the archaeological site.\r\nVisit to the 'Saamal' Cenote, swimming is allowed (An additional cost of 2 dollars is charged by the place for the rental of life jackets.)\r\nBrief visit to the historic city of Valladolid, Yucatán.",
+            "noIncluido": "Rental of life jackets and lockers (2 USD each).\r\nDrinks at the restaurant.\r\nFee for the use of Go Pro, video, or professional camera (charged by the park in Chichen Itzá).",
+            "intinerario": "08:00 am\r\nTour departure from our base.\r\nBrief stop at the highway booth if necessary, before embarking on our journey through the Mayan roads to go to the bathroom (Note: Buses have their own bathroom, but you might need a little space after an hour of travel).\r\n11:00 am\r\nArrival at Villa Maya, where we will perform the healing ceremony led by the 'Mayan Shaman'; Visit the craft store, where you will find authentic works of art made by local artisans.\r\nTasting of artisanal Tequilas of different flavors, 100% original product. Visit to our restaurant 'Yaax Kiin'. Our Maya chef will delight us with a buffet of regional cuisine (13Baktun has its own restaurant, with the widest variety of dishes included in our buffet).\r\n13:00 hrs\r\n2.30 Hrs Visit to the archaeological site of Chichén Itzá. You will learn about how the Maya lived back then, the history of the most important buildings in that magnificent city, including its myths, legends, and much culture. Guided service (in English or Spanish), and then you will have time to walk on your own in the surroundings and take the best photos of your Chichen Itzá Tour.\r\nObservations:\r\n🔹The archaeological site has few facilities for wheelchair access.\r\n🔹Children under 3 years old and with a maximum height of 1 meter have free admission, as long as they are accompanied by an adult.\r\n🔹The entry of backpacks and handbags into the facilities of the archaeological areas is prohibited by official order of the National Institute of Anthropology and History (INAH).\r\n16:30 hrs\r\n50 minutes of visit to the amazing colonial hacienda 'Selva Maya' and swimming in 'Cenote Saamal', taking photos and having a great time. (The rental of lockers and life jackets is $2 each, fee not included in the tour cost).\r\n18:00 hrs\r\nBrief visit to the main square of the city of Valladolid, Yucatán. Here you can have a small taste of what this beautiful city offers. In the center is the beautiful main park where you can find small snack shops. Ask your guide about 'esquites,' 'ice cream,' and 'marquesitas' – they are delicious!\r\n21:00 hrs\r\nReturn to your starting point, drop-off at your hotel or meeting point.",
+            "infoAdicional": "✅Extra money\r\n✅Light and light-colored clothing\r\n✅Umbrella, Hat, or Cap\r\n✅Shawl, coat, or blanket for the A/C\r\n✅Insect repellent\r\n✅Sunscreen\r\n✅Closed and comfortable footwear\r\n✅Swimsuit\r\n✅Towel\r\n✅Change of clothes",
+            "salida": "Pick Up\r\n(Our schedules are approximate depending on weather conditions and traffic) 06:40 am – 07:50 am Courtesy Pick Ups in shared transportation (Van or Bus). We will come to your hotel or meet you at one of our nearest meeting points to your location.",
+            "regreso": "Return\r\n21:00 hrs\r\nReturn to your starting point, drop-off at your hotel or meeting point."
+        },
+        "viaje2": {
+            "descripcion": "You will experience a unique adventure. A guided tour to the world-famous archaeological site of Chichen Itzá, located on the Yucatán Peninsula, Mexico. Chichen Itzá holds the title of one of the 7 wonders of the modern world and has been named a UNESCO World Heritage Site.",
+            "incluido": "Pickup in shared transportation from your hotel.\r\nRound trip aboard our luxury panoramic buses with air conditioning.\r\nCertified guides specialized in archaeology and Maya culture will accompany you throughout the tour.\r\nExquisite buffet with a variety of typical regional dishes.\r\nGuided (bilingual) access to Chichen Itzá and free time to stroll and take photos at the archaeological site.\r\nVisit to the 'Saamal' Cenote, swimming is allowed (An additional cost of 2 dollars is charged by the place for the rental of life jackets.)\r\nBrief visit to the historic city of Valladolid, Yucatán.",
+            "noIncluido": "Rental of life jackets and lockers (2 USD each).\r\nDrinks at the restaurant.\r\nFee for the use of Go Pro, video, or professional camera (charged by the park at Chichen Itzá).",
+            "intinerario": "08:00 am\r\nTour departure from our base.\r\nBrief stop at the highway booth if necessary, before embarking on our journey through the Mayan roads to take a break (Note: Buses have their own bathroom, but you may need a little space after an hour of travel)\r\n11:00 am\r\nArrival at Villa Maya, where we will perform the healing ceremony led by the 'Mayan Shaman'; Visit the craft store, where you will find authentic works of art made by local artisans.\r\nTasting of artisanal tequilas of different flavors, 100% original product. Visit to our restaurant 'Yaax Kiin'. Our Maya chef will delight us with a buffet of regional food (13Baktun has its own restaurant, with the widest variety of stews included in our buffet).\r\n1:00 pm\r\n2.30 Hrs visit to the archaeological site of Chichén Itzá. You will learn about how the Maya lived back then, the history of the most important buildings of that magnificent city, including its myths, legends, and much culture. Guided service (in English or Spanish) and then you will have time to walk on your own in the surroundings and take the best photos of your Chichen Itzá Tour.\r\nObservations:\r\n🔹The archaeological site has few facilities for wheelchair access.\r\n🔹Children under 3 years old and with a maximum height of 1 meter have free admission, as long as they are accompanied by an adult.\r\n🔹The entry of backpacks and handbags into the facilities of the archaeological areas is prohibited by official order of the National Institute of Anthropology and History (INAH).\r\n4:30 pm\r\n50 minutes visit to the amazing colonial hacienda 'Selva Maya' and swim in 'Cenote Saamal', take photos and have a great time. (The rental of lockers and life jackets is $2 each, fee not included in the tour cost).\r\n6:00 pm\r\nBrief visit to the main square of the city of Valladolid, Yucatán. Here you can get a small taste of what this beautiful city offers. In the center is the beautiful main park where you can find small snack shops, cravings. Ask your guide about 'esquites,' 'ice cream,' and 'marquesitas' – they are delicious!\r\n9:00 pm\r\nReturn to your starting point, drop-off at your hotel or meeting point.",
+            "infoAdicional": "✅Extra money\r\n✅Light and light-colored clothing\r\n✅Umbrella, Hat or Cap\r\n✅Wrap, coat or blanket for the A/C\r\n✅Insect repellent\r\n✅Sunscreen\r\n✅Closed and comfortable footwear\r\n✅Swimsuit,\r\n✅Towel\r\n✅Change of clothes",
+            "salida": "Pick Up\r\n(Our schedules are approximate depending on weather conditions and traffic) 06:40 am – 07:50 am Courtesy Pick Ups in shared transportation (Van or Bus). We'll pick you up at your hotel or meet you at one of our nearest meeting points to your location.",
+            "regreso": "Return\r\n9:00 pm\r\nReturn to your starting point, drop-off at your hotel or meeting point."
+        },
+        "viaje3": {
+            "descripcion": "With your admission to Xplor, you will have access to all the activities at Xplor and the total freedom to experience them the way you decide. Jump from each zipline as many times as you want, or have dessert before your vegetables at Xplor; you will be free to decide how to live the adventure. The spectacular natural settings surrounding the Riviera Maya are showcased at Xplor. Live every bit of adventure in Playa del Carmen and Cancun from the treetops, through the jungle, and into the heart of the Earth.",
+            "incluido": "Pickup and return to the hotel.\r\nAmphibious vehicle to drive through jungle trails and flooded caves.\r\nUnlimited snacks and non-alcoholic drinks (cookies, fruit, shakes, and flavored fresh waters).\r\nTwo circuits with seven zip lines each (total distance of 2.4 mi).\r\nRafts through an underground river paddling with special hand paddles.\r\nStalactite River Swim inside ancient caves.\r\nHammock Splash.\r\nBuffet lunch",
+            "noIncluido": "Bring cash or a card to buy souvenirs or purchase photos of your visit.",
+            "intinerario": "Stop at: Xplor\r\nThrough Xcaret Xplor, explore the dimensions of the adventure park and its natural beauty: fly through the air and speed through zip lines ranging from 26 to 148 feet (8 to 45 meters) high, then land in the crystal-clear waters of the cenotes where you can climb hanging bridges. Drive an all-terrain amphibious vehicle through jungle trails and fascinating caves where you will marvel at extraordinary rock formations. Paddle on a raft through underwater caves and discover fascinating grottos. Swim along the river among stalactites and stalagmites in this spectacular underground world. Trained staff is available to ensure your safety at all times, and all equipment (including life jacket and helmet) is included. Your admission includes a free buffet (go as many times as you want during the day), unlimited fruit-flavored drinks, and hot chocolate when you exit both rivers. Also with round-trip transportation to your hotel.\r\n\r\nDuration: 6 hours\r\nAdmission ticket included\r\n\r\nStop at: Xplor\r\nTwo circuits of seven zip lines Amphibious Vehicles, River Swim, Hammock Splash. Speleology Walk. Duration: 4 hours Admission ticket included Stop at: Xplor Food and beverages: Buffet with vegetarian options available Unlimited non-alcoholic drinks Duration: 1 minute Admission ticket included Stop at: Xplor Rest areas: Hammocks, Free Wifi, Lockers\r\n\r\nDuration: 30 minutes\r\nAdmission ticket included",
+            "infoAdicional": "Confirmation will be received at the time of booking. To arrange pickup, you must call to confirm your reservation at least 24 hours before your visit. Important: Children must be accompanied by an adult. We do not recommend this park for children under 6 years old.\r\n\r\nChildren under 5 years old receive the child price, and activities are restricted.\r\n\r\nThe minimum age to drive amphibious vehicles is 18 years, and all drivers must have a valid driver's license.\r\n\r\nIt is recommended to bring comfortable and lightweight clothing, walking shoes or sneakers, biodegradable sunscreen, swimsuit and towel, and an extra change of clothes.\r\n\r\nNot wheelchair accessible Not recommended for travelers with back problems Not recommended for pregnant travelers No heart problems or other serious medical conditions Zipline requirements: Minimum height/weight is 4.5 feet (137 cm) or 88 pounds (40 kg); maximum weight is 300 (136 kg); Maximum waist width is 51 inches (130 cm) and leg width is 27 inches (68 cm) Wear or bring shoes and clothing that can get wet, and bring an extra set of dry clothes that you can store in the lockers on-site; Please use chemical-free insect repellent. As a preventive measure, before boarding the bus or accessing a park, the temperature will be scanned through a digital remote device on each visitor, guest, and staff member. The voucher schedule is informative.\r\n\r\nTravelers must have a moderate level of physical fitness\r\n\r\nPick-up operates from different hotels in Cancun, Playa del Carmen, and the Riviera Maya, so it is necessary to contact to know the exact time of your pick-up. Tours and operating days are subject to availability and changes.\r\n\r\nIn case of symptoms such as cough, sore throat, runny nose, and/or red eyes, and a temperature higher than 100.4 F (38 C), our staff reserves the right to refuse to board our transport or enter our facilities.",
+            "salida": "Departure Time\r\n7:00 AM",
+            "regreso": "Pickup Time\r\nArrive 15 minutes before the selected start time for pickup. Your operator can coordinate the exact time and location.",
+            "precioNormal": "176.00",
+            "precioOferta": "129.00",
+            "precioNino": "176.00",
+            "precioNinoOferta": "129.00"
+        },
+        "viaje4": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje5": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje6": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje7": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje8": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje9": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje10": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje11": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje12": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje13": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje14": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje15": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje16": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje17": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje18": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje19": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje20": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje21": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje22": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje23": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        },
+        "viaje24": {
+            "descripcion": "",
+            "incluido": "",
+            "noIncluido": "",
+            "intinerario": "",
+            "infoAdicional": "",
+            "salida": "",
+            "regreso": ""
+        }
     }
 }
