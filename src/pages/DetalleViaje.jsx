@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 import fetchPost from "../helper/fetchPost";
 import URL from "../helper/baseURL";
 import PrecioComponent from "../Components/PreciosComponent";
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
+import SwiperComponent from "../Components/SwiperComponent";
 
 const DetalleViaje = (props) => {
   const { t } = useTranslation("global");
@@ -37,11 +38,16 @@ const DetalleViaje = (props) => {
 
     console.log("Viaje detalle:", res);
     if (res.status === true) {
+
       setViaje(res.data);
       setIsLoading(false)
     }
 
   }
+
+
+
+
 
   useEffect(() => {
     verViaje()
@@ -141,8 +147,7 @@ const DetalleViaje = (props) => {
 
 
 
-  // TRADUCTOR
-  const idDelViaje = 1; // Puedes establecer este valor dinámicamente
+
 
   // Función para obtener la clave de traducción de un viaje por ID
 
@@ -162,22 +167,11 @@ const DetalleViaje = (props) => {
     <div>
 
       {/* Mostrar otros detalles del viaje aquí */}
-      {/* <SwiperComponent/> */}
+      <SwiperComponent id={id} />
 
 
       <VStack bg="#fafafa" p={1} m={1}>
 
-        {
-          isLoading ? <Loader /> :
-            <Image source={{
-              uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${viaje.Foto}`
-            }} alt="Foto Tour" width={"100%"} height={96}
-              onError={(e) => {
-                console.error("Error al cargar la imagen:", e.nativeEvent.error);
-                // Puedes mostrar una imagen alternativa o realizar otra acción
-              }} />
-
-        }
 
 
         {/* Titulo y precios */}

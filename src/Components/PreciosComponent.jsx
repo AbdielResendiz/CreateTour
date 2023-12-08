@@ -39,7 +39,7 @@ const PrecioComponent = ({ viaje }) => {
         <Divider orientation="vertical" h={"80%"} alignSelf={"center"} />
         <VStack space={3} justifyContent={"center"}>
           <TipoTextoA texto="Niño Extranjero" precio={viaje.PrecioInfantilExtranjero} />
-          <TipoTextoA texto="Adulto Nacional" precio={viaje.PrecioInfantilNacional} />
+          <TipoTextoA texto="Niño Nacional" precio={viaje.PrecioInfantilNacional} />
         </VStack>
 
       </HStack>
