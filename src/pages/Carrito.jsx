@@ -7,6 +7,7 @@ import ViajesAleatoreosComponent from '../Components/ViajesAleatoreosComponent';
 import { TbShoppingCartSearch } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import Checkout from './Checkout';
 
 
 const Carrito = () => {
@@ -108,8 +109,8 @@ const Carrito = () => {
 
         <>
           <Center>
-            <Button onPress={() => setModalVisible(true)} size={"md"} alignSelf={"center"} justifyContent={"center"}>
-              {t("carritoVista.listaCarrito.pagar")}
+            <Button  py={4} px={10}  mb={20} mt={10} onPress={() => setModalVisible(true)} size={"md"} alignSelf={"center"} justifyContent={"center"}>
+             <Text bold fontSize={"xl"}  color={"#ffffff"}> {t("carritoVista.listaCarrito.pagar")} </Text>
             </Button>
           </Center>
 
@@ -121,13 +122,8 @@ const Carrito = () => {
       }
 
       <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)} size={"xl"} >
-        <Modal.Content>
-          <iframe
-            title="CodeIgniter View"
-            src={`https://createtours.com.mx/backend/public/stripe?precio=${granTotal}&description=${carritoSting}`}
-            width="100%"
-            height="400px"
-          />
+        <Modal.Content p={10}>
+         <Checkout/>
 
         </Modal.Content>
 

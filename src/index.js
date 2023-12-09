@@ -86,7 +86,7 @@ export default function App() {
                   <Route path="Login" element={<Login />} />
                   <Route path="Registro" element={<Registro />} />
                   <Route path="Administrador" element={<AdminPermiso />} />
-                  <Route path="Gracias" element={<AgradecimientoView />} />
+                  <Route path="success" element={<AgradecimientoView />} />
                   <Route path="FAQ" element={<FAQ />} />
                   <Route path="Stripe" element={<Checkout />} />
                   <Route path="*" element={<NoPage />} />

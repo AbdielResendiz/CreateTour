@@ -52,13 +52,13 @@ const AgradecimientoView = () => {
 
 
             {/* Texto de agradecimiento */}
-            <Text fontSize="xl" fontWeight="bold" mt={4}>
+            <Text fontSize="4xl" fontWeight="bold" mt={4}>
                 ¡Gracias por tu compra!
             </Text>
 
             {/* Mensaje adicional o detalles de la compra si es necesario */}
-            <Text textAlign="center" mt={2}>
-                En 24 horas recibirás tu pase por correo electrónico
+            <Text textAlign="center" fontSize={"lg"} mt={2}>
+                Recibiras un corréo electronico con tus pases de tour pronto. 
             </Text>
 
             {/* Botón para ir al inicio */}
