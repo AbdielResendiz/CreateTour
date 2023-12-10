@@ -5,18 +5,24 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
-import { Button, Input } from 'native-base';
+import { useTranslation } from 'react-i18next';
+import { useUser } from '../helper/UserContext';
 
-export const CheckoutForm = () => {
+export const CheckoutForm = (props) => {
   const stripe = useStripe();
+  const {carrito}= useUser;
   const elements = useElements();
+  const { t } = useTranslation("global");
+  const { total } = props;
 
   const [errorMessage, setErrorMessage] = useState('');
+  const [nameInput, setNameInput] = useState('');
+  const [phoneInput, setPhoneInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
 
   const backendUrl = process.env.REACT_APP_STRIPE_PK_AIRCODE_URL;
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event ) => {
     event.preventDefault();
 
     if (elements == null || stripe == null) {
@@ -31,7 +37,8 @@ export const CheckoutForm = () => {
       return;
     }
 
-    const price = 12;
+   
+    console.log("price form: ", total)
 
     // Create the PaymentIntent and obtain clientSecret from your server endpoint
     const res = await fetch(backendUrl, {
@@ -42,8 +49,11 @@ export const CheckoutForm = () => {
       body: JSON.stringify({
         currency: 'usd',
         email: emailInput,
-        amount: price * 100,
-        paymentMethodType: "card"
+        amount: total * 100,
+        paymentMethodType: "card",
+        name: nameInput,
+        phone: phoneInput,
+        tours: carrito
       }),
     });
 
@@ -72,16 +82,43 @@ export const CheckoutForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className='px-4'>
-      <div className='mb-3'>
-        <label htmlFor="email-input">Email</label>
+
+      
+      <div className='mb-3'> 
+      <h3>{t("carritoVista.aviso")}</h3>
+        <label htmlFor="name-input">{t("carritoVista.mensajeNombre")} </label>
         <div>
-          <Input my={1} value={emailInput} onChange={(e => setEmailInput(e.target.value))} type="email" id="email-input" placeholder='johndoe@gmail.com' />
+          <input  style={{ width: '70%' }} value={nameInput} onChange={(e) => setNameInput(e.target.value)} type="text" id="name-input" placeholder='John Doe' />
+        </div>
+
+        <label htmlFor="phone-input">{t("carritoVista.phone")}</label>
+        <div>
+          <input  style={{ width: '70%' }} value={phoneInput} onChange={(e) => setPhoneInput(e.target.value)} type="tel" id="phone-input" placeholder='123-456-7890' />
+        </div>
+
+        <label htmlFor="email-input">{t("carritoVista.email")}</label>
+        <div>
+          <input  style={{ width: '70%' }} value={emailInput} onChange={(e) => setEmailInput(e.target.value)} type="email" id="email-input" placeholder='johndoe@gmail.com' />
         </div>
       </div>
       <PaymentElement />
-      <Button m={3} type="submit" disabled={!stripe || !elements}>
-        Pagar
-      </Button>
+      <button
+  type="submit"
+  disabled={!stripe || !elements}
+  style={{
+    padding: '10px 20px',
+    fontSize: '1.2em',
+    backgroundColor: '#449bab',
+    color: 'white',
+    borderRadius: '10px',
+    cursor: 'pointer',
+    display: 'block',
+    margin: '20px auto',
+    border: '2px solid white'
+  }}
+>
+  Pagar
+</button>
       {/* Show error message to your customers */}
       {errorMessage && <div>{errorMessage}</div>}
     </form>

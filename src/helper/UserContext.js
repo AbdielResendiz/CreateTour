@@ -7,6 +7,7 @@ export const UserProvider = ({ children }) => {
   const [userId, setUserId] = useState(null);
   const [tipo, setTipo] = useState(null);
   const [carrito, setCarrito] = useState([]);
+  const [ totalContext, setTotalContext] = useState(0);
 
   // Obtener el estado del carrito desde AsyncStorage al cargar la página
   useEffect(() => {
@@ -20,10 +21,11 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-
-
     obtenerCarritos();
   }, []);
+
+  
+    
 
     // Obtener el estado del usuario
   useEffect(() => {
@@ -106,11 +108,22 @@ export const UserProvider = ({ children }) => {
   }, [carrito]);
 
 
+ 
+
+  // Llama a la función para obtener el GranTotal
+
+
+  const totalStripe = (usd) => {
+    
+    setTotalContext(usd);
+    console.log("Total usd:" , totalContext);
+  };
+
   
 
   return (
     <UserContext.Provider
-      value={{ userId, tipo,  carrito, login, logout, agregarAlCarrito, editarCarrito, eliminarCarrito, borrarTodoCarrito }}
+      value={{ userId, tipo,  carrito, login, totalContext, totalStripe ,logout, agregarAlCarrito, editarCarrito, eliminarCarrito, borrarTodoCarrito }}
     >
       {children}
     </UserContext.Provider>

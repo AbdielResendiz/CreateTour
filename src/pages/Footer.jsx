@@ -59,62 +59,62 @@ const Footer = () => {
     const { t, i18n } = useTranslation("global");
 
     return (
-        <VStack>
-            <HStack bottom={10} zIndex={9} position={"fixed"} alignContent={"space-between"} w="100%"  >
-                <Pressable justifyContent={"flex-start"} w={[20, 20, 32, 40]} h={[20, 20, 32, 40]} left={[5, 5, 8, 10]}
-                    onPress={() => handlePressWA()}>
-                    <Lottie animationData={whatsapp} loop={true} />
+        <>
+            <Pressable   bottom={1} zIndex={9}  position={"fixed"} justifyContent={"flex-start"} w={[20, 20, 32, 40]} h={[20, 20, 32, 40]} left={[5, 5, 8, 10]}
+                onPress={() => handlePressWA()}>
+                <Lottie animationData={whatsapp} loop={true} />
+            </Pressable>
+            <VStack bottom={10} right={4} zIndex={9}  position={"fixed"} justifyContent="flex-end" marginLeft="auto" borderRadius={10} bg={"#dfdfdf"} borderWidth={1} borderColor={"muted.400"}>
+
+                <Text borderTopRadius={10} p={1}> {t("header.chooseLanguage")}</Text>
+                <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("en")} px={1} py={3} >
+                    <HStack justifyContent={"center"}>
+                        <Image
+                            source={{
+                                uri: "https://createtours.com.mx/pictures/usa.png"
+                            }}
+                            alt="English"
+                            size="xs"
+
+                        />
+                        <Center>
+                            <Text textAlign={"center"} justifyContent={"center"} bold p={3}>EN</Text>
+
+                        </Center>
+                    </HStack>
                 </Pressable>
 
-                <VStack justifyContent="flex-end" marginLeft="auto" borderRadius={10} bg={"#dfdfdf"} borderWidth={1} borderColor={"muted.400"}>
+                <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("es")} borderBottomRadius={10} px={1} py={3}  >
+                    <HStack justifyContent={"center"}>
+                        <Image
+                            source={{
+                                uri: "https://createtours.com.mx/pictures/mexico.png"
+                            }}
+                            alt="Spanish"
+                            size="xs"
 
-                    <Text borderTopRadius={10} p={1}> {t("header.chooseLanguage")}</Text>
-                    <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("en")} px={1} py={3} >
-                        <HStack justifyContent={"center"}>
-                            <Image
-                                source={{
-                                    uri: "https://createtours.com.mx/pictures/usa.png"
-                                }}
-                                alt="English"
-                                size="xs"
+                        />
+                        <Center>
+                            <Text textAlign={"center"} justifyContent={"center"} bold p={3}>ES</Text>
 
-                            />
-                            <Center>
-                                <Text textAlign={"center"} justifyContent={"center"} bold p={3}>EN</Text>
-
-                            </Center>
-                        </HStack>
-                    </Pressable>
-
-                    <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("es")} borderBottomRadius={10} px={1} py={3}  >
-                        <HStack justifyContent={"center"}>
-                            <Image
-                                source={{
-                                    uri: "https://createtours.com.mx/pictures/mexico.png"
-                                }}
-                                alt="Spanish"
-                                size="xs"
-
-                            />
-                            <Center>
-                                <Text textAlign={"center"} justifyContent={"center"} bold p={3}>ES</Text>
-
-                            </Center>
-                        </HStack>
-                    </Pressable>
+                        </Center>
+                    </HStack>
+                </Pressable>
 
 
-                </VStack>
+            </VStack>
 
-            </HStack>
 
-            <Stack direction={["column", "column", "row", "row"]} width={"100%"} bg="#101010" h={[96, 96, 40, 40]} justifyContent={"space-between"}>
-                <Image bg={"#ffffff"}
+          <VStack>
+        
+
+            <Stack direction={["column", "column", "row", "row"]} width={"100%"} bg="#101010" h={[96, 96, 80, 80]} justifyContent={"space-between"}>
+                <Image
                     source={{
-                        uri: "https://createtours.com.mx/backend/public/Imagenes/logo-create.svg"
+                        uri: "https://createtours.com.mx/backend/public/Imagenes/logo-footer.png"
                     }}
                     alt="Create tours"
-                    size="lg"
+                    size="2xl"
                     resizeMode="contain" m={5} borderRadius={10} alignSelf={"center"} ml={[0, 0, 40, 56]}
 
                 />
@@ -156,8 +156,8 @@ const Footer = () => {
                             uri: "https://lpmarketinggroup.com.mx/wp-content/uploads/2023/04/LP_Logo-LP.png"
                         }}
                         alt="Create tours"
-                        size="xl"
-                        resizeMode="contain" borderRadius={10} alignSelf={"center"}
+                        size="2xl"
+                        resizeMode="contain" borderRadius={10} alignSelf={"center"} 
 
                     />
                 </Pressable>
@@ -179,6 +179,8 @@ const Footer = () => {
             </Stack>
 
         </VStack>
+        </>
+      
     );
 };
 

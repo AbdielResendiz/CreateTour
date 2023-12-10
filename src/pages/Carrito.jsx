@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CarritoComponent from '../Components/CarritoComponent';
 import { useUser } from '../helper/UserContext';
-import { Button, Center, Divider, FlatList, Heading, Text, VStack, Modal, Flex } from 'native-base';
+import { Button, Center, Divider, FlatList, Heading, Text, VStack, Flex } from 'native-base';
 import { IconContext } from "react-icons";
 import ViajesAleatoreosComponent from '../Components/ViajesAleatoreosComponent';
 import { TbShoppingCartSearch } from "react-icons/tb";
@@ -10,8 +10,10 @@ import { useTranslation } from 'react-i18next';
 import Checkout from './Checkout';
 
 
+
 const Carrito = () => {
   const { t } = useTranslation("global");
+  const {  totalStripe } = useUser();
   //para navegar a otras vistas
   const navigate = useNavigate();
 
@@ -24,29 +26,32 @@ const Carrito = () => {
 
 
 
-  // Función para calcular el GranTotal
-  const calcularGranTotal = () => {
-    // Usamos el método reduce para sumar la propiedad TotalCompra de cada objeto en el carrito
-    const granTotal = carrito.reduce((total, producto) => total + producto.TotalCompra, 0);
 
-    // Devolvemos el resultado
-    return granTotal;
-  };
-
-  // Llama a la función para obtener el GranTotal
-  const granTotal = calcularGranTotal();
 
   useEffect(() => {
     console.log("carrito: ", carrito);
     console.log("carrito type: ", typeof (carrito));
     setCarritoString(JSON.stringify(carrito))
     console.log("carrito string: ", carritoSting)
+    console.log("carritoSting type: ", typeof (carritoSting));
 
   }, [carrito, carritoSting])
 
+  // Función para calcular el GranTotal
+  const calcularGranTotal = () => {
+    // Usamos el método reduce para sumar la propiedad TotalCompra de cada objeto en el carrito
+    const granTotal = carrito.reduce((total, producto) => total + producto.TotalCompra, 0);
+    totalStripe(granTotal);
+    // Devolvemos el resultado
+    return granTotal;
+  };
+
+  // Llama a la función para obtener el GranTotal
+  const granTotal =  calcularGranTotal();
+  
 
 
-  const [modalVisible, setModalVisible] = React.useState(false);
+
 
   return (
     <Flex mt={10}>
@@ -89,7 +94,7 @@ const Carrito = () => {
 
         renderItem={({ item }) => (
           <CarritoComponent
-            index={item.index}
+            index={item.ID}
             id={item.Viaje}
             titulo={item.Titulo}
             foto={item.Foto}
@@ -108,27 +113,16 @@ const Carrito = () => {
 
 
         <>
-          <Center>
-            <Button  py={4} px={10}  mb={20} mt={10} onPress={() => setModalVisible(true)} size={"md"} alignSelf={"center"} justifyContent={"center"}>
-             <Text bold fontSize={"xl"}  color={"#ffffff"}> {t("carritoVista.listaCarrito.pagar")} </Text>
-            </Button>
-          </Center>
+          <Text bold fontSize={"xl"} textAlign={"center"}> Proceder con el pago: ${granTotal} USD</Text>
 
-
+          <Checkout total={granTotal}/>
 
         </>
         :
         null
       }
 
-      <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)} size={"xl"} >
-        <Modal.Content p={10}>
-         <Checkout/>
-
-        </Modal.Content>
-
-
-      </Modal>
+ 
 
 
 

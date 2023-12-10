@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 import email from "../Lotties/email.json"
 import { useUser } from "../helper/UserContext";
 import { useEffect } from "react";
+import { useTranslation } from 'react-i18next';
+
 
 const AgradecimientoView = () => {
-
+    const { t } = useTranslation("global");
     const { borrarTodoCarrito } = useUser();
     const navigate = useNavigate();
 
@@ -31,6 +33,13 @@ const AgradecimientoView = () => {
         };
     }, [borrarTodoCarrito, navigate]);
 
+    useEffect(() => {
+    
+                // Operación de pago completada, ahora puedes borrar el carrito
+                borrarTodoCarrito();
+
+    }, []);
+
 
 
 
@@ -53,17 +62,17 @@ const AgradecimientoView = () => {
 
             {/* Texto de agradecimiento */}
             <Text fontSize="4xl" fontWeight="bold" mt={4}>
-                ¡Gracias por tu compra!
+                {t("gracias.gracias")}
             </Text>
 
             {/* Mensaje adicional o detalles de la compra si es necesario */}
             <Text textAlign="center" fontSize={"lg"} mt={2}>
-                Recibiras un corréo electronico con tus pases de tour pronto. 
+                {t("gracias.mensaje")} 
             </Text>
 
             {/* Botón para ir al inicio */}
             <Button onPress={() => { borrarTodoCarrito() }} mt={10} mb={20}>
-                Ir al Inicio
+                {t("gracias.cerrar")} 
             </Button>
         </View>
     );
