@@ -22,7 +22,7 @@ const ViajesAleatoreosComponent = ()=>{
         };
         const res = await fetchPost(url, options);
        
-        console.log("Viajes:", res);
+       
         setViajes(res);
        // 
         

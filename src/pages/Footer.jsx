@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Center, Text, Pressable, VStack, Stack, Image, HStack } from "native-base";
+import { Center, Text, Pressable, VStack, Stack, Image, HStack, Flex } from "native-base";
 import { BiLogIn } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
@@ -34,6 +34,15 @@ const Footer = () => {
     const handlePressLP = () => {
 
         const Url = `https://lpmarketinggroup.com.mx/`;
+
+        // Abre la URL en una nueva pestaña
+        window.open(Url, '_blank');
+    };
+
+    
+    const handlePressTurismo = () => {
+
+        const Url = `https://sedeturqroo.gob.mx/siturq/index.php?op=4`;
 
         // Abre la URL en una nueva pestaña
         window.open(Url, '_blank');
@@ -95,7 +104,7 @@ const Footer = () => {
 
                         />
                         <Center>
-                            <Text textAlign={"center"} justifyContent={"center"} bold p={3}>ES</Text>
+                            <Text textAlign={"center"} justifyContent={"center"} bold p={[1,1,3,3]}>ES</Text>
 
                         </Center>
                     </HStack>
@@ -109,48 +118,69 @@ const Footer = () => {
         
 
             <Stack direction={["column", "column", "row", "row"]} width={"100%"} bg="#101010" h={[96, 96, 80, 80]} justifyContent={"space-between"}>
+                <Stack direction={["column", "column", "row", "row"]} bg="#101010">
                 <Image
                     source={{
                         uri: "https://createtours.com.mx/backend/public/Imagenes/logo-footer.png"
                     }}
                     alt="Create tours"
-                    size="2xl"
-                    resizeMode="contain" m={5} borderRadius={10} alignSelf={"center"} ml={[0, 0, 40, 56]}
+                    size={"2xl"}
+                    resizeMode="contain"  borderRadius={10} alignSelf={"center"} 
 
                 />
+                <Pressable mt={8} onPress={() => handlePressTurismo()}>
+                    <Image
+                        source={{
+                            uri: "https://createtours.com.mx/pictures/SEDETUR.png"
+                        }}
+                        alt="Create tours"
+                        size={"2xl"}
+                        resizeMode="contain"  borderRadius={10} alignSelf={"center"} 
+                        
+                    />
+                </Pressable>
+         
+
+
+                </Stack>
+                
+
                 <HStack space={[1, 3, 4, 5]} justifyContent="center" alignSelf={"center"}>
                     <Pressable onPress={() => { handlePressFB() }}>
-                        <IconContext.Provider value={{ color: "#edf5f7", size: "1.3em" }}>
+                        <IconContext.Provider value={{ color: "#edf5f7", size: "2em" }}>
                             <FaFacebook />
                         </IconContext.Provider>
                     </Pressable>
 
                     <Pressable onPress={() => { handlePressIG() }}>
-                        <IconContext.Provider value={{ color: "#edf5f7", size: "1.3em" }}>
+                        <IconContext.Provider value={{ color: "#edf5f7", size: "2em" }}>
                             <FaInstagram />
                         </IconContext.Provider>
                     </Pressable>
 
 
                 </HStack>
+                <Flex bg={"#101010"}  pt={20}>
+                    <HStack py={4} alignSelf={"center"} bg={"#101010"} >
+                        <Stack direction={"column"}>
+                            <Text color={"#ffffff"} bold >MENU</Text>
+                            <CustomLink to="/" text={t("menu.inicio")} />
+                            <CustomLink to="/Tours" text="Tours" />
+                            <CustomLink to="/Carrito" text={t("menu.Carrito")} />
+                        </Stack>
+                        <Stack direction={"column"}>
+                            <Text bold >.</Text>
+                            <CustomLink to="/Blog" text="Blog" />
+                            <CustomLink to="/Nosotros" text={t("menu.Nosotros")} />
+                            <CustomLink to="/Contacto" text={t("menu.Contacto")} />
+                        </Stack>
+                    </HStack>
 
-                <HStack py={4} alignSelf={"center"}>
-                    <Stack direction={"column"}>
-                        <Text color={"#ffffff"} bold >MENU</Text>
-                        <CustomLink to="/" text={t("menu.inicio")} />
-                        <CustomLink to="/Tours" text="Tours" />
-                        <CustomLink to="/Carrito" text={t("menu.Carrito")} />
-                    </Stack>
-                    <Stack direction={"column"}>
-                        <Text bold >.</Text>
-                        <CustomLink to="/Blog" text="Blog" />
-                        <CustomLink to="/Nosotros" text={t("menu.Nosotros")} />
-                        <CustomLink to="/Contacto" text={t("menu.Contacto")} />
-                    </Stack>
-                </HStack>
+                </Flex>
+ 
 
                 <Pressable onPress={() => handlePressLP()} bg={"#101010"}>
-                    <Text color="#ffffff" fontSize={"sm"} mt={3} textAlign={"center"}>{t("menu.creado")}</Text>
+                    <Text color="#ffffff" fontSize={"sm"} mt={16} mb={-12} textAlign={"center"}>{t("menu.creado")}</Text>
                     <Image
                         source={{
                             uri: "https://lpmarketinggroup.com.mx/wp-content/uploads/2023/04/LP_Logo-LP.png"
@@ -164,7 +194,7 @@ const Footer = () => {
 
 
                 <Center bg={"#101010"}>
-                    <Pressable onPress={() => { navigate(`/Login`) }} mr={40} p={3}>
+                    <Pressable onPress={() => { navigate(`/Login`) }}  p={3}>
 
                         <IconContext.Provider value={{ color: "#edf5f7", size: "3rem" }}>
                             <BiLogIn />

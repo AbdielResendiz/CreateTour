@@ -115,7 +115,7 @@ const Carrito = () => {
         <>
           <Text bold fontSize={"xl"} textAlign={"center"}> Proceder con el pago: ${granTotal} USD</Text>
 
-          <Checkout total={granTotal}/>
+          <Checkout total={granTotal} carrito={carritoSting}/>
 
         </>
         :

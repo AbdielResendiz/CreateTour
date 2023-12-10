@@ -6,14 +6,12 @@ import {
   useElements,
 } from '@stripe/react-stripe-js';
 import { useTranslation } from 'react-i18next';
-import { useUser } from '../helper/UserContext';
 
 export const CheckoutForm = (props) => {
   const stripe = useStripe();
-  const {carrito}= useUser;
   const elements = useElements();
   const { t } = useTranslation("global");
-  const { total } = props;
+  const { total, carrito } = props;
 
   const [errorMessage, setErrorMessage] = useState('');
   const [nameInput, setNameInput] = useState('');
@@ -39,6 +37,8 @@ export const CheckoutForm = (props) => {
 
    
     console.log("price form: ", total)
+    console.log("Carrito form objeto?: ", carrito)
+    console.log("Carrito form objeto?: ", typeof(carrito) )
 
     // Create the PaymentIntent and obtain clientSecret from your server endpoint
     const res = await fetch(backendUrl, {
