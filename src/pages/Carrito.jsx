@@ -92,9 +92,9 @@ const Carrito = () => {
         data={carrito}
         numColumns={1}
 
-        renderItem={({ item, index }) => (
+        renderItem={({ item }) => (
           <CarritoComponent
-            index={index}
+            index={item.index}
             id={item.Viaje}
             titulo={item.Titulo}
             foto={item.Foto}
