@@ -164,11 +164,20 @@ const DetalleViaje = (props) => {
 
 
   return (
-    <div>
+    <>
 
       {/* Mostrar otros detalles del viaje aquí */}
-      <SwiperComponent id={id} />
+      {/* {
+        isLoading ? <Loader /> : 
+          <SwiperComponent id={id} />
+      } */}
+      {/* <Image source={{
+        uri: "https://createtours.com.mx/backend/public/Imagenes/portada-001.jpg"
+      }} alt="Alternate Text" width={"100%"} height={96} /> */}
 
+      <Box w={"95vw"} h={"35vw"}>
+        <SwiperComponent id={id} />
+      </Box >
 
       <VStack bg="#fafafa" p={1} m={1}>
 
@@ -215,7 +224,7 @@ const DetalleViaje = (props) => {
         {/* TABS */}
 
 
-        <VStack flex={1} p={2} my={"1rem"} borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"} ml={"1rem"} >
+        <VStack mx={[5, 5, 20, 40]} mr={[0, 0, 20, 80]} flex={1} p={2} my={"1rem"} borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"} ml={"1rem"} >
           <Stack direction={{
             base: "column",
             md: "row",
@@ -242,7 +251,7 @@ const DetalleViaje = (props) => {
 
 
       </VStack>
-    </div>
+    </>
 
 
   );

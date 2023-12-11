@@ -9,6 +9,7 @@ const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, ki
     // variables y funciones de useContext
     const { eliminarCarrito } = useUser();
     console.log("id viaje: ", id);
+    console.log("index viaje carrito: ", index);
 
     const [showModal, setShowModal] = useState(false);
 

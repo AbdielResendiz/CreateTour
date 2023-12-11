@@ -7,7 +7,7 @@ export const UserProvider = ({ children }) => {
   const [userId, setUserId] = useState(null);
   const [tipo, setTipo] = useState(null);
   const [carrito, setCarrito] = useState([]);
-  const [ totalContext, setTotalContext] = useState(0);
+  const [totalContext, setTotalContext] = useState(0);
 
   // Obtener el estado del carrito desde AsyncStorage al cargar la página
   useEffect(() => {
@@ -24,10 +24,10 @@ export const UserProvider = ({ children }) => {
     obtenerCarritos();
   }, []);
 
-  
-    
 
-    // Obtener el estado del usuario
+
+
+  // Obtener el estado del usuario
   useEffect(() => {
     const obtenerUsuario = async () => {
       try {
@@ -69,7 +69,8 @@ export const UserProvider = ({ children }) => {
 
       // Actualiza el estado local
       setCarrito(nuevosCarritos);
-
+      console.log("carrito de borrar: ", nuevosCarritos);
+      console.log("carrito de borrar setcarrito: ", carrito);
       console.log('Elemento del carrito eliminado exitosamente.');
     } catch (error) {
       console.error('Error al intentar eliminar un elemento del carrito:', error);
@@ -79,12 +80,12 @@ export const UserProvider = ({ children }) => {
   const login = async (id, tipoUser) => {
     setUserId(id);
     setTipo(tipoUser);
-  try {
-        await AsyncStorage.setItem('userId', id);
-        await AsyncStorage.setItem('tipo', tipoUser);
-      } catch (error) {
-        console.error('Error saving data to AsyncStorage f. login( ): ', error);
-      }
+    try {
+      await AsyncStorage.setItem('userId', id);
+      await AsyncStorage.setItem('tipo', tipoUser);
+    } catch (error) {
+      console.error('Error saving data to AsyncStorage f. login( ): ', error);
+    }
 
   };
 
@@ -108,22 +109,22 @@ export const UserProvider = ({ children }) => {
   }, [carrito]);
 
 
- 
+
 
   // Llama a la función para obtener el GranTotal
 
 
   const totalStripe = (usd) => {
-    
+
     setTotalContext(usd);
-    console.log("Total usd:" , totalContext);
+    console.log("Total usd:", totalContext);
   };
 
-  
+
 
   return (
     <UserContext.Provider
-      value={{ userId, tipo,  carrito, login, totalContext, totalStripe ,logout, agregarAlCarrito, editarCarrito, eliminarCarrito, borrarTodoCarrito }}
+      value={{ userId, tipo, carrito, login, totalContext, totalStripe, logout, agregarAlCarrito, editarCarrito, eliminarCarrito, borrarTodoCarrito }}
     >
       {children}
     </UserContext.Provider>

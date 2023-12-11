@@ -13,7 +13,7 @@ import Checkout from './Checkout';
 
 const Carrito = () => {
   const { t } = useTranslation("global");
-  const {  totalStripe } = useUser();
+  const { totalStripe } = useUser();
   //para navegar a otras vistas
   const navigate = useNavigate();
 
@@ -47,8 +47,8 @@ const Carrito = () => {
   };
 
   // Llama a la función para obtener el GranTotal
-  const granTotal =  calcularGranTotal();
-  
+  const granTotal = calcularGranTotal();
+
 
 
 
@@ -92,9 +92,9 @@ const Carrito = () => {
         data={carrito}
         numColumns={1}
 
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <CarritoComponent
-            index={item.ID}
+            index={index}
             id={item.Viaje}
             titulo={item.Titulo}
             foto={item.Foto}
@@ -115,14 +115,14 @@ const Carrito = () => {
         <>
           <Text bold fontSize={"xl"} textAlign={"center"}> Proceder con el pago: ${granTotal} USD</Text>
 
-          <Checkout total={granTotal} carrito={carritoSting}/>
+          <Checkout total={granTotal} carrito={carritoSting} />
 
         </>
         :
         null
       }
 
- 
+
 
 
 
