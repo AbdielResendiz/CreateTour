@@ -22,7 +22,7 @@ const ViajesAleatoreosComponent = ()=>{
         };
         const res = await fetchPost(url, options);
        
-        console.log("Viajes:", res);
+       
         setViajes(res);
        // 
         
@@ -31,7 +31,7 @@ const ViajesAleatoreosComponent = ()=>{
 
       useEffect(() => {
        verViajes()
-       console.log("Viajes 2 : ", viajes)
+       
       }, [])
       
 
@@ -66,6 +66,7 @@ const ViajesAleatoreosComponent = ()=>{
               key={numColumns.toString()} // Usa el número de columnas como clave
               renderItem={({ item }) => (
                 <ViajeComponent
+                  index={item.ID}
                   imageUri={item.Foto}
                   titulo={item.Titulo}
                   lugar={item.Ubicacion}

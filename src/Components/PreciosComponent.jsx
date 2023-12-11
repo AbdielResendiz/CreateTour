@@ -33,7 +33,7 @@ const PrecioComponent = ({ viaje }) => {
     <Box flexDirection={"column"} shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={4} m={1} justifyContent={"center"}>
       <HStack justifyContent={"center"}>
         <VStack space={3} justifyContent={"center"}>
-          <TipoTextoA texto="Adulto Extranjero" precio={viaje.PrecioAdultoExtranjero} />
+          <TipoTextoA texto="Adulto Extranjero" precio={viaje.PrecioAdultoExtranjero ? viaje.PrecioAdultoExtranjero : 0} />
           <TipoTextoA texto="Adulto Nacional" precio={viaje.PrecioAdultoNacional} />
         </VStack>
         <Divider orientation="vertical" h={"80%"} alignSelf={"center"} />
