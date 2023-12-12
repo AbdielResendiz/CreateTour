@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Center, Text, Pressable, VStack, Stack, Image, HStack, Flex } from "native-base";
+import { Center, Text, Pressable, VStack, Stack, Image, HStack } from "native-base";
 import { BiLogIn } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
@@ -70,12 +70,12 @@ const Footer = () => {
     return (
         <>
             {/* Boton WhatsAP */}
-            <Pressable bottom={10} zIndex={9} position={"fixed"} justifyContent={"flex-start"} w={[16, 16, 32, 40]} h={[16, 16, 32, 40]} left={[5, 5, 8, 10]}
+            <Pressable bottom={10} zIndex={9} position={"fixed"} justifyContent={"flex-start"} w={[16, 16, 32, 40]} h={[16, 16, 32, 40]} left={0}
                 onPress={() => handlePressWA()}>
                 <Lottie animationData={whatsapp} loop={true} />
             </Pressable>
             {/* Boton traducciom */}
-            <VStack bottom={10} right={3} zIndex={9} position={"fixed"} justifyContent="flex-end"
+            <VStack bottom={10} right={0} zIndex={9} position={"fixed"} justifyContent="flex-end"
                 borderRadius={10} bg={"#dfdfdf"} borderWidth={1} borderColor={"muted.400"}>
                 <Text borderTopRadius={10} p={1} fontSize={["xs", "xs", "md", "md"]}> {t("header.chooseLanguage")}</Text>
                 <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("en")} px={1} py={[1, 1, 3, 3]}  >

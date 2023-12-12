@@ -82,7 +82,7 @@ const Header = () => {
   const CustomLink = ({ to, text }) => {
     return (
       <Link to={to} style={linkStyle} >
-        <Text p={[1, 2, 3, 4]} borderWidth={1} borderRadius={10} shadow={3} mx={[2, 2, 4, 4]} borderColor={"muted.300"} fontSize={["sm", "md", "lg", "xl"]} >{text}</Text>
+        <Text p={[1, 1, 2, 2]} borderWidth={1} borderRadius={10} shadow={3} mx={[2, 2, 4, 4]} bg={"#eeeeee"} borderColor={"muted.300"} fontSize={["sm", "md", "lg", "xl"]} >{text}</Text>
       </Link>
     );
   };
@@ -91,7 +91,6 @@ const Header = () => {
     <Flex >
       <Flex style={headerStyle} zIndex={9} >
         <Stack direction={["column", "column", "row", "row"]} bg="#449bab" justifyContent="center" py={3} space={[0, 1, 2, 4]} >
-
           <HStack space={[1, 3, 4, 5]} justifyContent="center" >
             <Pressable onPress={() => { handlePressFB() }}>
               <IconContext.Provider value={{ color: "#edf5f7", size: "1.3em" }}>
@@ -116,9 +115,6 @@ const Header = () => {
           </HStack>
 
 
-
-
-
           <Pressable onPress={() => { handlePressEmail() }} alignSelf="center" pt={[2, 2, 0, 0]}>
             <HStack px={7}>
               <IconContext.Provider value={{ color: "#edf5f7", size: "1.5em" }}>
@@ -127,15 +123,13 @@ const Header = () => {
               <Text color={"#edf5f7"} textAlign={"center"} alignSelf={"center"} fontSize={["xs", "sm", "md", "lg"]} px={2}>contacto@createtours.com.mx</Text>
             </HStack>
           </Pressable>
-
-
         </Stack>
 
 
 
         {/* STACK de menu */}
         <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"} alignSelf={"center"}>
-          <HStack flex={1} justifyContent="center" px={[1, 2, 3, 4]} mb={0} py={3} bg={"#eeeeee"}>
+          <HStack flex={1} justifyContent="center" px={[1, 2, 3, 4]} mb={0} py={3} >
             <CustomLink to="/" text={t("menu.inicio")} />
             <CustomLink to="/Tours" text="Tours" />
             <CustomLink to="/Blog" text="Blog" />
@@ -146,10 +140,10 @@ const Header = () => {
 
           </HStack>
 
-          <HStack flex={1} justifyContent="center" px={[1, 2, 3, 4]} mb={0} py={3} bg={"#eeeeee"}>
+          <HStack flex={1} justifyContent="center" px={[1, 2, 3, 4]} mb={0} py={3} >
             <CustomLink to="/Contacto" text={t("menu.Contacto")} />
             {/* Boton carrito */}
-            <HStack px={[1, 2, 3, 4]} shadow={3} borderRadius={10} >
+            <HStack p={1} shadow={3} borderRadius={10} borderColor={"muted.300"} borderWidth={1} mt={-1} bg={"#eeeeee"} >
               <Center>
                 <IconContext.Provider value={{ color: "#449bab", size: "1.4rem" }}>
                   <TiShoppingCart />
@@ -160,7 +154,7 @@ const Header = () => {
               <Link to="/Carrito" style={linkStyle}><Text fontSize={["sm", "md", "lg", "xl"]}>{t("menu.Carrito")}</Text></Link>
               {carritoCantidad > 0 ?
                 <Center>
-                  <Center bgColor={"amber.400"} size={[4, 4, 4, 4]} mx={[1, 1, 2, 2]} p={[1, 2, 3, 4]} borderColor={"muted.300"} borderWidth={1} borderRadius={100}>
+                  <Center bgColor={"amber.400"} size={[4, 4, 4, 4]} mx={[1, 1, 2, 2]} p={[1, 2, 3, 3]} borderColor={"muted.300"} borderWidth={1} borderRadius={100}>
                     <Text bold fontSize={["xs", "sm", "md", "lg"]}>{carritoCantidad}</Text>
                   </Center>
                 </Center>

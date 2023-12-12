@@ -35,7 +35,7 @@ const Carrito = () => {
     console.log("carrito string: ", carritoSting)
     console.log("carritoSting type: ", typeof (carritoSting));
 
-  }, [carrito, carritoSting])
+  }, [carrito, carritoSting]);
 
   // Función para calcular el GranTotal
   const calcularGranTotal = () => {
@@ -54,7 +54,7 @@ const Carrito = () => {
 
 
   return (
-    <Flex mt={10}>
+    <Flex mt={[20, 20, 10, 10]} >
       <Center >
         <Heading w={"50%"} alignContent="center">{t("carritoVista.bienvenida")}</Heading>
       </Center>

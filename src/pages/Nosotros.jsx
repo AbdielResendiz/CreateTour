@@ -53,12 +53,12 @@ const Nosotros = () => {
         <Image
           source={{ uri: "https://createtours.com.mx/backend/public/Imagenes/Mision.png" }}
           alt="Alternate Text"
-          width={["100%", "100%", "65%", "65%"]}
+          width={["100%", "100%", "45%", "45%"]}
           height={96}
           resizeMode="contain"
         />
 
-        <VStack w={["90%", "90%", "35%", "35%"]} justifyContent={"center"} p={[2, 2, 5, 10]} mt={[-20, -20, 0, 0]}>
+        <VStack w={["90%", "90%", "45%", "45%"]} justifyContent={"center"} p={[2, 2, 5, 10]} mt={[-20, -20, 0, 0]}>
           <Text fontSize={["md", "lg", "xl", "2xl"]} color={"#494d41"}>
             CREATE TOURS
           </Text>

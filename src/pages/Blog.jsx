@@ -1,5 +1,5 @@
 import React from 'react';
-import { Center, Heading, Text, Box, Flex } from 'native-base';
+import { Heading, Text, Box, Flex } from 'native-base';
 import { useTranslation } from 'react-i18next';
 
 const Blog = () => {

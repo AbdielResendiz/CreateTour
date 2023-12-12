@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Box, Text, Image, HStack, VStack, Button, AspectRatio, Modal } from "native-base";
+import { Box, Text, Image, HStack, VStack, Button, Modal, Stack } from "native-base";
 import { IconContext } from "react-icons";
 import { MdDeleteForever } from "react-icons/md";
 import { useUser } from "../helper/UserContext";
-import ModalExample from "./ModalEample";
+
 
 const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, kidN, kidE, subtotal }) => {
     // variables y funciones de useContext
@@ -14,7 +14,7 @@ const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, ki
     const [showModal, setShowModal] = useState(false);
 
     return (
-        <HStack flex={1} mx={5} my={5} shadow={6} borderRadius={10} borderColor={"#aaaaaa"} borderWidth={1}>
+        <Stack direction={["column", "column", "row", "row"]} flex={1} mx={5} my={5} shadow={6} borderRadius={10} borderColor={"#aaaaaa"} borderWidth={1}>
 
             <Image borderLeftRadius={10}
                 source={{ uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${foto}` }}
@@ -94,7 +94,7 @@ const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, ki
                     </Modal>
                 </HStack>
             </Box>
-        </HStack>
+        </Stack>
     );
 };
 
