@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { HStack, Box, Text, VStack, Center, Divider, Stack, Pressable, Image, Spinner, Heading } from "native-base";
+import { HStack, Box, Text, VStack, Center, Divider, Stack, Pressable, View } from "native-base";
 import { useState, useEffect } from "react";
 import fetchPost from "../helper/fetchPost";
 import URL from "../helper/baseURL";
@@ -17,7 +17,7 @@ const DetalleViaje = (props) => {
 
   const { id } = useParams();
 
-  const [isLoading, setIsLoading] = useState(true);
+
 
 
   //manejar y obtener datos del viaje
@@ -40,7 +40,7 @@ const DetalleViaje = (props) => {
     if (res.status === true) {
 
       setViaje(res.data);
-      setIsLoading(false)
+
     }
 
   }
@@ -53,11 +53,7 @@ const DetalleViaje = (props) => {
     verViaje()
   }, []);
 
-  // Construir la clave de traducción dinámicamente
-  const claveDeTraduccion = `viajes.viaje${viaje.ID}.map`;
 
-  // Usar la clave construida en la función t()
-  const textoMapa = t(claveDeTraduccion);
 
 
 
@@ -149,31 +145,11 @@ const DetalleViaje = (props) => {
 
 
 
-  // Función para obtener la clave de traducción de un viaje por ID
-
-
-
-  const Loader = () => {
-    return <HStack space={2} mt={10} justifyContent="center">
-      <Spinner accessibilityLabel="Loading posts" />
-      <Heading color="primary.500" fontSize="md">
-        {t("viaje.load")}
-      </Heading>
-    </HStack>;
-  };
-
 
   return (
-    <>
+    <View mt={[20, 20, 10, 10]}>
 
-      {/* Mostrar otros detalles del viaje aquí */}
-      {/* {
-        isLoading ? <Loader /> : 
-          <SwiperComponent id={id} />
-      } */}
-      {/* <Image source={{
-        uri: "https://createtours.com.mx/backend/public/Imagenes/portada-001.jpg"
-      }} alt="Alternate Text" width={"100%"} height={96} /> */}
+
 
       <Box w={"95vw"} h={"35vw"}>
         <SwiperComponent id={id} />
@@ -252,7 +228,7 @@ const DetalleViaje = (props) => {
 
 
       </VStack>
-    </>
+    </View>
 
 
   );

@@ -16,10 +16,11 @@ const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, ki
     return (
         <Stack direction={["column", "column", "row", "row"]} flex={1} mx={5} my={5} shadow={6} borderRadius={10} borderColor={"#aaaaaa"} borderWidth={1}>
 
-            <Image borderLeftRadius={10}
+            <Image borderLeftRadius={[0, 0, 10, 10]}
+                borderTopRadius={[10, 10, 0, 0]}
                 source={{ uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${foto}` }}
                 alt={titulo}
-                w={[64, 64, 80, 96]}
+                w={["100%", "100%", 80, 96]}
                 h={[40, 40, 48, 56]}
                 resizeMode="cover"
             />

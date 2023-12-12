@@ -56,7 +56,7 @@ const Carrito = () => {
   return (
     <Flex mt={[20, 20, 10, 10]} >
       <Center >
-        <Heading w={"50%"} alignContent="center">{t("carritoVista.bienvenida")}</Heading>
+        <Heading w={"70%"} textAlign={"center"} alignContent="center">{t("carritoVista.bienvenida")}</Heading>
       </Center>
 
 
@@ -71,7 +71,7 @@ const Carrito = () => {
           </Center>
 
 
-          <Text mb={12} alignSelf={"center"} fontSize={"2xl"}> {t("carritoVista.carritoVacio.icono")}</Text>
+          <Text mb={12} alignSelf={"center"} w={"70%"} textAlign={"justify"} fontSize={["lg", "lg", "xl", "xl"]}> {t("carritoVista.carritoVacio.icono")}</Text>
           <Divider />
           <Text my={5} alignSelf={"center"} fontSize={"2xl"} bold >{t("carritoVista.carritoVacio.texto")}</Text>
           <ViajesAleatoreosComponent />
