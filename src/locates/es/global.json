@@ -1,6 +1,6 @@
 {
     "header": {
-        "chooseLanguage": "Elige el idioma:"
+        "chooseLanguage": "Idioma:"
     },
     "mainSection": {
         "title": "Creación de aplicaciones React multilingües con react-i18next: Guía paso a paso",
@@ -86,17 +86,16 @@
         "listaCarrito": {
             "pagar": "Pagar"
         },
-        "mensajeNombre":"¿A nombre de quién quedará la reservación?",
+        "mensajeNombre": "¿A nombre de quién quedará la reservación?",
         "name": "Nombre",
         "phone": "Teléfono",
         "email": "Correo electrónico",
         "aviso": "Favor de verificar que tus datos sean correctos"
-   
     },
-    "gracias" :{
+    "gracias": {
         "mensaje": "El folio de tu compra se ha enviado a tu correo electrónico.",
         "gracias": "Gracias por tu compra",
-        "cerrar" : "Cerrar"
+        "cerrar": "Cerrar"
     },
     "blog": {
         "titulo": "¡Bienvenido a nuestro Blog!",

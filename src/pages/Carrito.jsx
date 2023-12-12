@@ -55,8 +55,8 @@ const Carrito = () => {
 
   return (
     <Flex mt={10}>
-      <Center>
-        <Heading alignContent="center">{t("carritoVista.bienvenida")}</Heading>
+      <Center >
+        <Heading w={"50%"} alignContent="center">{t("carritoVista.bienvenida")}</Heading>
       </Center>
 
 
@@ -112,12 +112,12 @@ const Carrito = () => {
       {carrito.length > 0 ?
 
 
-        <>
+        <Center>
           <Text bold fontSize={"xl"} textAlign={"center"}> Proceder con el pago: ${granTotal} USD</Text>
 
           <Checkout total={granTotal} carrito={carritoSting} />
 
-        </>
+        </Center>
         :
         null
       }

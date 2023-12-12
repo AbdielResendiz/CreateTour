@@ -39,7 +39,7 @@ const Footer = () => {
         window.open(Url, '_blank');
     };
 
-    
+
     const handlePressTurismo = () => {
 
         const Url = `https://sedeturqroo.gob.mx/siturq/index.php?op=4`;
@@ -69,148 +69,147 @@ const Footer = () => {
 
     return (
         <>
-            <Pressable   bottom={1} zIndex={9}  position={"fixed"} justifyContent={"flex-start"} w={[20, 20, 32, 40]} h={[20, 20, 32, 40]} left={[5, 5, 8, 10]}
+            {/* Boton WhatsAP */}
+            <Pressable bottom={10} zIndex={9} position={"fixed"} justifyContent={"flex-start"} w={[16, 16, 32, 40]} h={[16, 16, 32, 40]} left={[5, 5, 8, 10]}
                 onPress={() => handlePressWA()}>
                 <Lottie animationData={whatsapp} loop={true} />
             </Pressable>
-            <VStack bottom={10} right={4} zIndex={9}  position={"fixed"} justifyContent="flex-end" marginLeft="auto" borderRadius={10} bg={"#dfdfdf"} borderWidth={1} borderColor={"muted.400"}>
-
-                <Text borderTopRadius={10} p={1}> {t("header.chooseLanguage")}</Text>
-                <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("en")} px={1} py={3} >
+            {/* Boton traducciom */}
+            <VStack bottom={10} right={3} zIndex={9} position={"fixed"} justifyContent="flex-end"
+                borderRadius={10} bg={"#dfdfdf"} borderWidth={1} borderColor={"muted.400"}>
+                <Text borderTopRadius={10} p={1} fontSize={["xs", "xs", "md", "md"]}> {t("header.chooseLanguage")}</Text>
+                <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("en")} px={1} py={[1, 1, 3, 3]}  >
                     <HStack justifyContent={"center"}>
                         <Image
                             source={{
                                 uri: "https://createtours.com.mx/pictures/usa.png"
                             }}
                             alt="English"
-                            size="xs"
-
+                            w={[5, 5, 10, 12]}
+                            h={[5, 5, 10, 12]}
+                            alignSelf={"center"}
                         />
                         <Center>
-                            <Text textAlign={"center"} justifyContent={"center"} bold p={3}>EN</Text>
-
+                            <Text textAlign={"center"} justifyContent={"center"} bold p={[1, 1, 3, 3]}>EN</Text>
                         </Center>
                     </HStack>
                 </Pressable>
 
-                <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("es")} borderBottomRadius={10} px={1} py={3}  >
+                <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("es")} borderBottomRadius={10} px={1} py={[1, 1, 3, 3]}  >
                     <HStack justifyContent={"center"}>
                         <Image
                             source={{
                                 uri: "https://createtours.com.mx/pictures/mexico.png"
                             }}
                             alt="Spanish"
-                            size="xs"
-
+                            w={[5, 5, 10, 12]}
+                            h={[5, 5, 10, 12]}
+                            alignSelf={"center"}
                         />
                         <Center>
-                            <Text textAlign={"center"} justifyContent={"center"} bold p={[1,1,3,3]}>ES</Text>
-
+                            <Text textAlign={"center"} justifyContent={"center"} bold p={[1, 1, 3, 3]}>ES</Text>
                         </Center>
                     </HStack>
                 </Pressable>
-
-
             </VStack>
 
 
-          <VStack>
-        
+            <VStack mt={[96, 96, 10, 10]}>
+                <Stack direction={["column", "column", "row", "row"]} width={"100%"} bg="#101010" h={[96, 96, 80, 80]} justifyContent={"center"}>
+                    <Stack direction={["column", "column", "row", "row"]} bg="#101010">
+                        <Image
+                            source={{
+                                uri: "https://createtours.com.mx/backend/public/Imagenes/logo-footer.png"
+                            }}
+                            alt="Create tours"
+                            size={"2xl"}
+                            resizeMode="contain" borderRadius={10} alignSelf={"center"}
 
-            <Stack direction={["column", "column", "row", "row"]} width={"100%"} bg="#101010" h={[96, 96, 80, 80]} justifyContent={"space-between"}>
-                <Stack direction={["column", "column", "row", "row"]} bg="#101010">
-                <Image
-                    source={{
-                        uri: "https://createtours.com.mx/backend/public/Imagenes/logo-footer.png"
-                    }}
-                    alt="Create tours"
-                    size={"2xl"}
-                    resizeMode="contain"  borderRadius={10} alignSelf={"center"} 
+                        />
+                        <Pressable mt={8} onPress={() => handlePressTurismo()}>
+                            <Image
+                                source={{
+                                    uri: "https://createtours.com.mx/pictures/SEDETUR.png"
+                                }}
+                                alt="Create tours"
+                                size={"2xl"}
+                                resizeMode="contain" borderRadius={10} alignSelf={"center"}
 
-                />
-                <Pressable mt={8} onPress={() => handlePressTurismo()}>
-                    <Image
-                        source={{
-                            uri: "https://createtours.com.mx/pictures/SEDETUR.png"
-                        }}
-                        alt="Create tours"
-                        size={"2xl"}
-                        resizeMode="contain"  borderRadius={10} alignSelf={"center"} 
-                        
-                    />
-                </Pressable>
-         
+                            />
+                        </Pressable>
+
+
+
+                    </Stack>
+
+                    {/* Redes sociales */}
+                    <HStack space={[10, 10, 4, 5]} justifyContent="center" alignSelf={"center"}>
+                        <Pressable onPress={() => { handlePressFB() }}>
+                            <IconContext.Provider value={{ color: "#edf5f7", size: "2em" }}>
+                                <FaFacebook />
+                            </IconContext.Provider>
+                        </Pressable>
+
+                        <Pressable onPress={() => { handlePressIG() }}>
+                            <IconContext.Provider value={{ color: "#edf5f7", size: "2em" }}>
+                                <FaInstagram />
+                            </IconContext.Provider>
+                        </Pressable>
+
+
+                    </HStack>
+                    {/* MENU footer nav */}
+                    <Center bg={"#101010"} pt={20}>
+                        <HStack py={4} alignSelf={"center"} bg={"#101010"} >
+                            <Stack direction={"column"}>
+                                <Text color={"#ffffff"} bold >MENU</Text>
+                                <CustomLink to="/" text={t("menu.inicio")} />
+                                <CustomLink to="/Tours" text="Tours" />
+                                <CustomLink to="/Carrito" text={t("menu.Carrito")} />
+                            </Stack>
+                            <Stack direction={"column"}>
+                                <Text bold >.</Text>
+                                <CustomLink to="/Blog" text="Blog" />
+                                <CustomLink to="/Nosotros" text={t("menu.Nosotros")} />
+                                <CustomLink to="/Contacto" text={t("menu.Contacto")} />
+                            </Stack>
+                        </HStack>
+
+                    </Center>
+
+                    {/* LOGO LP MARKETING */}
+                    <Pressable onPress={() => handlePressLP()} bg={"#101010"} pt={10}>
+                        <Text color="#ffffff" fontSize={"sm"} mt={16} textAlign={"center"}>{t("menu.creado")}</Text>
+                        <Image
+                            source={{
+                                uri: "https://lpmarketinggroup.com.mx/wp-content/uploads/2023/04/LP_Logo-LP.png"
+                            }}
+                            alt="Create tours"
+                            size="xl"
+                            resizeMode="contain" borderRadius={10} alignSelf={"center"}
+
+                        />
+                    </Pressable>
+
+                    {/* boton acceso admin */}
+                    <Center bg={"#101010"}>
+                        <Pressable onPress={() => { navigate(`/Login`) }} p={3}>
+
+                            <IconContext.Provider value={{ color: "#edf5f7", size: "3rem" }}>
+                                <BiLogIn />
+                            </IconContext.Provider>
+
+                        </Pressable>
+                    </Center>
+
+
 
 
                 </Stack>
-                
 
-                <HStack space={[1, 3, 4, 5]} justifyContent="center" alignSelf={"center"}>
-                    <Pressable onPress={() => { handlePressFB() }}>
-                        <IconContext.Provider value={{ color: "#edf5f7", size: "2em" }}>
-                            <FaFacebook />
-                        </IconContext.Provider>
-                    </Pressable>
-
-                    <Pressable onPress={() => { handlePressIG() }}>
-                        <IconContext.Provider value={{ color: "#edf5f7", size: "2em" }}>
-                            <FaInstagram />
-                        </IconContext.Provider>
-                    </Pressable>
-
-
-                </HStack>
-                <Flex bg={"#101010"}  pt={20}>
-                    <HStack py={4} alignSelf={"center"} bg={"#101010"} >
-                        <Stack direction={"column"}>
-                            <Text color={"#ffffff"} bold >MENU</Text>
-                            <CustomLink to="/" text={t("menu.inicio")} />
-                            <CustomLink to="/Tours" text="Tours" />
-                            <CustomLink to="/Carrito" text={t("menu.Carrito")} />
-                        </Stack>
-                        <Stack direction={"column"}>
-                            <Text bold >.</Text>
-                            <CustomLink to="/Blog" text="Blog" />
-                            <CustomLink to="/Nosotros" text={t("menu.Nosotros")} />
-                            <CustomLink to="/Contacto" text={t("menu.Contacto")} />
-                        </Stack>
-                    </HStack>
-
-                </Flex>
- 
-
-                <Pressable onPress={() => handlePressLP()} bg={"#101010"}>
-                    <Text color="#ffffff" fontSize={"sm"} mt={16} mb={-12} textAlign={"center"}>{t("menu.creado")}</Text>
-                    <Image
-                        source={{
-                            uri: "https://lpmarketinggroup.com.mx/wp-content/uploads/2023/04/LP_Logo-LP.png"
-                        }}
-                        alt="Create tours"
-                        size="2xl"
-                        resizeMode="contain" borderRadius={10} alignSelf={"center"} 
-
-                    />
-                </Pressable>
-
-
-                <Center bg={"#101010"}>
-                    <Pressable onPress={() => { navigate(`/Login`) }}  p={3}>
-
-                        <IconContext.Provider value={{ color: "#edf5f7", size: "3rem" }}>
-                            <BiLogIn />
-                        </IconContext.Provider>
-
-                    </Pressable>
-                </Center>
-
-
-
-
-            </Stack>
-
-        </VStack>
+            </VStack>
         </>
-      
+
     );
 };
 

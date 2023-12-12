@@ -38,7 +38,7 @@ const Contacto = () => {
 
 
   return (
-    <View w="100%" mt={10}>
+    <View w="100%" mt={[20, 20, 10, 10]}>
       <Center>
         <Text bold fontSize="2xl">
           {t("contacto.titulo")}

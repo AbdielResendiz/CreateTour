@@ -7,8 +7,8 @@ const Nosotros = () => {
 
   const NosotrosComponent = ({ subtitle, description, imageUrl, mr }) => {
     return (
-      <Stack direction={"row"} w={"100%"}>
-        <VStack w={"35%"} p={5} mx={5} >
+      <Stack direction={["column", "column", "row", "row"]} w={"100%"}>
+        <VStack w={["80%", "80%", "35%", "35%"]} p={[2, 2, 5, 5]} mx={5} mb={[-20, -20, 0, 0]}>
           <Text fontSize={["md", "lg", "xl", "2xl"]} color={"#494d41"}  >CREATE TOURS</Text>
           <Text bold fontSize={["xl", "2xl", "4xl", "5xl"]}  >{subtitle}</Text>
           <Text fontSize={["md", "md", "lg", "lg"]} color={"#494d41"} textAlign={"justify"}>{description}</Text>
@@ -16,10 +16,10 @@ const Nosotros = () => {
         <Image
           source={{ uri: imageUrl }}
           alt="Alternate Text"
-          width={"60%"}
-          height={80}
-          resizeMode={"stretch"}
-          justifyContent={"flex-end"}
+          w={["90%", "90%", "65%", "65%"]}
+          height={96}
+          resizeMode={"contain"}
+          alignSelf={["center", "center", "flex-end", "flex-end"]}
         />
       </Stack>
     );
@@ -39,7 +39,8 @@ const Nosotros = () => {
 
   return (
 
-    <View direction="column" alignItems="center" py={10} w="100%" flex={1}>
+    <View direction="column" alignItems="center" py={[2, 2, 10, 10]} w="100%" flex={1}>
+      {/* Nosotros con logo */}
       <NosotrosComponent
         subtitle={t("menu.Nosotros")}
         description={t("nosotros.nosotrosDes")}
@@ -47,17 +48,17 @@ const Nosotros = () => {
         resize={"cover"}
         mr={3}
       />
-
-      <Stack direction="row" w="100%">
+      {/*  IMAGEN Y MISION */}
+      <Stack direction={["column", "column", "row", "row"]} w="100%" mt={[-40, -40, 0, 0]}>
         <Image
           source={{ uri: "https://createtours.com.mx/backend/public/Imagenes/Mision.png" }}
           alt="Alternate Text"
-          width="60%"
+          width={["100%", "100%", "65%", "65%"]}
           height={96}
-          resizeMode="cover"
+          resizeMode="contain"
         />
 
-        <VStack w="35%" p={10}>
+        <VStack w={["90%", "90%", "35%", "35%"]} justifyContent={"center"} p={[2, 2, 5, 10]} mt={[-20, -20, 0, 0]}>
           <Text fontSize={["md", "lg", "xl", "2xl"]} color={"#494d41"}>
             CREATE TOURS
           </Text>

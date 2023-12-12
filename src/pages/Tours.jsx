@@ -20,7 +20,7 @@ const Tours = () => {
 
 
     return (
-        <Flex w="100%">
+        <Flex w="100%" mt={[20, 20, 10, 10]}>
             <Stack direction={["column", "column", "row", "row"]} w={"100%"}>
                 <Image source={{
                     uri: "https://createtours.com.mx/backend/public/Imagenes/bg-tours.webp"
