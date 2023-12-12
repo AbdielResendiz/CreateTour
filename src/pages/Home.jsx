@@ -51,10 +51,10 @@ const Home = () => {
       <Box h={96} mb={32}>
         <ZStack>
 
-          <Flex w="60%" flexDirection="column" justifyContent="flex-start" mt={56} ml={12}>
+          <Flex w="60%" flexDirection="column" justifyContent="flex-start" mt={56} ml={12} >
             <Text fontSize={["lg", "xl", "2xl", "4xl"]} color={"#494d41"}  >CREATE TOURS</Text>
             <Text bold fontSize={["md", "lg", "lg", "2xl"]}  >{t("mainSection.quienes")}</Text>
-            <Text fontSize={["md", "md", "lg", "xl"]} color={"#494d41"} pr={12} bg={"white"} textAlign={"justify"}  >
+            <Text fontSize={["md", "md", "lg", "xl"]} color={"#494d41"} pr={12} bg={"#eeeeee"} textAlign={"justify"}  >
               {t("mainSection.about")}
             </Text>
           </Flex>

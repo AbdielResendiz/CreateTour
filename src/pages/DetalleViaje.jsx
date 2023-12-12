@@ -186,9 +186,9 @@ const DetalleViaje = (props) => {
         {/* Titulo y precios */}
         <Stack direction={["column", "column", "row", "row"]} w={"100%"} space={3} p={1} m={1}  >
 
-          <HStack flex={1} ml={2} shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={2} m={2} justifyContent={"center"} >
+          <HStack w={["95%", "95%", "45%", "60%"]} flex={1} ml={2} shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={2} m={2} justifyContent={"center"} >
 
-            <Text bold mx={2} p={2} py={10} alignSelf={"center"} fontSize={["xl", "2xl", "4xl", "6xl"]} >{viaje.Titulo}</Text>
+            <Text bold mx={2} p={2} py={5} alignSelf={"center"} fontSize={["xl", "2xl", "4xl", "6xl"]} >{viaje.Titulo}</Text>
 
 
 
@@ -215,8 +215,9 @@ const DetalleViaje = (props) => {
             </VStack>
 
           </HStack>
-
-          <PrecioComponent viaje={viaje} />
+          <Box w={["95%", "95%", "45%", "40%"]}>
+            <PrecioComponent viaje={viaje} />
+          </Box>
 
         </Stack>
 
@@ -224,7 +225,7 @@ const DetalleViaje = (props) => {
         {/* TABS */}
 
 
-        <VStack mx={[5, 5, 20, 40]} mr={[0, 0, 20, 80]} flex={1} p={2} my={"1rem"} borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"} ml={"1rem"} >
+        <VStack flex={1} alignSelf={"center"} p={2} my={"1rem"} borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"}  >
           <Stack direction={{
             base: "column",
             md: "row",

@@ -23,7 +23,7 @@ const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
 
   return (
 
-    <VStack m={4} borderColor={"#f0f0f0"} borderWidth={1} borderRadius={10} pb={2} bg="white" shadow={6}>
+    <VStack m={4} borderColor={"#f0f0f0"} borderWidth={1} borderRadius={10} pb={2} bg={"#eeeeee"} shadow={6}>
       <Pressable onPress={() => handleClick()} >
         <Image size={64} borderTopRadius={10} source={{
           uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${imageUri}`

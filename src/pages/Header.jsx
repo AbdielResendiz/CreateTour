@@ -131,7 +131,7 @@ const Header = () => {
 
         </Stack>
 
-        <HStack justifyContent="center" px={[1, 2, 3, 4]} mb={0} py={3} bg={"white"}>
+        <HStack justifyContent="center" px={[1, 2, 3, 4]} mb={0} py={3} bg={"#eeeeee"}>
           <CustomLink to="/" text={t("menu.inicio")} />
           <CustomLink to="/Tours" text="Tours" />
           <CustomLink to="/Blog" text="Blog" />
