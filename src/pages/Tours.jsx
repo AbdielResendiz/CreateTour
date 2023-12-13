@@ -20,11 +20,11 @@ const Tours = () => {
 
 
     return (
-        <Flex w="100%" mt={[20, 20, 10, 10]}>
+        <Flex w="100%" mt={[12, 12, 24, 24]}>
             <Stack direction={["column", "column", "row", "row"]} w={"100%"}>
                 <Image source={{
                     uri: "https://createtours.com.mx/backend/public/Imagenes/bg-tours.webp"
-                }} alt="Alternate Text" width={["100%", "100%", "60%", "70%"]} height={96} resizeMode="cover" />
+                }} alt="Alternate Text" width={["100%", "100%", "60%", "70%"]} height={96} mt={[0, 0, 10, 10]} resizeMode="cover" />
 
                 <VStack justifyContent={"center"} alignSelf={"center"} width={["100%", "100%", "40%", "30%"]} p={10}>
                     <Text mt={4} fontSize={["md", "lg", "md", "lg"]}  >{t("tours.titulo")}</Text>
@@ -40,8 +40,9 @@ const Tours = () => {
                         {t("tours.incluye")} {"\n"}
 
                     </Text>
-                    <Button m={5} colorScheme={"amber"} size={"lg"}
-                        onPress={() => { handleClick() }}>{t("tours.verTour")} </Button>
+                    <Button colorScheme={"amber"} textAlign={"center"}
+                        onPress={() => { handleClick() }}>{t("tours.verTour")}
+                    </Button>
                 </VStack>
             </Stack>
 

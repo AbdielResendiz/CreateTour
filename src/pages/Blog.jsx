@@ -7,7 +7,7 @@ const Blog = () => {
   const { t } = useTranslation("global");
 
   return (
-    <Flex mx={5} mt={[20, 20, 10, 10]} mb={20} w="80%" >
+    <Flex mx={5} mt={[12, 12, 24, 24]} mb={20} w="80%" >
       <Box alignItems="center">
         <Heading mb="4" textAlign="center">
           {t('blog.titulo')}

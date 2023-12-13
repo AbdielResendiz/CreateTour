@@ -34,11 +34,11 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <Flex w="100%" mt={[10, 10, 0, 0]}>
+    <Flex w="100%" mt={[12, 12, 24, 24]}>
 
-      <Image source={{
+      <Image bg={"#449bab"} source={{
         uri: "https://createtours.com.mx/backend/public/Imagenes/portada-001.jpg"
-      }} alt="Alternate Text" width={"100%"} height={96} />
+      }} alt="Alternate Text" width={"100%"} h={[48, 48, 96, 96]} resizeMode="cover" />
 
 
       {/* ICONOS */}
@@ -63,7 +63,7 @@ const Home = () => {
 
             <Image source={{
               uri: "https://createtours.com.mx/backend/public/Imagenes/logo-background.webp"
-            }} alt="Alternate Text" width={"90%"} height={96} resizeMode="cover" />
+            }} alt="Alternate Text" width={"90%"} height={96} resizeMode="contain" />
 
 
           </Flex>

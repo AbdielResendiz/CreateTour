@@ -7,7 +7,7 @@ const Nosotros = () => {
 
   const NosotrosComponent = ({ subtitle, description, imageUrl, mr }) => {
     return (
-      <Stack direction={["column", "column", "row", "row"]} w={"100%"}>
+      <Stack direction={["column", "column", "row", "row"]} w={"100%"} mt={[12, 12, 24, 24]}>
         <VStack w={["80%", "80%", "35%", "35%"]} p={[2, 2, 5, 5]} mx={5} mb={[-20, -20, 0, 0]}>
           <Text fontSize={["md", "lg", "xl", "2xl"]} color={"#494d41"}  >CREATE TOURS</Text>
           <Text bold fontSize={["xl", "2xl", "4xl", "5xl"]}  >{subtitle}</Text>

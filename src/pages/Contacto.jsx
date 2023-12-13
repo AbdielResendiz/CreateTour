@@ -38,15 +38,15 @@ const Contacto = () => {
 
 
   return (
-    <View w="100%" mt={[20, 20, 10, 10]}>
+    <View w="100%" mt={[12, 12, 24, 24]}>
       <Center>
-        <Text bold fontSize="2xl">
+        <Text bold fontSize="2xl" >
           {t("contacto.titulo")}
         </Text>
       </Center>
 
       <Center mb={10} mt={10}>
-        <Text fontSize="xl" textAlign="center">
+        <Text fontSize="xl" textAlign="center" w="80%">
           {t("contacto.parrafo1.text")}
         </Text>
       </Center>

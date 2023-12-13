@@ -15,7 +15,7 @@ const DetalleVentaComponent = ({ id, index, foto, titulo, fecha, adultoN, adulto
     return (
         <HStack width={760} ml={10} my={5} shadow={6} borderRadius={10} borderColor={"#aaaaaa"} borderWidth={1}>
             <AspectRatio w={400} ratio={16 / 9}>
-                <Image borderLeftRadius={10} source={{ uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${foto}` }} alt={titulo} />
+                <Image borderLeftRadius={10} source={{ uri: `https://createtours.com.mx/backend/public/Imagenes/viajesportada/${foto}` }} alt="detalle venta" />
             </AspectRatio>
 
             <Box p={5}>

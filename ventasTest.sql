@@ -22,6 +22,7 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+SELECT Titulo, PrecioAdultoNacional, PrecioAdultoExtranjero, PrecioInfantilNacional, PrecioInfantilExtranjero FROM `Viajes`;
 
 --
 -- Estructura de tabla para la tabla `ventasTest`

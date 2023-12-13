@@ -11,14 +11,7 @@ import SwiperComponent from "../Components/SwiperComponent";
 const DetalleViaje = (props) => {
   const { t } = useTranslation("global");
 
-
-
-
-
   const { id } = useParams();
-
-
-
 
   //manejar y obtener datos del viaje
   const [viaje, setViaje] = useState([])
@@ -45,16 +38,9 @@ const DetalleViaje = (props) => {
 
   }
 
-
-
-
-
   useEffect(() => {
     verViaje()
   }, []);
-
-
-
 
 
   const [tab, setTab] = useState(0);
@@ -64,33 +50,32 @@ const DetalleViaje = (props) => {
 
     switch (n) {
       case 1:
-        content = <Text>{t(`viajes.viaje${viaje.ID}.salida`)} {"\n"} {t(`viajes.viaje${viaje.ID}.regreso`)}</Text>;
+        content = <Text fontSize={["sm", "sm", "md", "md"]}>{t(`viajes.viaje${viaje.ID}.salida`)} {"\n"} {"\n"} {t(`viajes.viaje${viaje.ID}.regreso`)}</Text>;
         break;
       case 2:
         content = <VStack>
           <Text bold fontSize={"lg"}>{t("viaje.intinerario")}</Text>
-          <Text>{t(`viajes.viaje${viaje.ID}.intinerario`)}</Text>
+          <Text fontSize={["sm", "sm", "md", "md"]}>{t(`viajes.viaje${viaje.ID}.intinerario`)}</Text>
         </VStack>;
         break;
       case 3:
         content = <VStack>
-          <Text bold>{t("viaje.incl")}</Text>
-          <Text>
-            {t(`viajes.viaje${viaje.ID}.incluido`)}
+          <Text bold fontSize={"lg"}>{t("viaje.incl")}  </Text>
+          <Text fontSize={["sm", "sm", "md", "md"]}>
+            {t(`viajes.viaje${viaje.ID}.incluido`)} {'\n'}
           </Text>
-          <Text bold>{t("viaje.noincl")}</Text>
-          <Text>
+          <Text bold fontSize={"lg"}>{t("viaje.noincl")}</Text>
+          <Text fontSize={["sm", "sm", "md", "md"]}>
             {t(`viajes.viaje${viaje.ID}.noIncluido`)}
           </Text>
         </VStack>;
         break;
       case 4:
-        content = <Text>{t(`viajes.viaje${viaje.ID}.infoAdicional`)}</Text>;
+        content = <Text fontSize={["sm", "sm", "md", "md"]} >{t(`viajes.viaje${viaje.ID}.infoAdicional`)}</Text>;
         break;
       case 5:
         content = <Box ml={[-10, -5, 0, 0]} w={[96, 480, 768, 992]} h={[96, 96, 480, 768]}>
-          {/* Prueba variable bilingue */}
-          <Text>    </Text>
+
           <iframe
             title="Mapa  de Google"
             src={viaje.Maps}
@@ -104,7 +89,7 @@ const DetalleViaje = (props) => {
         </Box>;
         break;
       default:
-        content = <Text fontSize={["sm", "md", "lg", "lg"]}>{t(`viajes.viaje${viaje.ID}.descripcion`)}</Text>;
+        content = <Text fontSize={["sm", "sm", "md", "md"]}>{t(`viajes.viaje${viaje.ID}.descripcion`)}</Text>;
         break;
     }
 
@@ -135,15 +120,6 @@ const DetalleViaje = (props) => {
   };
 
 
-  useEffect(() => {
-
-    console.log("Tab:  ", tab)
-  }, [tab]);
-
-
-
-
-
 
 
   return (
@@ -156,9 +132,6 @@ const DetalleViaje = (props) => {
       </Box >
 
       <VStack bg="#fafafa" p={1} m={1}>
-
-
-
         {/* Titulo y precios */}
         <Stack direction={["column", "column", "row", "row"]} w={"100%"} space={3} p={1} m={1}  >
 
@@ -201,7 +174,7 @@ const DetalleViaje = (props) => {
         {/* TABS */}
 
 
-        <VStack flex={1} alignSelf={"center"} p={2} my={"1rem"} borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"}  >
+        <VStack w={"80%"} alignSelf={"center"} p={2} my={"1rem"} borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"}  >
           <Stack direction={{
             base: "column",
             md: "row",
@@ -219,9 +192,9 @@ const DetalleViaje = (props) => {
           <Divider />
 
           {/* Contenido, descripcion, mapa, etc */}
-          <Box p={4}>
+          <Center p={4} >
             <TabHandle n={tab} />
-          </Box>
+          </Center>
         </VStack>
 
 
@@ -229,8 +202,6 @@ const DetalleViaje = (props) => {
 
       </VStack>
     </View>
-
-
   );
 };
 

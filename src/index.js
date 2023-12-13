@@ -2,17 +2,13 @@ import ReactDOM from "react-dom/client";
 import {
   BrowserRouter as Router,
   Route,
-  Routes,
-  Navigate
+  Routes
 } from "react-router-dom";
-import {
-  EmbeddedCheckoutProvider,
-  EmbeddedCheckout
-} from '@stripe/react-stripe-js';
+
 import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
-import React, { useState, useEffect } from "react";
-import { loadStripe } from '@stripe/stripe-js';
+import React from "react";
+
 import Header from "./pages/Header";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
@@ -30,12 +26,14 @@ import Tours from "./pages/Tours";
 import Nosotros from "./pages/Nosotros";
 import AdminPermiso from "./pages/AdminPermiso";
 import AgradecimientoView from "./pages/AgradecimientoView";
+import Devoluciones from "./pages/Devoluciones";
+import Privacidad from "./pages/Privacidad";
 
 
 import global_en from './locates/en/global.json'
 import global_es from './locates/es/global.json'
 import FAQ from "./pages/FAQ";
-import Checkout from "./pages/Checkout";
+
 import Payment from "./stripe/Payment";
 
 i18next.init({
@@ -91,6 +89,8 @@ export default function App() {
                   <Route path="success" element={<AgradecimientoView />} />
                   <Route path="FAQ" element={<FAQ />} />
                   <Route path="Stripe" element={<Payment />} />
+                  <Route path="Devoluciones" element={<Devoluciones />} />
+                  <Route path="Privacidad" element={<Privacidad />} />
                   <Route path="*" element={<NoPage />} />
                 </Route>
 

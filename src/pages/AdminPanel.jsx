@@ -13,7 +13,7 @@ const AdminPanel = () => {
     const HeaderAdmin = () => {
 
         return (
-            <View flex={1}>
+            <View flex={1} mt={[12, 12, 24, 24]}>
                 <Heading alignSelf={"center"} fontSize={"2xl"} py={5}> Bienvenido al panel de administrador</Heading>
                 <Text textAlign={"center"} fontSize={"lg"} mb={3}>Aquí podras ver el historial y estatus de las ventas</Text>
 

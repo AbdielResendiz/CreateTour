@@ -19,9 +19,10 @@ import {
 import DetalleVentaComponent from './DetalleVentaComponent';
 import URL from '../helper/baseURL';
 import fetchPost from '../helper/fetchPost';
+import { FlatList } from 'native-base';
 
 const DataTable = () => {
-    const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedItem, setSelectedItem] = useState([{ "index": 0, "Viaje": 0, "Titulo": "", "Foto": "xploradventurepark.jpg", "Fecha": "", "CantidadAdultos": 0, "CantidadInfantes": 0, "CantidadAdultosExtranjeros": 0, "CantidadInfantesExtranjeros": 0, "TotalCompra": 0 }]);
     const [openModal, setOpenModal] = useState(false);
     const [viajes, setViajes] = useState([]);
 
@@ -33,6 +34,7 @@ const DataTable = () => {
                 method: 'POST',
             };
             const res = await fetchPost(url, options);
+            // console.log("ventas admin: ", res)
             setViajes(res);
         } catch (error) {
             console.error('Error al obtener datos de viajes:', error);
@@ -42,16 +44,28 @@ const DataTable = () => {
     useEffect(() => {
         // Llama a la función para obtener los datos de viajes cuando el componente se monta
         verVentas();
+        console.log("Tipo selected item 1:", typeof (selectedItem))
     }, []);
 
     const handleRowClick = (item) => {
-        setSelectedItem(item);
+        const parsedItem = JSON.parse([item]);
+        setSelectedItem(parsedItem);
         setOpenModal(true);
     };
 
+
     const handleCloseModal = () => {
+        setSelectedItem(null);
         setOpenModal(false);
     };
+
+    useEffect(() => {
+        console.log("selectedItem actualizado:", selectedItem);
+        console.log("selectedItem actualizado tipo:", typeof (selectedItem));
+        if (selectedItem && selectedItem.length > 0) {
+            console.log("selectedItem ID:", selectedItem[0].Titulo);
+        }
+    }, [selectedItem]);
 
     return (
         <div>
@@ -64,32 +78,24 @@ const DataTable = () => {
                             <TableCell>Teléfono</TableCell>
                             <TableCell>Tours Info</TableCell>
                             <TableCell>Fecha de pago</TableCell>
-                            <TableCell>Estatus</TableCell>
+                            {/* <TableCell>Estatus</TableCell> */}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {viajes.map((row) => (
-                            <TableRow key={row.id} onClick={() => handleRowClick(row)}>
+                            <TableRow key={row.id} >
                                 <TableCell>{row.ID}</TableCell>
                                 <TableCell>{row.Email}</TableCell>
                                 <TableCell>{row.Telefono}</TableCell>
-                                <TableCell>
-                                    {row.toursInfo}{' '}
-                                    <Button variant="outlined" onClick={() => handleRowClick(row)}>
+
+                                <TableCell style={{ maxWidth: 100 }}>
+
+                                    <Button variant="outlined" onClick={() => handleRowClick(row.Viaje)}>
                                         Detalles
                                     </Button>
                                 </TableCell>
                                 <TableCell>{row.FechaPago}</TableCell>
-                                <TableCell>
-                                    <FormControl>
-                                        <InputLabel>Estatus</InputLabel>
-                                        <Select value={row.estatus} label="Estatus">
-                                            <MenuItem value="Pagado">Pagado</MenuItem>
-                                            <MenuItem value="Pendiente">Pendiente</MenuItem>
-                                            {/* Agrega más opciones según tus necesidades */}
-                                        </Select>
-                                    </FormControl>
-                                </TableCell>
+
                             </TableRow>
                         ))}
                     </TableBody>
@@ -108,32 +114,32 @@ const DataTable = () => {
                         padding: 20,
                         borderRadius: 8,
                     }}>
-                        {/* Aquí deberías utilizar los datos de selectedItem o los datos que necesites mostrar */}
-                        {/* <DetalleVentaComponent
-                            index={selectedItem?.id}
-                            id={selectedItem?.id}
-                            titulo={selectedItem?.Viaje.ID}
-                            foto={selectedItem?.foto}
-                            subtotal={selectedItem?.subtotal}
-                            fecha={selectedItem?.fechaPago}
-                            adultoN={selectedItem?.adultoN}
-                            adultoE={selectedItem?.adultoE}
-                            kidN={selectedItem?.kidN}
-                            kidE={selectedItem?.kidE}
-                        /> */}
 
-                        <DetalleVentaComponent
-                            index={1}
-                            id={4}
-                            titulo={"Xel Há"}
-                            foto={"xel-ha.jpg"}
-                            subtotal={420}
-                            fecha={"12/12/2021"}
-                            adultoN={1}
-                            adultoE={1}
-                            kidN={1}
-                            kidE={1}
-                        />
+
+                        <p> {selectedItem ? selectedItem : ''}</p>
+
+
+                        {/* <FlatList
+                            style={{ width: '100%', marginTop: 5, paddingHorizontal: '2vw' }}
+                            contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
+                            data={selectedItem ? [selectedItem[0]] : []}
+                            keyExtractor={(item, index) => index.toString()} // Usar index como clave
+                            renderItem={({ item, index }) => (
+                                <DetalleVentaComponent
+                                    key={index}
+                                    index={item.index}
+                                    id={item.Viaje}
+                                    titulo={item.Titulo}
+                                    foto={item.Foto}
+                                    subtotal={item.TotalCompra}
+                                    fecha={item.Fecha}
+                                    adultoN={item.CantidadAdultos}
+                                    adultoE={item.CantidadAdultosExtranjeros}
+                                    kidN={item.CantidadInfantes}
+                                    kidE={item.CantidadInfantesExtranjeros}
+                                />
+                            )}
+                        /> */}
 
                     </div>
                 </Fade>

@@ -1,4 +1,4 @@
-import { Image, FlatList, AspectRatio, Flex } from "native-base";
+import { FlatList, Flex } from "native-base";
 import URL from "../helper/baseURL";
 import fetchPost from "../helper/fetchPost";
 import { useEffect, useState } from "react";
