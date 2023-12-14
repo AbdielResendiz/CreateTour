@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { VStack, Input, FormControl, TextArea, Button, View, Center, Text } from 'native-base';
+import { VStack, Input, FormControl, TextArea, Button, View, Center, Text, ZStack, Box, Image, Flex } from 'native-base';
 import URL from '../helper/baseURL';
 import fetchPost from '../helper/fetchPost';
 import { useTranslation } from 'react-i18next';
@@ -38,28 +38,47 @@ const Contacto = () => {
 
 
   return (
-    <View w="100%" mt={[12, 12, 24, 24]}>
-      <Center>
-        <Text bold fontSize="2xl" >
+    <View w="100%" mt={[12, 12, 32, 32]}>
+
+
+      <ZStack h={40} mb={[0, 0, 40, 40]}>
+
+
+
+        <Image source={{
+          uri: "https://createtours.com.mx/backend/public/Imagenes/olas-chicas.svg"
+        }} alt="Alternate Text" width={"100vw"} height={[40, 40, 72, 80]} resizeMode="stretch" />
+
+
+
+
+
+        <Text mt={12} alignSelf={"center"} bold fontSize={["xl", "4xl", "4xl", "6xl"]} >
           {t("contacto.titulo")}
         </Text>
-      </Center>
 
-      <Center mb={10} mt={10}>
-        <Text fontSize="xl" textAlign="center" w="80%">
+
+
+      </ZStack>
+
+
+
+
+      <Center mb={10} >
+        <Text fontSize="xl" textAlign="justify" w="70%">
           {t("contacto.parrafo1.text")}
         </Text>
       </Center>
 
       <Center>
-        <Text fontSize="lg" textAlign="center" w="80%">
+        <Text fontSize="lg" textAlign="justify" w="70%">
           {t("contacto.parrafo2.text")}
         </Text>
       </Center>
 
       <Center pb={10}>
         {/* FORMULARIO CONTACTO */}
-        <VStack width="80%" mx="3" maxW="80%">
+        <VStack width="70%" mx="3" maxW="70%">
           <FormControl isRequired>
             <FormControl.Label _text={{ bold: true }}>{t("contacto.form.nombre.label")}</FormControl.Label>
             <Input value={nombre} placeholder={t("contacto.form.nombre.placeholder")} onChangeText={(e) => setNombre(e)} />
@@ -85,7 +104,7 @@ const Contacto = () => {
           </Button>
         </VStack>
       </Center>
-    </View>
+    </View >
   );
 };
 

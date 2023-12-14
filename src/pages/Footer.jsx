@@ -93,12 +93,12 @@ const Footer = () => {
     return (
         <>
             {/* Boton WhatsAP */}
-            <Pressable bottom={10} zIndex={9} position={"fixed"} justifyContent={"flex-start"} w={[16, 16, 32, 40]} h={[16, 16, 32, 40]} left={0}
+            <Pressable bottom={20} zIndex={9} position={"fixed"} justifyContent={"flex-start"} w={[16, 16, 32, 40]} h={[16, 16, 32, 40]} left={0}
                 onPress={() => handlePressWA()}>
                 <Lottie animationData={whatsapp} loop={true} />
             </Pressable>
             {/* Boton traducciom */}
-            <VStack bottom={10} right={0} zIndex={9} position={"fixed"} justifyContent="flex-end"
+            <VStack bottom={20} right={0} zIndex={9} position={"fixed"} justifyContent="flex-end"
                 borderRadius={10} bg={"#dfdfdf"} borderWidth={1} borderColor={"muted.400"}>
                 <Text borderTopRadius={10} p={1} fontSize={["xs", "xs", "md", "md"]}> {t("header.chooseLanguage")}</Text>
                 <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("en")} px={1} py={[1, 1, 3, 3]}  >
@@ -138,7 +138,7 @@ const Footer = () => {
 
 
 
-            <Stack py={4} direction={["column", "column", "row", "row"]} width={"100%"} bg="#449bab" justifyContent={"center"} alignSelf={"center"} alignContent={"center"}>
+            <Stack py={4} px={2} direction={["column", "column", "row", "row"]} width={"100%"} bg="#449bab" justifyContent={"center"} alignSelf={"center"} alignContent={"center"}>
                 {/* <Stack direction={"row"} bg="#101010" justifyContent={"center"} alignContent={"center"}>
                     <Image
                         source={{

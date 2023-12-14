@@ -51,7 +51,7 @@ const Header = () => {
         };
         return (
             <Link to={to} style={linkStyle} onClick={handleClick1} >
-                <Text p={[1, 1, 2, 2]} borderWidth={1} borderRadius={10} shadow={3} mx={[2, 2, 4, 4]} bg={"#eeeeee"} borderColor={"muted.300"} fontSize={["sm", "md", "lg", "xl"]} >{text}</Text>
+                <Text p={[1, 1, 2, 2]} borderWidth={1} borderRadius={10} shadow={3} mx={[2, 2, 4, 4]} bg={"#eeeeee"} borderColor={"muted.300"} fontSize={["xs", "xs", "md", "lg"]} >{text}</Text>
             </Link>
         );
     };
@@ -71,13 +71,13 @@ const Header = () => {
                     <Center bg="#eeeeee" justifyContent="center" py={3}  >
                         <Link to={"/"} onClick={handleClick}>
                             <Image alignSelf={"center"} source={{
-                                uri: "https://createtours.com.mx/backend/public/Imagenes/logo-create.svg"
+                                uri: "https://createtours.com.mx/pictures/logo-create.png"
                             }} alt="Alternate Text" width={[32, 32, 48, 64]} height={[20, 20, 24, 32]} resizeMode="contain" />
                         </Link>
                     </Center>
 
-                    <Pressable onPress={handlePressTurismo}>
-                        <Image alignSelf={"center"} source={{
+                    <Pressable onPress={handlePressTurismo} alignSelf={"center"}>
+                        <Image source={{
                             uri: "https://cgc.qroo.gob.mx/cjg/wp-content/uploads/2016/11/SEDETUR.png"
                         }} alt="Alternate Text" width={[24, 24, 40, 56]} height={[12, 12, 16, 24]} resizeMode="contain" />
                     </Pressable>
@@ -109,7 +109,7 @@ const Header = () => {
                             <HStack p={1} mx={5} ml={10} shadow={3} borderRadius={10} borderColor={"muted.300"} borderWidth={1} mt={-1} bg={"#449bab"} >
 
                                 <Center>
-                                    <IconContext.Provider value={{ color: "#eeeeee", size: "2rem" }}>
+                                    <IconContext.Provider value={{ color: "#eeeeee", size: "1em" }}>
                                         <TiShoppingCart />
                                     </IconContext.Provider>
 

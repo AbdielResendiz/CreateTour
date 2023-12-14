@@ -50,31 +50,31 @@ const DetalleViaje = (props) => {
 
     switch (n) {
       case 1:
-        content = <Text fontSize={["sm", "sm", "md", "md"]}>{t(`viajes.viaje${viaje.ID}.salida`)} {"\n"} {"\n"} {t(`viajes.viaje${viaje.ID}.regreso`)}</Text>;
+        content = <Text textAlign={"justify"} alignSelf={"flex-start"} mx={2} fontSize={["sm", "sm", "md", "md"]}>{t(`viajes.viaje${viaje.ID}.salida`)} {"\n"} {"\n"} {t(`viajes.viaje${viaje.ID}.regreso`)}</Text>;
         break;
       case 2:
-        content = <VStack>
+        content = <VStack alignSelf={"flex-start"} mx={2}>
           <Text bold fontSize={"lg"}>{t("viaje.intinerario")}</Text>
-          <Text fontSize={["sm", "sm", "md", "md"]}>{t(`viajes.viaje${viaje.ID}.intinerario`)}</Text>
+          <Text textAlign={"justify"} fontSize={["sm", "sm", "md", "md"]}>{t(`viajes.viaje${viaje.ID}.intinerario`)}</Text>
         </VStack>;
         break;
       case 3:
-        content = <VStack>
+        content = <VStack alignSelf={"flex-start"} mx={2}>
           <Text bold fontSize={"lg"}>{t("viaje.incl")}  </Text>
-          <Text fontSize={["sm", "sm", "md", "md"]}>
+          <Text textAlign={"justify"} fontSize={["sm", "sm", "md", "md"]}>
             {t(`viajes.viaje${viaje.ID}.incluido`)} {'\n'}
           </Text>
-          <Text bold fontSize={"lg"}>{t("viaje.noincl")}</Text>
+          <Text bold fontSize={"lg"}> {'\n'}{t("viaje.noincl")}</Text>
           <Text fontSize={["sm", "sm", "md", "md"]}>
             {t(`viajes.viaje${viaje.ID}.noIncluido`)}
           </Text>
         </VStack>;
         break;
       case 4:
-        content = <Text fontSize={["sm", "sm", "md", "md"]} >{t(`viajes.viaje${viaje.ID}.infoAdicional`)}</Text>;
+        content = <Text textAlign={"justify"} alignSelf={"flex-start"} mx={2} fontSize={["sm", "sm", "md", "md"]} >{t(`viajes.viaje${viaje.ID}.infoAdicional`)}</Text>;
         break;
       case 5:
-        content = <Box ml={[-10, -5, 0, 0]} w={[96, 480, 768, 992]} h={[96, 96, 480, 768]}>
+        content = <Box alignSelf={"center"} ml={[-10, -5, 0, 0]} w={[96, 480, 768, 992]} h={[96, 96, 480, 768]}>
 
           <iframe
             title="Mapa  de Google"
@@ -89,7 +89,7 @@ const DetalleViaje = (props) => {
         </Box>;
         break;
       default:
-        content = <Text fontSize={["sm", "sm", "md", "md"]}>{t(`viajes.viaje${viaje.ID}.descripcion`)}</Text>;
+        content = <Text alignSelf={"flex-start"} textAlign={"justify"} fontSize={["sm", "sm", "md", "md"]}>{t(`viajes.viaje${viaje.ID}.descripcion`)}</Text>;
         break;
     }
 

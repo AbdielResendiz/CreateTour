@@ -8,21 +8,17 @@ import {
     TableRow,
     Paper,
     Modal,
-    Backdrop,
     Fade,
     Button,
-    Select,
-    FormControl,
-    MenuItem,
-    InputLabel,
+
 } from '@mui/material';
 import DetalleVentaComponent from './DetalleVentaComponent';
 import URL from '../helper/baseURL';
 import fetchPost from '../helper/fetchPost';
-import { FlatList } from 'native-base';
+import { FlatList, Text } from 'native-base';
 
 const DataTable = () => {
-    const [selectedItem, setSelectedItem] = useState([{ "index": 0, "Viaje": 0, "Titulo": "", "Foto": "xploradventurepark.jpg", "Fecha": "", "CantidadAdultos": 0, "CantidadInfantes": 0, "CantidadAdultosExtranjeros": 0, "CantidadInfantesExtranjeros": 0, "TotalCompra": 0 }]);
+    const [selectedItem, setSelectedItem] = useState([{ "index": 1, "Viaje": 1, "Titulo": "", "Foto": "xploradventurepark.jpg", "Fecha": "", "CantidadAdultos": 0, "CantidadInfantes": 0, "CantidadAdultosExtranjeros": 0, "CantidadInfantesExtranjeros": 0, "TotalCompra": 0 }]);
     const [openModal, setOpenModal] = useState(false);
     const [viajes, setViajes] = useState([]);
 
@@ -48,9 +44,13 @@ const DataTable = () => {
     }, []);
 
     const handleRowClick = (item) => {
-        const parsedItem = JSON.parse([item]);
-        setSelectedItem(parsedItem);
-        setOpenModal(true);
+        try {
+
+            setSelectedItem(JSON.parse(item));
+            setOpenModal(true);
+        } catch (error) {
+            console.error('Error al parsear el objeto JSON:', error);
+        }
     };
 
 
@@ -61,8 +61,9 @@ const DataTable = () => {
 
     useEffect(() => {
         console.log("selectedItem actualizado:", selectedItem);
-        console.log("selectedItem actualizado tipo:", typeof (selectedItem));
-        if (selectedItem && selectedItem.length > 0) {
+        console.log("selectedItem actualizado tipo:", typeof selectedItem);
+
+        if (selectedItem && typeof selectedItem === 'object') {
             console.log("selectedItem ID:", selectedItem[0].Titulo);
         }
     }, [selectedItem]);
@@ -90,7 +91,7 @@ const DataTable = () => {
 
                                 <TableCell style={{ maxWidth: 100 }}>
 
-                                    <Button variant="outlined" onClick={() => handleRowClick(row.Viaje)}>
+                                    <Button variant="outlined" onClick={() => { console.log("row.viaje: ", row.Viaje); handleRowClick(row.Viaje); }}>
                                         Detalles
                                     </Button>
                                 </TableCell>
@@ -113,20 +114,22 @@ const DataTable = () => {
                         backgroundColor: 'white',
                         padding: 20,
                         borderRadius: 8,
+                        width: "75%"
                     }}>
 
 
-                        <p> {selectedItem ? selectedItem : ''}</p>
 
 
-                        {/* <FlatList
+
+
+                        <FlatList
                             style={{ width: '100%', marginTop: 5, paddingHorizontal: '2vw' }}
                             contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
-                            data={selectedItem ? [selectedItem[0]] : []}
-                            keyExtractor={(item, index) => index.toString()} // Usar index como clave
-                            renderItem={({ item, index }) => (
+                            data={selectedItem ? selectedItem : []}
+                            keyExtractor={item => item.index}// Usar index como clave
+                            renderItem={({ item }) => (
                                 <DetalleVentaComponent
-                                    key={index}
+                                    key={item.index}
                                     index={item.index}
                                     id={item.Viaje}
                                     titulo={item.Titulo}
@@ -139,7 +142,7 @@ const DataTable = () => {
                                     kidE={item.CantidadInfantesExtranjeros}
                                 />
                             )}
-                        /> */}
+                        />
 
                     </div>
                 </Fade>

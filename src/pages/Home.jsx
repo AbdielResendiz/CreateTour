@@ -48,52 +48,52 @@ const Home = () => {
         <IconTextComponent icon={<BsBoxSeam />} text="24/7" />
       </Stack>
 
-      <Box h={96} mb={32}>
-        <ZStack>
 
-          <Flex w="60%" flexDirection="column" justifyContent="flex-start" mt={56} ml={12} >
-            <Text fontSize={["lg", "xl", "2xl", "4xl"]} color={"#494d41"}  >CREATE TOURS</Text>
-            <Text bold fontSize={["md", "lg", "lg", "2xl"]}  >{t("mainSection.quienes")}</Text>
-            <Text fontSize={["md", "md", "lg", "xl"]} color={"#494d41"} pr={12} bg={"#eeeeee"} textAlign={"justify"}  >
-              {t("mainSection.about")}
-            </Text>
-          </Flex>
-
-          <Flex w="100%" flexDirection="row" justifyContent="flex-end" mb={34}>
-
-            <Image source={{
-              uri: "https://createtours.com.mx/backend/public/Imagenes/logo-background.webp"
-            }} alt="Alternate Text" width={"90%"} height={96} resizeMode="contain" />
-
-
-          </Flex>
-
-        </ZStack>
-
-      </Box>
-
-
-      <Box h={96}>
-        <ZStack>
-
-          <Flex w="100%" flexDirection="row" justifyContent="center" mb={34}>
-
-            <Image source={{
-              uri: "https://createtours.com.mx/backend/public/Imagenes/olas-chicas.svg"
-            }} alt="Alternate Text" width={"100vw"} height={96} resizeMode="cover" />
-
-
-          </Flex>
-
-
-        </ZStack>
-        <Center mt={24}>
-          <Text fontSize={["xl", "4xl", "4xl", "6xl"]} >
-            {t("mainSection.disfruta")}
+      <Stack direction={["column", "column", "row", "row"]} >
+        <Flex w={["80%", "80%", "25%", "25%"]} flexDirection="column" bg={"#eeeeee"} zIndex={9}
+          justifyContent={["center", "center", "flex-start", "flex-start"]} mt={[10, 10, 32, 56]} ml={[10, 10, 20, 40]}   >
+          <Text fontSize={["lg", "xl", "2xl", "4xl"]} color={"#494d41"}  >CREATE TOURS</Text>
+          <Text bold fontSize={["md", "lg", "lg", "2xl"]}  >{t("mainSection.quienes")}</Text>
+          <Text fontSize={["md", "md", "lg", "xl"]} color={"#494d41"} bg={"#eeeeee"} textAlign={"justify"}  >
+            {t("mainSection.about")}
           </Text>
-        </Center>
+        </Flex>
 
-      </Box>
+        <Image alignSelf={["center", "center", "flex-end", "flex-end"]} ml={[0, 0, 0, -32]} source={{
+          uri: "https://createtours.com.mx/backend/public/Imagenes/logo-background.webp"
+        }} alt="Alternate Text" width={["100%", "100%", "70%", "70%"]} h={[64, 64, 96, 96]} resizeMode="contain" />
+
+
+
+
+
+      </Stack>
+
+
+
+
+
+      <ZStack h={[32, 32, 64, 64]} w={"100%"}>
+
+
+
+        <Image alignSelf={"center"} source={{
+          uri: "https://createtours.com.mx/backend/public/Imagenes/olas-chicas.svg"
+        }} alt="Alternate Text" width={"100%"} height={[32, 32, 64, 64]} resizeMode="contain" />
+
+
+
+
+        <Text mt={[5, 5, 16, 16]} textAlign={"center"} alignSelf={"center"} bold fontSize={["xl", "xl", "2xl", "4xl"]} >
+          {t("mainSection.disfruta")}
+        </Text>
+
+
+      </ZStack>
+
+
+
+
       <VStack size={"md"} fontWeight={400}>
 
         <Image alignSelf={"center"} source={{
