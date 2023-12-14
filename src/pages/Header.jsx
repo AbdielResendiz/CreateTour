@@ -1,4 +1,4 @@
-import { HStack, Text, Center, Stack, Flex, Image } from "native-base";
+import { HStack, Text, Center, Stack, Flex, Image, View } from "native-base";
 import { Outlet, Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { TiShoppingCart } from "react-icons/ti";
@@ -56,21 +56,31 @@ const Header = () => {
   };
 
   return (
-    <Flex >
-      <Flex style={headerStyle} zIndex={9} onClick={handleClick} >
+    <View >
+      <View style={headerStyle} zIndex={9} onClick={handleClick} >
+        <HStack w={"100%"} alignSelf={"center"} justifyContent={"center"} bg={"#eeeeee"}>
+
+        <Image alignSelf={"center"} source={{
+              uri: "https://seeklogo.com/images/Q/quintana-roo-gobierno-del-estado-logo-733FFA528C-seeklogo.com.png"
+            }} alt="Alternate Text" width={[24, 24, 40, 56]} height={[12, 12, 16, 24]} resizeMode="contain" />
+
         <Center bg="#eeeeee" justifyContent="center" py={3}  >
           <Link to={"/"}>
             <Image alignSelf={"center"} source={{
               uri: "https://createtours.com.mx/backend/public/Imagenes/logo-create.svg"
             }} alt="Alternate Text" width={[32, 32, 48, 64]} height={[20, 20, 24, 32]} resizeMode="contain" />
           </Link>
-
-
-
         </Center>
 
+        <Image alignSelf={"center"} source={{
+              uri: "https://cgc.qroo.gob.mx/cjg/wp-content/uploads/2016/11/SEDETUR.png"
+            }} alt="Alternate Text" width={[24, 24, 40, 56]} height={[12, 12, 16, 24]} resizeMode="contain" />
+
+        </HStack>
+ 
 
 
+ 
         {/* STACK de menu */}
         <Stack mt={[-5, -5, 0, 0]} w={"100%"} direction={["column", "column", "row", "row"]} justifyContent={"center"} alignSelf={"center"} bg={"#eeeeee"}>
           <HStack justifyContent={["center", "center", "flex-end", "flex-end"]} mb={0} py={[1, 1, 2, 3]} >
@@ -119,11 +129,11 @@ const Header = () => {
 
 
 
-      </Flex>
+      </View>
 
 
       <Outlet />
-    </Flex>
+    </View>
   )
 };
 

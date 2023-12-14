@@ -138,14 +138,14 @@ const Footer = () => {
 
 
 
-            <Stack mt={10} direction={["column", "column", "row", "row"]} width={"100%"} bg="#101010" justifyContent={"center"} alignContent={"center"}>
-                <Stack direction={"row"} bg="#101010" justifyContent={"center"} alignContent={"center"}>
+            <Stack py={4} direction={["column", "column", "row", "row"]} width={"100%"} bg="#449bab" justifyContent={"center"} alignSelf={"center"} alignContent={"center"}>
+                {/* <Stack direction={"row"} bg="#101010" justifyContent={"center"} alignContent={"center"}>
                     <Image
                         source={{
                             uri: "https://createtours.com.mx/backend/public/Imagenes/logo-footer.png"
                         }}
                         alt="Create tours"
-                        size={"xl"}
+                        size={"sm"}
                         resizeMode="contain" alignSelf={"center"} mt={[-5, -5, 0, 0]}
                     />
                     <Pressable alignSelf={"center"} mt={[-5, -5, 0, 0]} onPress={() => handlePressTurismo()}>
@@ -154,14 +154,14 @@ const Footer = () => {
                                 uri: "https://createtours.com.mx/pictures/SEDETUR.png"
                             }}
                             alt="SEDETUR"
-                            size={"xl"}
+                            size={"sm"}
                             resizeMode="contain"
                         />
                     </Pressable>
-                </Stack>
+                </Stack> */}
 
                 {/* Redes sociales */}
-                <HStack mt={[-5, -5, 0, 0]} space={[10, 10, 4, 5]} justifyContent="center" alignSelf={"center"}>
+                <HStack space={5}  justifyContent="center" alignSelf={"center"}>
                     <Pressable onPress={() => { handlePressFB() }}>
                         <IconContext.Provider value={{ color: "#edf5f7", size: "1em" }}>
                             <FaFacebook />
@@ -177,6 +177,7 @@ const Footer = () => {
                             <IconContext.Provider value={{ color: "#edf5f7", size: "1em" }}>
                                 <FiMail />
                             </IconContext.Provider>
+                            <Text color="#ffffff" mx={2}>contacto@createtours.com.mx</Text>
                         </HStack>
                     </Pressable>
                 </HStack>
@@ -185,19 +186,19 @@ const Footer = () => {
 
                 {/* MENU footer nav */}
 
-                <Stack direction={"column"} alignSelf={"center"} bg={"#101010"} space={2} justifyContent="center" >
+                {/* <Stack direction={"column"} alignSelf={"center"} bg={"#101010"} space={2} justifyContent="center" >
 
 
                     <CustomLink to="/Privacidad" text="Políticas de privacidad" />
 
                     <CustomLink to="/Devoluciones" text="Políticas de devolución" />
 
-                </Stack>
+                </Stack> */}
 
 
 
                 {/* LOGO LP MARKETING */}
-                <Pressable mt={[0, 0, 3, 3]} onPress={() => handlePressLP()} bg={"#101010"} >
+                {/* <Pressable mt={[0, 0, 3, 3]} onPress={() => handlePressLP()} bg={"#101010"} >
                     <Text color="#ffffff" fontSize={"xs"} textAlign={"center"} mb={[-8, -8, -6, -6]}>{t("menu.creado")}</Text>
                     <Image
                         source={{
@@ -208,16 +209,16 @@ const Footer = () => {
                         resizeMode="contain" alignSelf={"center"}
 
                     />
-                </Pressable>
+                </Pressable> */}
 
                 {/* boton acceso admin */}
-                <Pressable alignSelf={"center"} onPress={() => { navigate(`/Login`) }} p={3} bg={"#101010"} mt={[-8, -8, 0, 0]}>
+                {/* <Pressable alignSelf={"center"} onPress={() => { navigate(`/Login`) }} p={3} bg={"#101010"} mt={[-8, -8, 0, 0]}>
 
                     <IconContext.Provider value={{ color: "#edf5f7", size: "3rem" }}>
                         <BiLogIn />
                     </IconContext.Provider>
 
-                </Pressable>
+                </Pressable> */}
 
 
 
