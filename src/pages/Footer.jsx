@@ -186,14 +186,14 @@ const Footer = () => {
 
                 {/* MENU footer nav */}
 
-                {/* <Stack direction={"column"} alignSelf={"center"} bg={"#101010"} space={2} justifyContent="center" >
+                <Stack direction={"row"} alignSelf={"center"} bg={"#449bab"} space={2} justifyContent="center" >
 
 
                     <CustomLink to="/Privacidad" text="Políticas de privacidad" />
 
                     <CustomLink to="/Devoluciones" text="Políticas de devolución" />
 
-                </Stack> */}
+                </Stack>
 
 
 
