@@ -58,16 +58,23 @@ const Header = () => {
   return (
     <Flex >
       <Flex style={headerStyle} zIndex={9} onClick={handleClick} >
-        <Center bg="#eeeeee" justifyContent="center" py={3}  >
+        <HStack bg="#eeeeee" justifyContent="center" py={3} alignContent={"center"} >
           <Link to={"/"}>
             <Image alignSelf={"center"} source={{
               uri: "https://createtours.com.mx/backend/public/Imagenes/logo-create.svg"
             }} alt="Alternate Text" width={[32, 32, 48, 64]} height={[20, 20, 24, 32]} resizeMode="contain" />
           </Link>
+          <Link to={"/"}>
+            <Image mx={4} alignSelf={"center"} source={{
+              uri: "https://createtours.com.mx/pictures/SEDETUR.png"
+            }} alt="Alternate Text" width={20} height={16} resizeMode="contain" />
+          </Link>
 
 
 
-        </Center>
+
+
+        </HStack>
 
 
 
