@@ -18,7 +18,6 @@ import Login from "./pages/Login";
 import Registro from "./pages/Registro";
 import Footer from "./pages/Footer";
 import { UserProvider } from "./helper/UserContext";
-import Cuenta from "./pages/Cuenta";
 import { NativeBaseProvider } from "native-base";
 import Carrito from "./pages/Carrito";
 import Contacto from "./pages/Contacto";
@@ -82,7 +81,6 @@ export default function App() {
                   <Route path="trip/:id/:titulo/" element={<DetalleViaje />} />
                   <Route path="trip/:id" element={<DetalleViaje />} />
                   <Route path="Carrito" element={<Carrito />} />
-                  <Route path="Cuenta" element={<Cuenta />} />
                   <Route path="Login" element={<Login />} />
                   <Route path="Registro" element={<Registro />} />
                   <Route path="Administrador" element={<AdminPermiso />} />

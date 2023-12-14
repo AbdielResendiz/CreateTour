@@ -32,19 +32,16 @@ export const UserProvider = ({ children }) => {
     const obtenerUsuario = async () => {
       try {
         const usuarioActual = await AsyncStorage.getItem('userId');
-        const usuarioParseados = JSON.parse(usuarioActual) || null;
-        setUserId(usuarioParseados);
+
+        setUserId(usuarioActual);
 
         const usuarioTipoActual = await AsyncStorage.getItem('tipo');
-        const usuarioTipoParseados = JSON.parse(usuarioTipoActual) || null;
-        setTipo(usuarioTipoParseados);
+
+        setTipo(usuarioTipoActual);
       } catch (error) {
         console.error('Error al obtener carritos desde AsyncStorage:', error);
       }
     };
-
-
-
     obtenerUsuario();
   }, []);
 
@@ -89,8 +86,15 @@ export const UserProvider = ({ children }) => {
 
   };
 
-  const logout = () => {
+  const logout = async () => {
     setUserId(null);
+    setTipo(null);
+    try {
+      await AsyncStorage.removeItem('userId');
+      await AsyncStorage.removeItem('tipo');
+    } catch (error) {
+      console.error('Error saving data to AsyncStorage f. login( ): ', error);
+    }
   };
 
   // Función para borrar todos los datos del carrito

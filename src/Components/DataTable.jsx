@@ -10,15 +10,15 @@ import {
     Modal,
     Fade,
     Button,
-
 } from '@mui/material';
 import DetalleVentaComponent from './DetalleVentaComponent';
 import URL from '../helper/baseURL';
 import fetchPost from '../helper/fetchPost';
-import { FlatList, Text } from 'native-base';
+import { FlatList, View } from 'native-base';
 
 const DataTable = () => {
     const [selectedItem, setSelectedItem] = useState([{ "index": 1, "Viaje": 1, "Titulo": "", "Foto": "xploradventurepark.jpg", "Fecha": "", "CantidadAdultos": 0, "CantidadInfantes": 0, "CantidadAdultosExtranjeros": 0, "CantidadInfantesExtranjeros": 0, "TotalCompra": 0 }]);
+
     const [openModal, setOpenModal] = useState(false);
     const [viajes, setViajes] = useState([]);
 
@@ -32,6 +32,7 @@ const DataTable = () => {
             const res = await fetchPost(url, options);
             // console.log("ventas admin: ", res)
             setViajes(res);
+            console.log("Ventas: ", res)
         } catch (error) {
             console.error('Error al obtener datos de viajes:', error);
         }
@@ -53,7 +54,6 @@ const DataTable = () => {
         }
     };
 
-
     const handleCloseModal = () => {
         setSelectedItem(null);
         setOpenModal(false);
@@ -68,17 +68,28 @@ const DataTable = () => {
         }
     }, [selectedItem]);
 
+    const headerText = {
+        color: 'white',
+        fontWeight: 'bold',
+        borderWidth: 1,
+        borderColor: '#eeeeee',
+        borderStyle: 'solid',
+    };
+
+
+
     return (
-        <div>
+        <View w={"100%"} mb={10} >
             <TableContainer component={Paper}>
                 <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>ID</TableCell>
-                            <TableCell>Email</TableCell>
-                            <TableCell>Teléfono</TableCell>
-                            <TableCell>Tours Info</TableCell>
-                            <TableCell>Fecha de pago</TableCell>
+                    <TableHead >
+                        <TableRow style={{ backgroundColor: '#11003a' }}>
+                            <TableCell style={headerText} >ID</TableCell>
+                            <TableCell style={headerText} >Código</TableCell>
+                            <TableCell style={headerText} >Email</TableCell>
+                            <TableCell style={headerText} >Teléfono</TableCell>
+                            <TableCell style={headerText} >Tours Info</TableCell>
+                            <TableCell style={headerText} >Fecha de pago</TableCell>
                             {/* <TableCell>Estatus</TableCell> */}
                         </TableRow>
                     </TableHead>
@@ -86,9 +97,9 @@ const DataTable = () => {
                         {viajes.map((row) => (
                             <TableRow key={row.id} >
                                 <TableCell>{row.ID}</TableCell>
+                                <TableCell>{row.codigo}</TableCell>
                                 <TableCell>{row.Email}</TableCell>
                                 <TableCell>{row.Telefono}</TableCell>
-
                                 <TableCell style={{ maxWidth: 100 }}>
 
                                     <Button variant="outlined" onClick={() => { console.log("row.viaje: ", row.Viaje); handleRowClick(row.Viaje); }}>
@@ -114,13 +125,8 @@ const DataTable = () => {
                         backgroundColor: 'white',
                         padding: 20,
                         borderRadius: 8,
-                        width: "75%"
+                        width: "auto"
                     }}>
-
-
-
-
-
 
                         <FlatList
                             style={{ width: '100%', marginTop: 5, paddingHorizontal: '2vw' }}
@@ -147,7 +153,7 @@ const DataTable = () => {
                     </div>
                 </Fade>
             </Modal>
-        </div>
+        </View >
     );
 };
 

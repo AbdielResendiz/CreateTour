@@ -1,53 +1,29 @@
 import React from "react";
-import { Heading, View, Text, VStack } from "native-base";
+import { Heading, View, Text, Button } from "native-base";
 import DataTable from "../Components/DataTable";
+import { useUser } from "../helper/UserContext";
 
 
 const AdminPanel = () => {
 
-
-
-
-
+    const { logout } = useUser();
 
     const HeaderAdmin = () => {
-
         return (
             <View flex={1} mt={[12, 12, 24, 24]}>
                 <Heading alignSelf={"center"} fontSize={"2xl"} py={5}> Bienvenido al panel de administrador</Heading>
-                <Text textAlign={"center"} fontSize={"lg"} mb={3}>Aquí podras ver el historial y estatus de las ventas</Text>
-
-
-
+                <Text textAlign={"center"} fontSize={"lg"} mb={3}>Aquí podras ver el historial de las ventas</Text>
             </View>
         );
     }
 
-
-
-
-
     return (
-        <View>
+        <View mb={10}>
             <HeaderAdmin />
-
-            {/* tabla */}
-            <VStack m={5} borderRadius={10} borderColor={"muted.400"} borderWidth={1} w="90%">
-                {/*  columnas de tabla */}
-
-
-
-
-
-
-            </VStack>
-
-
-
             <DataTable />
-
-
-
+            <Button onPress={() => logout()} w={"50%"} alignSelf={"center"} >
+                Cerrar sesion
+            </Button>
         </View>
 
 

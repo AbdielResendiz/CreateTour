@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { VStack, Input, FormControl, TextArea, Button, View, Center, Text, ZStack, Box, Image, Flex } from 'native-base';
+import { VStack, Input, FormControl, TextArea, Button, View, Center, Text, ZStack, Image } from 'native-base';
 import URL from '../helper/baseURL';
 import fetchPost from '../helper/fetchPost';
 import { useTranslation } from 'react-i18next';

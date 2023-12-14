@@ -21,8 +21,8 @@ const Login = () => {
   };
 
 
-  const [correo, setCorreo] = useState("CABDIELR94@GMAIL.COM");
-  const [password, setPassword] = useState("12345");
+  const [correo, setCorreo] = useState("");
+  const [password, setPassword] = useState("");
 
   //show/hide pass
   const [show, setShow] = useState(false);

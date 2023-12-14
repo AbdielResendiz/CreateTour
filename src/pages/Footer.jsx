@@ -1,8 +1,6 @@
 import * as React from "react";
 import { Center, Text, Pressable, VStack, Stack, Image, HStack } from "native-base";
-import { BiLogIn } from "react-icons/bi";
 import { IconContext } from "react-icons";
-import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import whatsapp from "../Lotties/whatsapp.json"
 import { Link } from "react-router-dom";
@@ -12,8 +10,6 @@ import { FiMail } from "react-icons/fi";
 import { animateScroll as scroll } from 'react-scroll';
 
 const Footer = () => {
-
-    const navigate = useNavigate();
 
     const handlePressWA = () => {
         // El número de teléfono de WhatsApp al que se enviará un mensaje (puedes cambiarlo según tus necesidades)
@@ -38,7 +34,6 @@ const Footer = () => {
         );
     };
 
-
     const handlePressEmail = () => {
         // La dirección de correo electrónico a la que se enviará el correo
         const toEmail = 'contacto@createtours.com.mx';
@@ -51,24 +46,6 @@ const Footer = () => {
 
         // Abre la URL en una nueva pestaña
         window.open(mailtoUrl, '_blank');
-    };
-
-
-    const handlePressLP = () => {
-
-        const Url = `https://lpmarketinggroup.com.mx/`;
-
-        // Abre la URL en una nueva pestaña
-        window.open(Url, '_blank');
-    };
-
-
-    const handlePressTurismo = () => {
-
-        const Url = `https://sedeturqroo.gob.mx/siturq/index.php?op=4`;
-
-        // Abre la URL en una nueva pestaña
-        window.open(Url, '_blank');
     };
 
 
@@ -93,7 +70,7 @@ const Footer = () => {
     return (
         <>
             {/* Boton WhatsAP */}
-            <Pressable bottom={20} zIndex={9} position={"fixed"} justifyContent={"flex-start"} w={[16, 16, 32, 40]} h={[16, 16, 32, 40]} left={0}
+            <Pressable bottom={20} zIndex={9} position={"fixed"} justifyContent={"flex-start"} w={[16, 16, 24, 32]} h={[16, 16, 24, 32]} left={2}
                 onPress={() => handlePressWA()}>
                 <Lottie animationData={whatsapp} loop={true} />
             </Pressable>
@@ -108,57 +85,37 @@ const Footer = () => {
                                 uri: "https://createtours.com.mx/pictures/usa.png"
                             }}
                             alt="English"
-                            w={[5, 5, 10, 12]}
-                            h={[5, 5, 10, 12]}
+                            w={[5, 5, 8, 10]}
+                            h={[5, 5, 8, 10]}
                             alignSelf={"center"}
                         />
                         <Center>
-                            <Text textAlign={"center"} justifyContent={"center"} bold p={[1, 1, 3, 3]}>EN</Text>
+                            <Text textAlign={"center"} justifyContent={"center"} fontSize={["xs", "xs", "md", "md"]} bold p={[1, 1, 2, 2]}>EN</Text>
                         </Center>
                     </HStack>
                 </Pressable>
 
-                <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("es")} borderBottomRadius={10} px={1} py={[1, 1, 3, 3]}  >
+                <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("es")} borderBottomRadius={10} px={1} py={[1, 1, 2, 2]}  >
                     <HStack justifyContent={"center"}>
                         <Image
                             source={{
                                 uri: "https://createtours.com.mx/pictures/mexico.png"
                             }}
                             alt="Spanish"
-                            w={[5, 5, 10, 12]}
-                            h={[5, 5, 10, 12]}
+                            w={[5, 5, 8, 10]}
+                            h={[5, 5, 8, 10]}
                             alignSelf={"center"}
                         />
                         <Center>
-                            <Text textAlign={"center"} justifyContent={"center"} bold p={[1, 1, 3, 3]}>ES</Text>
+                            <Text textAlign={"center"} justifyContent={"center"} fontSize={["xs", "xs", "md", "md"]} bold p={[1, 1, 3, 3]}>ES</Text>
                         </Center>
                     </HStack>
                 </Pressable>
             </VStack>
 
 
-
             <Stack py={4} px={2} direction={["column", "column", "row", "row"]} width={"100%"} bg="#449bab" justifyContent={"center"} alignSelf={"center"} alignContent={"center"}>
-                {/* <Stack direction={"row"} bg="#101010" justifyContent={"center"} alignContent={"center"}>
-                    <Image
-                        source={{
-                            uri: "https://createtours.com.mx/backend/public/Imagenes/logo-footer.png"
-                        }}
-                        alt="Create tours"
-                        size={"sm"}
-                        resizeMode="contain" alignSelf={"center"} mt={[-5, -5, 0, 0]}
-                    />
-                    <Pressable alignSelf={"center"} mt={[-5, -5, 0, 0]} onPress={() => handlePressTurismo()}>
-                        <Image
-                            source={{
-                                uri: "https://createtours.com.mx/pictures/SEDETUR.png"
-                            }}
-                            alt="SEDETUR"
-                            size={"sm"}
-                            resizeMode="contain"
-                        />
-                    </Pressable>
-                </Stack> */}
+
 
                 {/* Redes sociales */}
                 <HStack space={5} justifyContent="center" alignSelf={"center"}>
@@ -182,47 +139,12 @@ const Footer = () => {
                     </Pressable>
                 </HStack>
 
-
-
                 {/* MENU footer nav */}
 
                 <Stack direction={"row"} alignSelf={"center"} bg={"#449bab"} space={2} justifyContent="center" >
-
-
                     <CustomLink to="/Privacidad" text="Políticas de privacidad" />
-
                     <CustomLink to="/Devoluciones" text="Políticas de devolución" />
-
                 </Stack>
-
-
-
-                {/* LOGO LP MARKETING */}
-                {/* <Pressable mt={[0, 0, 3, 3]} onPress={() => handlePressLP()} bg={"#101010"} >
-                    <Text color="#ffffff" fontSize={"xs"} textAlign={"center"} mb={[-8, -8, -6, -6]}>{t("menu.creado")}</Text>
-                    <Image
-                        source={{
-                            uri: "https://lpmarketinggroup.com.mx/wp-content/uploads/2023/04/LP_Logo-LP.png"
-                        }}
-                        alt="Create tours"
-                        size="xl"
-                        resizeMode="contain" alignSelf={"center"}
-
-                    />
-                </Pressable> */}
-
-                {/* boton acceso admin */}
-                {/* <Pressable alignSelf={"center"} onPress={() => { navigate(`/Login`) }} p={3} bg={"#101010"} mt={[-8, -8, 0, 0]}>
-
-                    <IconContext.Provider value={{ color: "#edf5f7", size: "3rem" }}>
-                        <BiLogIn />
-                    </IconContext.Provider>
-
-                </Pressable> */}
-
-
-
-
             </Stack>
 
 

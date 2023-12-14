@@ -11,14 +11,11 @@ const FlatListViajesComponent = () => {
   const verViajes = async () => {
     const BASE_URL = URL.BASE_URL;
 
-    // const dataViajes = new FormData();
-    //para enviar datos por POST
-    // dataViajes.append("idU", idU);
-    // dataViajes.append("idAS", idAS);
+
     const url = `${BASE_URL}viajesportada`
     const options = {
       method: 'POST',
-      // body: dataFav
+
     };
     const res = await fetchPost(url, options);
 
