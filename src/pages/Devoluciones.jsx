@@ -1,10 +1,17 @@
-import React from "react";
-import { Text, View, Box } from "native-base";
+import React, { useState } from "react";
+import { Text, View, Box, Pressable, Center, Image, ZStack } from "native-base";
+import { useTranslation } from 'react-i18next'
 
 const Devoluciones = () => {
 
-    return (
-        <View mt={[12, 12, 24, 24]}>
+    const { t } = useTranslation("global");
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [abierto, setAbierto] = useState(false);
+
+    const DevolucionES = () => {
+
+        return (
             <Box w={"75%"} alignSelf={"center"} my={5}>
                 <Text>
                     <Text fontWeight="bold" fontSize={"lg"}>Política de Cancelaciones de Create Tours Cancun S.A. de C.V.</Text>
@@ -59,6 +66,124 @@ const Devoluciones = () => {
                     Create Tours Cancun S.A. de C.V.
                 </Text>
             </Box>
+        );
+    }
+
+    const Returns = () => {
+
+        return (
+            <Box w={"75%"} alignSelf={"center"} my={5}>
+                <Text>
+                    <Text fontWeight="bold" fontSize={"lg"}>Cancellation Policy of Create Tours Cancun S.A. de C.V.</Text>
+                    {"\n"}
+                    <Text fontWeight="bold">Effective Date:</Text> December 1, 2023
+                    {"\n"}
+                    <Text fontWeight="bold">1. Reservations and Payments:</Text>
+                    {"\n"}1.1 Reservations for tours with Create Tours Cancun S.A. de C.V. require full payment through our web platform to confirm participation.
+                    {"\n"}
+                    <Text fontWeight="bold">2. Customer Cancellations:</Text>
+                    {"\n"}2.1 The customer can cancel their reservation at any time before the scheduled tour date. (To determine if a refund applies, see Refund section)
+                    {"\n"}2.2 Cancellations must be made by notifying Create Tours via email at contacto@createtours.com.mx or via WhatsApp at 998 230 4219.
+                    {"\n"}2.3 Cancellations made with 24 hours' notice will not be eligible for a refund.
+                    {"\n"}2.4 Failure to attend the tour will not be eligible for a refund.
+                    {"\n\n"}
+                    <Text fontWeight="bold">3. Cancellations by Create Tours:</Text>
+                    {"\n"}3.1 In exceptional cases, Create Tours reserves the right to cancel a tour due to unforeseen circumstances such as extreme weather conditions, logistical problems, or any other situation that jeopardizes the safety of participants.
+                    {"\n"}3.2 In the event of cancellation by Create Tours, the customer will be offered the option to reschedule the tour or receive a full refund.
+                    {"\n\n"}
+                    <Text fontWeight="bold">4. Changes to Reservations:</Text>
+                    {"\n"}4.1 Changes to reservation dates can be made subject to availability and by prior agreement with Create Tours.
+                    {"\n"}4.2 Changes are subject to pricing and applicable fees at the time of modification.
+                    {"\n\n"}
+                    <Text fontWeight="bold">5. Customer Absence:</Text>
+                    {"\n"}5.1 If the customer does not show up on the scheduled tour date and time without prior notice, no refunds will be issued.
+                    {"\n\n"}
+                    <Text fontWeight="bold">6. Refunds:</Text>
+                    {"\n"}6.1 Refund requests should be sent via our email [contacto@createtours.com.mx] and must include the payment receipt.
+                    {"\n"}6.2 Processing time may vary as determined by our Finance department and may take between 5 and 15 business days.
+                    {"\n"}6.3 To receive a 50% refund, cancellations must be made at least 48 hours in advance.
+                    {"\n"}6.4 Cancellations made with 24 hours' notice will not be eligible for a refund.
+                    {"\n"}6.5 Failure to attend the tour will not be eligible for a refund.
+                    {"\n"}6.6 All refunds require prior authorization from the Management department and will be processed in the original form of payment.
+                    {"\n\n"}
+                    <Text fontWeight="bold">7. Contact:</Text>
+                    {"\n"}7.1 For cancellations, changes to reservations, or any related inquiries, customers can contact Create Tours via [contacto@createtours.com.mx] or WhatsApp at 998 230 4219.
+                    {"\n\n"}
+                    <Text fontWeight="bold">8. Responsibilities:</Text>
+                    {"\n"}8.1 Create Tours or its representatives act as agents for providers and other service providers and are not responsible for losses, damages, accidents, or schedule changes due to force majeure or damages caused by third parties.
+                    {"\n\n"}
+                    <Text fontWeight="bold">9. Boarding Requirements:</Text>
+                    {"\n"}9.1 An official identification proving the reservation holder's identity (Passport, ID, Driver's License, Military ID, Professional Certificate, Visa) is required.
+                    {"\n"}9.2 Boarding time will be verbally provided and stated on the voucher. There is no tolerance for lateness; in case of NO boarding due to delay, there will be no right to a refund.
+                    {"\n\n"}
+                    <Text fontWeight="bold">10. Agreement:</Text>
+                    {"\n"}10.1 The act of registration or purchase implies TOTAL agreement with the aforementioned conditions.
+                    {"\n"}
+                    We appreciate your understanding and cooperation.
+                    {"\n"}
+                    Sincerely,
+                    {"\n"}
+                    Create Tours Cancun S.A. de C.V.
+                </Text>
+            </Box>
+
+        );
+    }
+
+    return (
+        <View mt={[12, 12, 24, 24]} mb={20}>
+
+
+            {/* Imagen con texto */}
+            <ZStack h={[32, 32, 64, 64]} w={"100%"}>
+                <Image alignSelf={"center"} source={{
+                    uri: "https://createtours.com.mx/backend/public/Imagenes/olas-chicas.svg"
+                }} alt="Alternate Text" width={"100%"} height={[32, 32, 64, 64]} resizeMode="contain" />
+                <Text mt={[5, 5, 16, 16]} textAlign={"center"} alignSelf={"center"} bold fontSize={["xl", "xl", "2xl", "4xl"]} >
+                    {t("header.devolucion")}
+                </Text>
+            </ZStack>
+
+
+            <Center mt={4}>
+                <Pressable
+                    w={"80%"}
+                    onPress={() => setAbierto(!abierto)}
+                    borderRadius={10}
+                    borderWidth={1}
+                    borderColor={"muted.400"}
+                    bg={abierto ? "#449bab" : "muted.300"}
+                    shadow={7}
+                    p={3}
+                >
+                    ‣ Políticas de devolución
+                </Pressable>
+                {abierto && (
+                    <DevolucionES />
+                )}
+            </Center>
+
+
+            <Center mt={4}>
+                <Pressable
+                    w={"80%"}
+                    onPress={() => setIsOpen(!isOpen)}
+                    borderRadius={10}
+                    borderWidth={1}
+                    borderColor={"muted.400"}
+                    bg={isOpen ? "#449bab" : "muted.300"}
+                    shadow={7}
+                    p={3}
+                >
+
+                    ‣ Return policy
+                </Pressable>
+                {isOpen && (
+                    <Returns />
+                )}
+            </Center>
+
+
         </View>
     );
 

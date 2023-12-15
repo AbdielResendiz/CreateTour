@@ -64,7 +64,9 @@
 		"mensaje": "El folio de tu compra se ha enviado a tu correo electrónico."
 	},
 	"header": {
-		"chooseLanguage": "Idioma:"
+		"chooseLanguage": "Idioma:",
+		"privacidad": "Política de Privacidad",
+		"devolucion": "Política de Devoluciones"
 	},
 	"mainSection": {
 		"about": "En CREATE TOURS creamos recorridos seguros, confiables, pero sobre todo inolvidables, que hacen que nuestros usuarios vivan experiencias a lo grande en cada uno de sus destinos.",
