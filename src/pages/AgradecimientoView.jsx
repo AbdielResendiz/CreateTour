@@ -34,9 +34,9 @@ const AgradecimientoView = () => {
     }, [borrarTodoCarrito, navigate]);
 
     useEffect(() => {
-    
-                // Operación de pago completada, ahora puedes borrar el carrito
-                borrarTodoCarrito();
+
+        // Operación de pago completada, ahora puedes borrar el carrito
+        borrarTodoCarrito();
 
     }, []);
 
@@ -67,12 +67,12 @@ const AgradecimientoView = () => {
 
             {/* Mensaje adicional o detalles de la compra si es necesario */}
             <Text textAlign="center" fontSize={"lg"} mt={2}>
-                {t("gracias.mensaje")} 
+                {t("gracias.mensaje")}
             </Text>
 
             {/* Botón para ir al inicio */}
             <Button onPress={() => { borrarTodoCarrito() }} mt={10} mb={20}>
-                {t("gracias.cerrar")} 
+                {t("gracias.cerrar")}
             </Button>
         </View>
     );

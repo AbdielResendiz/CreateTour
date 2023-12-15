@@ -61,6 +61,7 @@ const Header = () => {
         scroll.scrollToTop();
     };
 
+
     return (
         <View >
             <View style={headerStyle} zIndex={9}  >
@@ -95,7 +96,6 @@ const Header = () => {
                         <CustomLink to="/Tours" text="Tours" />
                         <CustomLink to="/Blog" text="Blog" />
                         <CustomLink to="/Nosotros" text={t("menu.Nosotros")} />
-
 
 
 
