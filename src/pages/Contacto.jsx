@@ -78,7 +78,7 @@ const Contacto = () => {
 
       <Center pb={10}>
         {/* FORMULARIO CONTACTO */}
-        <VStack width="70%" mx="3" maxW="70%">
+        <VStack width="50%" mx="3" maxW="70%">
           <FormControl isRequired>
             <FormControl.Label _text={{ bold: true }}>{t("contacto.form.nombre.label")}</FormControl.Label>
             <Input value={nombre} placeholder={t("contacto.form.nombre.placeholder")} onChangeText={(e) => setNombre(e)} />
@@ -99,7 +99,7 @@ const Contacto = () => {
             <TextArea value={mensaje} placeholder={t("contacto.form.mensaje.placeholder")} onChangeText={(e) => setMensaje(e)} />
           </FormControl>
 
-          <Button colorScheme="amber" onPress={() => handleSubmit()} my={4} size="lg" py={3}>
+          <Button colorScheme="amber" onPress={() => handleSubmit()} my={4} size="lg" py={3} w="60%" alignSelf="center">
             {t("contacto.form.enviar")}
           </Button>
         </VStack>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Text, Flex, VStack, Center, ZStack, Box, Divider, Stack, Button } from "native-base";
+import { Image, Text, Flex, VStack, Center, ZStack,  Divider, Stack, Button } from "native-base";
 import ViajesAleatoreosComponent from "../Components/ViajesAleatoreosComponent";
 import { AiOutlineLike } from "react-icons/ai";
 import { GiPalmTree } from "react-icons/gi";

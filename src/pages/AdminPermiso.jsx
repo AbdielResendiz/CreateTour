@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Heading, View, Text } from "native-base";
 import { useUser } from "../helper/UserContext";
 import AdminPanel from "./AdminPanel";
 import Login from "./Login";
@@ -18,19 +17,7 @@ const AdminPermiso = () => {
     console.log("ID USER: ", typeof (userId))
   }, [tipo, userId]);
 
-  const ErrorAdmin = () => {
-
-    return (
-      <View flex={1} mt={[12, 12, 24, 24]}>
-        <Heading alignSelf={"center"} fontSize={"2xl"} py={5}> Lo siento</Heading>
-        <Text textAlign={"center"} fontSize={"lg"} mb={3}>No tienes permiso para ver esta página... </Text>
-
-
-
-      </View>
-    );
-  }
-
+  
 
 
   return (
