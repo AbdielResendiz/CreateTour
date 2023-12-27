@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { VStack, Input, FormControl, TextArea, Button, View, Center, Text, ZStack, Image } from 'native-base';
+import { VStack, Input, FormControl, TextArea, Button, View, Center, Text, ZStack, Image, Spinner } from 'native-base';
 import URL from '../helper/baseURL';
 import fetchPost from '../helper/fetchPost';
 import { useTranslation } from 'react-i18next';
@@ -11,6 +11,7 @@ const Contacto = () => {
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async () => {
     console.log("Inicia funcion enviar correo")
     const BASE_URL = URL.BASE_URL;
@@ -26,10 +27,24 @@ const Contacto = () => {
       method: 'POST',
       body: dataContacto
     };
-    const response = await fetchPost(url, options);
+    setIsLoading(true);
+    try {
+      const response = await fetchPost(url, options);
 
-    console.log("respuesta formulario contacto :", response);
-    console.log("Boton enviar")
+      if (response.status) {
+        // Si el estado es verdadero, muestra un mensaje de éxito
+        window.alert('Mensaje enviado');
+        setIsLoading(false);
+      } else {
+        // Si el estado es falso, muestra un mensaje de error
+        window.alert('Error al enviar el mensaje');
+        setIsLoading(false);
+      }
+    } catch (error) {
+      // Manejar cualquier otro error (por ejemplo, problemas de red)
+      window.alert('Error al procesar la solicitud');
+      setIsLoading(false);
+    }
 
   };
   useEffect(() => {
@@ -99,9 +114,13 @@ const Contacto = () => {
             <TextArea value={mensaje} placeholder={t("contacto.form.mensaje.placeholder")} onChangeText={(e) => setMensaje(e)} />
           </FormControl>
 
-          <Button colorScheme="amber" onPress={() => handleSubmit()} my={4} size="lg" py={3} w="60%" alignSelf="center">
-            {t("contacto.form.enviar")}
-          </Button>
+
+          {isLoading ? <Spinner size="lg" mt={4} /> :
+            <Button colorScheme="amber" onPress={() => handleSubmit()} my={4} size="lg" py={3} w="60%" alignSelf="center">
+              {t("contacto.form.enviar")}
+            </Button>
+          }
+
         </VStack>
       </Center>
     </View >

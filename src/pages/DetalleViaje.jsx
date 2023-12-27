@@ -29,7 +29,6 @@ const DetalleViaje = (props) => {
     };
     const res = await fetchPost(url, options);
 
-    console.log("Viaje detalle:", res);
     if (res.status === true) {
 
       setViaje(res.data);

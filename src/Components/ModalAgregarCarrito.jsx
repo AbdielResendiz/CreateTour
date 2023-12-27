@@ -33,14 +33,14 @@ const ModalAgregarCarrito = (props) => {
     const subtotalIE = parseFloat((infanteEx * PrInfanteEx).toFixed(2));
     const subtotalIN = parseFloat((infanteNac * PrInfanteNac).toFixed(2));
     const total = parseFloat((subtotalAE + subtotalAN + subtotalIE + subtotalIN).toFixed(2));
-  
+
     setSubtotalAE(subtotalAE);
     setSubtotalAN(subtotalAN);
     setSubtotalIE(subtotalIE);
     setSubtotalIN(subtotalIN);
     setTotal(total);
   }, [adultoNac, adultoEx, infanteNac, infanteEx, subtotalAE, subtotalAN, subtotalIE, subtotalIN]);
-  
+
 
   // manejo de cantidad de viajeros
 
@@ -104,9 +104,7 @@ const ModalAgregarCarrito = (props) => {
 
 
 
-  useEffect(() => {
-    console.log("Carrito: ", carrito)
-  }, [carrito])
+
 
 
   const formatearFecha = () => {
@@ -116,9 +114,7 @@ const ModalAgregarCarrito = (props) => {
 
 
   useEffect(() => {
-    console.log("FECHA : ", startDate)
     formatearFecha();
-    console.log("Fecha con formato: ", fecha)
   }, [startDate, fecha]);
 
 
@@ -155,48 +151,48 @@ const ModalAgregarCarrito = (props) => {
                   </HStack>
 
                   <HStack alignSelf={"center"}>
-                  <Button onPress={decrementAdultoNac}>-</Button>
-                          <Input w={10} placeholder="" isReadOnly={true} value={adultoNac.toString()} />
-                          <Button onPress={incrementAdultoNac}>+</Button>
+                    <Button onPress={decrementAdultoNac}>-</Button>
+                    <Input w={10} placeholder="" isReadOnly={true} value={adultoNac.toString()} />
+                    <Button onPress={incrementAdultoNac}>+</Button>
                   </HStack>
-                 
+
                 </Stack>
 
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
-                <HStack alignSelf={"center"}>
-                  <Text bold>Niño Nacional: </Text>
-                  <Text mx={2} fontSize={"xs"}> ${PrInfanteNac}USD / por persona</Text>
+                  <HStack alignSelf={"center"}>
+                    <Text bold>Niño Nacional: </Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrInfanteNac}USD / por persona</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
-                  <Button onPress={decrementInfanteNac}>-</Button>
-                  <Input w={10} placeholder="" isReadOnly={true} value={infanteNac.toString()} />
-                  <Button onPress={incrementInfanteNac}>+</Button>
+                    <Button onPress={decrementInfanteNac}>-</Button>
+                    <Input w={10} placeholder="" isReadOnly={true} value={infanteNac.toString()} />
+                    <Button onPress={incrementInfanteNac}>+</Button>
                   </HStack>
                 </Stack>
 
 
                 {/* Formulario de numero de  viajeros EX*/}
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
-                <HStack alignSelf={"center"}>
-                  <Text bold>Adulto Extranjero: </Text>
-                  <Text mx={2} fontSize={"xs"}> ${PrAdultoEx}USD / por persona</Text>
+                  <HStack alignSelf={"center"}>
+                    <Text bold>Adulto Extranjero: </Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrAdultoEx}USD / por persona</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
-                  <Button onPress={decrementAdultoEx}>-</Button>
-                  <Input w={10} placeholder="" isReadOnly={true} value={adultoEx.toString()} />
-                  <Button onPress={incrementAdultoEx}>+</Button>
+                    <Button onPress={decrementAdultoEx}>-</Button>
+                    <Input w={10} placeholder="" isReadOnly={true} value={adultoEx.toString()} />
+                    <Button onPress={incrementAdultoEx}>+</Button>
                   </HStack>
                 </Stack>
 
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
-                <HStack alignSelf={"center"}>
-                  <Text bold>Niño Extranjero: </Text>
-                  <Text mx={2} fontSize={"xs"}> ${PrInfanteEx}USD / por persona</Text>
+                  <HStack alignSelf={"center"}>
+                    <Text bold>Niño Extranjero: </Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrInfanteEx}USD / por persona</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
-                  <Button onPress={decrementInfanteEx}>-</Button>
-                  <Input w={10} placeholder="" isReadOnly={true} value={infanteEx.toString()} />
-                  <Button onPress={incrementInfanteEx}>+</Button>
+                    <Button onPress={decrementInfanteEx}>-</Button>
+                    <Input w={10} placeholder="" isReadOnly={true} value={infanteEx.toString()} />
+                    <Button onPress={incrementInfanteEx}>+</Button>
                   </HStack>
                 </Stack>
 

@@ -30,9 +30,7 @@ const DataTable = () => {
                 method: 'POST',
             };
             const res = await fetchPost(url, options);
-            // console.log("ventas admin: ", res)
             setViajes(res);
-            console.log("Ventas: ", res)
         } catch (error) {
             console.error('Error al obtener datos de viajes:', error);
         }
@@ -41,7 +39,6 @@ const DataTable = () => {
     useEffect(() => {
         // Llama a la función para obtener los datos de viajes cuando el componente se monta
         verVentas();
-        console.log("Tipo selected item 1:", typeof (selectedItem))
     }, []);
 
     const handleRowClick = (item) => {
@@ -59,14 +56,7 @@ const DataTable = () => {
         setOpenModal(false);
     };
 
-    useEffect(() => {
-        console.log("selectedItem actualizado:", selectedItem);
-        console.log("selectedItem actualizado tipo:", typeof selectedItem);
 
-        if (selectedItem && typeof selectedItem === 'object') {
-            console.log("selectedItem ID:", selectedItem[0].Titulo);
-        }
-    }, [selectedItem]);
 
     const headerText = {
         color: 'white',
@@ -102,7 +92,7 @@ const DataTable = () => {
                                 <TableCell>{row.Telefono}</TableCell>
                                 <TableCell style={{ maxWidth: 100 }}>
 
-                                    <Button variant="outlined" onClick={() => { console.log("row.viaje: ", row.Viaje); handleRowClick(row.Viaje); }}>
+                                    <Button variant="outlined" onClick={() => { handleRowClick(row.Viaje); }}>
                                         Detalles
                                     </Button>
                                 </TableCell>
