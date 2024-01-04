@@ -31,6 +31,8 @@ import Privacidad from "./pages/Privacidad";
 
 import global_en from './locates/en/global.json'
 import global_es from './locates/es/global.json'
+import blog_es from './locates/es/blog.json'
+import blog_en from './locates/en/blog.json'
 import FAQ from "./pages/FAQ";
 
 import Payment from "./stripe/Payment";
@@ -42,9 +44,12 @@ i18next.init({
   resources: {
     en: {
       global: global_en,
+      blog: blog_en
+
     },
     es: {
       global: global_es,
+      blog: blog_es
     },
   },
 })

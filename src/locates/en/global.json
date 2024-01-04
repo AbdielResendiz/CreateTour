@@ -1,7 +1,8 @@
 {
 	"blog": {
 		"subtitulo": "Explore interesting articles on various topics. We hope you enjoy your reading!",
-		"titulo": "Welcome to our Blog!"
+		"titulo": "Welcome to our Blog!",
+		"entradas": "Related posts:" 
 	},
 	"carritoVista": {
 		"aviso": "Please verify that your information is correct",
