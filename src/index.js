@@ -36,6 +36,11 @@ import blog_en from './locates/en/blog.json'
 import FAQ from "./pages/FAQ";
 
 import Payment from "./stripe/Payment";
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('G-VE154KHCW3');
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 
 i18next.init({
   interpolation: { escapeValue: false },

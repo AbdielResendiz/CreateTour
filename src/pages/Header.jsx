@@ -79,7 +79,7 @@ const Header = () => {
 
                     <Pressable onPress={handlePressTurismo} alignSelf={"center"}>
                         <Image source={{
-                            uri: "https://cgc.qroo.gob.mx/cjg/wp-content/uploads/2016/11/SEDETUR.png"
+                            uri: "https://createtours.com.mx/pictures/SEDETUR.png"
                         }} alt="Alternate Text" width={[24, 24, 40, 56]} height={[12, 12, 16, 24]} resizeMode="contain" />
                     </Pressable>
 
