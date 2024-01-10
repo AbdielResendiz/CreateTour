@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CarritoComponent from '../Components/CarritoComponent';
 import { useUser } from '../helper/UserContext';
-import { Button, Center, Divider, FlatList, Heading, Text, VStack, Flex } from 'native-base';
+import { Button, Center, Divider, FlatList, Heading, Text, VStack, Flex, FormControl, Input } from 'native-base';
 import { IconContext } from "react-icons";
 import ViajesAleatoreosComponent from '../Components/ViajesAleatoreosComponent';
 import { TbShoppingCartSearch } from "react-icons/tb";
@@ -24,6 +24,23 @@ const Carrito = () => {
   const { carrito } = useUser();
   const [carritoSting, setCarritoString] = useState(JSON.stringify(carrito));
 
+  const [codigoDescuento, setCodigoDescuento] = useState('');
+  const [descuentoAplicado, setDescuentoAplicado] = useState(false);
+
+  const handleCodigoDescuentoChange = (texto) => {
+    setCodigoDescuento(texto);
+  };
+
+
+  const aplicarDescuento = () => {
+    if (codigoDescuento === 'Marea30' && !descuentoAplicado) {
+      setDescuentoAplicado(true);
+    } else {
+      // Manejar código de descuento inválido o ya aplicado
+    }
+  };
+
+
 
 
 
@@ -39,12 +56,16 @@ const Carrito = () => {
 
   // Función para calcular el GranTotal
   const calcularGranTotal = () => {
-    // Usamos el método reduce para sumar la propiedad TotalCompra de cada objeto en el carrito
-    const granTotal = carrito.reduce((total, producto) => total + producto.TotalCompra, 0);
+    let granTotal = carrito.reduce((total, producto) => total + producto.TotalCompra, 0);
+    if (descuentoAplicado) {
+      granTotal *= 1; // 0.7 para el 30%, pongo 1 para que cobre el 100
+    }
     totalStripe(granTotal);
-    // Devolvemos el resultado
-    return granTotal;
+    // Redondear a dos decimales y convertir a número
+    return parseFloat(granTotal.toFixed(2));
   };
+
+
 
   // Llama a la función para obtener el GranTotal
   const granTotal = calcularGranTotal();
@@ -111,13 +132,31 @@ const Carrito = () => {
 
       {carrito.length > 0 ?
 
+        <>
+          <Center px={10} mb={4}>
+            <FormControl>
+              <FormControl.Label>Código de descuento</FormControl.Label>
+              <Input
+                p={2}
+                placeholder="Código de descuento"
+                value={codigoDescuento}
+                onChangeText={handleCodigoDescuentoChange} // Usando onChangeText
+              />
 
-        <Center>
-          <Text bold fontSize={"xl"} textAlign={"center"}> Proceder con el pago: ${granTotal} USD</Text>
+              <Button onPress={aplicarDescuento} m={2} mx="auto" >Aplicar Descuento</Button>
+              <FormControl.ErrorMessage>
+                {descuentoAplicado ? 'Descuento aplicado' : 'Código inválido o ya aplicado'}
+              </FormControl.ErrorMessage>
+            </FormControl>
+          </Center>
 
-          <Checkout total={granTotal} carrito={carritoSting} />
+          <Center>
+            <Text bold fontSize={"xl"} textAlign={"center"}> Proceder con el pago: ${granTotal} USD</Text>
 
-        </Center>
+            <Checkout total={granTotal} carrito={carritoSting} />
+
+          </Center>
+        </>
         :
         null
       }
@@ -129,7 +168,7 @@ const Carrito = () => {
 
 
 
-    </Flex>
+    </Flex >
 
   );
 };
