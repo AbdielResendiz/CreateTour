@@ -13,6 +13,7 @@ export const CheckoutForm = (props) => {
   const { t } = useTranslation("global");
   const { total, carrito } = props;
 
+
   const [errorMessage, setErrorMessage] = useState('');
   const [nameInput, setNameInput] = useState('');
   const [phoneInput, setPhoneInput] = useState('');
@@ -20,7 +21,7 @@ export const CheckoutForm = (props) => {
 
   const backendUrl = process.env.REACT_APP_STRIPE_PK_AIRCODE_URL;
 
-  const handleSubmit = async (event ) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (elements == null || stripe == null) {
@@ -35,10 +36,10 @@ export const CheckoutForm = (props) => {
       return;
     }
 
-   
+
     console.log("price form: ", total)
     console.log("Carrito form objeto?: ", carrito)
-    console.log("Carrito form objeto?: ", typeof(carrito) )
+    console.log("Carrito form objeto?: ", typeof (carrito))
 
     // Create the PaymentIntent and obtain clientSecret from your server endpoint
     const res = await fetch(backendUrl, {
@@ -83,42 +84,42 @@ export const CheckoutForm = (props) => {
   return (
     <form onSubmit={handleSubmit} className='px-4'>
 
-      
-      <div className='mb-3'> 
-      <h3>{t("carritoVista.aviso")}</h3>
+
+      <div className='mb-3'>
+        <h3>{t("carritoVista.aviso")}</h3>
         <label htmlFor="name-input">{t("carritoVista.mensajeNombre")} </label>
         <div>
-          <input  style={{ width: '70%' }} value={nameInput} onChange={(e) => setNameInput(e.target.value)} type="text" id="name-input" placeholder='John Doe' />
+          <input style={{ width: '70%' }} value={nameInput} onChange={(e) => setNameInput(e.target.value)} type="text" id="name-input" placeholder='John Doe' />
         </div>
 
         <label htmlFor="phone-input">{t("carritoVista.phone")}</label>
         <div>
-          <input  style={{ width: '70%' }} value={phoneInput} onChange={(e) => setPhoneInput(e.target.value)} type="tel" id="phone-input" placeholder='123-456-7890' />
+          <input style={{ width: '70%' }} value={phoneInput} onChange={(e) => setPhoneInput(e.target.value)} type="tel" id="phone-input" placeholder='123-456-7890' />
         </div>
 
         <label htmlFor="email-input">{t("carritoVista.email")}</label>
         <div>
-          <input  style={{ width: '70%' }} value={emailInput} onChange={(e) => setEmailInput(e.target.value)} type="email" id="email-input" placeholder='johndoe@gmail.com' />
+          <input style={{ width: '70%' }} value={emailInput} onChange={(e) => setEmailInput(e.target.value)} type="email" id="email-input" placeholder='johndoe@gmail.com' />
         </div>
       </div>
       <PaymentElement />
       <button
-  type="submit"
-  disabled={!stripe || !elements}
-  style={{
-    padding: '10px 20px',
-    fontSize: '1.2em',
-    backgroundColor: '#449bab',
-    color: 'white',
-    borderRadius: '10px',
-    cursor: 'pointer',
-    display: 'block',
-    margin: '20px auto',
-    border: '2px solid white'
-  }}
->
-  Pagar
-</button>
+        type="submit"
+        disabled={!stripe || !elements}
+        style={{
+          padding: '10px 20px',
+          fontSize: '1.2em',
+          backgroundColor: '#449bab',
+          color: 'white',
+          borderRadius: '10px',
+          cursor: 'pointer',
+          display: 'block',
+          margin: '20px auto',
+          border: '2px solid white'
+        }}
+      >
+        Pagar
+      </button>
       {/* Show error message to your customers */}
       {errorMessage && <div>{errorMessage}</div>}
     </form>
