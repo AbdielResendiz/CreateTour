@@ -9,9 +9,9 @@ const Nosotros = () => {
     return (
       <Stack direction={["column", "column", "row", "row"]} w={"100%"} mt={[12, 12, 24, 24]}>
         <VStack w={["80%", "80%", "35%", "35%"]} p={[2, 2, 5, 5]} mx={5} mb={[-20, -20, 0, 0]}>
-          <Text fontSize={["md", "lg", "xl", "2xl"]} color={"#494d41"}  >CREATE TOURS</Text>
-          <Text bold fontSize={["xl", "2xl", "4xl", "5xl"]}  >{subtitle}</Text>
-          <Text fontSize={["md", "md", "lg", "lg"]} color={"#494d41"} textAlign={"justify"}>{description}</Text>
+          <Text fontFamily={"ElMessiri"} fontSize={["md", "lg", "xl", "2xl"]} color={"#494d41"}  >CREATE TOURS</Text>
+          <Text fontFamily={"Avenir"} bold fontSize={["xl", "2xl", "4xl", "5xl"]}  >{subtitle}</Text>
+          <Text fontFamily={"Avenir"} fontSize={["md", "md", "lg", "lg"]} color={"#494d41"} textAlign={"justify"}>{description}</Text>
         </VStack>
         <Image
           source={{ uri: imageUrl }}
@@ -29,7 +29,7 @@ const Nosotros = () => {
   const Valores = ({ valor }) => {
     return (
       <Center bg={"#0e0337"} borderRadius={5} p={[1, 2, 3, 4]}>
-        <Text color={"white"} bold fontSize={["sm", "sm", "md", "lg"]}>
+        <Text fontFamily={"Avenir"} color={"white"} bold fontSize={["md", "md", "md", "lg"]}>
           {valor}
         </Text>
       </Center>
@@ -59,7 +59,7 @@ const Nosotros = () => {
         />
 
         <VStack w={["90%", "90%", "45%", "45%"]} justifyContent={"center"} p={[2, 2, 5, 10]} mt={[-20, -20, 0, 0]}>
-          <Text fontSize={["md", "lg", "xl", "2xl"]} color={"#494d41"}>
+          <Text fontFamily={"ElMessiri"} fontSize={["md", "lg", "xl", "2xl"]} color={"#494d41"}>
             CREATE TOURS
           </Text>
           <Text bold fontSize={["xl", "2xl", "4xl", "5xl"]}>

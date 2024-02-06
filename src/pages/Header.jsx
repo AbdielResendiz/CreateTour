@@ -51,7 +51,10 @@ const Header = () => {
         };
         return (
             <Link to={to} style={linkStyle} onClick={handleClick1} >
-                <Text p={[1, 1, 2, 2]} borderWidth={1} borderRadius={10} shadow={3} mx={[2, 2, 4, 4]} bg={"#eeeeee"} borderColor={"muted.300"} fontSize={["xs", "xs", "md", "lg"]} >{text}</Text>
+                <Text p={[1, 1, 2, 2]} borderWidth={1} borderRadius={10} fontFamily={"Avenir"}
+                    shadow={3} mx={[2, 2, 4, 4]} bg={"#eeeeee"} borderColor={"muted.300"}
+                    fontSize={["xs", "xs", "md", "lg"]} >
+                    {text}</Text>
             </Link>
         );
     };

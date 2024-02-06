@@ -27,12 +27,12 @@ const Tours = () => {
                 }} alt="Alternate Text" width={["100%", "100%", "60%", "70%"]} height={96} mt={[0, 0, 10, 10]} resizeMode="cover" />
 
                 <VStack justifyContent={"center"} alignSelf={"center"} width={["100%", "100%", "40%", "30%"]} p={10}>
-                    <Text mt={4} fontSize={["md", "lg", "md", "lg"]}  >{t("tours.titulo")}</Text>
-                    <Text bold fontSize={["2xl", "4xl", "2xl", "4xl"]} px={4}>
+                    <Text fontFamily="Avenir" mt={4} fontSize={["md", "lg", "md", "lg"]}  >{t("tours.titulo")}</Text>
+                    <Text bold fontFamily="ElMessiri" fontSize={["2xl", "4xl", "2xl", "4xl"]} px={4}>
                         XPLOR
                         ADVENTURE
                         PARK</Text>
-                    <Text fontSize={"md"}>
+                    <Text fontFamily="Avenir" fontSize={"md"}>
                         {t("tours.descripcion")} {"\n"}
                         {t("tours.costo")}  {"\n"}
                         {t("tours.hora")}  {"\n"}

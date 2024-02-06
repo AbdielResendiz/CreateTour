@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Avenir';
+    src: local('Avenir'), url('./Avenir.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ElMessiri';
+    src: local('ElMessiri'), url('./ElMessiri.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Autography';
+    src: url('./Autography.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}

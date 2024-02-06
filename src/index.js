@@ -34,7 +34,7 @@ import global_es from './locates/es/global.json'
 import blog_es from './locates/es/blog.json'
 import blog_en from './locates/en/blog.json'
 import FAQ from "./pages/FAQ";
-
+import './fonts/fonts.css'
 import Payment from "./stripe/Payment";
 import ReactGA from 'react-ga';
 

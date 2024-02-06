@@ -30,26 +30,26 @@ const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
         }} alt="Alternate Text" />
 
         <Center>
-          <Text bold fontSize={"lg"} p={4}  >{titulo}</Text>
+          <Text fontFamily={"ElMessiri"} bold fontSize={"lg"} p={4}  >{titulo}</Text>
         </Center>
 
-        <HStack justifyContent={"center"} pb={4}>
+        <HStack justifyContent={"center"} pb={4} alignItems={"center"} space={2}>
           <IconContext.Provider value={{ color: "#44c5d3", size: "1.5em" }}>
             <IoLocationOutline />
           </IconContext.Provider>
-          <Text fontSize={"md"} marginTop={-0.5} px={2}>{lugar}</Text>
+          <Text fontFamily="Avenir" fontSize={"md"} >{lugar}</Text>
         </HStack>
 
-        <HStack justifyContent={"center"}>
+        <HStack justifyContent={"center"} alignItems="center" space={2} mb={2}>
           <IconContext.Provider value={{ color: "#44c5d3", size: "1.3em" }}>
             <FaRegClock />
           </IconContext.Provider>
-          <Text fontSize={"md"} pb={4} px={2} marginTop={-1}> {duracion + ' ' + t('viajeComponent.horas')}</Text>
+          <Text fontFamily="Avenir" fontSize={"md"}> {duracion + ' ' + t('viajeComponent.horas')}</Text>
         </HStack>
 
         <Divider w="80%" alignSelf={"center"} />
         <Center py={3}>
-          <Text bold fontSize={"xl"} >${precio}USD</Text>
+          <Text fontFamily="Avenir" bold fontSize={"xl"} >${precio} USD</Text>
         </Center>
       </Pressable>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Text, Flex, VStack, Center, ZStack,  Divider, Stack, Button } from "native-base";
+import { Image, Text, Flex, VStack, Center, ZStack, Divider, Stack, Button } from "native-base";
 import ViajesAleatoreosComponent from "../Components/ViajesAleatoreosComponent";
 import { AiOutlineLike } from "react-icons/ai";
 import { GiPalmTree } from "react-icons/gi";
@@ -20,7 +20,7 @@ const IconTextComponent = ({ icon, text }) => {
         </IconContext.Provider>
 
       </Center>
-      <Text alignSelf={"center"} py={3} fontSize={"xl"}>
+      <Text alignSelf={"center"} py={3} fontSize={"xl"} fontFamily={"Avenir"}>
         {text}
       </Text>
     </Stack>
@@ -50,11 +50,16 @@ const Home = () => {
 
 
       <Stack direction={["column", "column", "row", "row"]} >
-        <Flex w={["80%", "80%", "25%", "25%"]} flexDirection="column" bg={"#eeeeee"} zIndex={9}
-          justifyContent={["center", "center", "flex-start", "flex-start"]} mt={[10, 10, 32, 56]} ml={[10, 10, 20, 40]}   >
-          <Text fontSize={["lg", "xl", "2xl", "4xl"]} color={"#494d41"}  >CREATE TOURS</Text>
-          <Text bold fontSize={["md", "lg", "lg", "2xl"]}  >{t("mainSection.quienes")}</Text>
-          <Text fontSize={["md", "md", "lg", "xl"]} color={"#494d41"} bg={"#eeeeee"} textAlign={"justify"}  >
+        <Flex w={["80%", "80%", "25%", "25%"]} flexDirection="column"
+          bg={"#eeeeee"} zIndex={9}
+          justifyContent={["center", "center", "flex-start", "flex-start"]}
+          mt={[10, 10, 32, 56]} ml={[10, 10, 20, 40]}   >
+          <Text fontFamily={"ElMessiri"}
+            fontSize={["lg", "xl", "2xl", "4xl"]} color={"#494d41"}  >
+            CREATE TOURS
+          </Text>
+          <Text fontFamily="Avenir" bold fontSize={["md", "lg", "lg", "2xl"]}  >{t("mainSection.quienes")}</Text>
+          <Text fontFamily="Avenir" fontSize={["md", "md", "lg", "xl"]} color={"#494d41"} bg={"#eeeeee"} textAlign={"justify"}  >
             {t("mainSection.about")}
           </Text>
         </Flex>
@@ -77,14 +82,14 @@ const Home = () => {
 
 
 
-        <Image alignSelf={"center"} source={{
+        <Image alignSelf={"center"} opacity={0.6} source={{
           uri: "https://createtours.com.mx/backend/public/Imagenes/olas-chicas.svg"
         }} alt="Alternate Text" width={"100%"} height={[32, 32, 64, 64]} resizeMode="contain" />
 
 
 
 
-        <Text mt={[5, 5, 16, 16]} textAlign={"center"} alignSelf={"center"} bold fontSize={["xl", "xl", "2xl", "4xl"]} >
+        <Text fontFamily={"ElMessiri"} mt={[5, 5, 16, 16]} textAlign={"center"} alignSelf={"center"} bold fontSize={["2xl", "2xl", "4xl", "6xl"]} >
           {t("mainSection.disfruta")}
         </Text>
 
@@ -100,7 +105,7 @@ const Home = () => {
           uri: "https://createtours.com.mx/backend/public/Imagenes/logo-create.svg"
         }} alt="Alternate Text" width={72} height={40} resizeMode="cover" />
         <Center >
-          <Text width={"80%"} fontSize={["lg", "lg", "xl", "2xl"]}  >
+          <Text fontFamily="Avenir" width={"80%"} fontSize={["lg", "lg", "xl", "2xl"]}  >
             {t("mainSection.about")}
           </Text>
 
@@ -110,7 +115,7 @@ const Home = () => {
 
       <Center py={10}>
         <VStack>
-          <Text fontSize={["xl", "2xl", "2xl", "4xl"]} >
+          <Text fontFamily={"ElMessiri"} fontSize={["xl", "2xl", "2xl", "4xl"]} >
             {t("mainSection.slogan")}
           </Text>
           <Divider thickness={2} bg="#449bab" />

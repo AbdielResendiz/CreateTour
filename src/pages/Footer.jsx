@@ -8,6 +8,7 @@ import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { useTranslation } from 'react-i18next'
 import { FiMail } from "react-icons/fi";
 import { animateScroll as scroll } from 'react-scroll';
+import ReactGA from 'react-ga';
 
 const Footer = () => {
 
@@ -17,6 +18,11 @@ const Footer = () => {
 
         // Construye la URL de WhatsApp con el número de teléfono
         const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+        ReactGA.event({
+            category: 'Contact',
+            action: 'Click en WhatsApp',
+            label: `WhatsApp: ${whatsappNumber}`
+        });
 
         // Abre la URL en una nueva pestaña
         window.open(whatsappUrl, '_blank');
