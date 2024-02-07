@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 
 
 const ModalAgregarCarrito = (props) => {
-  const { viajeID, foto, titulo, PrAdultoNac, PrAdultoEx, PrInfanteNac, PrInfanteEx, isOpen, onClose } = props;
+  const { viajeID, foto, titulo, PrAdultoNac, PrAdultoEx, PrInfanteNac, PrInfanteEx, isOpen, onClose, moneda, AdultoN, AdultoE, InfanteN, InfanteE } = props;
   const [startDate, setStartDate] = useState(new Date());
   const [fecha, setFecha] = useState("")
 
@@ -151,7 +151,7 @@ const ModalAgregarCarrito = (props) => {
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
                     <Text bold>Adulto Nacional: </Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrAdultoNac}USD / por persona</Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrAdultoNac} {moneda} / por persona</Text>
                   </HStack>
 
                   <HStack alignSelf={"center"}>
@@ -165,7 +165,7 @@ const ModalAgregarCarrito = (props) => {
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
                     <Text bold>Niño Nacional: </Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrInfanteNac}USD / por persona</Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrInfanteNac} {moneda} / por persona</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
                     <Button onPress={decrementInfanteNac}>-</Button>
@@ -179,7 +179,7 @@ const ModalAgregarCarrito = (props) => {
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
                     <Text bold>Adulto Extranjero: </Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrAdultoEx}USD / por persona</Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrAdultoEx} {moneda} / por persona</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
                     <Button onPress={decrementAdultoEx}>-</Button>
@@ -191,7 +191,7 @@ const ModalAgregarCarrito = (props) => {
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
                     <Text bold>Niño Extranjero: </Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrInfanteEx}USD / por persona</Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrInfanteEx} {moneda} / por persona</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
                     <Button onPress={decrementInfanteEx}>-</Button>

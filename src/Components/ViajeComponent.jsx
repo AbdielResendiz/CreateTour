@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, Pressable, Image, VStack, Center, Button, HStack, Divider } from "native-base";
 import { IoLocationOutline } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { FaRegClock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
 
 
 
 
 const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
-  const { t } = useTranslation("global")
+  const { t, i18n } = useTranslation("global");
 
 
   //para navegar a otras vistas
@@ -19,6 +19,29 @@ const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
   const handleClick = () => {
     navigate(`/trip/${id}/${titulo}`);
   };
+
+  const [exchangeRate, setExchangeRate] = useState(null);
+  const [precioMXN, setPrecioMXN] = useState(null);
+
+  useEffect(() => {
+    const fetchExchangeRate = async () => {
+      try {
+        const response = await fetch(
+          `https://open.er-api.com/v6/latest/USD`
+        );
+        const data = await response.json();
+        console.log(data.rates.MXN);
+        setExchangeRate(data.rates.MXN);
+        setPrecioMXN(Number((data.rates.MXN * precio).toFixed(2)));
+
+        console.log("Precio MXN $", precioMXN)
+      } catch (error) {
+        console.error('Error fetching exchange rate:', error);
+      }
+    };
+
+    fetchExchangeRate();
+  }, []);
 
 
   return (
@@ -49,7 +72,9 @@ const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
 
         <Divider w="80%" alignSelf={"center"} />
         <Center py={3}>
-          <Text fontFamily="Avenir" bold fontSize={"xl"} >${precio} USD</Text>
+          <Text fontFamily="Avenir" bold fontSize={"xl"} >
+            {i18n.language === "es" ? `$${precioMXN} MXN` : `$${precio} USD`}
+          </Text>
         </Center>
       </Pressable>
 
