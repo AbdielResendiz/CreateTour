@@ -108,7 +108,7 @@ const DetalleViaje = (props) => {
             <Text bold fontSize={{
               base: "xm",
               md: "sm",
-              lg: "xl"
+              lg: "md"
             }} color={count === tab ? "#28b5a4" : "black"}
             >
               {titulo}
@@ -165,7 +165,11 @@ const DetalleViaje = (props) => {
 
           </HStack>
           <Box w={["95%", "95%", "45%", "40%"]}>
-            <PrecioComponent viaje={viaje} />
+            <PrecioComponent PrecioInfantilExtranjero={viaje.PrecioInfantilExtranjero}
+              PrecioInfantilNacional={viaje.PrecioInfantilNacional}
+              PrecioAdultoExtranjero={viaje.PrecioAdultoExtranjero}
+              PrecioAdultoNacional={viaje.PrecioAdultoNacional}
+              viaje={viaje} />
           </Box>
 
         </Stack>
@@ -174,7 +178,7 @@ const DetalleViaje = (props) => {
         {/* TABS */}
 
 
-        <VStack w={"80%"} alignSelf={"center"} p={2} my={"1rem"} borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"}  >
+        <VStack w={"90%"} alignSelf={"center"} p={2} my={"1rem"} borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"}  >
           <Stack direction={{
             base: "column",
             md: "row",

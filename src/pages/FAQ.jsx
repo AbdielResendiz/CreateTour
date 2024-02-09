@@ -29,7 +29,10 @@ const FAQ = () => {
                     shadow={7}
                     p={3}
                 >
-                    {pregunta}
+                    <Text>
+                        {pregunta}
+
+                    </Text>
                 </Pressable>
                 {isOpen && (
                     <Text

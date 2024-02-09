@@ -125,10 +125,33 @@ export const UserProvider = ({ children }) => {
   };
 
 
+  //valor del dolar en mxn
+  const [precioUSD, setPrecioUSD] = useState(null);
+
+  useEffect(() => {
+    const fetchExchangeRate = async () => {
+      try {
+        const response = await fetch(
+          `https://open.er-api.com/v6/latest/USD`
+        );
+        const data = await response.json();
+        console.log(data.rates.MXN);
+        setPrecioUSD(Number((data.rates.MXN).toFixed(2)));
+
+        console.log("Precio USD $", precioUSD)
+      } catch (error) {
+        console.error('Error fetching exchange rate:', error);
+      }
+    };
+
+    fetchExchangeRate();
+  }, []);
+
+
 
   return (
     <UserContext.Provider
-      value={{ userId, tipo, carrito, login, totalContext, totalStripe, logout, agregarAlCarrito, editarCarrito, eliminarCarrito, borrarTodoCarrito }}
+      value={{ precioUSD, userId, tipo, carrito, login, totalContext, totalStripe, logout, agregarAlCarrito, editarCarrito, eliminarCarrito, borrarTodoCarrito }}
     >
       {children}
     </UserContext.Provider>

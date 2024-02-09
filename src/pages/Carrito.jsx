@@ -21,7 +21,7 @@ const Carrito = () => {
     navigate(`/Tours`);
   };
 
-  const { carrito } = useUser();
+  const { carrito, precioUSD } = useUser();
   const [carritoSting, setCarritoString] = useState(JSON.stringify(carrito));
 
   const [codigoDescuento, setCodigoDescuento] = useState('');
@@ -51,7 +51,7 @@ const Carrito = () => {
     setCarritoString(JSON.stringify(carrito))
     console.log("carrito string: ", carritoSting)
     console.log("carritoSting type: ", typeof (carritoSting));
-
+    console.log("precio usd carrito", precioUSD)
   }, [carrito, carritoSting]);
 
   // Función para calcular el GranTotal

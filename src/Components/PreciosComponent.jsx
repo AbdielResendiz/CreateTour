@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Box, VStack, Text, Divider, Button, HStack } from 'native-base';
 import ModalAgregarCarrito from './ModalAgregarCarrito';
 import { useTranslation } from 'react-i18next'
+import { useUser } from '../helper/UserContext';
 
 
 
 
 
-const PrecioComponent = ({ viaje }) => {
+const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, PrecioInfantilNacional, PrecioInfantilExtranjero }) => {
 
   //modal disponibilidad
   const [showModal, setShowModal] = useState(false);
   const { t, i18n } = useTranslation("global");
-
 
 
 
@@ -33,39 +33,25 @@ const PrecioComponent = ({ viaje }) => {
 
   const [exchangeRate, setExchangeRate] = useState(null);
   const [precioAdultoNacMXN, setPrecioAdultoNacMXN] = useState(null);
-  const [precioAdultoExMXN, setPrecioAdultiExMXN] = useState(null);
+  const [precioAdultoExMXN, setPrecioAdultoExMXN] = useState(null);
   const [precioInfantilNacMXN, setPrecioInfantilNacMXN] = useState(null);
   const [precioInfantilExMXN, setPrecioInfantilExMXN] = useState(null);
 
+  const { precioUSD } = useUser();
+
   useEffect(() => {
-    const fetchExchangeRate = async () => {
-      try {
-        const response = await fetch(
-          `https://open.er-api.com/v6/latest/USD`
-        );
-        const data = await response.json();
-        console.log(data.rates.MXN);
-        setExchangeRate(data.rates.MXN);
-        setPrecioAdultoNacMXN(Number((data.rates.MXN * viaje.PrecioAdultoNacional).toFixed(2)));
-        setPrecioAdultiExMXN(Number((data.rates.MXN * viaje.PrecioAdultoExtranjero).toFixed(2)));
-        setPrecioInfantilNacMXN(Number((data.rates.MXN * viaje.PrecioInfantilNacional).toFixed(2)));
-        setPrecioInfantilExMXN(Number((data.rates.MXN * viaje.PrecioInfantilExtranjero).toFixed(2)));
-
-
-      } catch (error) {
-        console.error('Error fetching exchange rate:', error);
-      }
-    };
-
-    fetchExchangeRate();
-  }, []);
+    setPrecioAdultoNacMXN(Number((precioUSD * PrecioAdultoNacional).toFixed(2)));
+    setPrecioAdultoExMXN(Number((precioUSD * PrecioAdultoExtranjero).toFixed(2)));
+    setPrecioInfantilNacMXN(Number((precioUSD * PrecioInfantilNacional).toFixed(2)));
+    setPrecioInfantilExMXN(Number((precioUSD * PrecioInfantilExtranjero).toFixed(2)));
+  }, [precioUSD, PrecioAdultoNacional, PrecioAdultoExtranjero, PrecioInfantilNacional, PrecioInfantilExtranjero]);
 
   const preciosModal = {
     moneda: i18n.language === "es" ? "MXN" : "USD",
-    PrAdultoNac: i18n.language === "es" ? precioAdultoNacMXN : viaje.PrecioAdultoNacional,
-    PrAdultoEx: i18n.language === "es" ? precioAdultoExMXN : viaje.PrecioAdultoExtranjero,
-    PrInfanteNac: i18n.language === "es" ? precioInfantilNacMXN : viaje.PrecioInfantilNacional,
-    PrInfanteEx: i18n.language === "es" ? precioInfantilExMXN : viaje.PrecioInfantilExtranjero,
+    PrAdultoNac: i18n.language === "es" ? precioAdultoNacMXN : PrecioAdultoNacional,
+    PrAdultoEx: i18n.language === "es" ? precioAdultoExMXN : PrecioAdultoExtranjero,
+    PrInfanteNac: i18n.language === "es" ? precioInfantilNacMXN : PrecioInfantilNacional,
+    PrInfanteEx: i18n.language === "es" ? precioInfantilExMXN : PrecioInfantilExtranjero,
   };
 
   const textosModal = {
@@ -82,22 +68,22 @@ const PrecioComponent = ({ viaje }) => {
         <VStack space={3} justifyContent={"center"}>
           <TipoTextoA
             texto={textosModal.AdultoExtranjero}
-            precio={preciosModal.AdultoExtranjero}
+            precio={preciosModal.PrAdultoEx + " " + preciosModal.moneda}
           />
           <TipoTextoA
             texto={textosModal.AdultoNacional}
-            precio={preciosModal.AdultoNacional}
+            precio={preciosModal.PrAdultoNac + " " + preciosModal.moneda}
           />
         </VStack>
         <Divider orientation="vertical" h={"80%"} alignSelf={"center"} />
         <VStack space={3} justifyContent={"center"}>
           <TipoTextoA
             texto={textosModal.NiñoExtranjero}
-            precio={preciosModal.NiñoExtranjero}
+            precio={preciosModal.PrInfanteEx + " " + preciosModal.moneda}
           />
           <TipoTextoA
             texto={textosModal.NiñoNacional}
-            precio={preciosModal.NiñoNacional}
+            precio={preciosModal.PrInfanteNac + " " + preciosModal.moneda}
           />
         </VStack>
 
@@ -105,7 +91,7 @@ const PrecioComponent = ({ viaje }) => {
       </HStack>
 
       <Button colorScheme={"amber"} onPress={() => setShowModal(true)}>
-        Aparta tu lugar
+        {t(`modalCarrito.botonPrevio`)}
       </Button>
 
 

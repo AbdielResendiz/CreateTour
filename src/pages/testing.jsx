@@ -1,110 +1,272 @@
-import React, { useState, useEffect } from 'react';
-import { Box, VStack, Text, Divider, Button, HStack } from 'native-base';
-import ModalAgregarCarrito from './ModalAgregarCarrito';
-import { useTranslation } from 'react-i18next'
+import React from 'react';
+import { VStack, Stack, Text, Modal, HStack, Input, Button } from 'native-base';
+import DatePicker from "react-datepicker";
+import { useState, useEffect } from 'react';
+import "react-datepicker/dist/react-datepicker.css";
+import { useUser } from '../helper/UserContext';
+import { format } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 
 
-
-
-
-const PrecioComponent = ({ viaje }) => {
-
-    //modal disponibilidad
-    const [showModal, setShowModal] = useState(false);
+const ModalAgregarCarrito = (props) => {
+    const { viajeID, foto, titulo, PrAdultoNac, PrAdultoEx, PrInfanteNac, PrInfanteEx, isOpen, onClose, moneda } = props;
+    const [startDate, setStartDate] = useState(new Date());
+    const [fecha, setFecha] = useState("");
     const { t, i18n } = useTranslation("global");
 
+    const { carrito, agregarAlCarrito, precioUSD } = useUser();
+
+    const [adultoNac, setAdultoNac] = useState(0);
+    const [adultoEx, setAdultoEx] = useState(0);
+    const [infanteNac, setInfanteNac] = useState(0);
+    const [infanteEx, setInfanteEx] = useState(0);
+
+    const [total, setTotal] = useState(0);
+    // subtotal AdultoNacional(AN), Infante Nacional (IN), 
+    const [subtotalAN, setSubtotalAN] = useState(0)
+    const [subtotalAE, setSubtotalAE] = useState(0)
+    const [subtotalIN, setSubtotalIN] = useState(0)
+    const [subtotalIE, setSubtotalIE] = useState(0)
+
+    // Calculos de subtotal
+    useEffect(() => {
+        const subtotalAE = parseFloat((adultoEx * PrAdultoEx).toFixed(2));
+        const subtotalAN = parseFloat((adultoNac * PrAdultoNac).toFixed(2));
+        const subtotalIE = parseFloat((infanteEx * PrInfanteEx).toFixed(2));
+        const subtotalIN = parseFloat((infanteNac * PrInfanteNac).toFixed(2));
+        const total = parseFloat((subtotalAE + subtotalAN + subtotalIE + subtotalIN).toFixed(2));
+
+        setSubtotalAE(subtotalAE);
+        setSubtotalAN(subtotalAN);
+        setSubtotalIE(subtotalIE);
+        setSubtotalIN(subtotalIN);
+        setTotal(total);
+    }, [adultoNac, adultoEx, infanteNac, infanteEx, subtotalAE, subtotalAN, subtotalIE, subtotalIN, i18n]);
 
 
+    // manejo de cantidad de viajeros
 
-    const TipoTextoA = ({ texto, precio }) => (
-        <VStack p={3}>
-            <Text bold fontSize={{
-                base: "sm",
-                md: "md",
-                lg: "lg"
-            }}>{precio}</Text>
-            <Text fontSize={{
-                base: "xs",
-                md: "sm",
-                lg: "md"
-            }} color={"muted.600"}>/ {texto} </Text>
-        </VStack>
-    );
+    const decrementAdultoNac = () => {
+        setAdultoNac((prevValue) => Math.max(prevValue - 1, 0));
+    };
 
-    const [exchangeRate, setExchangeRate] = useState(null);
-    const [precioAdultoNacMXN, setPrecioAdultoNacMXN] = useState(null);
-    const [precioAdultoExMXN, setPrecioAdultiExMXN] = useState(null);
-    const [precioInfantilNacMXN, setPrecioInfantilNacMXN] = useState(null);
-    const [precioInfantilExMXN, setPrecioInfantilExMXN] = useState(null);
+    const incrementAdultoNac = () => {
+        setAdultoNac((prevValue) => prevValue + 1);
+    };
+
+    const decrementAdultoEx = () => {
+        setAdultoEx((prevValue) => Math.max(prevValue - 1, 0));
+    };
+
+    const incrementAdultoEx = () => {
+        setAdultoEx((prevValue) => prevValue + 1);
+    };
+
+    const decrementInfanteNac = () => {
+        setInfanteNac((prevValue) => Math.max(prevValue - 1, 0));
+    };
+
+    const incrementInfanteNac = () => {
+        setInfanteNac((prevValue) => prevValue + 1);
+    };
+
+    const decrementInfanteEx = () => {
+        setInfanteEx((prevValue) => Math.max(prevValue - 1, 0));
+    };
+
+    const incrementInfanteEx = () => {
+        setInfanteEx((prevValue) => prevValue + 1);
+    };
+
+
+    //agrear al carrito
+    const handleAgregarCarrito = () => {
+        const nuevoCarrito = {
+            index: carrito.length + 1,
+            Viaje: parseInt(viajeID),
+            Titulo: titulo,
+            Foto: foto,
+            Fecha: fecha,
+            CantidadAdultos: adultoNac,
+            CantidadInfantes: infanteNac,
+            CantidadAdultosExtranjeros: adultoEx,
+            CantidadInfantesExtranjeros: infanteEx,
+            TotalCompra: total,
+        }
+        agregarAlCarrito(nuevoCarrito);
+
+        mostrarAlert();
+        onClose();
+
+    };
+
+    const mostrarAlert = () => {
+        window.alert('El artículo se ha agregado al carrito');
+    };
+
+
 
     useEffect(() => {
-        const fetchExchangeRate = async () => {
-            try {
-                const response = await fetch(
-                    `https://open.er-api.com/v6/latest/USD`
-                );
-                const data = await response.json();
-                console.log(data.rates.MXN);
-                setExchangeRate(data.rates.MXN);
-                setPrecioAdultoNacMXN(Number((data.rates.MXN * viaje.PrecioAdultoNacional).toFixed(2)));
-                setPrecioAdultiExMXN(Number((data.rates.MXN * viaje.PrecioAdultoExtranjero).toFixed(2)));
-                setPrecioInfantilNacMXN(Number((data.rates.MXN * viaje.PrecioInfantilNacional).toFixed(2)));
-                setPrecioInfantilExMXN(Number((data.rates.MXN * viaje.PrecioInfantilExtranjero).toFixed(2)));
+        console.log("Carrito: ", carrito)
+    }, [carrito])
 
 
-            } catch (error) {
-                console.error('Error fetching exchange rate:', error);
-            }
-        };
+    const formatearFecha = () => {
+        let fechaFormato = format(startDate, 'dd/MM/yyyy');
+        setFecha(fechaFormato)
+    };
 
-        fetchExchangeRate();
-    }, []);
+
+    useEffect(() => {
+        console.log("FECHA : ", startDate)
+        formatearFecha();
+        console.log("Fecha con formato: ", fecha)
+    }, [startDate, fecha]);
+
+
+
 
 
     return (
-        <Box flexDirection={"column"} shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={4} m={1} justifyContent={"center"}>
-            <HStack justifyContent={"center"}>
-                <VStack space={3} justifyContent={"center"}>
-                    <TipoTextoA
-                        texto={i18n.language === "es" ? "Adulto Extranjero" : "Foreign Adult"}
-                        precio={i18n.language === "es" ? `$${precioAdultoExMXN} MXN` : `$${viaje.PrecioAdultoExtranjero} USD`}
-                    />
-                    <TipoTextoA
-                        texto={i18n.language === "es" ? "Adulto Nacional" : "Domestic Adult"}
-                        precio={i18n.language === "es" ? `$${precioAdultoNacMXN} MXN` : `$${viaje.PrecioAdultoNacional} USD`}
-                    />
-                </VStack>
-                <Divider orientation="vertical" h={"80%"} alignSelf={"center"} />
-                <VStack space={3} justifyContent={"center"}>
-                    <TipoTextoA
-                        texto={i18n.language === "es" ? "Niño Extranjero" : "Foreign Child"}
-                        precio={i18n.language === "es" ? `$${precioInfantilExMXN} MXN` : `$${viaje.PrecioInfantilExtranjero} USD`}
-                    />
-                    <TipoTextoA
-                        texto={i18n.language === "es" ? "Niño Nacional" : "Domestic Child"}
-                        precio={i18n.language === "es" ? `$${precioInfantilNacMXN} MXN` : `$${viaje.PrecioInfantilNacional} USD`}
-                    />
-                </VStack>
+        <>
+            <Modal isOpen={isOpen} onClose={onClose} style={{ xIndex: 9999 }} >
+                <Modal.Content maxWidth="900px" maxHeight="2000px" p={4} >
+                    <Modal.CloseButton />
+                    <Modal.Header>
+                        <Text alignSelf={"center"} fontSize={"lg"} bold>
+                            {t(`modalCarrito.titulo`)} {titulo}
+                        </Text>
+                    </Modal.Header>
+
+                    <Stack direction={"column"} alignContent={"center"} justifyContent={"center"} alignSelf={"center"}>
+                        <Stack direction={["column", "column", "row", "row"]} flex={1} mt={3}>
+
+                            <VStack>
+                                <Text bold p={1} m={1} > {t(`modalCarrito.fecha`)} {fecha}</Text>
+                                <DatePicker selected={startDate}
+                                    onChange={(date) => setStartDate(date)} inline />
+
+                            </VStack>
 
 
-            </HStack>
-
-            <Button colorScheme={"amber"} onPress={() => setShowModal(true)}>
-                Aparta tu lugar
-            </Button>
-
-
-            <ModalAgregarCarrito isOpen={showModal} onClose={() => setShowModal(false)}
-                viajeID={viaje.ID} foto={viaje.Foto} titulo={viaje.Titulo} PrAdultoNac={viaje.PrecioAdultoNacional}
-                PrAdultoEx={viaje.PrecioAdultoExtranjero} PrInfanteNac={viaje.PrecioInfantilNacional} PrInfanteEx={viaje.PrecioInfantilExtranjero} />
-            {/* MODAL DE CONFIRMAR */}
+                            <VStack space={4} justifyContent={"center"}>
+                                <Text bold p={1} m={1} textAlign={"center"}>
+                                    {t(`modalCarrito.seleccion`)}
+                                </Text>
 
 
 
+                                <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
+                                    <HStack alignSelf={"center"}>
+                                        <Text bold>{t(`modalCarrito.adultoN`)} </Text>
+                                        <Text mx={2} fontSize={"xs"}> ${PrAdultoNac} {moneda} / {t(`modalCarrito.persona`)}</Text>
+                                    </HStack>
+
+                                    <HStack alignSelf={"center"}>
+                                        <Button onPress={decrementAdultoNac}>-</Button>
+                                        <Input w={10} placeholder="" isReadOnly={true} value={adultoNac.toString()} />
+                                        <Button onPress={incrementAdultoNac}>+</Button>
+                                    </HStack>
+
+                                </Stack>
+
+                                <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
+                                    <HStack alignSelf={"center"}>
+                                        <Text bold>{t(`modalCarrito.infanteN`)} </Text>
+                                        <Text mx={2} fontSize={"xs"}> ${PrInfanteNac} {moneda} / {t(`modalCarrito.persona`)}</Text>
+                                    </HStack>
+                                    <HStack alignSelf={"center"}>
+                                        <Button onPress={decrementInfanteNac}>-</Button>
+                                        <Input w={10} placeholder="" isReadOnly={true} value={infanteNac.toString()} />
+                                        <Button onPress={incrementInfanteNac}>+</Button>
+                                    </HStack>
+                                </Stack>
 
 
-        </Box>
+
+                                <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
+                                    <HStack alignSelf={"center"}>
+                                        <Text bold>{t(`modalCarrito.adultoE`)} </Text>
+                                        <Text mx={2} fontSize={"xs"}> ${PrAdultoEx} {moneda} / {t(`modalCarrito.persona`)}</Text>
+                                    </HStack>
+                                    <HStack alignSelf={"center"}>
+                                        <Button onPress={decrementAdultoEx}>-</Button>
+                                        <Input w={10} placeholder="" isReadOnly={true} value={adultoEx.toString()} />
+                                        <Button onPress={incrementAdultoEx}>+</Button>
+                                    </HStack>
+                                </Stack>
+
+                                <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
+                                    <HStack alignSelf={"center"}>
+                                        <Text bold>{t(`modalCarrito.infanteE`)}</Text>
+                                        <Text mx={2} fontSize={"xs"}> ${PrInfanteEx} {moneda} / {t(`modalCarrito.persona`)}</Text>
+                                    </HStack>
+                                    <HStack alignSelf={"center"}>
+                                        <Button onPress={decrementInfanteEx}>-</Button>
+                                        <Input w={10} placeholder="" isReadOnly={true} value={infanteEx.toString()} />
+                                        <Button onPress={incrementInfanteEx}>+</Button>
+                                    </HStack>
+                                </Stack>
+
+
+                            </VStack>
+
+
+                        </Stack>
+
+
+
+
+
+                        <>
+                            <Text bold fontSize={"md"}>{t(`modalCarrito.viajeros`)} </Text>
+                            <Stack space={2} direction={["column", "column", "column", "column"]}>
+
+                                {adultoNac > 0 ? <HStack>
+                                    <Text fontSize={"xs"}>🔹 {adultoNac} {t(`modalCarrito.adultoN`)} {'\n'} (${PrAdultoNac} USD/persona )</Text>
+                                    <Text bold> ${subtotalAN}{t(`modalCarrito.moneda`)} </Text>
+                                </HStack> : null}
+
+                                {adultoEx > 0 ? <HStack>
+                                    <Text fontSize={"xs"}> 🔹{adultoEx} {t(`modalCarrito.adultoE`)} {'\n'} (${PrAdultoEx} USD/persona )</Text>
+                                    <Text bold> ${subtotalAE}{t(`modalCarrito.moneda`)} </Text>
+                                </HStack> : null}
+
+                                {infanteNac > 0 ? <HStack>
+                                    <Text fontSize={"xs"}> 🔹{infanteNac} {t(`modalCarrito.infanteN`)} {'\n'} (${PrInfanteNac} USD/persona )</Text>
+                                    <Text bold> ${subtotalIN}{t(`modalCarrito.moneda`)} </Text>
+                                </HStack> : null}
+
+                                {infanteEx > 0 ? <HStack>
+                                    <Text fontSize={"xs"}> 🔹{infanteEx} {t(`modalCarrito.infanteE`)} {'\n'} (${PrInfanteEx} USD/persona )</Text>
+                                    <Text bold> ${subtotalIN}{t(`modalCarrito.moneda`)} </Text>
+                                </HStack> : null}
+
+
+                            </Stack>
+                            <Text bold p={3} alignSelf={"center"} fontSize={"2xl"}>
+                                Total: $ {total ? total : 0} USD</Text>
+                        </>
+
+                        <Button colorScheme={"amber"} onPress={() => { handleAgregarCarrito() }}>
+                            {t(`modalCarrito.botonAgregar`)}
+                        </Button>
+
+
+
+                    </Stack>
+
+                </Modal.Content>
+
+            </Modal>
+
+
+
+        </>
+
+
     );
-};
+}
 
-export default PrecioComponent;
+export default ModalAgregarCarrito;
+

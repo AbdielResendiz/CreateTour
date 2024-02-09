@@ -63,10 +63,9 @@ const FlatListViajesComponent = () => {
         contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
         data={viajes}
         numColumns={numColumns}
-        key={numColumns.toString()} // Usa el número de columnas como clave
+        keyExtractor={(item, index) => item.ID.toString()} // Asume que `item.ID` es único
         renderItem={({ item, index }) => (
           <ViajeComponent
-            key={index}
             imageUri={item.Foto}
             titulo={item.Titulo}
             lugar={item.Ubicacion}

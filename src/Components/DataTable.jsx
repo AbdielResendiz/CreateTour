@@ -132,7 +132,7 @@ const DataTable = () => {
                             style={{ width: '100%', marginTop: 5, paddingHorizontal: '2vw' }}
                             contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
                             data={selectedItem ? selectedItem : []}
-                            keyExtractor={item => item.index}// Usar index como clave
+                            keyExtractor={item => item.Viaje}// Usar index como clave
                             renderItem={({ item }) => (
                                 <DetalleVentaComponent
                                     key={item.index}

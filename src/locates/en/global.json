@@ -130,6 +130,20 @@
 		"regreso": "",
 		"salida": ""
 	},
+	"modalCarrito": {
+		"botonPrevio": "Reserve your spot",
+		"titulo": "Reserve your spot for",
+		"fecha": "Choose the date:",
+		"seleccion": "Select the number of Travelers:",
+		"adultoN": "Domestic Adult",
+		"adultoE": "Foreign Adult",
+		"infanteN": "Domestic Child",
+		"infanteE": "Foreign Child",
+		"viajeros": "Travelers:",
+		"persona": "per person",
+		"botonAgregar": "Add to cart",
+		"moneda": "USD"
+	},
 	"viajes": {
 		"viaje1": {
 			"descripcion": "You will live a unique experience. \n\nA guided tour to the world-famous archaeological site of Chichen Itzá, located on the Yucatán Peninsula, Mexico. \n\nChichen Itzá holds the title of one of the 7 wonders of the modern world and has been named a UNESCO World Heritage Site.",

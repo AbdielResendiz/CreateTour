@@ -130,6 +130,20 @@
 		"regreso": "",
 		"salida": ""
 	},
+	"modalCarrito": {
+		"botonPrevio": "Aparta tu lugar",
+		"titulo": "Aparta tu lugar para",
+		"fecha": "Escoje la fecha:",
+		"seleccion": "Selecciona el número de Viajeros:",
+		"adultoN": "Adulto Nacional",
+		"adultoE": "Adulto Extranjero",
+		"infanteN": "Niño Nacional",
+		"infanteE": "Niño Extranjero",
+		"viajeros": "Viajeros:",
+		"persona": "por persona",
+		"botonAgregar": "Agregar al carrito",
+		"moneda": "MXN"
+	},
 	"viajes": {
 		"viaje1": {
 			"descripcion": "Vivirás una experiencia única en su clase. \n\nUna visita guiada al mundialmente famoso sitio arqueológico de Chichen Itzá, localizado en la península de Yucatán, México.\n\nChichen Itzá tiene el título de una de las 7 maravillas del mundo moderno y ha sido nombrado patrimonio de la humanidad por la UNESCO.",

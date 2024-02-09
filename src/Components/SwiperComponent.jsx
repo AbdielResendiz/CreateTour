@@ -50,8 +50,7 @@ const SwiperComponent = (props) => {
         <>
             <Swiper navigation={true} modules={[Navigation]} >
                 {galeria.map((foto, index) => (
-                    <SwiperSlide key={index}>
-
+                    <SwiperSlide key={foto.foto}> {/* Cambiado de index a foto.foto */}
                         <Image
                             source={{ uri: `https://createtours.com.mx/pictures/galeria/${foto.foto}` }}
                             alt={`Slide ${index + 1}`}
@@ -59,7 +58,6 @@ const SwiperComponent = (props) => {
                             height={"100%"}
                             resizeMode='cover'
                         />
-
                     </SwiperSlide>
                 ))}
             </Swiper>

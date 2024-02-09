@@ -45,7 +45,7 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 i18next.init({
   interpolation: { escapeValue: false },
   lng: 'auto',
-  fallbackLng: 'es',
+  fallbackLng: 'en',
   resources: {
     en: {
       global: global_en,

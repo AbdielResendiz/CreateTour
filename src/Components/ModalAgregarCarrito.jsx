@@ -5,14 +5,32 @@ import { useState, useEffect } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
 import { useUser } from '../helper/UserContext';
 import { format } from 'date-fns';
+import { useTranslation } from 'react-i18next';
 
 
 const ModalAgregarCarrito = (props) => {
-  const { viajeID, foto, titulo, PrAdultoNac, PrAdultoEx, PrInfanteNac, PrInfanteEx, isOpen, onClose, moneda, AdultoN, AdultoE, InfanteN, InfanteE } = props;
+  const { viajeID, foto, titulo, PrAdultoNac, PrAdultoEx, PrInfanteNac, PrInfanteEx, isOpen, onClose, moneda } = props;
   const [startDate, setStartDate] = useState(new Date());
-  const [fecha, setFecha] = useState("")
+  const [fecha, setFecha] = useState("");
+  const { t, i18n } = useTranslation("global");
 
-  const { carrito, agregarAlCarrito } = useUser();
+  const { carrito, agregarAlCarrito, precioUSD } = useUser();
+  const [isDolar, setIsDolar] = useState(false);
+
+  useEffect(() => {
+    if (i18n.language === 'es') {
+      setIsDolar(false);
+    } else if (i18n.language === 'en') {
+      setIsDolar(true);
+    }
+
+  }, [i18n.language]);
+
+  useEffect(() => {
+    console.log("Es dolar? R= ", isDolar);
+  }, [isDolar]);
+
+
 
   const [adultoNac, setAdultoNac] = useState(0);
   const [adultoEx, setAdultoEx] = useState(0);
@@ -21,10 +39,10 @@ const ModalAgregarCarrito = (props) => {
 
   const [total, setTotal] = useState(0);
   // subtotal AdultoNacional(AN), Infante Nacional (IN), 
-  const [subtotalAN, setSubtotalAN] = useState(0)
-  const [subtotalAE, setSubtotalAE] = useState(0)
-  const [subtotalIN, setSubtotalIN] = useState(0)
-  const [subtotalIE, setSubtotalIE] = useState(0)
+  const [subtotalAN, setSubtotalAN] = useState(0);
+  const [subtotalAE, setSubtotalAE] = useState(0);
+  const [subtotalIN, setSubtotalIN] = useState(0);
+  const [subtotalIE, setSubtotalIE] = useState(0);
 
   // Calculos de subtotal
   useEffect(() => {
@@ -39,7 +57,7 @@ const ModalAgregarCarrito = (props) => {
     setSubtotalIE(subtotalIE);
     setSubtotalIN(subtotalIN);
     setTotal(total);
-  }, [adultoNac, adultoEx, infanteNac, infanteEx, subtotalAE, subtotalAN, subtotalIE, subtotalIN]);
+  }, [adultoNac, adultoEx, infanteNac, infanteEx, subtotalAE, subtotalAN, subtotalIE, subtotalIN, i18n.language]);
 
 
   // manejo de cantidad de viajeros
@@ -90,6 +108,7 @@ const ModalAgregarCarrito = (props) => {
       CantidadAdultosExtranjeros: adultoEx,
       CantidadInfantesExtranjeros: infanteEx,
       TotalCompra: total,
+      dolar: isDolar
     }
     agregarAlCarrito(nuevoCarrito);
 
@@ -102,8 +121,6 @@ const ModalAgregarCarrito = (props) => {
     window.alert('El artículo se ha agregado al carrito');
   };
 
-
-
   useEffect(() => {
     console.log("Carrito: ", carrito)
   }, [carrito])
@@ -114,7 +131,6 @@ const ModalAgregarCarrito = (props) => {
     setFecha(fechaFormato)
   };
 
-
   useEffect(() => {
     console.log("FECHA : ", startDate)
     formatearFecha();
@@ -122,36 +138,36 @@ const ModalAgregarCarrito = (props) => {
   }, [startDate, fecha]);
 
 
-
-
-
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} style={{ xIndex: 9999 }} >
         <Modal.Content maxWidth="900px" maxHeight="2000px" p={4} >
           <Modal.CloseButton />
-          <Modal.Header><Text alignSelf={"center"} fontSize={"lg"} bold>Aparta tu lugar para {titulo} </Text></Modal.Header>
+          <Modal.Header>
+            <Text alignSelf={"center"} fontSize={"lg"} bold>
+              {t(`modalCarrito.titulo`)} {titulo}
+            </Text>
+          </Modal.Header>
 
           <Stack direction={"column"} alignContent={"center"} justifyContent={"center"} alignSelf={"center"}>
             <Stack direction={["column", "column", "row", "row"]} flex={1} mt={3}>
-              {/* DATEPICKER */}
+
               <VStack>
-                <Text bold p={1} m={1} > Escoje la fecha : {fecha}</Text>
+                <Text bold p={1} m={1} > {t(`modalCarrito.fecha`)} {fecha}</Text>
                 <DatePicker selected={startDate}
                   onChange={(date) => setStartDate(date)} inline />
 
               </VStack>
 
-              {/* Cantidad viajeros */}
               <VStack space={4} justifyContent={"center"}>
-                <Text bold p={1} m={1} textAlign={"center"}> Selecciona el número de Viajeros: </Text>
-
-                {/* Formulario de numero de  viajeros nacionales */}
+                <Text bold p={1} m={1} textAlign={"center"}>
+                  {t(`modalCarrito.seleccion`)}
+                </Text>
 
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
-                    <Text bold>Adulto Nacional: </Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrAdultoNac} {moneda} / por persona</Text>
+                    <Text bold>{t(`modalCarrito.adultoN`)} </Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrAdultoNac} {moneda} / {t(`modalCarrito.persona`)}</Text>
                   </HStack>
 
                   <HStack alignSelf={"center"}>
@@ -164,8 +180,8 @@ const ModalAgregarCarrito = (props) => {
 
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
-                    <Text bold>Niño Nacional: </Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrInfanteNac} {moneda} / por persona</Text>
+                    <Text bold>{t(`modalCarrito.infanteN`)} </Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrInfanteNac} {moneda} / {t(`modalCarrito.persona`)}</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
                     <Button onPress={decrementInfanteNac}>-</Button>
@@ -174,12 +190,10 @@ const ModalAgregarCarrito = (props) => {
                   </HStack>
                 </Stack>
 
-
-                {/* Formulario de numero de  viajeros EX*/}
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
-                    <Text bold>Adulto Extranjero: </Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrAdultoEx} {moneda} / por persona</Text>
+                    <Text bold>{t(`modalCarrito.adultoE`)} </Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrAdultoEx} {moneda} / {t(`modalCarrito.persona`)}</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
                     <Button onPress={decrementAdultoEx}>-</Button>
@@ -190,8 +204,8 @@ const ModalAgregarCarrito = (props) => {
 
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
-                    <Text bold>Niño Extranjero: </Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrInfanteEx} {moneda} / por persona</Text>
+                    <Text bold>{t(`modalCarrito.infanteE`)}</Text>
+                    <Text mx={2} fontSize={"xs"}> ${PrInfanteEx} {moneda} / {t(`modalCarrito.persona`)}</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
                     <Button onPress={decrementInfanteEx}>-</Button>
@@ -200,52 +214,46 @@ const ModalAgregarCarrito = (props) => {
                   </HStack>
                 </Stack>
 
-
               </VStack>
-
 
             </Stack>
 
 
-
-
-            {/* Calculos de subtotal */}
             <>
-              <Text bold fontSize={"md"}>Viajeros:</Text>
+              <Text bold fontSize={"md"}>{t(`modalCarrito.viajeros`)} </Text>
               <Stack space={2} direction={["column", "column", "column", "column"]}>
 
                 {adultoNac > 0 ? <HStack>
-                  <Text fontSize={"xs"}>🔹 {adultoNac} Adulto Nacional {'\n'} (${PrAdultoNac} USD/persona )</Text>
-                  <Text bold> ${subtotalAN}USD </Text>
+                  <Text fontSize={"xs"}>🔹 {adultoNac} {t(`modalCarrito.adultoN`)} {'\n'} (${PrAdultoNac} USD/persona )</Text>
+                  <Text bold> ${subtotalAN}{t(`modalCarrito.moneda`)} </Text>
                 </HStack> : null}
 
                 {adultoEx > 0 ? <HStack>
-                  <Text fontSize={"xs"}> 🔹{adultoEx} Adulto Extranjero {'\n'} (${PrAdultoEx} USD/persona )</Text>
-                  <Text bold> ${subtotalAE}USD </Text>
+                  <Text fontSize={"xs"}> 🔹{adultoEx} {t(`modalCarrito.adultoE`)} {'\n'} (${PrAdultoEx} USD/persona )</Text>
+                  <Text bold> ${subtotalAE}{t(`modalCarrito.moneda`)} </Text>
                 </HStack> : null}
 
                 {infanteNac > 0 ? <HStack>
-                  <Text fontSize={"xs"}> 🔹{infanteNac} Niño Nacional {'\n'} (${PrInfanteNac} USD/persona )</Text>
-                  <Text bold> ${subtotalIN}USD </Text>
+                  <Text fontSize={"xs"}> 🔹{infanteNac} {t(`modalCarrito.infanteN`)} {'\n'} (${PrInfanteNac} USD/persona )</Text>
+                  <Text bold> ${subtotalIN}{t(`modalCarrito.moneda`)} </Text>
                 </HStack> : null}
 
                 {infanteEx > 0 ? <HStack>
-                  <Text fontSize={"xs"}> 🔹{infanteEx} Niño Extranjero {'\n'} (${PrInfanteEx} USD/persona )</Text>
-                  <Text bold> ${subtotalIE}USD </Text>
+                  <Text fontSize={"xs"}> 🔹{infanteEx} {t(`modalCarrito.infanteE`)} {'\n'} (${PrInfanteEx} USD/persona )</Text>
+                  <Text bold> ${subtotalIE}{t(`modalCarrito.moneda`)} </Text>
                 </HStack> : null}
 
 
               </Stack>
-              <Text bold p={3} alignSelf={"center"} fontSize={"2xl"}> Total: $ {total ? total : 0} USD</Text>
+              <Text bold p={3} alignSelf={"center"} fontSize={"2xl"}>
+                Total: $ {total ? total : 0} {t(`modalCarrito.moneda`)}</Text>
             </>
 
             <Button colorScheme={"amber"} onPress={() => { handleAgregarCarrito() }}>
-              Agregar al carrito
+              {t(`modalCarrito.botonAgregar`)}
             </Button>
 
-            {/* <Button colorScheme={"danger"} onPress={()=>{borrarTodoCarrito()}}>
-                  Borrar TODO el carrito
-              </Button> */}
+
 
           </Stack>
 
