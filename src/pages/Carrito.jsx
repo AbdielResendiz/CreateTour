@@ -13,7 +13,7 @@ import Checkout from './Checkout';
 
 const Carrito = () => {
   const { t } = useTranslation("global");
-  const { totalStripe } = useUser();
+
   //para navegar a otras vistas
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const Carrito = () => {
     navigate(`/Tours`);
   };
 
-  const { carrito, precioUSD } = useUser();
+  const { carrito, precioUSD, totalStripe } = useUser();
   const [carritoSting, setCarritoString] = useState(JSON.stringify(carrito));
 
   const [codigoDescuento, setCodigoDescuento] = useState('');
@@ -121,6 +121,7 @@ const Carrito = () => {
             titulo={item.Titulo}
             foto={item.Foto}
             subtotal={item.TotalCompra}
+            subtotalMXN={item.TotalCompra * precioUSD}
             fecha={item.Fecha}
             adultoN={item.CantidadAdultos}
             adultoE={item.CantidadAdultosExtranjeros}
@@ -136,15 +137,17 @@ const Carrito = () => {
         <>
           <Center px={10} mb={4}>
             <FormControl>
-              <FormControl.Label>Código de descuento</FormControl.Label>
+              <FormControl.Label>{t("carritoVista.codigoDescuento")}</FormControl.Label>
               <Input
                 p={2}
-                placeholder="Código de descuento"
+                placeholder={t("carritoVista.codigoDescuento")}
                 value={codigoDescuento}
                 onChangeText={handleCodigoDescuentoChange} // Usando onChangeText
               />
 
-              <Button onPress={aplicarDescuento} m={2} mx="auto" >Aplicar Descuento</Button>
+              <Button onPress={aplicarDescuento} m={2} mx="auto" >
+                {t("carritoVista.aplicaCodigo")}
+              </Button>
               <FormControl.ErrorMessage>
                 {descuentoAplicado ? 'Descuento aplicado' : 'Código inválido o ya aplicado'}
               </FormControl.ErrorMessage>
@@ -152,7 +155,11 @@ const Carrito = () => {
           </Center>
 
           <Center>
-            <Text bold fontSize={"xl"} textAlign={"center"}> Proceder con el pago: ${granTotal} USD</Text>
+            <Text bold fontSize={"xl"} textAlign={"center"}>
+              {t("carritoVista.procedePago")}: {" "}
+              ${granTotal}
+              {t("modalCarrito.moneda")}
+            </Text>
 
             <Checkout total={granTotal} carrito={carritoSting} />
 

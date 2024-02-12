@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { Box, Text, Image, HStack, VStack, Button, Modal, Stack } from "native-base";
+import { Box, Text, Image, HStack, VStack, Button, Popover, Stack } from "native-base";
 import { IconContext } from "react-icons";
 import { MdDeleteForever } from "react-icons/md";
 import { useUser } from "../helper/UserContext";
+import { useTranslation } from "react-i18next";
 
 
-const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, kidN, kidE, subtotal }) => {
+const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, kidN, kidE, subtotal, subtotalMXN }) => {
     // variables y funciones de useContext
     const { eliminarCarrito } = useUser();
-    console.log("id viaje: ", id);
-    console.log("index viaje carrito: ", index);
+    const { t, i18n } = useTranslation("global");
 
-    const [showModal, setShowModal] = useState(false);
+    const [showPopover, setShowPopover] = React.useState(false);
+    const initialFocusRef = React.useRef(null);
 
     return (
         <Stack direction={["column", "column", "row", "row"]} flex={1} mx={5} my={5} shadow={6} borderRadius={10} borderColor={"#aaaaaa"} borderWidth={1}>
@@ -29,70 +30,83 @@ const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, ki
             <Box flex={1} p={2} alignSelf={"flex-start"}>
                 <VStack>
                     <Text bold fontSize={["md", "md", "lg", "xl"]}>
-                        Título: <Text bold>{titulo}</Text>
+                        Tour: <Text bold>{titulo}</Text>
                     </Text>
                     <Text bold fontSize={["md", "md", "md", "lg"]}>
-                        Fecha: <Text bold>{fecha}</Text>
+                        {t("modalCarrito.fecha2")}: <Text bold>{fecha}</Text>
                     </Text>
                 </VStack>
 
-                <HStack space={10} justifyContent={"center"}>
+                <HStack space={5} justifyContent={"space-between"}>
                     <Text fontSize={["xs", "xs", "sm", "md"]}>
-                        Adultos (Nacional): <Text bold>{adultoN}</Text>{" "}
+                        {t("modalCarrito.adultoN")}: <Text bold>{adultoN}</Text>{" "}
                     </Text>
                     <Text fontSize={["xs", "xs", "sm", "md"]}>
-                        Niños (Nacional): <Text bold>{kidN}</Text>{" "}
+                        {t("modalCarrito.infanteE")}: <Text bold>{kidN}</Text>{" "}
                     </Text>
                 </HStack>
 
-                <HStack space={10} justifyContent={"center"}>
+                <HStack space={5} justifyContent={"space-between"}>
                     <Text fontSize={["xs", "xs", "sm", "md"]}>
-                        Adultos (Extranjero): <Text bold>{adultoE}</Text>{" "}
+                        {t("modalCarrito.adultoE")}: <Text bold>{adultoE}</Text>{" "}
                     </Text>
                     <Text fontSize={["xs", "xs", "sm", "md"]}>
-                        Niños (Extranjero): <Text bold>{kidE}</Text>
+                        {t("modalCarrito.infanteE")}: <Text bold>{kidE}</Text>
                     </Text>
                 </HStack>
 
                 <Text bold fontSize={["md", "md", "lg", "lg"]}>
-                    Subtotal: ${subtotal} USD
+                    Subtotal: ${i18n.language === "es" ? parseFloat(subtotalMXN).toFixed(2) : subtotal}
+                    {t("modalCarrito.moneda")}:
                 </Text>
 
                 <HStack space={5} justifyContent={"center"} paddingRight={5} my={4}>
-                    <Button
-                        colorScheme={"secondary"}
-                        onPress={() => setShowModal(true)}
-                        endIcon={
-                            <IconContext.Provider value={{ color: "#edf5f7", size: "1.3em" }}>
-                                <MdDeleteForever />
-                            </IconContext.Provider>
-                        }>
-                        Borrar
-                    </Button>
+                    <Popover
+                        isOpen={showPopover}
+                        onClose={() => setShowPopover(false)}
+                        initialFocusRef={initialFocusRef}
+                        trigger={(triggerProps) => (
+                            <Button
+                                colorScheme={"secondary"}
+                                {...triggerProps}
+                                onPress={() => setShowPopover(true)}
+                                endIcon={
+                                    <IconContext.Provider value={{ color: "#edf5f7", size: "1.3em" }}>
+                                        <MdDeleteForever />
+                                    </IconContext.Provider>
+                                }
+                            >
+                                {t("carritoVista.borrar")}
+                            </Button>
+                        )}
+                    >
+                        <Popover.Content maxWidth="600px" minWidth={"400px"}>
+                            <Popover.Arrow />
+                            <Popover.CloseButton />
+                            <Popover.Header>{t("carritoVista.tituloPop")}</Popover.Header>
+                            <Popover.Body>
+                                <HStack>
+                                    <Text>
+                                        {t("carritoVista.mensajePop")} {" "}
+                                    </Text>  <Text bold>{titulo}</Text>
+                                    <Text>
+                                        ?
+                                    </Text>
+                                </HStack>
 
-                    {/* MODAL DE CONFIRMAR */}
-
-                    <Modal isOpen={showModal} onClose={() => setShowModal(false)} justifyContent="center"  >
-                        <Modal.Content maxWidth="400px">
-                            <Modal.CloseButton />
-                            <Modal.Header>Eliminar del carrito</Modal.Header>
-                            <Modal.Body>
-                                <Text>
-                                    ¿Seguro que quieres borrar del carrito <Text bold>{titulo}</Text> ?
-                                </Text>
-                            </Modal.Body>
-                            <Modal.Footer>
+                            </Popover.Body>
+                            <Popover.Footer justifyContent="flex-end">
                                 <Button.Group space={2}>
-                                    <Button variant="ghost" colorScheme="blueGray" onPress={() => setShowModal(false)}>
-                                        Cancelar
+                                    <Button variant="outline" colorScheme="muted" ref={initialFocusRef} onPress={() => setShowPopover(false)}>
+                                        {t("carritoVista.cancelar")}
                                     </Button>
                                     <Button colorScheme={"danger"} onPress={() => eliminarCarrito(index)}>
-                                        Eliminar
+                                        {t("carritoVista.borrar")}
                                     </Button>
                                 </Button.Group>
-                            </Modal.Footer>
-                        </Modal.Content>
-                    </Modal>
+                            </Popover.Footer>
+                        </Popover.Content>
+                    </Popover>
                 </HStack>
             </Box>
         </Stack>

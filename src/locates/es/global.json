@@ -18,7 +18,14 @@
 		},
 		"mensajeNombre": "¿A nombre de quién quedará la reservación?",
 		"name": "Nombre",
-		"phone": "Teléfono"
+		"phone": "Teléfono",
+		"borrar": "Borrar",
+		"cancelar": "Cancelar",
+		"mensajePop": "Are you sure you want to delete",
+		"tituloPop": "Borrar del carrito",
+		"codigoDescuento": "Código de descuento",
+		"aplicaCodigo": "Aplicar código de descuento",
+		"procedePago": "Proceder con el pago"
 	},
 	"contacto": {
 		"form": {
@@ -142,7 +149,8 @@
 		"viajeros": "Viajeros:",
 		"persona": "por persona",
 		"botonAgregar": "Agregar al carrito",
-		"moneda": "MXN"
+		"moneda": "MXN",
+		"fecha2": "Fecha"
 	},
 	"viajes": {
 		"viaje1": {

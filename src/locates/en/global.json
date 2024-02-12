@@ -18,7 +18,14 @@
 		},
 		"mensajeNombre": "For whom will the reservation be made?",
 		"name": "Name",
-		"phone": "Phone"
+		"phone": "Phone",
+		"borrar": "Delete",
+		"cancelar": "Cancel",
+		"mensajePop": "¿Seguro que quieres borrar",
+		"tituloPop": "Delete from cart",
+		"codigoDescuento": "Discount code",
+		"aplicaCodigo": "Apply discount code",
+		"procedePago": "Proceed with payment"
 	},
 	"contacto": {
 		"form": {
@@ -142,7 +149,8 @@
 		"viajeros": "Travelers:",
 		"persona": "per person",
 		"botonAgregar": "Add to cart",
-		"moneda": "USD"
+		"moneda": "USD",
+		"fecha2": "Date"
 	},
 	"viajes": {
 		"viaje1": {
