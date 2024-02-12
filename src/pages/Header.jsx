@@ -66,7 +66,7 @@ const Header = () => {
 
 
     return (
-        <View >
+        <View w={"100%"} >
             <View style={headerStyle} zIndex={9}  >
                 <HStack w={"100%"} alignSelf={"center"} justifyContent={"center"} bg={"#eeeeee"}>
 

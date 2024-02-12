@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, Box, Pressable, Center, Image, ZStack } from "native-base";
+import { Text, View, Box, Pressable, Center, Image, ZStack, HStack } from "native-base";
 import { useTranslation } from 'react-i18next'
 const Privacidad = () => {
     const { t } = useTranslation("global");
@@ -135,7 +135,7 @@ const Privacidad = () => {
 
 
     return (
-        <View mt={[12, 12, 32, 32]} mb={20} w={"100%"}>
+        <View mt={[12, 12, 16, 24]} mb={20} w={"100%"}>
 
             {/* Imagen con texto */}
             <ZStack h={[32, 32, 64, 64]} w={"100%"}>
@@ -147,43 +147,79 @@ const Privacidad = () => {
                 </Text>
             </ZStack>
 
-            <Center mt={4}>
-                <Pressable
-                    w={"80%"}
-                    onPress={() => setAbierto(!abierto)}
-                    borderRadius={10}
-                    borderWidth={1}
-                    borderColor={"muted.400"}
-                    bg={abierto ? "#449bab" : "muted.300"}
-                    shadow={7}
-                    p={3}
-                >
-                    ‣ Políticas de privacidad
-                </Pressable>
+            <Box mt={4}>
+                <HStack alignContent="center" justifyContent="flex-start" space={4}>
+                    <HStack justifyContent={"center"}>
+                        <Image
+                            source={{
+                                uri: "https://createtours.com.mx/pictures/mexico.png"
+                            }}
+                            alt="English"
+                            w={[5, 5, 8, 10]}
+                            h={[5, 5, 8, 10]}
+                            alignSelf={"center"}
+                        />
+                        <Center>
+                            <Text textAlign={"center"} justifyContent={"center"} fontSize={["xs", "xs", "md", "md"]} bold p={[1, 1, 2, 2]}>ES</Text>
+                        </Center>
+                    </HStack>
+                    <Pressable
+                        w={"80%"}
+                        onPress={() => setAbierto(!abierto)}
+                        borderRadius={10}
+                        borderWidth={1}
+                        borderColor={"muted.400"}
+                        bg={abierto ? "#449bab" : "muted.300"}
+                        shadow={7}
+                        p={3}
+                    >
+                        ‣ Políticas de privacidad
+                    </Pressable>
+                </HStack>
+
                 {abierto && (
                     <PrivacidadSES />
                 )}
-            </Center>
+            </Box>
 
 
-            <Center mt={4}>
-                <Pressable
-                    w={"80%"}
-                    onPress={() => setIsOpen(!isOpen)}
-                    borderRadius={10}
-                    borderWidth={1}
-                    borderColor={"muted.400"}
-                    bg={isOpen ? "#449bab" : "muted.300"}
-                    shadow={7}
-                    p={3}
-                >
+            <Box mt={4}>
+                <HStack alignContent="center" justifyContent="flex-start" space={4}>
+                    <HStack justifyContent={"center"}>
+                        <Image
+                            source={{
+                                uri: "https://createtours.com.mx/pictures/usa.png"
+                            }}
+                            alt="English"
+                            w={[5, 5, 8, 10]}
+                            h={[5, 5, 8, 10]}
+                            alignSelf={"center"}
+                        />
+                        <Center>
+                            <Text textAlign={"center"} justifyContent={"center"} fontSize={["xs", "xs", "md", "md"]} bold p={[1, 1, 2, 2]}>ES</Text>
+                        </Center>
+                    </HStack>
 
-                    ‣ Privacy policy
-                </Pressable>
+
+                    <Pressable
+                        w={"80%"}
+                        onPress={() => setIsOpen(!isOpen)}
+                        borderRadius={10}
+                        borderWidth={1}
+                        borderColor={"muted.400"}
+                        bg={isOpen ? "#449bab" : "muted.300"}
+                        shadow={7}
+                        p={3}
+                    >
+
+                        ‣ Privacy policy
+                    </Pressable>
+                </HStack>
+
                 {isOpen && (
                     <Privacy />
                 )}
-            </Center>
+            </Box>
         </View>
     );
 };
