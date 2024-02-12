@@ -135,10 +135,10 @@ export const UserProvider = ({ children }) => {
           `https://open.er-api.com/v6/latest/USD`
         );
         const data = await response.json();
-        console.log(data.rates.MXN);
+
         setPrecioUSD(Number((data.rates.MXN).toFixed(2)));
 
-        console.log("Precio USD $", precioUSD)
+
       } catch (error) {
         console.error('Error fetching exchange rate:', error);
       }

@@ -14,21 +14,12 @@ const ModalAgregarCarrito = (props) => {
   const [fecha, setFecha] = useState("");
   const { t, i18n } = useTranslation("global");
 
-  const { carrito, agregarAlCarrito, precioUSD } = useUser();
-  const [isDolar, setIsDolar] = useState(false);
+  const { carrito, agregarAlCarrito } = useUser();
 
-  useEffect(() => {
-    if (i18n.language === 'es') {
-      setIsDolar(false);
-    } else if (i18n.language === 'en') {
-      setIsDolar(true);
-    }
 
-  }, [i18n.language]);
 
-  useEffect(() => {
-    console.log("Es dolar? R= ", isDolar);
-  }, [isDolar]);
+
+
 
 
 

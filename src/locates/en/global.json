@@ -64,7 +64,9 @@
 		"r2": "Print the pass or bring it on your phone, read the terms and conditions, and take it with you on the tour. It is mandatory to present the pass on the day of the event. Find details such as the pickup time and meeting point on the pass. If you have any doubts, contact us by phone or chat.",
 		"r3": "It is not necessary. We accept payments with debit cards, credit cards, and PayPal. Additionally, we offer alternatives through our call center for payments in Mexican territory, including bank window, electronic transfer, deposit in OXXO stores, and deferred payments.",
 		"r4": "Yes, Create Tours guarantees the security of your data. We have a security certificate that encrypts your information before reaching our databases. Your privacy is our priority.",
-		"title": "Frequently Asked Questions"
+		"title": "Frequently Asked Questions",
+		"click": "View Certificate",
+		"texto1": "We are certified by the Quintana Roo State Tourism Registry."
 	},
 	"gracias": {
 		"cerrar": "Close",

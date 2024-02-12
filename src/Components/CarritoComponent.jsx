@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Text, Image, HStack, VStack, Button, Popover, Stack } from "native-base";
 import { IconContext } from "react-icons";
 import { MdDeleteForever } from "react-icons/md";

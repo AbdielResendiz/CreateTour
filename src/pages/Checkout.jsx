@@ -24,13 +24,11 @@ const options = {
 const Checkout = ({ total, carrito }) => {
 
 
-  useEffect(() => {
-    console.log("total MXN stripe: ", total)
-  }, [])
+
 
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
-  console.log("total checkout", total)
+
   // import meta.env.VITE_STRIPE_PK is the publishable key you can either directly paste your stripe key here but not recommending if you are planning to upload the code on github as it should remain only available to you or save the key in .env file
 
   return (

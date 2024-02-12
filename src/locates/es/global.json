@@ -64,7 +64,9 @@
 		"r2": "Imprime el pase, o llevalo en tu teléfono, lee los términos y condiciones y llévalo contigo al tour. Es obligatorio presentar el pase el día del evento. Encuentra detalles como el horario de recogida y el punto de encuentro en el pase. Ante cualquier duda, comunícate con nosotros por teléfono o chat.",
 		"r3": "No es necesario. Aceptamos pagos con tarjeta de débito, crédito y PayPal. Además, ofrecemos alternativas a través de nuestro call center para pagos en territorio mexicano, incluyendo ventanilla bancaria, transferencia electrónica, depósito en tiendas OXXO y pagos diferidos.",
 		"r4": "Sí, Create Tours te garantiza la seguridad de tus datos. Contamos con un certificado de seguridad que encripta tu información antes de llegar a nuestras bases de datos. Tu privacidad es nuestra prioridad.",
-		"title": "Preguntas Frecuentes"
+		"title": "Preguntas Frecuentes",
+		"click": "Ver Certificado",
+		"texto1": "Contamos con certificado por parte del Registro Estatal de Turismo de Quintana Roo"
 	},
 	"gracias": {
 		"cerrar": "Cerrar",

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, VStack, Stack, Text, Divider, Flex, HStack, Input, Button } from 'native-base';
+import { Box, VStack, Stack, Text, Flex, HStack, Input, Button } from 'native-base';
 import DatePicker from "react-datepicker";
 import { useState, useEffect } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,7 +12,7 @@ const AgregarCarritoComponent = (props) => {
   const [fecha, setFecha] = useState("")
 
 
-  const { carrito, agregarAlCarrito, editarCarrito, eliminarCarrito, borrarTodoCarrito } = useUser();
+  const { carrito, agregarAlCarrito } = useUser();
 
 
   const [adultoNac, setAdultoNac] = useState(0);
@@ -89,9 +89,7 @@ const AgregarCarritoComponent = (props) => {
     agregarAlCarrito(nuevoCarrito);
   };
 
-  useEffect(() => {
-    console.log("Carrito: ", carrito)
-  }, [carrito])
+
 
 
   const formatearFecha = () => {
@@ -199,9 +197,7 @@ const AgregarCarritoComponent = (props) => {
           Agregar al carrito
         </Button>
 
-        {/* <Button colorScheme={"danger"} onPress={()=>{borrarTodoCarrito()}}>
-            Borrar TODO el carrito
-          </Button> */}
+
 
       </Stack>
     </Box>

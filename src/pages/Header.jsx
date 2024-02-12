@@ -14,7 +14,7 @@ const Header = () => {
     useEffect(() => {
         let cantidad = carrito.length;
         setCarritoCantidad(cantidad)
-        console.log("Carrito lengh: ", cantidad)
+
     }, [carrito])
 
     const headerStyle = {

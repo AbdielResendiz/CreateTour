@@ -20,7 +20,7 @@ const Contacto = () => {
       action: 'Envío de formulario de contacto',
       label: 'Form'
     });
-    console.log("Inicia funcion enviar correo");
+
     const BASE_URL = URL.BASE_URL;
 
     const dataContacto = new FormData();
@@ -36,7 +36,7 @@ const Contacto = () => {
     };
     const response = await fetchPost(url, options);
 
-    console.log("respuesta formulario contacto :", response);
+
     if (response && response.status) {
       window.alert("Mensaje enviado")
     } else {
@@ -44,9 +44,7 @@ const Contacto = () => {
     }
   };
 
-  useEffect(() => {
-    console.log("nombre", nombre);
-  }, [nombre]);
+
 
   return (
     <View w="100%" mt={[12, 12, 32, 32]}>
