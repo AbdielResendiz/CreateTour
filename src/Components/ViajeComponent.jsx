@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, Pressable, Image, VStack, Center, Button, HStack, Divider, Spinner } from "native-base";
+import { Text, Pressable, Image, VStack, Center, Button, HStack, Divider } from "native-base";
 import { IoLocationOutline } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { FaRegClock } from "react-icons/fa";
@@ -58,12 +58,18 @@ const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
           <Text fontFamily="Avenir" fontSize={"md"} >{lugar}</Text>
         </HStack>
 
-        <HStack justifyContent={"center"} alignItems="center" space={2} mb={2}>
-          <IconContext.Provider value={{ color: "#44c5d3", size: "1.3em" }}>
-            <FaRegClock />
-          </IconContext.Provider>
-          <Text fontFamily="Avenir" fontSize={"md"}> {duracion + ' ' + t('viajeComponent.horas')}</Text>
-        </HStack>
+
+        {duracion !== null ?
+          <HStack justifyContent={"center"} alignItems="center" space={2} mb={2}>
+            <IconContext.Provider value={{ color: "#44c5d3", size: "1.3em" }}>
+              <FaRegClock />
+            </IconContext.Provider>
+            <Text fontFamily="Avenir" fontSize={"md"}> {duracion + ' ' + t('viajeComponent.horas')}</Text>
+          </HStack>
+          :
+          null
+        }
+
 
         <Divider w="80%" alignSelf={"center"} />
         <Center py={3}>

@@ -12,7 +12,7 @@ import Checkout from './Checkout';
 
 
 const Carrito = () => {
-  const { t } = useTranslation("global");
+  const { t, i18n } = useTranslation("global");
 
   //para navegar a otras vistas
   const navigate = useNavigate();
@@ -46,31 +46,55 @@ const Carrito = () => {
 
 
   useEffect(() => {
-    console.log("carrito: ", carrito);
-    console.log("carrito type: ", typeof (carrito));
+    // console.log("carrito: ", carrito);
+    // console.log("carrito type: ", typeof (carrito));
     setCarritoString(JSON.stringify(carrito))
-    console.log("carrito string: ", carritoSting)
-    console.log("carritoSting type: ", typeof (carritoSting));
-    console.log("precio usd carrito", precioUSD)
+    // console.log("carrito string: ", carritoSting)
+    // console.log("carritoSting type: ", typeof (carritoSting));
+    // console.log("precio usd carrito", precioUSD)
   }, [carrito, carritoSting]);
 
+
+  const [totalUSD, setTotalUSD] = useState();
+  const [totalMXN, setTotalMXN] = useState();
+
+
   // Función para calcular el GranTotal
-  const calcularGranTotal = () => {
-    let granTotal = carrito.reduce((total, producto) => total + producto.TotalCompra, 0);
+  useEffect(() => {
+    let granTotalUSD = carrito.reduce((total, producto) => total + producto.TotalCompra, 0);
+
     if (descuentoAplicado) {
-      granTotal *= 1; // 0.7 para el 30%, pongo 1 para que cobre el 100
+      granTotalUSD *= 1; // Ajustar según la lógica de descuento, 1 significa no descuento
     }
 
-    totalStripe(granTotal);
-    // Redondear a dos decimales y convertir a número
-    return parseFloat(granTotal.toFixed(2));
-  };
+    // Calcular el total en MXN
+    const granTotalMXN = granTotalUSD * precioUSD;
 
+    // Actualizar estados
+    setTotalUSD(parseFloat(granTotalUSD.toFixed(2)));
+    setTotalMXN(parseFloat(granTotalMXN.toFixed(2)));
 
+    // Suponiendo que tienes una función totalStripe para manejar el total
+    totalStripe(granTotalUSD);
+  }, [carrito, descuentoAplicado]);
 
-  // Llama a la función para obtener el GranTotal
-  const granTotal = calcularGranTotal();
+  useEffect(() => {
+    let granTotalUSD = carrito.reduce((total, producto) => total + producto.TotalCompra, 0);
 
+    if (descuentoAplicado) {
+      granTotalUSD *= 1; // Ajustar según la lógica de descuento, 1 significa no descuento
+    }
+
+    // Calcular el total en MXN
+    const granTotalMXN = granTotalUSD * precioUSD;
+
+    // Actualizar estados
+    setTotalUSD(parseFloat(granTotalUSD.toFixed(2)));
+    setTotalMXN(parseFloat(granTotalMXN.toFixed(2)));
+
+    // Suponiendo que tienes una función totalStripe para manejar el total
+    totalStripe(granTotalUSD);
+  }, []);
 
 
 
@@ -157,11 +181,11 @@ const Carrito = () => {
           <Center>
             <Text bold fontSize={"xl"} textAlign={"center"}>
               {t("carritoVista.procedePago")}: {" "}
-              ${granTotal}
+              ${i18n.language === "es" ? totalMXN : totalUSD}
               {t("modalCarrito.moneda")}
             </Text>
 
-            <Checkout total={granTotal} carrito={carritoSting} />
+            <Checkout total={totalMXN} carrito={carritoSting} />
 
           </Center>
         </>

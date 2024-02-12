@@ -71,6 +71,10 @@
 		"gracias": "Gracias por tu compra",
 		"mensaje": "El folio de tu compra se ha enviado a tu correo electrónico."
 	},
+	"footer": {
+		"privacidad": "Políticas de Privacidad",
+		"devolucion": "Política de devolución"
+	},
 	"header": {
 		"chooseLanguage": "Idioma:",
 		"privacidad": "Política de Privacidad",

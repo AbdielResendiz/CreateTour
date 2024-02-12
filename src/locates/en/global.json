@@ -69,7 +69,11 @@
 	"gracias": {
 		"cerrar": "Close",
 		"gracias": "Thanks for your purchase",
-		"mensaje": "El folio de tu compra se ha enviado a tu correo electrónico."
+		"mensaje": "The folio of your purchase has been sent to your email."
+	},
+	"footer": {
+		"privacidad": "Privacy Policies",
+		"devolucion": "Return Policy"
 	},
 	"header": {
 		"chooseLanguage": "Language:",

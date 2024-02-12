@@ -12,6 +12,7 @@ import ReactGA from 'react-ga';
 
 const Footer = () => {
 
+
     const handlePressWA = () => {
         // El número de teléfono de WhatsApp al que se enviará un mensaje (puedes cambiarlo según tus necesidades)
         const whatsappNumber = '9982304219';
@@ -148,8 +149,8 @@ const Footer = () => {
                 {/* MENU footer nav */}
 
                 <Stack direction={"row"} alignSelf={"center"} bg={"#449bab"} space={2} justifyContent="center" >
-                    <CustomLink to="/Privacidad" text="Políticas de privacidad" />
-                    <CustomLink to="/Devoluciones" text="Políticas de devolución" />
+                    <CustomLink to="/Privacidad" text={t("footer.privacidad")} />
+                    <CustomLink to="/Devoluciones" text={t("footer.devolucion")} />
                 </Stack>
             </Stack>
 

@@ -44,7 +44,7 @@ const AgradecimientoView = () => {
 
 
     return (
-        <View
+        <View mt={12}
             flex={1}
             justifyContent="center"
             alignItems="center"
@@ -71,7 +71,7 @@ const AgradecimientoView = () => {
             </Text>
 
             {/* Botón para ir al inicio */}
-            <Button onPress={() => { borrarTodoCarrito() }} mt={10} mb={20}>
+            <Button onPress={() => { borrarTodoCarrito() }} mt={10} mb={20} fontSize={"md"}>
                 {t("gracias.cerrar")}
             </Button>
         </View>

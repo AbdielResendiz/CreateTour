@@ -136,10 +136,10 @@ const Devoluciones = () => {
 
             {/* Imagen con texto */}
             <ZStack h={[32, 32, 64, 64]} w={"100%"}>
-                <Image alignSelf={"center"} source={{
+                <Image alignSelf={"center"} opacity={0.6} source={{
                     uri: "https://createtours.com.mx/backend/public/Imagenes/olas-chicas.svg"
                 }} alt="Alternate Text" width={"100%"} height={[32, 32, 64, 64]} resizeMode="contain" />
-                <Text mt={[5, 5, 16, 16]} textAlign={"center"} alignSelf={"center"} bold fontSize={["xl", "xl", "2xl", "4xl"]} >
+                <Text fontFamily={"ElMessiri"} mt={[5, 5, 16, 16]} textAlign={"center"} alignSelf={"center"} bold fontSize={["2xl", "2xl", "4xl", "6xl"]} >
                     {t("header.devolucion")}
                 </Text>
             </ZStack>

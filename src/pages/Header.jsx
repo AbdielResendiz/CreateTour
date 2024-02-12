@@ -93,7 +93,7 @@ const Header = () => {
 
 
                 {/* STACK de menu */}
-                <Stack mt={[-5, -5, 0, 0]} w={"100%"} direction={["column", "column", "row", "row"]} justifyContent={"center"} alignSelf={"center"} bg={"#eeeeee"}>
+                <Stack mt={[-5, -5, 0, 0]} w={"100%"} direction={["column", "column", "row", "row"]} justifyContent={"center"} alignSelf={"center"} bg={"#eeeeee"} alignItems="center" >
                     <HStack justifyContent={["center", "center", "flex-end", "flex-end"]} mb={0} py={[1, 1, 2, 3]} >
                         <CustomLink to="/" text={t("menu.inicio")} />
                         <CustomLink to="/Tours" text="Tours" />
@@ -104,15 +104,15 @@ const Header = () => {
 
                     </HStack>
                     {/* STACK de menu */}
-                    <HStack justifyContent={["center", "center", "flex-start", "flex-start"]} mb={0} py={[1, 1, 2, 3]}  >
+                    <HStack justifyContent={["center", "center", "flex-start", "flex-start"]} mb={0} py={[1, 1, 2, 3]} alignItems="center"  >
                         <CustomLink to="/Contacto" text={t("menu.Contacto")} />
                         <CustomLink to="/FAQ" text="FAQ" />
                         {/* Boton carrito */}
                         <Link to="/Carrito" style={linkStyle}>
-                            <HStack p={1} mx={5} ml={10} shadow={3} borderRadius={10} borderColor={"muted.300"} borderWidth={1} mt={-1} bg={"#449bab"} >
+                            <HStack p={1} shadow={3} borderRadius={10} borderColor={"muted.300"} borderWidth={1} bg={"#449bab"} >
 
                                 <Center>
-                                    <IconContext.Provider value={{ color: "#eeeeee", size: "1em" }}>
+                                    <IconContext.Provider value={{ color: "#eeeeee", size: "1.5em" }}>
                                         <TiShoppingCart />
                                     </IconContext.Provider>
 

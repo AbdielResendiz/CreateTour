@@ -6,6 +6,7 @@ import {
   useElements,
 } from '@stripe/react-stripe-js';
 import { useTranslation } from 'react-i18next';
+import { Spinner } from 'native-base';
 
 export const CheckoutForm = (props) => {
   const stripe = useStripe();
@@ -18,6 +19,7 @@ export const CheckoutForm = (props) => {
   const [nameInput, setNameInput] = useState('');
   const [phoneInput, setPhoneInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
+  const [load, setLoad] = useState(false);
 
   const backendUrl = process.env.REACT_APP_STRIPE_PK_AIRCODE_URL;
 
@@ -35,7 +37,7 @@ export const CheckoutForm = (props) => {
       setErrorMessage(submitError.message);
       return;
     }
-
+    setLoad(true);
 
     console.log("price form: ", total)
     console.log("Carrito form objeto?: ", carrito)
@@ -48,9 +50,9 @@ export const CheckoutForm = (props) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        currency: 'usd',
+        currency: 'mxn',
         email: emailInput,
-        amount: total * 100,
+        amount: Math.round(total * 100),
         paymentMethodType: "card",
         name: nameInput,
         phone: phoneInput,
@@ -74,6 +76,7 @@ export const CheckoutForm = (props) => {
       // confirming the payment. Show error to your customer (for example, payment
       // details incomplete)
       setErrorMessage(error.message);
+      window.alert("Error ", error.message)
     } else {
       // Your customer will be redirected to your `return_url`. For some payment
       // methods like iDEAL, your customer will be redirected to an intermediate
@@ -103,23 +106,29 @@ export const CheckoutForm = (props) => {
         </div>
       </div>
       <PaymentElement />
-      <button
-        type="submit"
-        disabled={!stripe || !elements}
-        style={{
-          padding: '10px 20px',
-          fontSize: '1.2em',
-          backgroundColor: '#449bab',
-          color: 'white',
-          borderRadius: '10px',
-          cursor: 'pointer',
-          display: 'block',
-          margin: '20px auto',
-          border: '2px solid white'
-        }}
-      >
-        Pagar
-      </button>
+      {
+        load ?
+          <Spinner /> :
+          <button
+            type="submit"
+            disabled={!stripe || !elements}
+            style={{
+              padding: '10px 20px',
+              fontSize: '1.2em',
+              backgroundColor: '#449bab',
+              color: 'white',
+              borderRadius: '10px',
+              cursor: 'pointer',
+              display: 'block',
+              margin: '20px auto',
+              border: '2px solid white'
+            }}
+          >
+            {t("carritoVista.listaCarrito.pagar")}
+          </button>
+
+      }
+
       {/* Show error message to your customers */}
       {errorMessage && <div>{errorMessage}</div>}
     </form>
