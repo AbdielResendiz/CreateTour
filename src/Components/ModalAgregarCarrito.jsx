@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 
 const ModalAgregarCarrito = (props) => {
-  const { viajeID, foto, titulo, PrAdultoNac, PrAdultoEx, PrInfanteNac, PrInfanteEx, isOpen, onClose, moneda } = props;
+  const { viajeID, foto, titulo, PrAdultoNac, PrAdultoEx, PrInfanteNac, PrInfanteEx, PrAdultoNacMXN, PrAdultoExMXN, PrInfanteNacMXN, PrInfanteExMXN, isOpen, onClose, moneda } = props;
   const [startDate, setStartDate] = useState(new Date());
   const [fecha, setFecha] = useState("");
   const { t, i18n } = useTranslation("global");
@@ -44,6 +44,13 @@ const ModalAgregarCarrito = (props) => {
   const [subtotalIN, setSubtotalIN] = useState(0);
   const [subtotalIE, setSubtotalIE] = useState(0);
 
+  const [totalMXN, setTotalMXN] = useState(0);
+  // subtotal AdultoNacional(AN), Infante Nacional (IN), 
+  const [subtotalANMXN, setSubtotalANMXN] = useState(0);
+  const [subtotalAEMXN, setSubtotalAEMXN] = useState(0);
+  const [subtotalINMXN, setSubtotalINMXN] = useState(0);
+  const [subtotalIEMXN, setSubtotalIEMXN] = useState(0);
+
   // Calculos de subtotal
   useEffect(() => {
     const subtotalAE = parseFloat((adultoEx * PrAdultoEx).toFixed(2));
@@ -58,6 +65,22 @@ const ModalAgregarCarrito = (props) => {
     setSubtotalIN(subtotalIN);
     setTotal(total);
   }, [adultoNac, adultoEx, infanteNac, infanteEx, subtotalAE, subtotalAN, subtotalIE, subtotalIN, i18n.language]);
+
+  // Calculos de subtotal MXN
+  useEffect(() => {
+    const subtotalAEMXN = parseFloat((adultoEx * PrAdultoExMXN).toFixed(2));
+    const subtotalANMXN = parseFloat((adultoNac * PrAdultoNacMXN).toFixed(2));
+    const subtotalIEMXN = parseFloat((infanteEx * PrInfanteExMXN).toFixed(2));
+    const subtotalINMXN = parseFloat((infanteNac * PrInfanteNacMXN).toFixed(2));
+    const totalMXN = parseFloat((subtotalAEMXN + subtotalANMXN + subtotalIEMXN + subtotalINMXN).toFixed(2));
+
+    setSubtotalAEMXN(subtotalAEMXN);
+    setSubtotalANMXN(subtotalANMXN);
+    setSubtotalIEMXN(subtotalIEMXN);
+    setSubtotalINMXN(subtotalINMXN);
+    setTotalMXN(totalMXN);
+  }, [adultoNac, adultoEx, infanteNac, infanteEx, subtotalAEMXN, subtotalANMXN, subtotalIEMXN, subtotalINMXN, i18n.language]);
+
 
 
   // manejo de cantidad de viajeros
@@ -107,8 +130,8 @@ const ModalAgregarCarrito = (props) => {
       CantidadInfantes: infanteNac,
       CantidadAdultosExtranjeros: adultoEx,
       CantidadInfantesExtranjeros: infanteEx,
-      TotalCompra: total,
-      dolar: isDolar
+      TotalCompra: total
+
     }
     agregarAlCarrito(nuevoCarrito);
 
@@ -225,28 +248,37 @@ const ModalAgregarCarrito = (props) => {
 
                 {adultoNac > 0 ? <HStack>
                   <Text fontSize={"xs"}>🔹 {adultoNac} {t(`modalCarrito.adultoN`)} {'\n'} (${PrAdultoNac} USD/persona )</Text>
-                  <Text bold> ${subtotalAN}{t(`modalCarrito.moneda`)} </Text>
+                  <Text bold>
+                    ${i18n.language === "es" ? subtotalANMXN : subtotalAN} {t(`modalCarrito.moneda`)}
+                  </Text>
                 </HStack> : null}
 
                 {adultoEx > 0 ? <HStack>
                   <Text fontSize={"xs"}> 🔹{adultoEx} {t(`modalCarrito.adultoE`)} {'\n'} (${PrAdultoEx} USD/persona )</Text>
-                  <Text bold> ${subtotalAE}{t(`modalCarrito.moneda`)} </Text>
+                  <Text bold>
+                    ${i18n.language === "es" ? subtotalAEMXN : subtotalAE} {t(`modalCarrito.moneda`)}
+                  </Text>
                 </HStack> : null}
 
                 {infanteNac > 0 ? <HStack>
                   <Text fontSize={"xs"}> 🔹{infanteNac} {t(`modalCarrito.infanteN`)} {'\n'} (${PrInfanteNac} USD/persona )</Text>
-                  <Text bold> ${subtotalIN}{t(`modalCarrito.moneda`)} </Text>
+                  <Text bold>
+                    ${i18n.language === "es" ? subtotalINMXN : subtotalIN} {t(`modalCarrito.moneda`)}
+                  </Text>
                 </HStack> : null}
 
                 {infanteEx > 0 ? <HStack>
                   <Text fontSize={"xs"}> 🔹{infanteEx} {t(`modalCarrito.infanteE`)} {'\n'} (${PrInfanteEx} USD/persona )</Text>
-                  <Text bold> ${subtotalIE}{t(`modalCarrito.moneda`)} </Text>
+                  <Text bold>
+                    ${i18n.language === "es" ? subtotalIEMXN : subtotalIE} {t(`modalCarrito.moneda`)}
+                  </Text>
                 </HStack> : null}
 
 
               </Stack>
               <Text bold p={3} alignSelf={"center"} fontSize={"2xl"}>
-                Total: $ {total ? total : 0} {t(`modalCarrito.moneda`)}</Text>
+                Total: $ {i18n.language === "es" ? (totalMXN || 0) : (total || 0)} {t(`modalCarrito.moneda`)}
+              </Text>
             </>
 
             <Button colorScheme={"amber"} onPress={() => { handleAgregarCarrito() }}>

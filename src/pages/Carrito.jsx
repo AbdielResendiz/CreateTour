@@ -60,6 +60,7 @@ const Carrito = () => {
     if (descuentoAplicado) {
       granTotal *= 1; // 0.7 para el 30%, pongo 1 para que cobre el 100
     }
+
     totalStripe(granTotal);
     // Redondear a dos decimales y convertir a número
     return parseFloat(granTotal.toFixed(2));

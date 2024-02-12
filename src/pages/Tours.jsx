@@ -28,13 +28,13 @@ const Tours = () => {
 
                 <VStack justifyContent={"center"} alignSelf={"center"} width={["100%", "100%", "40%", "30%"]} p={10}>
                     <Text fontFamily="Avenir" mt={4} fontSize={["md", "lg", "md", "lg"]}  >{t("tours.titulo")}</Text>
-                    <Text bold fontFamily="ElMessiri" fontSize={["2xl", "4xl", "2xl", "4xl"]} px={4}>
+                    <Text bold fontFamily="ElMessiri" fontSize={["lg", "xl", "2xl", "4xl"]} px={4}>
                         XPLOR
                         ADVENTURE
-                        PARK</Text>
+                        PARK
+                    </Text>
                     <Text fontFamily="Avenir" fontSize={"md"}>
                         {t("tours.descripcion")} {"\n"}
-                        {t("tours.costo")}  {"\n"}
                         {t("tours.hora")}  {"\n"}
                         {t("tours.duracion")}  {"\n"}
                         {t("tours.incluye")} {"\n"}

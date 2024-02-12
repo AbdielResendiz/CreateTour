@@ -13,6 +13,8 @@ const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, 
   //modal disponibilidad
   const [showModal, setShowModal] = useState(false);
   const { t, i18n } = useTranslation("global");
+  //obtiene precio del dolar a MXN
+  const { precioUSD } = useUser();
 
 
 
@@ -31,13 +33,13 @@ const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, 
     </VStack>
   );
 
-  const [exchangeRate, setExchangeRate] = useState(null);
+
   const [precioAdultoNacMXN, setPrecioAdultoNacMXN] = useState(null);
   const [precioAdultoExMXN, setPrecioAdultoExMXN] = useState(null);
   const [precioInfantilNacMXN, setPrecioInfantilNacMXN] = useState(null);
   const [precioInfantilExMXN, setPrecioInfantilExMXN] = useState(null);
 
-  const { precioUSD } = useUser();
+
 
   useEffect(() => {
     setPrecioAdultoNacMXN(Number((precioUSD * PrecioAdultoNacional).toFixed(2)));
@@ -101,10 +103,17 @@ const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, 
         viajeID={viaje.ID}
         foto={viaje.Foto}
         titulo={viaje.Titulo}
-        PrAdultoNac={preciosModal.PrAdultoNac}
-        PrAdultoEx={preciosModal.PrAdultoEx}
-        PrInfanteNac={preciosModal.PrInfanteNac}
-        PrInfanteEx={preciosModal.PrInfanteEx}
+        //precios MXN
+        PrAdultoNacMXN={precioAdultoNacMXN}
+        PrAdultoExMXN={precioAdultoExMXN}
+        PrInfanteNacMXN={precioInfantilNacMXN}
+        PrInfanteExMXN={precioInfantilExMXN}
+        //precios USD
+        PrAdultoNac={PrecioAdultoNacional}
+        PrAdultoEx={PrecioAdultoNacional}
+        PrInfanteNac={PrecioAdultoNacional}
+        PrInfanteEx={PrecioAdultoNacional}
+
         moneda={preciosModal.moneda}
         AdultoN={textosModal.AdultoNacional}
         AdultoE={textosModal.AdultoExtranjero}
