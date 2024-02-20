@@ -53,8 +53,8 @@ const Header = () => {
         return (
             <Link to={to} style={linkStyle} onClick={handleClick1} >
                 <Text p={[1, 1, 2, 2]} borderWidth={1} borderRadius={10} fontFamily={"Avenir"}
-                    shadow={3} mx={[2, 2, 4, 4]} bg={"#eeeeee"} borderColor={"muted.300"}
-                    fontSize={["xs", "xs", "md", "lg"]} >
+                    shadow={3} mx={2} bg={"#eeeeee"} borderColor={"muted.300"}
+                    fontSize={["xs", "xs", "sm", "md"]} >
                     {text}</Text>
             </Link>
         );
@@ -67,17 +67,19 @@ const Header = () => {
 
 
     return (
-        <View w={"100%"} >
+        <View w={"100%"}
+
+        >
             <View style={headerStyle} zIndex={9}  >
-                <HStack w={"100%"} alignSelf={"center"} justifyContent={"center"} bg={"#eeeeee"}>
+                <HStack w={"100%"} alignSelf={"center"} justifyContent={"center"} bg={"#fff"}>
 
-                    <Box width={[24, 24, 40, 56]} height={[12, 12, 16, 24]} bg={"#eeeeee"} />
+                    <Box width={[24, 24, 40, 40]} height={[12, 12, 16, 16]} bg={"#fff"} />
 
-                    <Center bg="#eeeeee" justifyContent="center" py={3}  >
+                    <Center bg="#fff" justifyContent="center" py={2}  >
                         <Link to={"/"} onClick={handleClick}>
                             <Image alignSelf={"center"} source={{
                                 uri: "https://createtours.com.mx/pictures/logo-create.png"
-                            }} alt="Alternate Text" width={[32, 32, 48, 64]} height={[20, 20, 24, 32]} resizeMode="contain" />
+                            }} alt="Alternate Text" width={[32, 32, 48, 48]} height={[20, 20, 24, 24]} resizeMode="contain" />
                         </Link>
                     </Center>
 
@@ -94,8 +96,12 @@ const Header = () => {
 
 
                 {/* STACK de menu */}
-                <Stack mt={[-5, -5, 0, 0]} w={"100%"} direction={["column", "column", "row", "row"]} justifyContent={"center"} alignSelf={"center"} bg={"#eeeeee"} alignItems="center" >
-                    <HStack justifyContent={["center", "center", "flex-end", "flex-end"]} mb={0} py={[1, 1, 2, 3]} >
+                <Stack w={"100%"} direction={["column", "column", "row", "row"]}
+                    justifyContent={"center"} alignSelf={"center"} bg={"#fff"} alignItems="center"
+                    // borderBottomWidth={5} borderColor={["#f00", "#0f0", "#00f", "#f0f", "#f90"]}
+                    pb={2}
+                >
+                    <HStack justifyContent={["center", "center", "flex-end", "flex-end"]}  >
                         <CustomLink to="/" text={t("menu.inicio")} />
                         <CustomLink to="/Tours" text="Tours" />
                         <CustomLink to="/Blog" text="Blog" />
@@ -105,12 +111,12 @@ const Header = () => {
 
                     </HStack>
                     {/* STACK de menu */}
-                    <HStack justifyContent={["center", "center", "flex-start", "flex-start"]} mb={0} py={[1, 1, 2, 3]} alignItems="center"  >
+                    <HStack justifyContent={["center", "center", "flex-start", "flex-start"]} alignItems="center"  >
                         <CustomLink to="/Contacto" text={t("menu.Contacto")} />
                         <CustomLink to="/FAQ" text="FAQ" />
                         {/* Boton carrito */}
                         <Link to="/Carrito" style={linkStyle}>
-                            <HStack p={1} shadow={3} borderRadius={10} borderColor={"muted.300"} borderWidth={1} bg={"#449bab"} >
+                            <HStack p={1} shadow={3} borderRadius={10} borderColor={"muted.300"} borderWidth={1} mt={2} bg={"#449bab"} >
 
                                 <Center>
                                     <IconContext.Provider value={{ color: "#eeeeee", size: "1.5em" }}>
@@ -122,7 +128,7 @@ const Header = () => {
 
                                 {carritoCantidad > 0 ?
                                     <Center>
-                                        <Center bgColor={"amber.400"} size={[4, 4, 4, 4]} mx={[1, 1, 2, 2]} p={[1, 2, 3, 3]} borderColor={"muted.300"} borderWidth={1} borderRadius={100}>
+                                        <Center bgColor={"amber.400"} size={[4, 4, 4, 4]} mx={[1, 1, 2, 2]} p={1} borderColor={"muted.300"} borderWidth={1} borderRadius={100}>
                                             <Text bold fontSize={["xs", "sm", "md", "lg"]}>{carritoCantidad}</Text>
                                         </Center>
                                     </Center>

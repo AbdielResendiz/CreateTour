@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Box, Text, Image, HStack, VStack, Button, Popover, Stack } from "native-base";
 import { IconContext } from "react-icons";
 import { MdDeleteForever } from "react-icons/md";
@@ -11,8 +11,14 @@ const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, ki
     const { eliminarCarrito } = useUser();
     const { t, i18n } = useTranslation("global");
 
-    const [showPopover, setShowPopover] = React.useState(false);
-    const initialFocusRef = React.useRef(null);
+    const [showPopover, setShowPopover] = useState(false);
+    const initialFocusRef = useRef(null);
+
+    const handleBorrar = (item) => {
+        eliminarCarrito(item);
+        setShowPopover(false);
+
+    }
 
     return (
         <Stack direction={["column", "column", "row", "row"]} flex={1} mx={5} my={5} shadow={6} borderRadius={10} borderColor={"#aaaaaa"} borderWidth={1}>
@@ -100,7 +106,7 @@ const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, ki
                                     <Button variant="outline" colorScheme="muted" ref={initialFocusRef} onPress={() => setShowPopover(false)}>
                                         {t("carritoVista.cancelar")}
                                     </Button>
-                                    <Button colorScheme={"danger"} onPress={() => eliminarCarrito(index)}>
+                                    <Button colorScheme={"danger"} onPress={() => handleBorrar(index)}>
                                         {t("carritoVista.borrar")}
                                     </Button>
                                 </Button.Group>

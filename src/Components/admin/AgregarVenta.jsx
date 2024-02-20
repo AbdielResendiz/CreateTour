@@ -6,24 +6,40 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../Loader";
 import fetchPost from "../../helper/fetchPost";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import DatePicker from "react-datepicker";
+import { format } from 'date-fns';
 
 
 const AgregarVenta = (props) => {
 
-
     const navigate = useNavigate();
-
     const [tipo, setTipo] = useState(null);
     const [userId, setUserId] = useState(null);
     const [viajeSeleccionado, setViajeSeleccionado] = useState(null);
+    const [viajes, setViajes] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+    const [startDate, setStartDate] = useState(new Date());
+    const [fecha, setFecha] = useState("");
+    const { precioUSD } = useUser();
+
+    const formatearFecha = () => {
+        let fechaFormato = format(startDate, 'dd/MM/yyyy');
+        setFecha(fechaFormato)
+    };
+
+    useEffect(() => {
+        formatearFecha()
+    }, [startDate])
+
+
+
 
     const handleSelectChange = (idViajeSeleccionado) => {
         console.log("ID: ", idViajeSeleccionado)
         const viaje = viajes.find(v => v.ID === idViajeSeleccionado);
         setViajeSeleccionado(viaje);
     };
-
 
     useEffect(() => {
         console.log("Viaje Seleccionado: ", viajeSeleccionado)
@@ -41,27 +57,19 @@ const AgregarVenta = (props) => {
                 console.error('Error fetching data from AsyncStorage:', error);
             }
         };
-
         fetchData();
     }, []);
 
 
 
-    const [viajes, setViajes] = useState([]);
-    const [loading, setLoading] = useState(false);
 
     const verViajes = async () => {
         setLoading(true);
-
-
-
         const url = 'https://createtours.com.mx/backend/public/admin/agregarVenta/viajes'
         const options = {
             method: 'POST',
-
         };
         const res = await fetchPost(url, options);
-
         console.log("Viajes:", res);
         setViajes(res);
         if (res) {
@@ -69,17 +77,11 @@ const AgregarVenta = (props) => {
         } else {
             window.alert("Error al cargar Tours, verifica tu conexión e intenta más tarde")
         }
-
-
-
     }
+
     useEffect(() => {
         verViajes();
     }, [])
-
-
-
-
 
 
     const SelectTour = () => {
@@ -122,30 +124,39 @@ const AgregarVenta = (props) => {
     const Precios = () => {
 
         return (
-            <VStack mt={5} space={5} display={viajeSeleccionado ? "flex" : "none"}>
-                <Text bold fontSize="md">
-                    Precios:
-                </Text>
-                <HStack justifyContent="center" alignItems="center" space={10}>
+            <>
+                {
+                    viajeSeleccionado !== null ?
+                        <VStack mt={5} space={5} >
+                            <Text bold fontSize="md">
+                                Precios:
+                            </Text>
+                            <HStack justifyContent="center" alignItems="center" space={10}>
 
-                    <Text fontSize="xs">Precio Adulto Nacional: $</Text>
+                                <Text fontSize="xs">
+                                    Precio Adulto Nacional: ${viajeSeleccionado.PrecioAdultoNacional}
+                                </Text>
 
+                                <Text fontSize="xs">
+                                    Precio Adulto Extranjero: ${viajeSeleccionado.PrecioAdultoExtranjero}
+                                </Text>
 
+                            </HStack>
 
-                    <Text fontSize="xs">Precio Adulto Extranjero: $ </Text>
+                            <HStack justifyContent="center" alignItems="center" space={10}>
+                                <Text fontSize="xs">
+                                    Precio Niño Nacional: ${viajeSeleccionado.PrecioInfantilNacional}
+                                </Text>
+                                <Text fontSize="xs">
+                                    Precio Niño Extranjero: ${viajeSeleccionado.PrecioInfantilExtranjero}
+                                </Text>
 
-                </HStack>
+                            </HStack>
+                        </VStack>
+                        : null
+                }
+            </>
 
-                <HStack justifyContent="center" alignItems="center" space={10}>
-
-                    <Text fontSize="xs">Precio Adulto Nacional</Text>
-
-
-
-                    <Text fontSize="xs">Precio Adulto Extranjero</Text>
-
-                </HStack>
-            </VStack>
         )
     }
 
@@ -155,16 +166,32 @@ const AgregarVenta = (props) => {
             <>
                 <HStack >
                     <VStack>
-                        <Text fontSize="md">Fecha: </Text>
+                        <VStack>
+                            <Text bold p={1} m={1} fontSize="lg" > Fecha del tour: {fecha}</Text>
+                            <DatePicker selected={startDate}
+                                onChange={(date) => setStartDate(date)} inline />
 
-                        <Input placeholder="Ej: 2024-02-19" />
+                        </VStack>
                     </VStack>
                 </HStack>
             </>
         )
     }
 
+
+    //viajeros
+
+    const onlyNumbersRegex = /^[0-9]+$/;
+    const [AdultoN, setAdultoN] = useState(0);
+    const [AdultoE, setAdultoE] = useState(0);
+    const [ninoN, setNinoN] = useState(0);
+    const [ninoE, setNinoE] = useState(0);
+
     const Viajeros = () => {
+
+        const validateInput = (value) => {
+            return onlyNumbersRegex.test(value);
+        };
 
         return (
             <VStack mt={5} space={5}>
@@ -173,37 +200,82 @@ const AgregarVenta = (props) => {
                 </Text>
                 <HStack justifyContent="center" alignItems="center" space={10}>
                     <VStack>
-                        <Text fontSize="xs"># Adulto Nacional</Text>
-                        <Input placeholder="Adulto Nacional" />
+                        <Text fontSize="xs"># Adulto Nacional: </Text>
+                        <Input
+                            placeholder="Adulto Nacional"
+                            onChangeText={(text) => validateInput(text) && setAdultoN(text)}
+                            keyboardType="numeric"
+                            value={AdultoN}
+                        />
                     </VStack>
 
                     <VStack>
-                        <Text fontSize="xs">Precio Adulto Extranjero</Text>
-                        <Input placeholder="Adulto Extranjeros" />
+                        <Text fontSize="xs"># Adulto Extranjero</Text>
+                        <Input
+                            placeholder="Adulto Extranjero"
+                            onChangeText={(text) => validateInput(text) && setAdultoE(text)}
+                            keyboardType="numeric"
+                            value={AdultoE}
+                        />
                     </VStack>
                 </HStack>
 
                 <HStack justifyContent="center" alignItems="center" space={10}>
                     <VStack>
-                        <Text fontSize="xs">Precio Adulto Nacional</Text>
-                        <Input placeholder="Adulto Nacional" />
+                        <Text fontSize="xs"># Niño Nacional</Text>
+                        <Input
+                            placeholder="Niño Nacional"
+                            onChangeText={(text) => validateInput(text) && setNinoN(text)}
+                            keyboardType="numeric"
+                            value={ninoN}
+                        />
                     </VStack>
 
                     <VStack>
                         <Text fontSize="xs">Precio Adulto Extranjero</Text>
-                        <Input placeholder="Adulto Extranjeros" />
+                        <Input
+                            placeholder="Niño Extranjero"
+                            onChangeText={(text) => validateInput(text) && setNinoE(text)}
+                            keyboardType="numeric"
+                            value={ninoE}
+                        />
                     </VStack>
                 </HStack>
             </VStack>
         )
     }
 
+
+    const [total, setTotal] = useState(0);
+    const [totalMxn, setTotalMxn] = useState(0);
+
+    //calcular total
+    useEffect(() => {
+        if (viajeSeleccionado !== null) {
+            const subtotalAE = parseFloat((AdultoE * viajeSeleccionado.PrecioAdultoExtranjero).toFixed(2));
+            const subtotalAN = parseFloat((AdultoN * viajeSeleccionado.PrecioAdultoNacional).toFixed(2));
+            const subtotalIE = parseFloat((ninoE * viajeSeleccionado.PrecioInfantilExtranjero).toFixed(2));
+            const subtotalIN = parseFloat((ninoN * viajeSeleccionado.PrecioInfantilNacional).toFixed(2));
+            const total = parseFloat((subtotalAE + subtotalAN + subtotalIE + subtotalIN).toFixed(2));
+            const totalmxn = parseFloat((total * precioUSD).toFixed(2));
+            setTotal(total);
+            setTotalMxn(totalmxn);
+
+        }
+
+    }, [viajeSeleccionado, AdultoE, AdultoN, ninoE, ninoN])
+
+
     const CuentaTotal = () => {
 
         return (
             <VStack >
                 <Text>
-                    $ Total:
+                    Total: ${total} USD
+                </Text>
+
+                <Text>
+                    Total: ${totalMxn} MXN
                 </Text>
 
             </VStack>
@@ -229,8 +301,8 @@ const AgregarVenta = (props) => {
 
             <VStack display={loading ? "none" : "flex"}>
                 <SelectTour />
-                <Precios />
                 <FechaPick />
+                <Precios />
                 <Viajeros />
                 <CuentaTotal />
 

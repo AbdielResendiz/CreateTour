@@ -20,16 +20,8 @@ const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, 
 
   const TipoTextoA = ({ texto, precio }) => (
     <VStack p={3}>
-      <Text bold fontSize={{
-        base: "sm",
-        md: "md",
-        lg: "lg"
-      }}>{precio}</Text>
-      <Text fontSize={{
-        base: "xs",
-        md: "sm",
-        lg: "md"
-      }} color={"muted.600"}>/ {texto} </Text>
+      <Text bold fontSize={["md", "lg", "md", "lg", "xl"]}>$ {precio}</Text>
+      <Text fontSize={["sm", "md", "sm", "sm", "md"]} color={"muted.600"}>/ {texto} </Text>
     </VStack>
   );
 

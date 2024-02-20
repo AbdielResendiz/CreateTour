@@ -128,8 +128,9 @@
 	"viaje": {
 		"desc": "‣ Descripción",
 		"h": "Horas",
+		"d": "Duración",
 		"incl": "El costo Incluye:",
-		"incluye": "¿Qué incluye y  qué no?",
+		"incluye": "‣ ¿Qué incluye y  qué no?",
 		"info": "‣ Información adicional",
 		"intinerario": "‣ Itinerario",
 		"load": "Cargando",

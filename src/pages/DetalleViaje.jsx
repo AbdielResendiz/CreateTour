@@ -1,22 +1,25 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { HStack, Box, Text, VStack, Center, Divider, Stack, Pressable, View } from "native-base";
+import { HStack, Box, Text, VStack, Center, Stack, Pressable, View } from "native-base";
 import { useState, useEffect } from "react";
 import fetchPost from "../helper/fetchPost";
 import URL from "../helper/baseURL";
 import PrecioComponent from "../Components/PreciosComponent";
 import { useTranslation } from 'react-i18next';
 import SwiperComponent from "../Components/SwiperComponent";
+import Loader from "../Components/Loader";
 
 const DetalleViaje = (props) => {
   const { t } = useTranslation("global");
 
   const { id } = useParams();
+  const [loading, setLoading] = useState(false);
 
   //manejar y obtener datos del viaje
   const [viaje, setViaje] = useState([])
 
   const verViaje = async () => {
+    setLoading(true);
     const BASE_URL = URL.BASE_URL;
 
     const dataViaje = new FormData();
@@ -32,6 +35,7 @@ const DetalleViaje = (props) => {
     if (res.status === true) {
 
       setViaje(res.data);
+      setLoading(false);
 
     }
 
@@ -122,88 +126,116 @@ const DetalleViaje = (props) => {
 
 
   return (
-    <View mt={[20, 20, 10, 10]}>
+    <View mt={12} w="100%">
 
-
-
-      <Box w={"95vw"} h={"35vw"}>
+      <Box w={"80vw"} h={96} alignSelf="center">
         <SwiperComponent id={id} />
       </Box >
 
-      <VStack bg="#fafafa" p={1} m={1}>
-        {/* Titulo y precios */}
-        <Stack direction={["column", "column", "row", "row"]} w={"100%"} space={3} p={1} m={1}  >
+      {
+        loading ?
+          <Loader />
+          :
+          <VStack bg="#fff" p={1} m={1} w="80vw" alignSelf="center">
+            {/* Titulo y precios */}
+            <Stack direction={["column", "column", "row", "row", "row"]} w={"100%"}
+              space={3} p={1} m={1}  >
 
-          <HStack w={["95%", "95%", "45%", "60%"]} flex={1} ml={2} shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={2} m={2} justifyContent={"center"} >
+              <HStack w={["94%", "95%", "45%", "60%", "60%"]} flex={1} shadow={6}
+                borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={2}
+                justifyContent={"center"} >
 
-            <Text bold mx={2} p={2} py={5} alignSelf={"center"} fontSize={["xl", "2xl", "4xl", "6xl"]} >{viaje.Titulo}</Text>
-
-
-
-            <VStack bg="#28b5a4" w={12} h={12} mr={2} ml={10} borderRadius={5} shadow={5} justifyContent={"center"} alignSelf={"center"}>
-              <Center h={10}>
-                <Text bold color={"#ffffff"} fontSize={{
-                  base: "md",
-                  md: "lg",
-                  lg: "xl"
-                }}>
-                  {viaje.Duracion}
+                <Text bold mx={2} p={2} py={5} alignSelf={"center"}
+                  textAlign="center" fontSize={["xl", "2xl", "2xl", "4xl", "4xl"]} >
+                  {viaje.Titulo}
                 </Text>
-              </Center>
-
-              <Center bg="#ffffff" w={12} borderColor={"#28b5a4"} borderWidth={3} borderBottomRadius={8} mb={-5}   >
-                <Text fontSize={{
-                  base: "xs",
-                  md: "sm",
-                  lg: "md"
-                }} >
-                  {t("viaje.h")}
-                </Text>
-              </Center>
-            </VStack>
-
-          </HStack>
-          <Box w={["95%", "95%", "45%", "40%"]}>
-            <PrecioComponent PrecioInfantilExtranjero={viaje.PrecioInfantilExtranjero}
-              PrecioInfantilNacional={viaje.PrecioInfantilNacional}
-              PrecioAdultoExtranjero={viaje.PrecioAdultoExtranjero}
-              PrecioAdultoNacional={viaje.PrecioAdultoNacional}
-              viaje={viaje} />
-          </Box>
-
-        </Stack>
-
-
-        {/* TABS */}
-
-
-        <VStack w={"90%"} alignSelf={"center"} p={2} my={"1rem"} borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"}  >
-          <Stack direction={{
-            base: "column",
-            md: "row",
-            lg: "row"
-          }}>
-
-            <CustomPressable count={0} titulo={t("viaje.desc")} />
-            <CustomPressable count={1} titulo={t("viaje.salida")} />
-            <CustomPressable count={2} titulo={t("viaje.intinerario")} />
-            <CustomPressable count={3} titulo={t("viaje.incluye")} />
-            <CustomPressable count={4} titulo={t("viaje.info")} />
-            <CustomPressable count={5} titulo={t("viaje.map")} />
-
-          </Stack>
-          <Divider />
-
-          {/* Contenido, descripcion, mapa, etc */}
-          <Center p={4} >
-            <TabHandle n={tab} />
-          </Center>
-        </VStack>
 
 
 
+                <VStack bg="#28b5a4" w={20} h={20} mr={2} ml={10} borderRadius={5}
+                  shadow={5} justifyContent={"space-between"} alignSelf={"center"} mb={4}>
+                  <Center bg="#ffffff" w={20} borderColor={"#28b5a4"} borderWidth={3} borderTopRadius={8} alignSelf={"flex-start"}   >
+                    <Text fontSize={{
+                      base: "xs",
+                      md: "sm",
+                      lg: "md"
+                    }} >
+                      {t("viaje.d")}
+                    </Text>
+                  </Center>
+                  <Center h={10}>
+                    <Text bold color={"#ffffff"} fontSize={"xl"}>
+                      {viaje.Duracion}
+                    </Text>
+                  </Center>
 
-      </VStack>
+                  <Center bg="#ffffff" w={20} borderColor={"#28b5a4"} borderWidth={3} borderBottomRadius={8} mb={-5}   >
+                    <Text fontSize={{
+                      base: "xs",
+                      md: "sm",
+                      lg: "md"
+                    }} >
+                      {t("viaje.h")}
+                    </Text>
+                  </Center>
+                </VStack>
+
+              </HStack>
+
+              <Box w={["95%", "95%", "45%", "40%", "40%"]} flex={1}>
+                <PrecioComponent PrecioInfantilExtranjero={viaje.PrecioInfantilExtranjero}
+                  PrecioInfantilNacional={viaje.PrecioInfantilNacional}
+                  PrecioAdultoExtranjero={viaje.PrecioAdultoExtranjero}
+                  PrecioAdultoNacional={viaje.PrecioAdultoNacional}
+                  viaje={viaje} />
+              </Box>
+
+            </Stack>
+
+
+            {/* TABS */}
+
+
+            <Stack direction={{
+              base: "column",
+              lg: "row"
+            }} w={"100%"} alignSelf={"center"} my={"1rem"}
+              borderWidth={2} shadow={6} borderRadius={10} borderColor={"muted.300"}
+              justifyContent={"space-between"} space={2}>
+              <Stack direction={"column"} w={{
+                base: "100%",
+                lg: "20%"
+              }} bg="muted.200" shadow={7} borderRadius={10} >
+
+                <CustomPressable count={0} titulo={t("viaje.desc")} />
+                <CustomPressable count={1} titulo={t("viaje.salida")} />
+                <CustomPressable count={2} titulo={t("viaje.intinerario")} />
+                <CustomPressable count={3} titulo={t("viaje.incluye")} />
+                <CustomPressable count={4} titulo={t("viaje.info")} />
+                <CustomPressable count={5} titulo={t("viaje.map")} />
+
+              </Stack>
+
+
+              {/* Contenido, descripcion, mapa, etc */}
+              <Box p={4} w={{
+                base: "100%",
+                lg: "80%"
+              }}>
+                <TabHandle n={tab} />
+              </Box>
+            </Stack>
+
+
+
+
+          </VStack>
+
+      }
+
+
+
+
     </View>
   );
 };

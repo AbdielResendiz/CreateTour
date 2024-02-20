@@ -54,7 +54,7 @@ const FAQ = () => {
     const [openIndex, setOpenIndex] = useState(null);
 
     return (
-        <View w="100%" mt={[12, 12, 32, 32]}>
+        <View w="100%" mt={12}  >
             <Center>
                 <Text bold
                     alignSelf={"center"}

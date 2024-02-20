@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { loadStripe } from '@stripe/stripe-js';
 import {
   Elements,

@@ -39,7 +39,7 @@ const Nosotros = () => {
 
   return (
 
-    <View direction="column" alignItems="center" py={[2, 2, 10, 10]} w="100%" flex={1}>
+    <View direction="column" alignItems="center" my={12} w="80%" flex={1} alignSelf="center" >
       {/* Nosotros con logo */}
       <NosotrosComponent
         subtitle={t("menu.Nosotros")}

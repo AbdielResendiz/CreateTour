@@ -20,15 +20,18 @@ const Tours = () => {
 
 
     return (
-        <Flex w="100%" mt={[12, 12, 24, 24]}>
-            <Stack direction={["column", "column", "row", "row"]} w={"100%"}>
+        <Flex w="100%" mt={12}>
+            <Stack direction={["column", "column", "row", "row"]} w={["90%", "90%", "90%", "100%", "100%"]} alignSelf="center" >
                 <Image source={{
                     uri: "https://createtours.com.mx/backend/public/Imagenes/bg-tours.webp"
-                }} alt="Alternate Text" width={["100%", "100%", "60%", "70%"]} height={96} mt={[0, 0, 10, 10]} resizeMode="cover" />
+                }} alt="Alternate Text" width={["100%", "100%", "60%", "70%", "75%"]} height={96} resizeMode="cover" />
 
-                <VStack justifyContent={"center"} alignSelf={"center"} width={["100%", "100%", "40%", "30%"]} p={10}>
-                    <Text fontFamily="Avenir" mt={4} fontSize={["md", "lg", "md", "lg"]}  >{t("tours.titulo")}</Text>
-                    <Text bold fontFamily="ElMessiri" fontSize={["lg", "xl", "2xl", "4xl"]} px={4}>
+                <VStack justifyContent={"center"} alignSelf={"center"} width={["100%", "100%", "40%", "30%", "30%"]} px={5}>
+                    <Text fontFamily="Avenir" fontSize={["md", "lg", "md", "lg"]}  >
+                        {t("tours.titulo")}
+                    </Text>
+                    <Text bold fontFamily="ElMessiri"
+                        fontSize={["lg", "xl", "xl", "2xl", "4xl"]} px={4}>
                         XPLOR
                         ADVENTURE
                         PARK

@@ -31,7 +31,7 @@ const CertificadoComponent = () => {
                 onPress={() => { openPdf() }}>
 
                 <Lottie animationData={certificado} loop={true} />
-                <Text pb={4} alignSelf={"center"} bold>Click para ver</Text>
+                <Text pb={4} alignSelf={"center"} bold> {t('FAQ.click')}</Text>
             </Pressable>
 
         </Stack>

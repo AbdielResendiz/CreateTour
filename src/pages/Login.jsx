@@ -24,6 +24,9 @@ const Login = () => {
   const [correo, setCorreo] = useState("contacto@createtours.com.mx");
   const [password, setPassword] = useState("Cr34t3T0urs/*2023");
 
+  // const [correo, setCorreo] = useState("");
+  // const [password, setPassword] = useState("");
+
   //show/hide pass
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);

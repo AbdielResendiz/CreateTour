@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Center, Text, ZStack, Image, Box } from 'native-base';
 import URL from '../helper/baseURL';
 import fetchPost from '../helper/fetchPost';
@@ -47,7 +47,7 @@ const Contacto = () => {
 
 
   return (
-    <View w="100%" mt={[12, 12, 32, 32]}>
+    <View w="100%" mt={12}>
       {/* El resto de tu componente permanece igual */}
       <ZStack h={40} mb={[0, 0, 40, 40]}>
 

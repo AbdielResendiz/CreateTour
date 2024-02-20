@@ -139,12 +139,12 @@ const ModalAgregarCarrito = (props) => {
     if (adultoNac < 1 && adultoEx < 1 && infanteNac < 1 && infanteEx < 1) {
       window.alert("Agrega al menos a una persona");
     } else {
-      // agregarAlCarrito(nuevoCarrito);
+      agregarAlCarrito(nuevoCarrito);
 
-      // mostrarAlert();
-      // navigate("/Carrito")
-      // onClose();
-      window.alert("AGREGADO")
+      mostrarAlert();
+      navigate("/Carrito")
+      onClose();
+
     }
 
 
