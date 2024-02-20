@@ -37,6 +37,15 @@ import FAQ from "./pages/FAQ";
 import './fonts/fonts.css'
 import Payment from "./stripe/Payment";
 import ReactGA from 'react-ga';
+import TagManager from 'react-gtm-module'
+import AgregarVenta from "./Components/admin/AgregarVenta";
+
+
+const tagManagerArgs = {
+  gtmId: 'GTM-T4F8XM5Q'
+}
+
+TagManager.initialize(tagManagerArgs)
 
 ReactGA.initialize('G-VE154KHCW3');
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -91,9 +100,12 @@ export default function App() {
                   <Route path="trip/:id/:titulo/" element={<DetalleViaje />} />
                   <Route path="trip/:id" element={<DetalleViaje />} />
                   <Route path="Carrito" element={<Carrito />} />
+
+
                   <Route path="Login" element={<Login />} />
                   <Route path="Registro" element={<Registro />} />
                   <Route path="Administrador" element={<AdminPermiso />} />
+                  <Route path="Administrador/AgregarVenta" element={<AgregarVenta />} />
                   <Route path="success" element={<AgradecimientoView />} />
                   <Route path="FAQ" element={<FAQ />} />
                   <Route path="Stripe" element={<Payment />} />

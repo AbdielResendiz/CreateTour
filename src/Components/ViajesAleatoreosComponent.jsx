@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ViajeComponent from "../Components/ViajeComponent";
 import URL from "../helper/baseURL";
 import fetchPost from "../helper/fetchPost";
+import Loader from "./Loader";
 
 const breakpoints = {
   base: 0,
@@ -14,6 +15,7 @@ const breakpoints = {
 
 const ViajesAleatoreosComponent = () => {
   const [viajes, setViajes] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [numColumns, setNumColumns] = useState(getNumColumns(window.innerWidth));
   const [resizeCounter, setResizeCounter] = useState(0); // Contador para forzar re-render
 
@@ -28,11 +30,17 @@ const ViajesAleatoreosComponent = () => {
   // Carga inicial de viajes
   useEffect(() => {
     const verViajes = async () => {
+      setLoading(true);
       const BASE_URL = URL.BASE_URL;
       const url = `${BASE_URL}viajes/random`;
       const options = { method: 'POST' };
       const res = await fetchPost(url, options);
       setViajes(res);
+      if (res) {
+        setLoading(false);
+      } else {
+        window.alert("Error al cargar Tours, verifica tu conexión e intenta más tarde.");
+      };
     };
 
     verViajes();
@@ -50,27 +58,39 @@ const ViajesAleatoreosComponent = () => {
   }, []); // Quitamos numColumns de las dependencias
 
   return (
+
+
     <Flex w="100%">
-      <FlatList
-        style={{ width: '100%', marginTop: 5, paddingHorizontal: '2vw' }}
-        contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
-        data={viajes}
-        numColumns={numColumns}
-        key={numColumns + '-' + resizeCounter} // Clave compuesta para forzar re-render
-        keyExtractor={(item) => item.ID.toString()}
-        renderItem={({ item }) => (
-          <ViajeComponent
-            index={item.ID}
-            imageUri={item.Foto}
-            titulo={item.Titulo}
-            lugar={item.Ubicacion}
-            duracion={item.Duracion}
-            precio={item.PrecioAdultoNacional}
-            id={item.ID}
+      {
+
+        loading ?
+          <Loader texto={"Cargando Tours. . ."} />
+          :
+          <FlatList
+            style={{ width: '100%', marginTop: 5, paddingHorizontal: '2vw' }}
+            contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
+            data={viajes}
+            numColumns={numColumns}
+            key={numColumns + '-' + resizeCounter} // Clave compuesta para forzar re-render
+            keyExtractor={(item) => item.ID.toString()}
+            renderItem={({ item }) => (
+              <ViajeComponent
+                index={item.ID}
+                imageUri={item.Foto}
+                titulo={item.Titulo}
+                lugar={item.Ubicacion}
+                duracion={item.Duracion}
+                precio={item.PrecioAdultoNacional}
+                id={item.ID}
+              />
+            )}
           />
-        )}
-      />
+      }
+
+
     </Flex>
+
+
   );
 };
 

@@ -9,11 +9,20 @@ import { useTranslation } from 'react-i18next'
 import { FiMail } from "react-icons/fi";
 import { animateScroll as scroll } from 'react-scroll';
 import ReactGA from 'react-ga';
+import TagManager from 'react-gtm-module';
 
 const Footer = () => {
 
 
     const handlePressWA = () => {
+        TagManager.dataLayer({
+            dataLayer: {
+                event: 'button_click', // Nombre del evento, puedes personalizarlo
+                category: 'Interactions', // Categoría del evento, personalizable
+                action: 'click', // Acción del evento, personalizable
+                label: 'WA button' // Etiqueta del evento, personalizable
+            }
+        });
         // El número de teléfono de WhatsApp al que se enviará un mensaje (puedes cambiarlo según tus necesidades)
         const whatsappNumber = '9982304219';
 

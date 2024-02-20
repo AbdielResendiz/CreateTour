@@ -122,6 +122,8 @@ const Home = () => {
         </VStack>
       </Center>
 
+
+
       <ViajesAleatoreosComponent />
 
       <Center>

@@ -21,8 +21,8 @@ const Login = () => {
   };
 
 
-  const [correo, setCorreo] = useState("");
-  const [password, setPassword] = useState("");
+  const [correo, setCorreo] = useState("contacto@createtours.com.mx");
+  const [password, setPassword] = useState("Cr34t3T0urs/*2023");
 
   //show/hide pass
   const [show, setShow] = useState(false);
@@ -164,28 +164,13 @@ const Login = () => {
                     <FaRegEye />
                   )}
                 </Button>} />
-            {/* <Link _text={{
-              fontSize: "xs",
-              fontWeight: "500",
-              color: "indigo.500"
-            }} alignSelf="flex-end" mt="1">
-            ¿Olvidaste tu contraseña?
-              </Link> */}
+
           </FormControl>
           <Button mt="2" colorScheme="indigo"
             onPress={() => validarLogin()}>
             Iniciar sesion
           </Button>
-          {/* <HStack mt="6" justifyContent="center">
-              <Text fontSize="sm" color="coolGray.600" _dark={{
-              color: "warmGray.200"
-            }}>
-                ¿Eres nuevo?{" "}
-              </Text>
-              <Link style={linkStyle} to="/Registro">
-                Registrarse
-              </Link>
-            </HStack> */}
+
         </VStack>
       </Box>
     </Center>

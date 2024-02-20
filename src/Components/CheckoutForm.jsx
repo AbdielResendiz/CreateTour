@@ -7,6 +7,7 @@ import {
 } from '@stripe/react-stripe-js';
 import { useTranslation } from 'react-i18next';
 import { Spinner } from 'native-base';
+import TagManager from 'react-gtm-module';
 
 export const CheckoutForm = (props) => {
   const stripe = useStripe();
@@ -25,6 +26,8 @@ export const CheckoutForm = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+
 
     if (elements == null || stripe == null) {
       return;
@@ -67,20 +70,28 @@ export const CheckoutForm = (props) => {
       elements,
       clientSecret,
       confirmParams: {
+
         return_url: `${window.location.origin}/success`,
       },
     });
 
-    if (error) {
-      // This point will only be reached if there is an immediate error when
-      // confirming the payment. Show error to your customer (for example, payment
-      // details incomplete)
-      setErrorMessage(error.message);
-      window.alert("Error ", error.message)
+    if (!error) {
+      // Si no hay error, significa que el proceso de pago va a continuar hacia la redirección
+      // Aquí es donde puedes disparar el evento a GTM antes de la redirección
+      TagManager.dataLayer({
+        dataLayer: {
+          event: 'payment_success', // Puedes personalizar este nombre de evento
+          category: 'Checkout', // Y estos valores según tus necesidades
+          action: 'Payment Confirmation',
+          label: 'Success',
+          value: Math.round(total * 100) // Opcional: puedes enviar el valor total del carrito
+        }
+      });
+      // La redirección se maneja automáticamente por Stripe después de este punto
     } else {
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
+      // Manejo de errores de Stripe
+      setErrorMessage(error.message);
+      window.alert("Error ", error.message);
     }
   };
 

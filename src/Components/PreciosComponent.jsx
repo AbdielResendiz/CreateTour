@@ -3,7 +3,7 @@ import { Box, VStack, Text, Divider, Button, HStack } from 'native-base';
 import ModalAgregarCarrito from './ModalAgregarCarrito';
 import { useTranslation } from 'react-i18next'
 import { useUser } from '../helper/UserContext';
-
+import TagManager from 'react-gtm-module';
 
 
 
@@ -63,6 +63,19 @@ const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, 
     NiñoNacional: i18n.language === "es" ? "Niño Nacional" : "Domestic Child",
   };
 
+  const ButonModal = () => {
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'button_click', // Nombre del evento, puedes personalizarlo
+        category: 'Interactions', // Categoría del evento, personalizable
+        action: 'click', // Acción del evento, personalizable
+        label: 'Boton reservar tour' // Etiqueta del evento, personalizable
+      }
+    });
+    setShowModal(true);
+
+  }
+
 
   return (
     <Box flexDirection={"column"} shadow={6} borderRadius={10} borderColor={"muted.200"} borderWidth={1} p={4} m={1} justifyContent={"center"}>
@@ -92,7 +105,7 @@ const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, 
 
       </HStack>
 
-      <Button colorScheme={"amber"} onPress={() => setShowModal(true)}>
+      <Button colorScheme={"amber"} onPress={() => ButonModal()}>
         {t(`modalCarrito.botonPrevio`)}
       </Button>
 

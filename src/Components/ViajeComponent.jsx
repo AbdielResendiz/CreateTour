@@ -6,6 +6,7 @@ import { FaRegClock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { useUser } from "../helper/UserContext";
+import TagManager from 'react-gtm-module';
 
 
 
@@ -18,6 +19,14 @@ const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'button_click',
+        category: 'Interactions',
+        action: 'click',
+        label: `Tour: ${titulo}`
+      }
+    });
     navigate(`/trip/${id}/${titulo}`);
   };
 

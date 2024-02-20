@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { animateScroll as scroll } from 'react-scroll';
 
+
 const Header = () => {
     const { t } = useTranslation("global");
     const { carrito } = useUser();

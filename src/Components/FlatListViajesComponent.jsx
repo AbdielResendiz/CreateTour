@@ -1,14 +1,17 @@
-import { FlatList, Flex } from "native-base";
+import { Box, FlatList, Flex, Spinner, Text } from "native-base";
 import URL from "../helper/baseURL";
 import fetchPost from "../helper/fetchPost";
 import { useEffect, useState } from "react";
 import ViajeComponent from "../Components/ViajeComponent";
+import Loader from "./Loader";
 
 
 const FlatListViajesComponent = () => {
-  const [viajes, setViajes] = useState([])
+  const [viajes, setViajes] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const verViajes = async () => {
+    setLoading(true);
     const BASE_URL = URL.BASE_URL;
 
 
@@ -21,6 +24,11 @@ const FlatListViajesComponent = () => {
 
     console.log("Viajes:", res);
     setViajes(res);
+    if (res) {
+      setLoading(false);
+    } else {
+      window.alert("Error al cargar Tours, verifica tu conexión e intenta más tarde")
+    }
     // 
 
 
@@ -57,24 +65,33 @@ const FlatListViajesComponent = () => {
   return (
     <Flex w="100%">
 
+      {
 
-      <FlatList
-        style={{ width: '100%', marginTop: 5, paddingHorizontal: '2vw' }}
-        contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
-        data={viajes}
-        numColumns={numColumns}
-        keyExtractor={(item, index) => item.ID.toString()} // Asume que `item.ID` es único
-        renderItem={({ item, index }) => (
-          <ViajeComponent
-            imageUri={item.Foto}
-            titulo={item.Titulo}
-            lugar={item.Ubicacion}
-            duracion={item.Duracion}
-            precio={item.PrecioAdultoNacional}
-            id={item.ID}
+        loading ?
+          <Loader
+            texto="Cargando Tours. . ." />
+          :
+          <FlatList
+            style={{ width: '100%', marginTop: 5, paddingHorizontal: '2vw' }}
+            contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
+            data={viajes}
+            numColumns={numColumns}
+            keyExtractor={(item, index) => item.ID.toString()} // Asume que `item.ID` es único
+            renderItem={({ item, index }) => (
+              <ViajeComponent
+                imageUri={item.Foto}
+                titulo={item.Titulo}
+                lugar={item.Ubicacion}
+                duracion={item.Duracion}
+                precio={item.PrecioAdultoNacional}
+                id={item.ID}
+              />
+            )}
           />
-        )}
-      />
+      }
+
+
+
 
 
 

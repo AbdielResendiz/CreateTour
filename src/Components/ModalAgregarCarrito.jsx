@@ -6,6 +6,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useUser } from '../helper/UserContext';
 import { format } from 'date-fns';
 import { useTranslation } from 'react-i18next';
+import TagManager from 'react-gtm-module';
+import { useNavigate } from "react-router-dom";
 
 
 const ModalAgregarCarrito = (props) => {
@@ -17,6 +19,7 @@ const ModalAgregarCarrito = (props) => {
   const { carrito, agregarAlCarrito } = useUser();
 
 
+  const navigate = useNavigate();
 
 
 
@@ -111,6 +114,15 @@ const ModalAgregarCarrito = (props) => {
 
   //agrear al carrito
   const handleAgregarCarrito = () => {
+
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'button_click',
+        category: 'Interactions',
+        action: 'click',
+        label: 'Boton Agregar al carrito'
+      }
+    });
     const nuevoCarrito = {
       index: carrito.length + 1,
       Viaje: parseInt(viajeID),
@@ -124,10 +136,17 @@ const ModalAgregarCarrito = (props) => {
       TotalCompra: total
 
     }
-    agregarAlCarrito(nuevoCarrito);
+    if (adultoNac < 1 && adultoEx < 1 && infanteNac < 1 && infanteEx < 1) {
+      window.alert("Agrega al menos a una persona");
+    } else {
+      // agregarAlCarrito(nuevoCarrito);
 
-    mostrarAlert();
-    onClose();
+      // mostrarAlert();
+      // navigate("/Carrito")
+      // onClose();
+      window.alert("AGREGADO")
+    }
+
 
   };
 
@@ -150,6 +169,14 @@ const ModalAgregarCarrito = (props) => {
     formatearFecha();
     console.log("Fecha con formato: ", fecha)
   }, [startDate, fecha]);
+
+  useEffect(() => {
+    console.log("adulto E:", adultoEx);
+    console.log("adulto N:", adultoNac);
+    console.log("niño E:", infanteEx);
+    console.log("niño N:", infanteNac);
+  }, [adultoEx, adultoNac, infanteEx, infanteNac]);
+
 
 
   return (
