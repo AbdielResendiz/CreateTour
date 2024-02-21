@@ -306,6 +306,28 @@ const AgregarVenta = (props) => {
     }
 
 
+    //Falta editar esta funcion!!!!
+    const subirVenta = async () => {
+
+        const data = new FormData();
+        data.append("codigo", codigo);
+        data.append("nombre", nombre);
+        data.append("telefono", phone);
+        data.append("email", email);
+        data.append("viaje", json);
+        data.append("pagado", true);
+        data.append("total", totalMxn);
+
+        const url = "https://createtours.com.mx/backend/public/ventas/guardar"
+        const options = {
+            method: 'POST',
+            body: data
+        };
+        const res = await fetchPost(url, options);
+        console.log("respuesta login", res);
+
+    }
+
     const handleAgregar = () => {
         setJson(
             [
@@ -322,8 +344,65 @@ const AgregarVenta = (props) => {
                     "TotalCompra": totalMxn
                 }]
         )
+        subirVenta();
 
     }
+
+    const validarLogin = () => {
+        let errores = [];
+        //validaciones expresiones regulares
+        const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+        switch (true) {
+            case email.trim() === "":
+                errores.push("El campo correo es requerido");
+                break;
+            // Aquí puedes agregar más validaciones para el correo si lo deseas
+            case !correoRegex.test(email.trim()):
+                errores.push("El campo correo no es válido");
+                break;
+
+            case nombre.trim() === "":
+                errores.push("El campo contraseña es requerido");
+                break;
+            case phone.trim().length < 9:
+                errores.push("La contraseña debe tener al menos 5 caracteres");
+                break;
+
+            case viajeSeleccionado !== null:
+                errores.push("Debes seleccionar un viaje");
+                break;
+
+            case fecha !== "":
+                errores.push("Debes seleccionar una fecha");
+                break;
+
+            case codigo !== "":
+                errores.push("Debes ingresar un codigo de folio");
+                break;
+            // Aquí puedes agregar más validaciones para el teléfono si lo deseas
+
+            default:
+                // Si no hay errores, el registro es válido
+
+                handleAgregar()
+
+                break;
+        }
+
+        if (errores.length > 0) {
+            // Si hay errores, puedes manejarlos de la manera que prefieras,
+            // como mostrarlos en la interfaz de usuario o hacer otras acciones
+            console.log("Errores al iniciar sesion:");
+            errores.forEach((error) => console.log(error));
+            errores.forEach((error) => window.alert(error));
+        }
+
+
+    }
+
+
 
     useEffect(() => {
         console.log("json: ", json)
