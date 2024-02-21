@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Box, VStack, Text, Divider, Button, HStack } from 'native-base';
+import { Box, VStack, Text, Divider, Button, HStack, Icon } from 'native-base';
 import ModalAgregarCarrito from './ModalAgregarCarrito';
 import { useTranslation } from 'react-i18next'
 import { useUser } from '../helper/UserContext';
 import TagManager from 'react-gtm-module';
-
+import { TiShoppingCart } from "react-icons/ti";
+import { IconContext } from "react-icons";
 
 
 
@@ -97,8 +98,15 @@ const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, 
 
       </HStack>
 
-      <Button colorScheme={"amber"} onPress={() => ButonModal()}>
-        {t(`modalCarrito.botonPrevio`)}
+
+      <Button colorScheme={"cyan"} onPress={() => ButonModal()} shadow={7}>
+        <HStack space={2} justifyContent="center" alignItems="center">
+          <TiShoppingCart color="#fff" size={"1.5em"} />
+          <Text color="#fff" fontFamily={"Avenir"} bold fontSize="lg">
+            {t(`modalCarrito.botonPrevio`)}
+
+          </Text>
+        </HStack>
       </Button>
 
 

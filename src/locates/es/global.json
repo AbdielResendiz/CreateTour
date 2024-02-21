@@ -130,13 +130,13 @@
 		"h": "Horas",
 		"d": "Duración",
 		"incl": "El costo Incluye:",
-		"incluye": "‣ ¿Qué incluye y  qué no?",
-		"info": "‣ Información adicional",
-		"intinerario": "‣ Itinerario",
+		"incluye": "¿Qué incluye y  qué no?",
+		"info": "Información adicional",
+		"intinerario": "Itinerario",
 		"load": "Cargando",
-		"map": "‣ Mapa",
+		"map": "Mapa",
 		"noincl": "El costo NO incluye:",
-		"salida": "‣ Salida y Regreso"
+		"salida": "Salida y Regreso"
 	},
 	"viajeComponent": {
 		"boton": "Ver más",

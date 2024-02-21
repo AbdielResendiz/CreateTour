@@ -11,9 +11,11 @@ import Loader from './Loader';
 
 const SwiperComponent = (props) => {
     const settings = {
+        autoplay: true,
+        autoplaySpeed: 2800,
         dots: false,
         infinite: true,
-        speed: 500,
+        speed: 850,
         slidesToShow: 1,
         slidesToScroll: 1,
         nextArrow: <SampleNextArrow />,

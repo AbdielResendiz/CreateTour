@@ -164,7 +164,7 @@ const AgregarVenta = (props) => {
 
         return (
             <>
-                <HStack >
+                <HStack alignSelf="center" >
                     <VStack>
                         <VStack>
                             <Text bold p={1} m={1} fontSize="lg" > Fecha del tour: {fecha}</Text>
@@ -269,18 +269,47 @@ const AgregarVenta = (props) => {
     const CuentaTotal = () => {
 
         return (
-            <VStack >
-                <Text>
+            <VStack alignSelf="center" space={3} my={4} justifyContent="center" alignItems="center">
+                <Text fontSize="lg">
                     Total: ${total} USD
                 </Text>
 
-                <Text>
+                <Text fontSize="lg">
                     Total: ${totalMxn} MXN
+                </Text>
+
+                <Text italic fontSize="md">
+                    NOTA: Se guardara el total en Pesos Mexicanos (MXN)
                 </Text>
 
             </VStack>
         )
     }
+    const [json, setJson] = useState(null);
+
+    const handleAgregar = () => {
+        setJson(
+            [
+                {
+                    "index": 1,
+                    "Viaje": viajeSeleccionado.ID,
+                    "Titulo": viajeSeleccionado.Titulo,
+                    "Foto": viajeSeleccionado.Foto,
+                    "Fecha": fecha,
+                    "CantidadAdultos": AdultoN,
+                    "CantidadInfantes": ninoN,
+                    "CantidadAdultosExtranjeros": AdultoE,
+                    "CantidadInfantesExtranjeros": ninoE,
+                    "TotalCompra": totalMxn
+                }]
+        )
+
+    }
+
+    useEffect(() => {
+        console.log("json: ", json)
+    }, [json]);
+
 
 
     if (tipo !== "1" && userId === null) {
@@ -288,6 +317,8 @@ const AgregarVenta = (props) => {
             <Login />
         );
     }
+
+
 
     return (
         <View w="100%" mt={24} mb={10}>
@@ -310,11 +341,12 @@ const AgregarVenta = (props) => {
                 <Button
                     colorScheme="primary"
                     onPress={() => {
-                        console.log('hello')
+                        handleAgregar()
                     }}
                 >
                     Agregar Venta
                 </Button>
+
             </VStack>
 
         </View>

@@ -126,17 +126,17 @@
 		"verTour": "VIEW TOUR"
 	},
 	"viaje": {
-		"desc": "‣ Description",
+		"desc": "Description",
 		"h": "Hours",
 		"d": "Duration",
 		"incl": "The cost includes:",
-		"incluye": "‣ What's Included and What's Not?",
-		"info": "‣ Additional Information",
-		"intinerario": "‣ Itinerary",
+		"incluye": "What's Included and What's Not?",
+		"info": "Additional Information",
+		"intinerario": "Itinerary",
 		"load": "Loading",
-		"map": "‣ Map",
+		"map": "Map",
 		"noincl": "The cost does not include:",
-		"salida": "‣ Departure and Return"
+		"salida": "Departure and Return"
 	},
 	"viajeComponent": {
 		"boton": "View More",

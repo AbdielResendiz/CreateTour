@@ -1,6 +1,6 @@
 import { Box, Spinner, Text } from "native-base";
 
-const Loader = ({ texto }) => {
+const Loader = ({ texto, size }) => {
 
 
     return (
@@ -9,7 +9,7 @@ const Loader = ({ texto }) => {
                 {texto}
 
             </Text>
-            <Spinner size="xl" mb={20} />
+            <Spinner size={size ? size : "xl"} mb={20} />
 
         </Box>
     );
