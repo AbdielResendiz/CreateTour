@@ -20,7 +20,7 @@ const Blog = () => {
   ];
 
   return (
-    <View mt={12} mb={20} w="100%"  >
+    <View mt={{ base: -5, md: 12 }} mb={20} w="100%"  >
       <Box alignItems="center" bg={"#449bab"} shadow={7} w="100%" mb={5} py={3}>
         <Heading mb="4" textAlign="center" color={"white"} fontSize="4xl">
           {t('global:blog.titulo')}

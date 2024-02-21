@@ -34,7 +34,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <Flex w="100%" mt={12}>
+    <Flex w="100%" mt={{ base: 0, md: 12 }}>
 
       <Image bg={"#449bab"} source={{
         uri: "https://createtours.com.mx/backend/public/Imagenes/portada-001.jpg"

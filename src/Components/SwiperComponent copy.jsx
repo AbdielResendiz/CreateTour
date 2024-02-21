@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import fetchPost from '../helper/fetchPost';
 import URL from '../helper/baseURL';
-import { Box, Image, Center, HStack } from 'native-base';
+import { Box, Image, Center } from 'native-base';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FcPrevious, FcNext } from "react-icons/fc";
@@ -54,17 +54,6 @@ const SwiperComponent = (props) => {
         );
     }
 
-    const settings2 = {
-
-        infinite: true,
-        centerPadding: "80",
-        slidesToShow: 1,
-        speed: 500,
-        rows: 2,
-        slidesPerRow: 2,
-        dots: true
-    };
-
     const { id } = props;
     //manejar y obtener datos del viaje
     const [galeria, setGaleria] = useState([]);
@@ -100,59 +89,7 @@ const SwiperComponent = (props) => {
     }, []);
 
 
-    const SliderWide = () => {
 
-        return (
-            <Slider {...settings}>
-                {galeria.map((foto, index) => (
-                    <div key={foto.foto}>
-
-                        <Image
-                            source={{
-                                uri: `https://createtours.com.mx/pictures/galeria/${foto.foto}`
-                            }}
-                            alt={foto.foto}
-                            h={"500px"}
-                            w="100%"
-                            resizeMode='cover'
-
-                        />
-
-                    </div>
-                ))}
-
-            </Slider>
-        )
-    }
-
-    const SliderRows = () => {
-
-        return (
-            <Box className="slider-container" h={96} w="100%" >
-                <Slider {...settings2}>
-                    {galeria.map((foto, index) => (
-                        <Box key={foto.foto} >
-
-                            <Image
-                                source={{
-                                    uri: `https://createtours.com.mx/pictures/galeria/${foto.foto}`
-                                }}
-                                alt={foto.foto}
-                                h={"240px"}
-                                w="97%"
-                                resizeMode='cover'
-
-
-                            />
-
-                        </Box>
-                    ))}
-
-                </Slider>
-            </Box>
-
-        )
-    }
 
 
 
@@ -161,23 +98,25 @@ const SwiperComponent = (props) => {
             {
                 loading ? <Loader />
                     :
-                    <HStack w="100%" justifyContent={"space-between"} alignSelf="center">
-                        <Box w={{
-                            base: "90%",
-                            lg: "60%"
-                        }}>
-                            <SliderWide />
-                        </Box>
+                    <Slider {...settings}>
+                        {galeria.map((foto, index) => (
+                            <div key={foto.foto}>
 
-                        <Box w="35%" display={{
-                            base: "none",
-                            lg: "flex"
-                        }}>
-                            <SliderRows />
-                        </Box>
+                                <Image
+                                    source={{
+                                        uri: `https://createtours.com.mx/pictures/galeria/${foto.foto}`
+                                    }}
+                                    alt={foto.foto}
+                                    h={96}
+                                    w="100%"
+                                    resizeMode='cover'
 
+                                />
 
-                    </HStack>
+                            </div>
+                        ))}
+
+                    </Slider>
             }
 
 

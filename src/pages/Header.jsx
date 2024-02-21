@@ -6,6 +6,7 @@ import { useUser } from "../helper/UserContext";
 import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { animateScroll as scroll } from 'react-scroll';
+import MenuHamburger from "../Components/header/MenuHamburger";
 
 
 const Header = () => {
@@ -67,13 +68,47 @@ const Header = () => {
 
 
     return (
-        <View w={"100%"}
-
-        >
-            <View style={headerStyle} zIndex={9}  >
+        <View w={"100%"}>
+            <View style={headerStyle} zIndex={9}
+                borderBottomWidth={5} borderColor={["#f00", "#0f0", "#00f", "#f0f", "#f90"]}
+            >
                 <HStack w={"100%"} alignSelf={"center"} justifyContent={"center"} bg={"#fff"}>
 
-                    <Box width={[24, 24, 40, 40]} height={[12, 12, 16, 16]} bg={"#fff"} />
+                    <Box width={[24, 24, 40, 40]} height={[12, 12, 16, 16]} bg={"#fff"}
+                        display={{
+                            base: "none",
+                            md: "flex"
+                        }} />
+
+                    <HStack display={{
+                        base: "flex",
+                        md: "none"
+                    }} alignItems="center" justifyContent="center" space={5} left={-20}>
+                        <MenuHamburger />
+                        <Link to="/Carrito" style={linkStyle}>
+                            <HStack p={2} shadow={3} borderRadius={10} bg={"#449bab"} >
+
+                                <Center>
+
+                                    <TiShoppingCart color="#fff" size={24} />
+
+
+                                </Center>
+
+
+                                {carritoCantidad > 0 ?
+                                    <Center>
+                                        <Center bgColor={"amber.400"} size={[4, 4, 4, 4]} mx={[1, 1, 2, 2]} p={1} borderColor={"muted.300"} borderWidth={1} borderRadius={100}>
+                                            <Text bold fontSize={["xs", "sm", "md", "lg"]}>{carritoCantidad}</Text>
+                                        </Center>
+                                    </Center>
+                                    :
+                                    null}
+
+                            </HStack>
+                        </Link>
+
+                    </HStack>
 
                     <Center bg="#fff" justifyContent="center" py={2}  >
                         <Link to={"/"} onClick={handleClick}>
@@ -96,10 +131,13 @@ const Header = () => {
 
 
                 {/* STACK de menu */}
-                <Stack w={"100%"} direction={["column", "column", "row", "row"]}
+                <Stack w={"100%"} direction={"row"}
                     justifyContent={"center"} alignSelf={"center"} bg={"#fff"} alignItems="center"
-                    // borderBottomWidth={5} borderColor={["#f00", "#0f0", "#00f", "#f0f", "#f90"]}
                     pb={2}
+                    display={{
+                        base: "none",
+                        md: "flex"
+                    }}
                 >
                     <HStack justifyContent={["center", "center", "flex-end", "flex-end"]}  >
                         <CustomLink to="/" text={t("menu.inicio")} />
@@ -150,7 +188,7 @@ const Header = () => {
 
 
             <Outlet />
-        </View>
+        </View >
     )
 };
 

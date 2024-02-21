@@ -110,10 +110,15 @@ const DetalleViaje = (props) => {
   const CustomPressable = ({ count, titulo, icon: IconComponent }) => {
     return (
       <Pressable onPress={() => setTab(count)} isFocused={count === tab ? true : false}
-        isPressed={count === tab ? true : false} py={1}>
+        isPressed={count === tab ? true : false} py={1} borderBottomWidth={1}
+        borderBottomRadius={10} shadow={3} borderColor={"muted.300"}
+        _hover={{
+          borderBottomWidth: 4,
+          borderColor: "#28b5a4",
+          shadow: 1
+        }}>
         {({ isHovered, isPressed, isFocused }) => (
-          <HStack borderBottomWidth={isHovered || isFocused || isPressed ? 3 : 0}
-            py={1} pl={4} borderColor={"#28b5a4"} alignItems="center" space={2}>
+          <HStack py={1} pl={4} alignItems="center" space={2}>
 
             {IconComponent && <IconComponent size={20} color={count === tab ? "#28b5a4" : "#0e0238"} />}
             <Text bold fontSize={{
@@ -134,7 +139,7 @@ const DetalleViaje = (props) => {
 
 
   return (
-    <View mt={12} w="100%">
+    <View mt={{ base: 0, md: 12 }} w="100%">
 
 
 
@@ -143,7 +148,7 @@ const DetalleViaje = (props) => {
           <Loader texto="" />
           :
           <>
-            <Box w={"80vw"} h={96} alignSelf="center">
+            <Box w={"85vw"} h={"500px"} alignSelf="center" >
               <SwiperComponent id={id} />
             </Box >
 
