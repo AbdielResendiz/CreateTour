@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Menu, Pressable, Text, HamburgerIcon, VStack, HStack, Divider } from "native-base";
 import { useNavigate } from "react-router-dom";
 import { animateScroll as scroll } from 'react-scroll';
-import { FaCaretDown } from "react-icons/fa";
+import { useTranslation } from 'react-i18next';
 
 const MenuHamburger = () => {
     const navigate = useNavigate();
@@ -10,6 +10,7 @@ const MenuHamburger = () => {
         scroll.scrollToTop();
         navigate(vista)
     };
+    const { t } = useTranslation("global");
 
     const [menuViaje, setMenuViaje] = useState(false);
     const [menuNosotros, setMenuNosotros] = useState(false);
@@ -28,14 +29,41 @@ const MenuHamburger = () => {
             }}
         >
 
-            <Menu.Item onPress={() => handleClickMenu('/BienesRaices')}>
-                <Text fontFamily="Circular" fontSize={"xs"}>Gestión de propiedades</Text>
+            <Menu.Item onPress={() => handleClickMenu('/')}>
+                <Text fontFamily="Avenir" fontSize={"sm"}>
+                    {t("menu.inicio")}
+                </Text>
+            </Menu.Item>
+            <Menu.Item onPress={() => handleClickMenu('/Tours')}>
+                <Text fontFamily="Avenir" fontSize={"sm"}>
+                    Tours
+                </Text>
+            </Menu.Item>
+
+            <Menu.Item onPress={() => handleClickMenu('/Blog')}>
+                <Text fontFamily="Avenir" fontSize={"sm"}>
+                    Blog
+                </Text>
+            </Menu.Item>
+
+            <Menu.Item onPress={() => handleClickMenu('/Contacto')}>
+                <Text fontFamily="Avenir" fontSize={"sm"}>
+                    {t("menu.Contacto")}
+                </Text>
+            </Menu.Item>
+
+            <Menu.Item onPress={() => handleClickMenu('/FAQ')}>
+                <Text fontFamily="Avenir" fontSize={"sm"}>
+                    FAQ
+                </Text>
             </Menu.Item>
 
 
-            <Menu.Item onPress={() => handleClickMenu('Contacto')}>
-                <Text fontFamily="Circular" fontSize={"xs"}>Contacto</Text>
-            </Menu.Item>
+
+
+
+
+
 
         </Menu >
     );

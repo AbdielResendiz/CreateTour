@@ -125,7 +125,7 @@ const Login = () => {
 
 
   return (
-    <Center w="100%" mt={[12, 12, 24, 24]}>
+    <Center w="100%" mt={{ base: -5, md: 12 }}>
       <Box safeArea p="2" py="8" w="90%" maxW="290">
         <Heading size="lg" fontWeight="600" color="coolGray.800" _dark={{
           color: "warmGray.50"

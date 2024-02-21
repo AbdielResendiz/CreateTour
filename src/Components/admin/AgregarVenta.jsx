@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useUser } from "../../helper/UserContext";
 import Login from "../../pages/Login";
-import { Box, Button, Flex, HStack, Heading, Image, Input, Select, Text, VStack, View } from "native-base";
+import { FormControl, Button, Flex, HStack, Heading, Image, Input, Select, Text, VStack, View, Box, Divider } from "native-base";
 import { useNavigate } from "react-router-dom";
 import Loader from "../Loader";
 import fetchPost from "../../helper/fetchPost";
@@ -20,8 +20,29 @@ const AgregarVenta = (props) => {
     const [loading, setLoading] = useState(false);
     const dateRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
     const [startDate, setStartDate] = useState(new Date());
+
+    //viajeros se usa para el json
+    const onlyNumbersRegex = /^[0-9]+$/;
+    const [AdultoN, setAdultoN] = useState(0);
+    const [AdultoE, setAdultoE] = useState(0);
+    const [ninoN, setNinoN] = useState(0);
+    const [ninoE, setNinoE] = useState(0);
     const [fecha, setFecha] = useState("");
+    const [totalMxn, setTotalMxn] = useState(0);
+
     const { precioUSD } = useUser();
+    const [total, setTotal] = useState(0);
+
+
+    //datos cliente
+    const [nombre, setNombre] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [codigo, setCodigo] = useState("");
+
+
+    //info del viaje
+    const [json, setJson] = useState(null);
 
     const formatearFecha = () => {
         let fechaFormato = format(startDate, 'dd/MM/yyyy');
@@ -102,7 +123,7 @@ const AgregarVenta = (props) => {
                     ))}
                 </Select>
 
-                {viajeSeleccionado && (
+                {viajeSeleccionado ?
                     <HStack alignItems="center" justifyContent="center" space={5} w="100%">
 
                         <Image
@@ -115,7 +136,12 @@ const AgregarVenta = (props) => {
                         />
                         <h2>{viajeSeleccionado.Titulo}</h2>
                     </HStack>
-                )}
+                    :
+                    <Text bold textAlign="center" color="muted.600" my={5} bg="muted.200"
+                        fontSize="xl" py={5} borderWidth={1} borderRadius={10}>
+                        Ningún tour seleccionado
+                    </Text>
+                }
 
             </VStack>
         )
@@ -179,13 +205,7 @@ const AgregarVenta = (props) => {
     }
 
 
-    //viajeros
 
-    const onlyNumbersRegex = /^[0-9]+$/;
-    const [AdultoN, setAdultoN] = useState(0);
-    const [AdultoE, setAdultoE] = useState(0);
-    const [ninoN, setNinoN] = useState(0);
-    const [ninoE, setNinoE] = useState(0);
 
     const Viajeros = () => {
 
@@ -200,7 +220,7 @@ const AgregarVenta = (props) => {
                 </Text>
                 <HStack justifyContent="center" alignItems="center" space={10}>
                     <VStack>
-                        <Text fontSize="xs"># Adulto Nacional: </Text>
+                        <Text fontSize="sm"># Adulto Nacional: </Text>
                         <Input
                             placeholder="Adulto Nacional"
                             onChangeText={(text) => validateInput(text) && setAdultoN(text)}
@@ -210,7 +230,7 @@ const AgregarVenta = (props) => {
                     </VStack>
 
                     <VStack>
-                        <Text fontSize="xs"># Adulto Extranjero</Text>
+                        <Text fontSize="sm"># Adulto Extranjero</Text>
                         <Input
                             placeholder="Adulto Extranjero"
                             onChangeText={(text) => validateInput(text) && setAdultoE(text)}
@@ -222,7 +242,7 @@ const AgregarVenta = (props) => {
 
                 <HStack justifyContent="center" alignItems="center" space={10}>
                     <VStack>
-                        <Text fontSize="xs"># Niño Nacional</Text>
+                        <Text fontSize="sm"># Niño Nacional</Text>
                         <Input
                             placeholder="Niño Nacional"
                             onChangeText={(text) => validateInput(text) && setNinoN(text)}
@@ -232,7 +252,7 @@ const AgregarVenta = (props) => {
                     </VStack>
 
                     <VStack>
-                        <Text fontSize="xs">Precio Adulto Extranjero</Text>
+                        <Text fontSize="sm"># Adulto Extranjero</Text>
                         <Input
                             placeholder="Niño Extranjero"
                             onChangeText={(text) => validateInput(text) && setNinoE(text)}
@@ -246,8 +266,7 @@ const AgregarVenta = (props) => {
     }
 
 
-    const [total, setTotal] = useState(0);
-    const [totalMxn, setTotalMxn] = useState(0);
+
 
     //calcular total
     useEffect(() => {
@@ -285,7 +304,7 @@ const AgregarVenta = (props) => {
             </VStack>
         )
     }
-    const [json, setJson] = useState(null);
+
 
     const handleAgregar = () => {
         setJson(
@@ -312,6 +331,52 @@ const AgregarVenta = (props) => {
 
 
 
+    const DatosCliente = () => {
+
+        return (
+            <FormControl>
+                <VStack>
+                    <FormControl.Label>Nombre</FormControl.Label>
+                    <Input
+                        placeholder="Nombre"
+                        value={nombre}
+                        onChangeText={(text) => setNombre(text)}
+                    />
+                </VStack>
+
+                <VStack>
+                    <FormControl.Label>Teléfono</FormControl.Label>
+                    <Input
+                        placeholder="Teléfono"
+                        value={phone}
+                        onChangeText={(text) => setPhone(text)}
+                        keyboardType="phone-pad"
+                    />
+                </VStack>
+                <VStack>
+                    <FormControl.Label>Correo electrónico</FormControl.Label>
+                    <Input
+                        placeholder="Correo electrónico"
+                        value={email}
+                        onChangeText={(text) => setEmail(text)}
+                        keyboardType="email-address"
+                    />
+                </VStack>
+                <VStack>
+                    <FormControl.Label>Código</FormControl.Label>
+                    <Input
+                        placeholder="Código"
+                        value={codigo}
+                        onChangeText={(text) => setCodigo(text)}
+                    />
+                </VStack>
+
+            </FormControl>
+        )
+    }
+
+
+
     if (tipo !== "1" && userId === null) {
         return (
             <Login />
@@ -321,20 +386,27 @@ const AgregarVenta = (props) => {
 
 
     return (
-        <View w="100%" mt={24} mb={10}>
-            <Heading my={5} >
+        <View w="100%" mt={{ base: -5, md: 12 }} mb={10}>
+            <Heading my={5} fontSize="2xl" >
                 Agregar nueva venta
             </Heading>
+            <VStack space={1} bg="muted.100" p={2} borderRadius={10} shadow={5} >
+                <Text bold fontSize="xl">Datos del cliente: </Text>
+                <DatosCliente />
+            </VStack>
+
+
             <Flex display={loading ? "flex" : "none"}>
                 <Loader texto="Cargando. . ." />
             </Flex>
 
 
-            <VStack display={loading ? "none" : "flex"}>
+            <VStack display={loading ? "none" : "flex"} mt={3}>
                 <SelectTour />
                 <FechaPick />
                 <Precios />
                 <Viajeros />
+                <Divider mt={6} />
                 <CuentaTotal />
 
 
