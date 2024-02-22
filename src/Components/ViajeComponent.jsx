@@ -76,7 +76,7 @@ const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
             <Text fontFamily="Avenir" fontSize={"md"}> {duracion + ' ' + t('viajeComponent.horas')}</Text>
           </HStack>
           :
-          null
+          <Center h={8} />
         }
 
 

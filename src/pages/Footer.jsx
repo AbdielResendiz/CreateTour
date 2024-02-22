@@ -130,7 +130,7 @@ const Footer = () => {
             </VStack>
 
 
-            <Stack py={4} px={2} direction={["column", "column", "row", "row"]} width={"100%"} bg="#449bab" justifyContent={"center"} alignSelf={"center"} alignContent={"center"}>
+            <Stack py={4} bottom={-20} px={2} direction={["column", "column", "row", "row"]} width={"100vw"} bg="#449bab" justifyContent={"center"} alignSelf={"center"} alignContent={"center"}>
 
 
                 {/* Redes sociales */}

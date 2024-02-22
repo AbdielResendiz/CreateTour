@@ -55,7 +55,7 @@ const Header = () => {
             <Link to={to} style={linkStyle} onClick={handleClick1} >
                 <Text p={[1, 1, 2, 2]} borderWidth={1} borderRadius={10} fontFamily={"Avenir"}
                     shadow={3} mx={2} bg={"#eeeeee"} borderColor={"muted.300"}
-                    fontSize={["xs", "xs", "sm", "md"]} >
+                    fontSize={"sm"} >
                     {text}</Text>
             </Link>
         );
@@ -70,7 +70,7 @@ const Header = () => {
     return (
         <View w={"100%"}>
             <View style={headerStyle} zIndex={9}
-                borderBottomWidth={5} borderColor={["#f00", "#0f0", "#00f", "#f0f", "#f90"]}
+            // borderBottomWidth={5} borderColor={["#f00", "#0f0", "#00f", "#f0f", "#f90"]}
             >
                 <HStack w={"100%"} alignSelf={"center"} justifyContent={"center"} bg={"#fff"}>
 
@@ -149,15 +149,15 @@ const Header = () => {
 
                     </HStack>
                     {/* STACK de menu */}
-                    <HStack justifyContent={["center", "center", "flex-start", "flex-start"]} alignItems="center"  >
+                    <HStack justifyContent={"center"} alignItems="center"  >
                         <CustomLink to="/Contacto" text={t("menu.Contacto")} />
                         <CustomLink to="/FAQ" text="FAQ" />
                         {/* Boton carrito */}
                         <Link to="/Carrito" style={linkStyle}>
-                            <HStack p={1} shadow={3} borderRadius={10} borderColor={"muted.300"} borderWidth={1} mt={2} bg={"#449bab"} >
+                            <HStack p={1} shadow={3} borderRadius={10} mt={1} borderColor={"muted.300"} borderWidth={1} bg={"#449bab"} >
 
                                 <Center>
-                                    <IconContext.Provider value={{ color: "#eeeeee", size: "1.5em" }}>
+                                    <IconContext.Provider value={{ color: "#eeeeee", size: "1.6em" }}>
                                         <TiShoppingCart />
                                     </IconContext.Provider>
 

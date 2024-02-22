@@ -91,7 +91,8 @@
 		"quienes": "WHO WE ARE!",
 		"slogan": "AN ADVENTURE GUARANTEED",
 		"title": "Creating Multilingual React Applications with react-i18next: Step-by-Step Guide",
-		"verTodos": "View All Tours"
+		"verTodos": "View All Tours",
+		"aliados": "Our main alliances"
 	},
 	"menu": {
 		"Carrito": "Cart",

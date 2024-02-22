@@ -8,6 +8,7 @@ import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next'
 import "../App.css"
+import Alianzas from "../Components/home/Alianzas";
 
 
 const IconTextComponent = ({ icon, text }) => {
@@ -133,6 +134,12 @@ const Home = () => {
           {t("mainSection.verTodos")}
         </Button>
       </Center>
+
+
+      <Center w="80%" alignSelf="center" >
+        <Alianzas />
+      </Center>
+
     </Flex>
   );
 };

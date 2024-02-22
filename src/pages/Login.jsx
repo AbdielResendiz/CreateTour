@@ -7,19 +7,13 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useUser } from "../helper/UserContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-
-
 const Login = () => {
-
   const { login } = useUser();
-
 
   const handleLogin = (id_user, tipoUser) => {
     // Lógica para el inicio de sesión
     login(id_user, tipoUser);
   };
-
 
   // const [correo, setCorreo] = useState("contacto@createtours.com.mx");
   // const [password, setPassword] = useState("Cr34t3T0urs/*2023");
@@ -33,8 +27,6 @@ const Login = () => {
 
   //para navegar a otras vistas
   const navigate = useNavigate();
-
-
 
   const Login = async () => {
 
@@ -63,20 +55,10 @@ const Login = () => {
       } catch (error) {
         console.error('Error saving data to AsyncStorage:', error);
       }
-
-
-
-
       res.TipoUsuario === "1" ? navigate("/Administrador") :
         window.alert("No tienes permisos necesarios para acceder a esta sección");
       return;
     }
-    // handleLogin(res.id_usuario)
-    //Navega a otra pagina/ruta
-    // navigate("/Cuenta")
-
-
-
   }
 
 
@@ -118,10 +100,7 @@ const Login = () => {
       errores.forEach((error) => console.log(error));
       errores.forEach((error) => window.alert(error));
     }
-
-
   }
-
 
 
   return (
@@ -162,7 +141,6 @@ const Login = () => {
                 >
                   {show ? (
                     <FaRegEyeSlash />
-
                   ) : (
                     <FaRegEye />
                   )}
