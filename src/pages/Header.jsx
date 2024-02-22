@@ -123,11 +123,7 @@ const Header = () => {
                             uri: "https://createtours.com.mx/pictures/SEDETUR.png"
                         }} alt="Alternate Text" width={[24, 24, 40, 56]} height={[12, 12, 16, 24]} resizeMode="contain" />
                     </Pressable>
-
-
                 </HStack>
-
-
 
 
                 {/* STACK de menu */}
@@ -144,10 +140,8 @@ const Header = () => {
                         <CustomLink to="/Tours" text="Tours" />
                         <CustomLink to="/Blog" text="Blog" />
                         <CustomLink to="/Nosotros" text={t("menu.Nosotros")} />
-
-
-
                     </HStack>
+
                     {/* STACK de menu */}
                     <HStack justifyContent={"center"} alignItems="center"  >
                         <CustomLink to="/Contacto" text={t("menu.Contacto")} />
@@ -160,7 +154,6 @@ const Header = () => {
                                     <IconContext.Provider value={{ color: "#eeeeee", size: "1.6em" }}>
                                         <TiShoppingCart />
                                     </IconContext.Provider>
-
                                 </Center>
 
 
@@ -172,20 +165,13 @@ const Header = () => {
                                     </Center>
                                     :
                                     null}
-
                             </HStack>
                         </Link>
-
-
-
                     </HStack>
+
                 </Stack>
 
-
-
-
             </View>
-
 
             <Outlet />
         </View >

@@ -100,7 +100,7 @@ const Carrito = () => {
 
 
   return (
-    <Flex mt={[20, 20, 10, 10]} >
+    <Flex mt={{ base: -5, md: 12 }} >
       <Center >
         <Heading w={"70%"} textAlign={"center"} alignContent="center">{t("carritoVista.bienvenida")}</Heading>
       </Center>

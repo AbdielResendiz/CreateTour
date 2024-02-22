@@ -12,13 +12,11 @@ const Alianzas = () => {
     };
     const BaseUrl = "https://createtours.com.mx/pictures/aliados/";
 
-
     const Aliado = ({ imagen, url }) => {
         const abrirLink = () => {
 
             // Abre la URL en una nueva pestaña
             window.open(url, '_blank');
-
         }
 
         return (

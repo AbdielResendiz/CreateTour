@@ -47,7 +47,7 @@ const Contacto = () => {
 
 
   return (
-    <View w="100%" mt={12}>
+    <View w="100%" mt={{ base: -5, md: 12 }}>
       {/* El resto de tu componente permanece igual */}
       <ZStack h={40} mb={[0, 0, 40, 40]}>
 
@@ -79,14 +79,14 @@ const Contacto = () => {
       </Center>
 
 
-      <Center mb={10} w="80%" alignSelf={"center"} shadow={7} borderTopRadius={10} >
+      <Center mb={10} w="80%" alignSelf={"center"} shadow={7} borderRadius={10} >
         <Center bg="#2e2352" py={2} borderTopRadius={10}>
           <Text fontFamily="Avenir" color="#fff" fontSize="lg" textAlign="justify" w="90%">
             {t("contacto.parrafo2.text")}
           </Text>
         </Center>
         {/* FORMULARIO CONTACTO */}
-        <Box bg={"#8cdad1"} w="100%">
+        <Box bg={"#77b2bd"} w="100%" borderBottomRadius={10}>
           <form onSubmit={handleSubmit} style={{ width: '100%', marginLeft: '3%', marginRight: '3%', maxWidth: '90%' }}>
             <div style={{ marginBottom: '1rem' }}>
               <label style={{ fontWeight: 'bold', fontFamily: 'Avenir' }}>{t("contacto.form.nombre.label")}</label>

@@ -39,7 +39,7 @@ const Nosotros = () => {
 
   return (
 
-    <View direction="column" alignItems="center" my={12} w="80%" flex={1} alignSelf="center" >
+    <View direction="column" alignItems="center" mt={{ base: -5, md: 12 }} w="80%" flex={1} alignSelf="center" >
       {/* Nosotros con logo */}
       <NosotrosComponent
         subtitle={t("menu.Nosotros")}
@@ -49,7 +49,7 @@ const Nosotros = () => {
         mr={3}
       />
       {/*  IMAGEN Y MISION */}
-      <Stack direction={["column", "column", "row", "row"]} w="100%" mt={[-40, -40, 0, 0]}>
+      <Stack direction={["column", "column", "row", "row"]} w="100%" >
         <Image
           source={{ uri: "https://createtours.com.mx/backend/public/Imagenes/Mision.png" }}
           alt="Alternate Text"
@@ -58,7 +58,7 @@ const Nosotros = () => {
           resizeMode="contain"
         />
 
-        <VStack w={["90%", "90%", "45%", "45%"]} justifyContent={"center"} p={[2, 2, 5, 10]} mt={[-20, -20, 0, 0]}>
+        <VStack w={["90%", "90%", "45%", "45%"]} justifyContent={"center"} p={[2, 2, 5, 10]} >
           <Text fontFamily={"ElMessiri"} fontSize={["md", "lg", "xl", "2xl"]} color={"#494d41"}>
             CREATE TOURS
           </Text>
