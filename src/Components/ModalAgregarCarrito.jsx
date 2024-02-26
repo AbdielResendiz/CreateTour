@@ -151,7 +151,7 @@ const ModalAgregarCarrito = (props) => {
   };
 
   const mostrarAlert = () => {
-    window.alert('El artículo se ha agregado al carrito');
+    window.alert(t(`carritoVista.agregadoCarrito`));
   };
 
   useEffect(() => {

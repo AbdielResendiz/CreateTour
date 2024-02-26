@@ -142,7 +142,7 @@ const Carrito = () => {
           <CarritoComponent
             index={item.index}
             id={item.Viaje}
-            titulo={item.Titulo}
+            titulo={t(`viajes.viaje${item.Viaje}.titulo`)}
             foto={item.Foto}
             subtotal={item.TotalCompra}
             subtotalMXN={item.TotalCompra * precioUSD}

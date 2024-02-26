@@ -164,7 +164,7 @@ const DetalleViaje = (props) => {
 
                   <Text bold mx={2} p={2} py={5} alignSelf={"center"} fontFamily="ElMessiri"
                     textAlign="center" fontSize={["xl", "2xl", "2xl", "4xl", "4xl"]} >
-                    {viaje.Titulo}
+                    {t(`viajes.viaje${viaje.ID}.titulo`)}
                   </Text>
 
 

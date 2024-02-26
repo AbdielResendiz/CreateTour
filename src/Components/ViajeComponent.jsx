@@ -57,7 +57,7 @@ const ViajeComponent = ({ id, imageUri, titulo, lugar, duracion, precio }) => {
         }} alt="Alternate Text" />
 
         <Center>
-          <Text fontFamily={"ElMessiri"} bold fontSize={"lg"} p={4}  >{titulo}</Text>
+          <Text fontFamily={"ElMessiri"} bold fontSize={"lg"} p={4}  >  {t(`viajes.viaje${id}.titulo`)}</Text>
         </Center>
 
         <HStack justifyContent={"center"} pb={4} alignItems={"center"} space={2}>

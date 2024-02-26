@@ -148,7 +148,7 @@ const Header = () => {
                         <CustomLink to="/FAQ" text="FAQ" />
                         {/* Boton carrito */}
                         <Link to="/Carrito" style={linkStyle}>
-                            <HStack p={1} shadow={3} borderRadius={10} mt={1} borderColor={"muted.300"} borderWidth={1} bg={"#449bab"} >
+                            <HStack p={1} shadow={3} borderRadius={10} mt={1} borderColor={"muted.300"} borderWidth={1} bg={"#449bab"} justifyContent="center" alignItems="center" >
 
                                 <Center>
                                     <IconContext.Provider value={{ color: "#eeeeee", size: "1.6em" }}>
@@ -158,11 +158,11 @@ const Header = () => {
 
 
                                 {carritoCantidad > 0 ?
-                                    <Center>
-                                        <Center bgColor={"amber.400"} size={[4, 4, 4, 4]} mx={[1, 1, 2, 2]} p={1} borderColor={"muted.300"} borderWidth={1} borderRadius={100}>
-                                            <Text bold fontSize={["xs", "sm", "md", "lg"]}>{carritoCantidad}</Text>
-                                        </Center>
+
+                                    <Center bgColor={"amber.400"} size={4} mx={[1, 1, 2, 2]} p={2} borderColor={"muted.300"} borderWidth={1} borderRadius={100}>
+                                        <Text bold fontSize="xs">{carritoCantidad}</Text>
                                     </Center>
+
                                     :
                                     null}
                             </HStack>
