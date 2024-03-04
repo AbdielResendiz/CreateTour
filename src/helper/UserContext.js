@@ -137,7 +137,7 @@ export const UserProvider = ({ children }) => {
         const data = await response.json();
 
         setPrecioUSD(Number((data.rates.MXN).toFixed(2)));
-
+        //console.log("dolar", Number((data.rates.MXN).toFixed(2)))
 
       } catch (error) {
         console.error('Error fetching exchange rate:', error);
@@ -145,6 +145,7 @@ export const UserProvider = ({ children }) => {
     };
 
     fetchExchangeRate();
+
   }, []);
 
 

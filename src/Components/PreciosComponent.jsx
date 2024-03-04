@@ -85,14 +85,26 @@ const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, 
         </VStack>
         <Divider orientation="vertical" h={"80%"} alignSelf={"center"} />
         <VStack space={3} justifyContent={"center"}>
-          <TipoTextoA
-            texto={textosModal.NiñoExtranjero}
-            precio={preciosModal.PrInfanteEx + " " + preciosModal.moneda}
-          />
-          <TipoTextoA
-            texto={textosModal.NiñoNacional}
-            precio={preciosModal.PrInfanteNac + " " + preciosModal.moneda}
-          />
+          {
+            preciosModal.PrInfanteEx !== null ?
+              <TipoTextoA
+                texto={textosModal.NiñoExtranjero}
+                precio={preciosModal.PrInfanteEx + " " + preciosModal.moneda}
+              />
+              :
+              null
+          }
+          {
+            preciosModal.PrInfanteNac !== null ?
+              <TipoTextoA
+                texto={textosModal.NiñoNacional}
+                precio={preciosModal.PrInfanteNac + " " + preciosModal.moneda}
+              />
+              :
+              null
+          }
+
+
         </VStack>
 
 
