@@ -96,24 +96,28 @@ export const CheckoutForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='px-4'>
+    <form onSubmit={handleSubmit} style={{ paddingInline: "40px" }}>
 
 
       <div className='mb-3'>
         <h3>{t("carritoVista.aviso")}</h3>
         <label htmlFor="name-input">{t("carritoVista.mensajeNombre")} </label>
         <div>
-          <input style={{ width: '70%' }} value={nameInput} onChange={(e) => setNameInput(e.target.value)} type="text" id="name-input" placeholder='John Doe' />
+          <input style={{ width: '70%' }} value={nameInput} onChange={(e) => setNameInput(e.target.value)}
+
+            type="text" id="name-input" placeholder={t("carritoVista.name")} />
         </div>
 
         <label htmlFor="phone-input">{t("carritoVista.phone")}</label>
         <div>
-          <input style={{ width: '70%' }} value={phoneInput} onChange={(e) => setPhoneInput(e.target.value)} type="tel" id="phone-input" placeholder='123-456-7890' />
+          <input style={{ width: '70%' }} value={phoneInput} onChange={(e) => setPhoneInput(e.target.value)}
+            type="tel" id="phone-input" placeholder={t("carritoVista.phone")} />
         </div>
 
         <label htmlFor="email-input">{t("carritoVista.email")}</label>
         <div>
-          <input style={{ width: '70%' }} value={emailInput} onChange={(e) => setEmailInput(e.target.value)} type="email" id="email-input" placeholder='johndoe@gmail.com' />
+          <input style={{ width: '70%' }} value={emailInput} onChange={(e) => setEmailInput(e.target.value)}
+            type="email" id="email-input" placeholder={t("carritoVista.email")} />
         </div>
       </div>
       <PaymentElement />
@@ -132,7 +136,8 @@ export const CheckoutForm = (props) => {
               cursor: 'pointer',
               display: 'block',
               margin: '20px auto',
-              border: '2px solid white'
+              border: '2px solid white',
+              marginBottom: '-90px'
             }}
           >
             {t("carritoVista.listaCarrito.pagar")}

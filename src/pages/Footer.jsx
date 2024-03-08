@@ -91,7 +91,7 @@ const Footer = () => {
                 <Lottie animationData={whatsapp} loop={true} />
             </Pressable>
             {/* Boton traducciom */}
-            <VStack bottom={20} right={0} zIndex={9} position={"fixed"} justifyContent="flex-end"
+            <VStack bottom={20} right={3} zIndex={9} position={"fixed"} justifyContent="flex-end"
                 borderRadius={10} bg={"#dfdfdf"} borderWidth={1} borderColor={"muted.400"}>
                 <Text borderTopRadius={10} p={1} fontSize={["xs", "xs", "md", "md"]}> {t("header.chooseLanguage")}</Text>
                 <Pressable variant={"subtle"} onPress={() => i18n.changeLanguage("en")} px={1} py={[1, 1, 3, 3]}  >
@@ -123,7 +123,10 @@ const Footer = () => {
                             alignSelf={"center"}
                         />
                         <Center>
-                            <Text textAlign={"center"} justifyContent={"center"} fontSize={["xs", "xs", "md", "md"]} bold p={[1, 1, 3, 3]}>ES</Text>
+                            <Text textAlign={"center"} justifyContent={"center"}
+                                fontSize={["xs", "xs", "md", "md"]} bold p={[1, 1, 3, 3]}>
+                                ES
+                            </Text>
                         </Center>
                     </HStack>
                 </Pressable>

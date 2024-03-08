@@ -117,9 +117,14 @@ const Carrito = () => {
           </Center>
 
 
-          <Text mb={12} alignSelf={"center"} w={"70%"} textAlign={"justify"} fontSize={["lg", "lg", "xl", "xl"]}> {t("carritoVista.carritoVacio.icono")}</Text>
+          <Text my={12} alignSelf={"center"} w={"70%"} textAlign={"center"} fontSize={["lg", "lg", "xl", "xl"]}>
+            {t("carritoVista.carritoVacio.icono")}
+          </Text>
+
           <Divider />
-          <Text my={5} alignSelf={"center"} fontSize={"2xl"} bold >{t("carritoVista.carritoVacio.texto")}</Text>
+          <Text my={5} alignSelf={"center"} fontSize={"2xl"} bold textAlign={"center"} >
+            {t("carritoVista.carritoVacio.texto")}
+          </Text>
           <ViajesAleatoreosComponent />
           <Button size={"lg"} alignSelf={"center"} textAlign={"center"} colorScheme={"amber"}
             onPress={() => { handleClick() }}>
@@ -160,7 +165,7 @@ const Carrito = () => {
 
         <>
           <Center px={10} mb={4}>
-            <FormControl>
+            <FormControl w={80}>
               <FormControl.Label>{t("carritoVista.codigoDescuento")}</FormControl.Label>
               <Input
                 p={2}
@@ -178,8 +183,8 @@ const Carrito = () => {
             </FormControl>
           </Center>
 
-          <Center>
-            <Text bold fontSize={"xl"} textAlign={"center"}>
+          <Center borderWidth={1} borderColor="muted.200" borderRadius={10} shadow={6} flex={1} alignSelf="center">
+            <Text bold fontSize={"xl"} textAlign={"center"} mt={10} mb={-5}>
               {t("carritoVista.procedePago")}: {" "}
               ${i18n.language === "es" ? totalMXN : totalUSD}
               {t("modalCarrito.moneda")}
@@ -192,13 +197,6 @@ const Carrito = () => {
         :
         null
       }
-
-
-
-
-
-
-
 
     </Flex >
 

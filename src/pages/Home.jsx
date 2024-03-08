@@ -69,36 +69,22 @@ const Home = () => {
           uri: "https://createtours.com.mx/backend/public/Imagenes/logo-background.webp"
         }} alt="Alternate Text" width={["100%", "100%", "70%", "70%"]} h={[64, 64, 96, 96]} resizeMode="contain" />
 
-
-
-
-
       </Stack>
-
-
 
 
 
       <ZStack h={[32, 32, 64, 64]} w={"80%"} alignSelf="center">
 
-
-
         <Image alignSelf={"center"} opacity={0.6} source={{
           uri: "https://createtours.com.mx/backend/public/Imagenes/olas-chicas.svg"
         }} alt="Alternate Text" width={"100%"} height={[40, 40, 96, 96]} resizeMode="cover" />
-
-
-
 
         <Text fontFamily={"ElMessiri"} mt={[5, 5, 20, 20]} textAlign={"center"}
           alignSelf={"center"} bold fontSize={["2xl", "2xl", "4xl", "6xl"]} >
           {t("mainSection.disfruta")}
         </Text>
 
-
       </ZStack>
-
-
 
 
       <VStack size={"md"} fontWeight={400}>

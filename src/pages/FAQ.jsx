@@ -37,7 +37,7 @@ const FAQ = () => {
                 {isOpen && (
                     <Text
                         p={2}
-                        bg={"#abe6ff"}
+                        bg={"#d9ebee"}
                         borderRadius={10}
                         textAlign={"justify"}
                         fontSize={["sm", "sm", "md", "md"]}
@@ -54,7 +54,7 @@ const FAQ = () => {
     const [openIndex, setOpenIndex] = useState(null);
 
     return (
-        <View w="100%" mt={{ base: -5, md: 12 }} >
+        <View flex={1} mx={16} mt={{ base: -5, md: 12 }} >
             <Center>
                 <Text bold
                     alignSelf={"center"}

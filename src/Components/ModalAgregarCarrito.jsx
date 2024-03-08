@@ -8,6 +8,7 @@ import { format } from 'date-fns';
 import { useTranslation } from 'react-i18next';
 import TagManager from 'react-gtm-module';
 import { useNavigate } from "react-router-dom";
+import { animateScroll as scroll } from 'react-scroll';
 
 
 const ModalAgregarCarrito = (props) => {
@@ -142,6 +143,7 @@ const ModalAgregarCarrito = (props) => {
       agregarAlCarrito(nuevoCarrito);
 
       mostrarAlert();
+      scroll.scrollToTop();
       navigate("/Carrito")
       onClose();
 
