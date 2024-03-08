@@ -59,8 +59,11 @@ const Home = () => {
             fontSize={["lg", "xl", "2xl", "4xl"]} color={"#494d41"}  >
             CREATE TOURS
           </Text>
-          <Text fontFamily="Avenir" bold fontSize={["md", "lg", "lg", "2xl"]}  >{t("mainSection.quienes")}</Text>
-          <Text fontFamily="Avenir" fontSize={["md", "md", "lg", "xl"]} color={"#494d41"} textAlign={"justify"}  >
+          <Text fontFamily="Avenir" bold fontSize={["md", "lg", "lg", "2xl"]}  >
+            {t("mainSection.quienes")}
+          </Text>
+          <Text fontFamily="Avenir" fontSize={["md", "md", "lg", "xl"]}
+            color={"#494d41"} textAlign={"justify"}  >
             {t("mainSection.about")}
           </Text>
         </Flex>
@@ -72,9 +75,7 @@ const Home = () => {
       </Stack>
 
 
-
       <ZStack h={[32, 32, 64, 64]} w={"80%"} alignSelf="center">
-
         <Image alignSelf={"center"} opacity={0.6} source={{
           uri: "https://createtours.com.mx/backend/public/Imagenes/olas-chicas.svg"
         }} alt="Alternate Text" width={"100%"} height={[40, 40, 96, 96]} resizeMode="cover" />
@@ -83,7 +84,6 @@ const Home = () => {
           alignSelf={"center"} bold fontSize={["2xl", "2xl", "4xl", "6xl"]} >
           {t("mainSection.disfruta")}
         </Text>
-
       </ZStack>
 
 
@@ -110,8 +110,6 @@ const Home = () => {
         </VStack>
       </Center>
 
-
-
       <ViajesAleatoreosComponent />
 
       <Center>
@@ -120,7 +118,6 @@ const Home = () => {
           {t("mainSection.verTodos")}
         </Button>
       </Center>
-
 
       <Center w="80%" alignSelf="center" >
         <Alianzas />

@@ -29,12 +29,12 @@ const Blog = () => {
           {t('global:blog.subtitulo')}
         </Text>
       </Box>
-      <Stack direction={["column", "column", "row", "row"]}>
-        <Box w={["80%", "60%"]} ml={["10%", "8%"]} mr={["10%", "1rem"]}>
+      <Stack direction={["column", "column", "row", "row"]} mx={[12, 12, 24, 32]} flex={1}>
+        <Box flex={1} alignSelf="center">
           <Blog01 />
         </Box>
 
-        <Box w={["90%", "90%", "30%", "30%"]}>
+        <Box flex={1} maxW={80}>
           <Heading mx={3}>
             {t('global:blog.entradas')}
           </Heading>
