@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, Box, Pressable, Center, Image, ZStack, HStack } from "native-base";
 import { useTranslation } from 'react-i18next'
-const Privacidad = () => {
+import { animateScroll as scroll } from 'react-scroll';
+
+
+
+const TerminosCompra = () => {
     const { t } = useTranslation("global");
+
+    useEffect(() => {
+        scroll.scrollToTop();
+    }, [])
+
 
 
     const PrivacidadSES = () => {
@@ -232,4 +241,4 @@ const Privacidad = () => {
     );
 };
 
-export default Privacidad;
+export default TerminosCompra;

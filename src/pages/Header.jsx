@@ -70,7 +70,7 @@ const Header = () => {
     return (
         <View w={"100%"}>
             <View style={headerStyle} zIndex={9}
-            // borderBottomWidth={5} borderColor={["#f00", "#0f0", "#00f", "#f0f", "#f90"]}
+                borderBottomWidth={5} borderColor={["#f00", "#0f0", "#00f", "#f0f", "#f90"]}
             >
                 <HStack w={"100%"} alignSelf={"center"} justifyContent={"center"} bg={"#fff"}>
 

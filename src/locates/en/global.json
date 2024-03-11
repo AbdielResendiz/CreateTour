@@ -26,7 +26,10 @@
 		"codigoDescuento": "Discount code",
 		"aplicaCodigo": "Apply discount code",
 		"procedePago": "Proceed with payment",
-		"agregadoCarrito": "The tour has been added to the cart"
+		"agregadoCarrito": "The tour has been added to the cart",
+		"terminosMensaje": "Before proceeding, please take a moment to review and accept our terms and conditions of purchase.",
+		"terminosCheckBox": "Terms and conditions of purchase",
+		"alertTerminos": "Please accept our terms and conditions to proceed."
 	},
 	"contacto": {
 		"form": {
@@ -52,7 +55,7 @@
 			"text": "Do you have questions, comments, or are you ready to book your next adventure? We'd love to hear from you! At Create Tours, we are committed to providing unforgettable travel experiences. Our team is here to assist you every step of the way."
 		},
 		"parrafo2": {
-			"text": "Complete our simple contact form below, and we'll get in touch with you as soon as possible. Your satisfaction and comfort are our top priorities."
+			"text": "Complete our contact form below, and we'll get in touch with you as soon as possible."
 		},
 		"titulo": "CONTACT US!"
 	},
@@ -402,6 +405,64 @@
 			"noIncluido": "❌Rental of life jackets and lockers (2 USD each)\n❌Fee for the use of Go Pro, video, or professional camera (charged by the park in Chichen Itza)",
 			"regreso": "21:00 hrs  \nReturn to your point of origin, drop-off at your hotel or meeting point.",
 			"salida": "(Our schedules are approximate depending on weather conditions and traffic) \n\n⏱️06:40 am – 07:50 am \nCourtesy Pickups in shared transportation (Van or Bus). \n\nWe will pick you up at your hotel or meet you at one of our nearest meeting points to your location."
+		}
+	},
+	"politicaCompra": {
+		"purchasePolicies": {
+			"process": {
+				"title": "Purchase Process",
+				"content": [
+					"By making a purchase on our website, the customer agrees to the terms and conditions set forth in these policies.",
+					"The purchase process involves selecting the tour, entering the required information, and making the corresponding payment."
+				]
+			},
+			"payment": {
+				"title": "Payment",
+				"content": [
+					"Tour prices are clearly indicated on our website and are expressed in the local currency.",
+					"We accept payments through secure methods, such as credit cards and other online payment services. Payment details are handled with complete confidentiality."
+				]
+			},
+			"confirmation": {
+				"title": "Reservation Confirmation",
+				"content": [
+					"Reservation confirmation will be sent to the customer via email once the purchase process is completed.",
+					"The confirmation will include important details, such as the date, time, meeting point, and any other relevant information about the tour."
+				]
+			},
+			"modifications": {
+				"title": "Modifications and Cancellations",
+				"content": [
+					"Create Tours reserves the right to make changes to the date, time, or content of a tour due to unforeseen circumstances. In such cases, the customer will be notified as soon as possible, and alternatives or refunds will be offered as appropriate.",
+					"The customer has the right to modify or cancel a reservation in accordance with our cancellation policies, detailed in our Refund Policy section."
+				]
+			},
+			"refunds": {
+				"title": "Refunds",
+				"content": [
+					"Refunds will be processed in accordance with our Refund Policy and may be subject to certain conditions and deadlines.",
+					"In case of cancellation by the customer, cancellation fees outlined in our policies will apply."
+				]
+			},
+			"customerResponsibility": {
+				"title": "Customer Responsibility",
+				"content": [
+					"The customer is responsible for providing accurate and complete information during the purchase process.",
+					"Any issues arising from incorrect information will be the sole responsibility of the customer."
+				]
+			},
+			"customerService": {
+				"title": "Customer Service",
+				"content": [
+					"We are committed to providing exceptional customer service. Any questions or concerns can be directed to our customer service team through the contact channels indicated on our website."
+				]
+			},
+			"policyChanges": {
+				"title": "Policy Changes",
+				"content": [
+					"Create Tours reserves the right to make changes to these policies at any time. Changes will take effect as soon as they are published on our website."
+				]
+			}
 		}
 	}
 }

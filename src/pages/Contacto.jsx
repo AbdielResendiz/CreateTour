@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { View, Center, Text, ZStack, Image, Box } from 'native-base';
+import { View, Center, Text, ZStack, Image, Box, Stack } from 'native-base';
 import URL from '../helper/baseURL';
 import fetchPost from '../helper/fetchPost';
 import { useTranslation } from 'react-i18next';
@@ -72,8 +72,8 @@ const Contacto = () => {
 
 
 
-      <Center mb={10} >
-        <Text fontFamily="Avenir" fontSize="lg" textAlign="justify" w="70%">
+      <Center mb={10} mt={5} >
+        <Text fontFamily="Avenir" fontSize="2xl" textAlign="justify" w="70%">
           {t("contacto.parrafo1.text")}
         </Text>
       </Center>
@@ -89,8 +89,9 @@ const Contacto = () => {
         <Box bg={"#62dff7"} w="100%" borderBottomRadius={10}>
           <form onSubmit={handleSubmit} style={{ width: '100%', marginLeft: '3%', marginRight: '3%', maxWidth: '90%' }}>
             <div style={{ marginBottom: '1rem' }}>
+
               <label style={{ fontWeight: 'bold', fontFamily: 'Avenir' }}>
-                {t("contacto.form.nombre.label")}
+                {t("contacto.form.nombre.label")} :
               </label>
 
               <input
@@ -101,6 +102,8 @@ const Contacto = () => {
                 style={{ width: '100%' }}
                 required
               />
+
+
             </div>
 
             <div style={{ marginBottom: '1rem' }}>

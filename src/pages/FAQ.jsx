@@ -19,31 +19,20 @@ const FAQ = () => {
 
         return (
             <Center mt={4}>
-                <Pressable
-                    w={"80%"}
+                <Pressable w={"80%"}
                     onPress={() => setOpenIndex(isOpen ? null : index)}
-                    borderRadius={10}
-                    borderWidth={1}
-                    borderColor={"muted.400"}
-                    bg={isOpen ? "#ffffff" : "muted.300"}
-                    shadow={7}
-                    p={3}
-                >
+                    borderRadius={10} borderWidth={1}
+                    borderColor={"muted.400"} shadow={7} p={3}
+                    bg={isOpen ? "#ffffff" : "muted.300"} >
                     <Text>
                         {pregunta}
 
                     </Text>
                 </Pressable>
                 {isOpen && (
-                    <Text
-                        p={2}
-                        bg={"#d9ebee"}
-                        borderRadius={10}
-                        textAlign={"justify"}
-                        fontSize={["sm", "sm", "md", "md"]}
-                        alignSelf={"center"}
-                        w={"80%"}
-                    >
+                    <Text p={2} bg={"#d9ebee"} borderRadius={10}
+                        textAlign={"justify"} w={"80%"}
+                        fontSize={["sm", "sm", "md", "md"]} alignSelf={"center"}  >
                         {respuesta}
                     </Text>
                 )}
@@ -56,11 +45,7 @@ const FAQ = () => {
     return (
         <View flex={1} mx={16} mt={{ base: -5, md: 12 }} >
             <Center>
-                <Text bold
-                    alignSelf={"center"}
-                    fontSize={["lg", "lg", "xl", "2xl"]}
-                    justifyContent={"center"}
-                >
+                <Text bold alignSelf={"center"} fontSize={["lg", "lg", "xl", "2xl"]} justifyContent={"center"}>
                     {t("FAQ.title")}
                 </Text>
             </Center>

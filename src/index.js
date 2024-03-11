@@ -39,6 +39,7 @@ import Payment from "./stripe/Payment";
 import ReactGA from 'react-ga';
 import TagManager from 'react-gtm-module'
 import AgregarVenta from "./Components/admin/AgregarVenta";
+import TerminosCompra from "./pages/TerminosCompra";
 
 
 const tagManagerArgs = {
@@ -110,6 +111,7 @@ export default function App() {
                   <Route path="FAQ" element={<FAQ />} />
                   <Route path="Stripe" element={<Payment />} />
                   <Route path="Devoluciones" element={<Devoluciones />} />
+                  <Route path="TerminosCondiciones" element={<TerminosCompra />} />
                   <Route path="Privacidad" element={<Privacidad />} />
                   <Route path="*" element={<NoPage />} />
                 </Route>

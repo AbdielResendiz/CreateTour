@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Pressable, Text, HamburgerIcon, VStack, HStack, Divider } from "native-base";
+import { Menu, Pressable, Text, HamburgerIcon } from "native-base";
 import { useNavigate } from "react-router-dom";
 import { animateScroll as scroll } from 'react-scroll';
 import { useTranslation } from 'react-i18next';

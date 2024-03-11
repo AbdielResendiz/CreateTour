@@ -145,7 +145,11 @@ const Devoluciones = () => {
             </ZStack>
 
 
-            <Box mt={4}>
+            <Box mt={4} flex={1} mx={{
+                base: 16,
+                md: 40
+
+            }}>
                 <HStack alignContent="center" justifyContent="flex-start" space={4}>
 
                     <HStack justifyContent={"center"}>
@@ -186,7 +190,11 @@ const Devoluciones = () => {
             </Box>
 
 
-            <Box mt={4}>
+            <Box mt={4} flex={1} mx={{
+                base: 16,
+                md: 40
+
+            }}>
                 <HStack alignContent="center" justifyContent="flex-start" space={4}>
                     <HStack justifyContent={"center"}>
                         <Image

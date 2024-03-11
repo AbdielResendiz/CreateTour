@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   PaymentElement,
   Elements,
@@ -6,8 +6,9 @@ import {
   useElements,
 } from '@stripe/react-stripe-js';
 import { useTranslation } from 'react-i18next';
-import { Spinner } from 'native-base';
+import { Spinner, Checkbox, Text, HStack, Pressable, Modal, Button } from 'native-base';
 import TagManager from 'react-gtm-module';
+import { useNavigate } from "react-router-dom";
 
 export const CheckoutForm = (props) => {
   const stripe = useStripe();
@@ -21,13 +22,16 @@ export const CheckoutForm = (props) => {
   const [phoneInput, setPhoneInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [load, setLoad] = useState(false);
+  const [terminos, setTerminos] = useState(false);
 
   const backendUrl = process.env.REACT_APP_STRIPE_PK_AIRCODE_URL;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-
+    if (terminos === false) {
+      return window.alert(t("carritoVista.alertTerminos"));
+    }
 
     if (elements == null || stripe == null) {
       return;
@@ -95,13 +99,26 @@ export const CheckoutForm = (props) => {
     }
   };
 
+  useEffect(() => {
+    console.log("terminos", terminos)
+  }, [terminos])
+
+
+  const navigate = useNavigate();
+  const handleTerminos = () => {
+    navigate("/TerminosCondiciones")
+  };
+
+
   return (
     <form onSubmit={handleSubmit} style={{ paddingInline: "40px" }}>
 
 
       <div className='mb-3'>
         <h3>{t("carritoVista.aviso")}</h3>
+
         <label htmlFor="name-input">{t("carritoVista.mensajeNombre")} </label>
+
         <div>
           <input style={{ width: '70%' }} value={nameInput} onChange={(e) => setNameInput(e.target.value)}
 
@@ -119,7 +136,33 @@ export const CheckoutForm = (props) => {
           <input style={{ width: '70%' }} value={emailInput} onChange={(e) => setEmailInput(e.target.value)}
             type="email" id="email-input" placeholder={t("carritoVista.email")} />
         </div>
+
+
+        <div>
+          <Text textAlign="justify">
+            {t("carritoVista.terminosMensaje")}
+          </Text>
+          <HStack justifyContent={"center"} alignItems="center" space={2}>
+            <Checkbox value={terminos} onChange={() => setTerminos(!terminos)} my={2} />
+
+
+            <Pressable onPress={() => handleTerminos()}>
+              <Text underline>
+                {t("carritoVista.terminosCheckBox")}
+              </Text>
+            </Pressable>
+
+          </HStack>
+
+
+        </div>
+
       </div>
+
+
+
+
+
       <PaymentElement />
       {
         load ?
@@ -145,8 +188,15 @@ export const CheckoutForm = (props) => {
 
       }
 
+
+
+
+
+
       {/* Show error message to your customers */}
       {errorMessage && <div>{errorMessage}</div>}
+
+
     </form>
   );
 };

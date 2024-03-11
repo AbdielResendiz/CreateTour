@@ -1,7 +1,9 @@
+import React, { useEffect } from "react";
 import { Image, Flex, VStack, Button, Text, Stack } from "native-base";
 import FlatListViajesComponent from "../Components/FlatListViajesComponent";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next'
+import { animateScroll as scroll } from 'react-scroll';
 
 
 
@@ -17,6 +19,9 @@ const Tours = () => {
         navigate(`/trip/3/Xplor%20Adventure%20Park`);
     };
 
+    useEffect(() => {
+        scroll.scrollToTop();
+    }, [])
 
 
     return (

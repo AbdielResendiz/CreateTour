@@ -8,6 +8,7 @@ import { TbShoppingCartSearch } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import Checkout from './Checkout';
+import { animateScroll as scroll } from 'react-scroll';
 
 
 
@@ -39,6 +40,10 @@ const Carrito = () => {
       // Manejar código de descuento inválido o ya aplicado
     }
   };
+
+  useEffect(() => {
+    scroll.scrollToTop();
+  }, [])
 
 
 
