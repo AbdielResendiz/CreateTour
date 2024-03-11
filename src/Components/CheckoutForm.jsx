@@ -106,7 +106,7 @@ export const CheckoutForm = (props) => {
 
   const navigate = useNavigate();
   const handleTerminos = () => {
-    navigate("/TerminosCondiciones")
+    navigate("/Devoluciones")
   };
 
 
