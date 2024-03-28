@@ -135,15 +135,13 @@ const Header = () => {
                         md: "flex"
                     }}
                 >
-                    <HStack justifyContent={["center", "center", "flex-end", "flex-end"]}  >
+                    <HStack justifyContent={["center", "center", "flex-end", "flex-end"]} alignItems="center" >
                         <CustomLink to="/" text={t("menu.inicio")} />
                         <CustomLink to="/Tours" text="Tours" />
+                        <CustomLink to="/Hotels" text={t("menu.Hoteles")} />
                         <CustomLink to="/Blog" text="Blog" />
                         <CustomLink to="/Nosotros" text={t("menu.Nosotros")} />
-                    </HStack>
 
-                    {/* STACK de menu */}
-                    <HStack justifyContent={"center"} alignItems="center"  >
                         <CustomLink to="/Contacto" text={t("menu.Contacto")} />
                         <CustomLink to="/FAQ" text="FAQ" />
                         {/* Boton carrito */}

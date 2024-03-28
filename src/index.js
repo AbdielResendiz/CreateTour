@@ -40,6 +40,8 @@ import ReactGA from 'react-ga';
 import TagManager from 'react-gtm-module'
 import AgregarVenta from "./Components/admin/AgregarVenta";
 import TerminosCompra from "./pages/TerminosCompra";
+import Hotels from "./pages/Hotels";
+import DetalleHotel from "./pages/DetalleHotel";
 
 
 const tagManagerArgs = {
@@ -95,12 +97,14 @@ export default function App() {
                 <Route path="/" element={<Header />}>
                   <Route index element={<Home />} />
                   <Route path="Tours" element={<Tours />} />
+                  <Route path="Hotels" element={<Hotels />} />
                   <Route path="Blog" element={<Blog />} />
                   <Route path="Nosotros" element={<Nosotros />} />
                   <Route path="Contacto" element={<Contacto />} />
                   <Route path="trip/:id/:titulo/" element={<DetalleViaje />} />
                   <Route path="trip/:id" element={<DetalleViaje />} />
                   <Route path="Carrito" element={<Carrito />} />
+                  <Route path="DetalleHotel/:id" element={<DetalleHotel />} />
 
 
                   <Route path="Login" element={<Login />} />
