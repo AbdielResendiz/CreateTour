@@ -57,7 +57,12 @@
 		"parrafo2": {
 			"text": "Complete our contact form below, and we'll get in touch with you as soon as possible."
 		},
-		"titulo": "CONTACT US!"
+		"titulo": "CONTACT US!",
+		"captcha": "Refresh the Captcha",
+		"valorCaptcha": "Enter the verification code",
+		"enviar": "Send",
+		"cotizaTitulo": "Get a Quote for Your Accommodation",
+		"cotizaSubtitulo": "Fill out the form and we'll send you a quote for your accommodation"
 	},
 	"FAQ": {
 		"p1": "How can I book experiences in Cancun through your online platform?",

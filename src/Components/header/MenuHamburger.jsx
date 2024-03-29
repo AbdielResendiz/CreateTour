@@ -40,6 +40,12 @@ const MenuHamburger = () => {
                 </Text>
             </Menu.Item>
 
+            <Menu.Item onPress={() => handleClickMenu('/Hotels')}>
+                <Text fontFamily="Avenir" fontSize={"sm"}>
+                    {t("menu.Hoteles")}
+                </Text>
+            </Menu.Item>
+
             <Menu.Item onPress={() => handleClickMenu('/Blog')}>
                 <Text fontFamily="Avenir" fontSize={"sm"}>
                     Blog

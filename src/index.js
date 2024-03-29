@@ -104,7 +104,7 @@ export default function App() {
                   <Route path="trip/:id/:titulo/" element={<DetalleViaje />} />
                   <Route path="trip/:id" element={<DetalleViaje />} />
                   <Route path="Carrito" element={<Carrito />} />
-                  <Route path="DetalleHotel/:id" element={<DetalleHotel />} />
+                  <Route path="DetalleHotel/:id/:titulo" element={<DetalleHotel />} />
 
 
                   <Route path="Login" element={<Login />} />

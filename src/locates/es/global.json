@@ -57,7 +57,12 @@
 		"parrafo2": {
 			"text": "Completa nuestro  formulario de contacto a continuación y nos pondremos en contacto contigo lo antes posible."
 		},
-		"titulo": "¡CONTÁCTANOS!"
+		"titulo": "¡CONTÁCTANOS!",
+		"captcha": "Actualiza el Captcha",
+		"valorCaptcha": "Ingrese el código de verificación",
+		"enviar": "Enviar",
+		"cotizaTitulo": "Cotiza tu hospedaje",
+		"cotizaSubtitulo": "Llena el formulario y te enviaremos cotizacion de tu hospedaje"
 	},
 	"FAQ": {
 		"p1": "¿Cómo puedo reservar experiencias en Cancún a través de su plataforma en línea?",
