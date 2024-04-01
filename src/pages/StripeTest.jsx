@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
+import {
+    PaymentElement, loadStripe,
+    Elements,
+    useStripe,
+    useElements,
+} from '@stripe/react-stripe-js';
 import '@stripe/stripe-js';
 import axios from 'axios';
 
@@ -48,6 +53,7 @@ const StripeTest = () => {
                             </label>
                             <br />
                             <div id="card-element" className="form-control"></div>
+                            <PaymentElement />
                             <button
                                 className="btn btn-success mt-3"
                                 type="button"

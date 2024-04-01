@@ -43,6 +43,7 @@ import TerminosCompra from "./pages/TerminosCompra";
 import Hotels from "./pages/Hotels";
 import DetalleHotel from "./pages/DetalleHotel";
 import StripeTest from "./pages/StripeTest";
+import StripePayment from "./StripePayment";
 
 
 const tagManagerArgs = {
@@ -119,7 +120,7 @@ export default function App() {
                   <Route path="TerminosCondiciones" element={<TerminosCompra />} />
                   <Route path="Privacidad" element={<Privacidad />} />
                   <Route path="*" element={<NoPage />} />
-                  <Route path="testing" element={<StripeTest />} />
+                  <Route path="testing" element={<StripePayment />} />
                 </Route>
 
               </Routes>

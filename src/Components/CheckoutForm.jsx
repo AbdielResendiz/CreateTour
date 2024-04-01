@@ -1,107 +1,99 @@
 import React, { useState, useEffect } from 'react';
 import {
   PaymentElement,
-  Elements,
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
 import { useTranslation } from 'react-i18next';
-import { Spinner, Checkbox, Text, HStack, Pressable, Modal, Button } from 'native-base';
+import { Spinner, Checkbox, Text, HStack, Pressable } from 'native-base';
 import TagManager from 'react-gtm-module';
 import { useNavigate } from "react-router-dom";
 
 export const CheckoutForm = (props) => {
   const stripe = useStripe();
   const elements = useElements();
+
+
+  const [message, setMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!stripe) {
+      return;
+    }
+
+    const clientSecret = new URLSearchParams(window.location.search).get(
+      "payment_intent_client_secret"
+    );
+
+    if (!clientSecret) {
+      return;
+    }
+
+    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+      switch (paymentIntent.status) {
+        case "succeeded":
+          setMessage("Payment succeeded!");
+          break;
+        case "processing":
+          setMessage("Your payment is processing.");
+          break;
+        case "requires_payment_method":
+          setMessage("Your payment was not successful, please try again.");
+          break;
+        default:
+          setMessage("Something went wrong.");
+          break;
+      }
+    });
+  }, [stripe]);
+
+
   const { t } = useTranslation("global");
   const { total, carrito } = props;
 
 
-  const [errorMessage, setErrorMessage] = useState('');
+
   const [nameInput, setNameInput] = useState('');
   const [phoneInput, setPhoneInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
-  const [load, setLoad] = useState(false);
+
   const [terminos, setTerminos] = useState(false);
 
-  const backendUrl = process.env.REACT_APP_STRIPE_PK_AIRCODE_URL;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (terminos === false) {
-      return window.alert(t("carritoVista.alertTerminos"));
-    }
-
-    if (elements == null || stripe == null) {
+    if (!stripe || !elements) {
+      // Stripe.js hasn't yet loaded.
+      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
-    // Trigger form validation and wallet collection
-    const { error: submitError } = await elements.submit();
-    if (submitError?.message) {
-      // Show error to your customer
-      setErrorMessage(submitError.message);
-      return;
-    }
-    setLoad(true);
-
-    console.log("price form: ", total)
-    console.log("Carrito form objeto?: ", carrito)
-    console.log("Carrito form objeto?: ", typeof (carrito))
-
-    // Create the PaymentIntent and obtain clientSecret from your server endpoint
-    const res = await fetch(backendUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        currency: 'mxn',
-        email: emailInput,
-        amount: Math.round(total * 100),
-        paymentMethodType: "card",
-        name: nameInput,
-        phone: phoneInput,
-        tours: carrito
-      }),
-    });
-
-    const { client_secret: clientSecret } = await res.json();
+    setIsLoading(true);
 
     const { error } = await stripe.confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
       elements,
-      clientSecret,
       confirmParams: {
-
+        // Make sure to change this to your payment completion page
         return_url: `${window.location.origin}/success`,
       },
     });
 
-    if (!error) {
-      // Si no hay error, significa que el proceso de pago va a continuar hacia la redirección
-      // Aquí es donde puedes disparar el evento a GTM antes de la redirección
-      TagManager.dataLayer({
-        dataLayer: {
-          event: 'payment_success', // Puedes personalizar este nombre de evento
-          category: 'Checkout', // Y estos valores según tus necesidades
-          action: 'Payment Confirmation',
-          label: 'Success',
-          value: Math.round(total * 100) // Opcional: puedes enviar el valor total del carrito
-        }
-      });
-      // La redirección se maneja automáticamente por Stripe después de este punto
+    // This point will only be reached if there is an immediate error when
+    // confirming the payment. Otherwise, your customer will be redirected to
+    // your `return_url`. For some payment methods like iDEAL, your customer will
+    // be redirected to an intermediate site first to authorize the payment, then
+    // redirected to the `return_url`.
+    if (error.type === "card_error" || error.type === "validation_error") {
+      setMessage(error.message);
     } else {
-      // Manejo de errores de Stripe
-      setErrorMessage(error.message);
-      window.alert("Error ", error.message);
+      setMessage("An unexpected error occurred.");
     }
+
+    setIsLoading(false);
   };
 
-  useEffect(() => {
-    console.log("terminos", terminos)
-  }, [terminos])
+
 
 
   const navigate = useNavigate();
@@ -110,8 +102,12 @@ export const CheckoutForm = (props) => {
   };
 
 
+  const paymentElementOptions = {
+    layout: "tabs"
+  }
+
   return (
-    <form onSubmit={handleSubmit} style={{ paddingInline: "40px" }}>
+    <form onSubmit={handleSubmit} style={{ paddingInline: "40px" }} id="payment-form">
 
 
       <div className='mb-3'>
@@ -144,57 +140,40 @@ export const CheckoutForm = (props) => {
           </Text>
           <HStack justifyContent={"center"} alignItems="center" space={2}>
             <Checkbox value={terminos} onChange={() => setTerminos(!terminos)} my={2} />
-
-
             <Pressable onPress={() => handleTerminos()}>
               <Text underline>
                 {t("carritoVista.terminosCheckBox")}
               </Text>
             </Pressable>
-
           </HStack>
-
-
         </div>
 
       </div>
 
+      <PaymentElement id="payment-element" options={paymentElementOptions} />
 
+      <button
+        type="submit"
+        disabled={isLoading || !stripe || !elements} id="submit"
 
+        style={{
+          padding: '10px 20px',
+          fontSize: '1.2em',
+          backgroundColor: '#449bab',
+          color: 'white',
+          borderRadius: '10px',
+          cursor: 'pointer',
+          display: 'block',
+          margin: '20px auto',
+          border: '2px solid white',
+          marginBottom: '-90px'
+        }}
+      >
+        {t("carritoVista.listaCarrito.pagar")}
+      </button>
 
-
-      <PaymentElement />
-      {
-        load ?
-          <Spinner /> :
-          <button
-            type="submit"
-            disabled={!stripe || !elements}
-            style={{
-              padding: '10px 20px',
-              fontSize: '1.2em',
-              backgroundColor: '#449bab',
-              color: 'white',
-              borderRadius: '10px',
-              cursor: 'pointer',
-              display: 'block',
-              margin: '20px auto',
-              border: '2px solid white',
-              marginBottom: '-90px'
-            }}
-          >
-            {t("carritoVista.listaCarrito.pagar")}
-          </button>
-
-      }
-
-
-
-
-
-
-      {/* Show error message to your customers */}
-      {errorMessage && <div>{errorMessage}</div>}
+      {/* Show any error or success messages */}
+      {message && <div id="payment-message">{message}</div>}
 
 
     </form>
