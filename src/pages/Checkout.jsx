@@ -8,15 +8,15 @@ import { Center } from 'native-base';
 
 
 
-const options = {
-  mode: 'payment',
-  amount: 1099,
-  currency: 'mxn',
-  // Fully customizable with appearance API.
-  appearance: {
-    /*...*/
-  },
-};
+// const options = {
+//   mode: 'payment',
+//   amount: 1099,
+//   currency: 'mxn',
+//   // Fully customizable with appearance API.
+//   appearance: {
+//     /*...*/
+//   },
+// };
 
 
 
@@ -24,7 +24,15 @@ const options = {
 const Checkout = ({ total, carrito }) => {
 
 
-
+  const options = {
+    mode: 'payment',
+    amount: total,
+    currency: 'mxn',
+    // Fully customizable with appearance API.
+    appearance: {
+      /*...*/
+    },
+  };
 
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
