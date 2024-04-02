@@ -81,25 +81,11 @@ const Carrito = () => {
 
     // Suponiendo que tienes una función totalStripe para manejar el total
     totalStripe(granTotalUSD);
-  }, [carrito, descuentoAplicado]);
+  }, [carrito, descuentoAplicado, precioUSD]);
 
   useEffect(() => {
-    let granTotalUSD = carrito.reduce((total, producto) => total + producto.TotalCompra, 0);
-
-    if (descuentoAplicado) {
-      granTotalUSD *= 1; // Ajustar según la lógica de descuento, 1 significa no descuento
-    }
-
-    // Calcular el total en MXN
-    const granTotalMXN = granTotalUSD * precioUSD;
-
-    // Actualizar estados
-    setTotalUSD(parseFloat(granTotalUSD.toFixed(2)));
-    setTotalMXN(parseFloat(granTotalMXN.toFixed(2)));
-
-    // Suponiendo que tienes una función totalStripe para manejar el total
-    totalStripe(granTotalUSD);
-  }, []);
+    console.log("totalMXN:", totalMXN); // Puedes quitar este console.log si ya no lo necesitas
+  }, [totalMXN]);
 
 
 

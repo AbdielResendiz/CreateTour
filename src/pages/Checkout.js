@@ -10,9 +10,15 @@ const stripePromise = loadStripe("pk_test_51OHTHqGhUhhWDkJz6fviWUAbK98E2SJJda15B
 
 
 
-const Checkout = ({ total, carrito }) => {
+const Checkout = (props) => {
+  const { total, carrito } = props;
 
   const [clientSecret, setClientSecret] = useState("");
+
+  useEffect(() => {
+    console.log("total stripe:", total)
+  }, [total])
+
 
   useEffect(() => {
 
