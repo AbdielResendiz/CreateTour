@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import CarritoComponent from '../Components/CarritoComponent';
 import { useUser } from '../helper/UserContext';
-import { Button, Center, Divider, FlatList, Heading, Text, VStack, Flex, FormControl, Input } from 'native-base';
+import { Button, Center, Divider, FlatList, Heading, Text, VStack, Flex, FormControl, Input, View } from 'native-base';
 import { IconContext } from "react-icons";
 import ViajesAleatoreosComponent from '../Components/ViajesAleatoreosComponent';
 import { TbShoppingCartSearch } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-import Checkout from './Checkout';
+import CheckoutForm from '../CheckoutForm';
 import { animateScroll as scroll } from 'react-scroll';
 
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import "../App2.css"
+
+const stripePromise = loadStripe("pk_live_51OHTHqGhUhhWDkJzHmE6js4a1VmAj8HUAjjh53ggaFX1lgmM7YUnxxxlpnauR7ZSfj8lnirDKvR7MmFhdoEZDpcX00LdJDeUE6");
 
 
-const Carrito = () => {
+export default function Carrito() {
   const { t, i18n } = useTranslation("global");
 
   //para navegar a otras vistas
@@ -54,7 +59,7 @@ const Carrito = () => {
     // console.log("carrito: ", carrito);
     // console.log("carrito type: ", typeof (carrito));
     setCarritoString(JSON.stringify(carrito))
-    // console.log("carrito string: ", carritoSting)
+    console.log("carrito string: ", carritoSting)
     // console.log("carritoSting type: ", typeof (carritoSting));
     // console.log("precio usd carrito", precioUSD)
   }, [carrito, carritoSting]);
@@ -62,9 +67,9 @@ const Carrito = () => {
 
   const [totalUSD, setTotalUSD] = useState();
   const [totalMXN, setTotalMXN] = useState();
+  const [totalMXNstripe, setTotalMXNstripe] = useState();
 
 
-  // Función para calcular el GranTotal
   useEffect(() => {
     let granTotalUSD = carrito.reduce((total, producto) => total + producto.TotalCompra, 0);
 
@@ -73,11 +78,14 @@ const Carrito = () => {
     }
 
     // Calcular el total en MXN
-    const granTotalMXN = granTotalUSD * precioUSD;
+    let granTotalMXN = granTotalUSD * precioUSD;
+    granTotalMXN = granTotalMXN.toFixed(2); // Redondear a 2 decimales
 
-    // Actualizar estados
+    // Convertir a centavos y actualizar el estado
+    setTotalMXNstripe(parseFloat(granTotalMXN) * 100);
+    setTotalMXN(parseFloat(granTotalMXN));
+    // Actualizar estado del total en USD
     setTotalUSD(parseFloat(granTotalUSD.toFixed(2)));
-    setTotalMXN(parseFloat(granTotalMXN.toFixed(2)));
 
     // Suponiendo que tienes una función totalStripe para manejar el total
     totalStripe(granTotalUSD);
@@ -89,13 +97,73 @@ const Carrito = () => {
 
 
 
+  // useEffect(() => {
+  //   let granTotalUSD = carrito.reduce((total, producto) => total + producto.TotalCompra, 0);
+
+  //   if (descuentoAplicado) {
+  //     granTotalUSD *= 1; // Ajustar según la lógica de descuento, 1 significa no descuento
+  //   }
+
+  //   // Calcular el total en MXN
+  //   const granTotalMXN = granTotalUSD * precioUSD;
+
+  //   // Actualizar estados
+  //   setTotalUSD(parseFloat(granTotalUSD.toFixed(2)));
+  //   setTotalMXN(parseFloat(granTotalMXN.toFixed(2)));
+
+  //   // Suponiendo que tienes una función totalStripe para manejar el total
+  //   totalStripe(granTotalUSD);
+  // }, [carrito, descuentoAplicado, precioUSD]);
+
+  // useEffect(() => {
+  //   console.log("totalMXN:", totalMXN); // Puedes quitar este console.log si ya no lo necesitas
+  // }, [totalMXN]);
+  // Función para calcular el GranTotal
+  // Función para manejar el total en Stripe
+
+
+
+
+
+  //funciones pasarela
+
+  const [clientSecret, setClientSecret] = useState("");
+
+  useEffect(() => {
+
+    if (totalMXNstripe !== undefined) {
+      // Create PaymentIntent as soon as the page loads
+
+      console.log("json :", JSON.stringify({ items: totalMXNstripe }))
+      console.log("total stripe: ", totalMXNstripe)
+
+      fetch("https://createtours.com.mx/stripe/public/create.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ totalStripe: totalMXNstripe })
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Response from PHP:", data);
+          setClientSecret(data.clientSecret);
+        })
+    }
+  }, [totalMXNstripe]);
+
+  const appearance = {
+    theme: 'stripe',
+  };
+  const options = {
+    clientSecret,
+    appearance,
+  };
+
 
   return (
-    <Flex mt={{ base: -5, md: 12 }} >
+    <View mt={96} >
       <Center >
         <Heading w={"70%"} textAlign={"center"} alignContent="center">{t("carritoVista.bienvenida")}</Heading>
       </Center>
-
 
       {carrito.length > 0 ?
         null :
@@ -127,7 +195,6 @@ const Carrito = () => {
         </VStack>
       }
 
-
       <FlatList
         style={{ width: '100%', marginTop: 5, paddingHorizontal: '2vw' }}
         contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
@@ -146,14 +213,10 @@ const Carrito = () => {
             adultoN={item.CantidadAdultos}
             adultoE={item.CantidadAdultosExtranjeros}
             kidN={item.CantidadInfantes}
-            kidE={item.CantidadInfantes} />
+            kidE={item.CantidadInfantesExtranjeros} />
         )}
       />
-
-
-
       {carrito.length > 0 ?
-
         <>
           <Center px={10} mb={4}>
             <FormControl w={80}>
@@ -181,17 +244,28 @@ const Carrito = () => {
               {t("modalCarrito.moneda")}
             </Text>
 
-            <Checkout total={totalMXN} carrito={carritoSting} />
+
+
+            {/* carrito original */}
+            {/* <Checkout total={totalMXN} carrito={carritoSting} /> */}
+
+            {/* inicia nueva pasarela compras */}
+
+            <div className="App2">
+              {clientSecret && (
+                <Elements options={options} stripe={stripePromise}>
+                  <CheckoutForm />
+                </Elements>
+              )}
+            </div>
 
           </Center>
         </>
         :
         null
       }
-
-    </Flex >
+    </View >
 
   );
 };
 
-export default Carrito;

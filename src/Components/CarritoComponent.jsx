@@ -48,7 +48,7 @@ const CarritoComponent = ({ id, index, foto, titulo, fecha, adultoN, adultoE, ki
                         {t("modalCarrito.adultoN")}: <Text bold>{adultoN}</Text>{" "}
                     </Text>
                     <Text fontSize={["xs", "xs", "sm", "md"]}>
-                        {t("modalCarrito.infanteE")}: <Text bold>{kidN}</Text>{" "}
+                        {t("modalCarrito.infanteN")}: <Text bold>{kidN}</Text>{" "}
                     </Text>
                 </HStack>
 

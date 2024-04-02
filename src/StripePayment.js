@@ -12,13 +12,13 @@ const stripePromise = loadStripe("pk_test_51OHTHqGhUhhWDkJz6fviWUAbK98E2SJJda15B
 
 export default function StripePayment() {
     const [clientSecret, setClientSecret] = useState("");
-
+    const totalStripe = 40000;
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
         fetch("https://createtours.com.mx/stripe/public/create.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
+
         })
             .then((res) => res.json())
             .then((data) => setClientSecret(data.clientSecret));

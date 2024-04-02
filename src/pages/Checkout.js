@@ -15,23 +15,13 @@ const Checkout = (props) => {
 
   const [clientSecret, setClientSecret] = useState("");
 
-  useEffect(() => {
-    console.log("total stripe:", total)
-  }, [total])
-
 
   useEffect(() => {
-
-
-    // Crear el objeto con los datos a enviar
-    const postData = {
-      total: total
-    };
     // Create PaymentIntent as soon as the page loads
-    fetch("https://createtours.com.mx/stripe/public/create.php", {
+    fetch("/create.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(postData)
+      body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
@@ -79,4 +69,4 @@ const Checkout = (props) => {
   )
 }
 
-export default Checkout
+export default Checkout;

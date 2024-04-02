@@ -27,10 +27,10 @@ const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, 
   );
 
 
-  const [precioAdultoNacMXN, setPrecioAdultoNacMXN] = useState(null);
-  const [precioAdultoExMXN, setPrecioAdultoExMXN] = useState(null);
-  const [precioInfantilNacMXN, setPrecioInfantilNacMXN] = useState(null);
-  const [precioInfantilExMXN, setPrecioInfantilExMXN] = useState(null);
+  const [precioAdultoNacMXN, setPrecioAdultoNacMXN] = useState(precioUSD * PrecioAdultoNacional);
+  const [precioAdultoExMXN, setPrecioAdultoExMXN] = useState(precioUSD * PrecioAdultoExtranjero);
+  const [precioInfantilNacMXN, setPrecioInfantilNacMXN] = useState(precioUSD * PrecioInfantilNacional);
+  const [precioInfantilExMXN, setPrecioInfantilExMXN] = useState(precioUSD * PrecioInfantilExtranjero);
 
 
 
@@ -39,7 +39,7 @@ const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, 
     setPrecioAdultoExMXN(Number((precioUSD * PrecioAdultoExtranjero).toFixed(2)));
     setPrecioInfantilNacMXN(Number((precioUSD * PrecioInfantilNacional).toFixed(2)));
     setPrecioInfantilExMXN(Number((precioUSD * PrecioInfantilExtranjero).toFixed(2)));
-  }, [precioUSD, PrecioAdultoNacional, PrecioAdultoExtranjero, PrecioInfantilNacional, PrecioInfantilExtranjero]);
+  }, []);
 
   const preciosModal = {
     moneda: i18n.language === "es" ? "MXN" : "USD",
@@ -135,9 +135,9 @@ const PrecioComponent = ({ viaje, PrecioAdultoNacional, PrecioAdultoExtranjero, 
         PrInfanteExMXN={precioInfantilExMXN}
         //precios USD
         PrAdultoNac={PrecioAdultoNacional}
-        PrAdultoEx={PrecioAdultoNacional}
-        PrInfanteNac={PrecioAdultoNacional}
-        PrInfanteEx={PrecioAdultoNacional}
+        PrAdultoEx={PrecioAdultoExtranjero}
+        PrInfanteNac={PrecioInfantilNacional}
+        PrInfanteEx={PrecioInfantilExtranjero}
 
         moneda={preciosModal.moneda}
         AdultoN={textosModal.AdultoNacional}

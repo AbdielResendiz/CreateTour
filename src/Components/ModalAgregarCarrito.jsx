@@ -210,7 +210,7 @@ const ModalAgregarCarrito = (props) => {
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
                     <Text bold>{t(`modalCarrito.adultoN`)} </Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrAdultoNac} {moneda} / {t(`modalCarrito.persona`)}</Text>
+                    <Text mx={2} fontSize={"xs"}>  ${i18n.language === "es" ? PrAdultoNacMXN : PrAdultoNac} {moneda}  / {t(`modalCarrito.persona`)}</Text>
                   </HStack>
 
                   <HStack alignSelf={"center"}>
@@ -224,7 +224,7 @@ const ModalAgregarCarrito = (props) => {
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
                     <Text bold>{t(`modalCarrito.infanteN`)} </Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrInfanteNac} {moneda} / {t(`modalCarrito.persona`)}</Text>
+                    <Text mx={2} fontSize={"xs"}>${i18n.language === "es" ? PrInfanteNacMXN : PrInfanteNac} {moneda}/ {t(`modalCarrito.persona`)}</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
                     <Button onPress={decrementInfanteNac}>-</Button>
@@ -236,7 +236,7 @@ const ModalAgregarCarrito = (props) => {
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
                     <Text bold>{t(`modalCarrito.adultoE`)} </Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrAdultoEx} {moneda} / {t(`modalCarrito.persona`)}</Text>
+                    <Text mx={2} fontSize={"xs"}> ${i18n.language === "es" ? PrAdultoExMXN : PrAdultoEx} {moneda} / {t(`modalCarrito.persona`)}</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
                     <Button onPress={decrementAdultoEx}>-</Button>
@@ -248,7 +248,7 @@ const ModalAgregarCarrito = (props) => {
                 <Stack direction={["column", "column", "row", "row"]} justifyContent={"center"}>
                   <HStack alignSelf={"center"}>
                     <Text bold>{t(`modalCarrito.infanteE`)}</Text>
-                    <Text mx={2} fontSize={"xs"}> ${PrInfanteEx} {moneda} / {t(`modalCarrito.persona`)}</Text>
+                    <Text mx={2} fontSize={"xs"}>  ${i18n.language === "es" ? PrInfanteExMXN : PrInfanteEx}  {moneda} / {t(`modalCarrito.persona`)}</Text>
                   </HStack>
                   <HStack alignSelf={"center"}>
                     <Button onPress={decrementInfanteEx}>-</Button>
